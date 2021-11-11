@@ -14,6 +14,7 @@
 		55338136272E1AD6005496A7 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338135272E1AD6005496A7 /* Sidebar.swift */; };
 		55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338137272E1B55005496A7 /* LinkItemModel.swift */; };
 		5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338139272E1D45005496A7 /* LinkDisplaySheet.swift */; };
+		553BB317273CD05900612C66 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB316273CD05900612C66 /* AboutView.swift */; };
 		5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544582C2731974E009A4DF0 /* ExtractDomain.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckHTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */; };
 		5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736A273A017E00CBC001 /* DeleteButton.swift */; };
@@ -41,6 +42,7 @@
 		55338135272E1AD6005496A7 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		55338137272E1B55005496A7 /* LinkItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemModel.swift; sourceTree = "<group>"; };
 		55338139272E1D45005496A7 /* LinkDisplaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDisplaySheet.swift; sourceTree = "<group>"; };
+		553BB316273CD05900612C66 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		5544582C2731974E009A4DF0 /* ExtractDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractDomain.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHTTPS.swift; sourceTree = "<group>"; };
 		5592736A273A017E00CBC001 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				5592736C273AF1F000CBC001 /* EmptyListView.swift */,
 				55FE7C9E273B1A0300224070 /* ListItemView.swift */,
 				55FE7CA0273B3B8D00224070 /* NoFolderSelectedView.swift */,
+				553BB316273CD05900612C66 /* AboutView.swift */,
 				55C78ADB2739ED4C00E711CF /* LinkDisplaySheet */,
 			);
 			path = Views;
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55FE7C9D273B097700224070 /* FolderView.swift in Sources */,
+				553BB317273CD05900612C66 /* AboutView.swift in Sources */,
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
 				55FE7CA3273B544300224070 /* NewFolderSheet.swift in Sources */,
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
