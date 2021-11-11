@@ -11,6 +11,8 @@ import SwiftUI
 
 struct AboutView: View {
 	
+	@Binding var timesOpened: Int
+	
 	var body: some View {
 		
 		
@@ -51,6 +53,10 @@ struct AboutView: View {
 			}
 			.padding()
 			
+			Text("**Fun Fact:** you've opened Later \(timesOpened) times.")
+				.padding(.horizontal)
+				.help("This was made simply to test @AppStorage")
+			
 		}
 		.toolbar {
 			ToolbarItem(placement: .navigation) {
@@ -74,6 +80,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView()
+		AboutView(timesOpened: .constant(4))
 	}
 }

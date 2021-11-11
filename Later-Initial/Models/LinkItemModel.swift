@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct LinkItem: Codable, Hashable, Identifiable {
 	var id = UUID()

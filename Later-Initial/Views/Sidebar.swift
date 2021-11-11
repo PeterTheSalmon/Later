@@ -17,6 +17,7 @@ struct Sidebar: View {
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
+	@Binding var timesOpened: Int
 		
 	var filteredLinkItems: [LinkItem]
 	
@@ -44,7 +45,7 @@ struct Sidebar: View {
 				}
 				
 				Section(header: Text("More")) {
-					NavigationLink(destination: AboutView()) {
+					NavigationLink(destination: AboutView(timesOpened: $timesOpened)) {
 						moreItemView(name: "About", imageName: "info.circle")
 					}
 				}

@@ -14,6 +14,7 @@ struct PrimaryView: View {
 	@State private var isShowingSheet = false
 	@State private var showFavouritesOnly = false
 	@State var isShowingNewFolderSheet = false
+	@AppStorage("timesOpened") var timesOpened = 0
 	
 	var filteredLinkItems: [LinkItem] {
 		listItems.ItemList.filter { item in
@@ -28,8 +29,9 @@ struct PrimaryView: View {
 					activeFolderList: activeFolderList,
 					isShowingSheet: $isShowingSheet,
 					isShowingNewFolderSheet: $isShowingNewFolderSheet,
-				   showFavouritesOnly: $showFavouritesOnly,
-				   filteredLinkItems: filteredLinkItems)
+				    showFavouritesOnly: $showFavouritesOnly,
+					timesOpened: $timesOpened,
+					filteredLinkItems: filteredLinkItems)
 			
 			NoFolderSelectedView()
 				.navigationTitle("Later")
@@ -61,6 +63,10 @@ struct PrimaryView: View {
 				.sheet(isPresented: $isShowingNewFolderSheet) {
 					NewFolderSheet(activeFolderList: activeFolderList)
 				}
+		}
+		.onAppear {
+			timesOpened += 1
+			print(timesOpened)
 		}
     }
 	
