@@ -20,4 +20,7 @@ struct AppInfo {
 		"Suggestions? Let me know on Discord or Github!",
 		"Later is completely private; nothing leaves your device."
 	]
+	/// links
+	static let githubLink = "https://github.com/PeterTheSalmon/Later"
+	static let discordLink = "https://discord.gg/vCBAkhAgFn"
 }

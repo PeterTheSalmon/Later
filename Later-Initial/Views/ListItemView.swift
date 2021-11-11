@@ -54,6 +54,21 @@ struct ListItemView: View {
 	}
 }
 
+struct moreItemView: View {
+	
+	var name: String
+	var imageName: String
+	
+	var body: some View {
+		HStack {
+			Image(systemName: imageName)
+			Text(name)
+			Spacer()
+		}
+	}
+	
+}
+
 //struct ListItemView_Previews: PreviewProvider {
 //    	
 //	static var previews: some View {
