@@ -21,5 +21,24 @@ class MockData: ObservableObject {
 	static let exampleItem = LinkItem(title: "Reddit", url: "https://www.reddit.com", isFavourite: true)
 	
 	// general list of stuff
-	@Published var ItemList: [LinkItem] = []
+	@Published var ItemList: [LinkItem] = [LinkItem]() {
+		didSet {			
+			if let encoded = try? JSONEncoder().encode(ItemList) {
+				UserDefaults.standard.set(encoded, forKey: "Items")
+			}
+		}
+	}
+	
+	// decoding JSON of LinkItems
+	init() {
+		if let savedItems = UserDefaults.standard.data(forKey: "Items") {
+			if let decodedItems = try? JSONDecoder().decode([LinkItem].self, from: savedItems) {
+				ItemList = decodedItems
+				return
+			}
+		}
+		
+		ItemList = []
+	}
+	
 }

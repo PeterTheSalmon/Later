@@ -13,8 +13,24 @@ struct FolderItem: Codable, Hashable, Identifiable {
 }
 
 class FolderClass: ObservableObject {
-	@Published var folderList: [FolderItem] = [
-		FolderItem(name: "Uncategorized")
-	]
+	
+	@Published var folderList: [FolderItem] = [FolderItem(name: "Uncategorized")] {
+		didSet {
+			if let encoded = try? JSONEncoder().encode(folderList) {
+				UserDefaults.standard.set(encoded, forKey: "Folders")
+			}
+		}
+	}
+	
+	init() {
+		if let savedItems = UserDefaults.standard.data(forKey: "Folders") {
+			if let decodedItems = try? JSONDecoder().decode([FolderItem].self, from: savedItems) {
+				folderList = decodedItems
+				return
+			}
+		}
+		
+		folderList = [FolderItem(name: "Uncategorized")]
+	}
 }
 
