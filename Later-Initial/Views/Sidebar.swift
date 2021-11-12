@@ -18,6 +18,8 @@ struct Sidebar: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
 	@Binding var timesOpened: Int
+	@Binding var justDeletedFolder: Bool
+	@Binding var selectedFolder: FolderItem?
 		
 	var filteredLinkItems: [LinkItem]
 	
@@ -35,10 +37,10 @@ struct Sidebar: View {
 													isShowingSheet: $isShowingSheet,
 													isShowingNewFolderSheet: $isShowingNewFolderSheet,
 													showFavouritesOnly: $showFavouritesOnly,
-													parentFolder: folder,
-													filteredLinkItems: filteredLinkItems)) {
+													parentFolder: folder, selectedFolder: $selectedFolder,
+													justDeletedFolder: $justDeletedFolder, filteredLinkItems: filteredLinkItems)) {
 														
-														ListItemView(name: folder.name, activeFolderList: activeFolderList, listItems: listItems, item: folder)
+														ListItemView(name: folder.name, activeFolderList: activeFolderList, listItems: listItems, justDeletedFolder: $justDeletedFolder, item: folder, selectedFolder: $selectedFolder)
 													
 													}
 					}

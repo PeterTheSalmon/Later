@@ -16,8 +16,9 @@ struct ListItemView: View {
 	@ObservedObject var activeFolderList: FolderClass
 	@ObservedObject var listItems: MockData
 
-	
+	@Binding var justDeletedFolder: Bool
 	@Binding var item: FolderItem
+	@Binding var selectedFolder: FolderItem?
 	
 	@State var deleteFolderAlertPresented = false
 	
@@ -44,6 +45,9 @@ struct ListItemView: View {
 						if (itemIndex != nil && item.name != "Uncategorized") ||
 							(itemIndex != nil && activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2) {
 							
+							if selectedFolder == item {
+								justDeletedFolder = true
+							}
 							listItems.ItemList.removeAll(where: { $0.parentFolder == item } )
 							activeFolderList.folderList.remove(at: itemIndex!)
 							

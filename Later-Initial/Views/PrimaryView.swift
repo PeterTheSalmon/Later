@@ -14,6 +14,8 @@ struct PrimaryView: View {
 	@State private var isShowingSheet = false
 	@State private var showFavouritesOnly = false
 	@State var isShowingNewFolderSheet = false
+	@State var justDeletedFolder = false
+	@State var selectedFolder: FolderItem?
 	@AppStorage("timesOpened") var timesOpened = 0
 	
 	var filteredLinkItems: [LinkItem] {
@@ -31,6 +33,8 @@ struct PrimaryView: View {
 					isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				    showFavouritesOnly: $showFavouritesOnly,
 					timesOpened: $timesOpened,
+					justDeletedFolder: $justDeletedFolder,
+					selectedFolder: $selectedFolder,
 					filteredLinkItems: filteredLinkItems)
 			
 			NoFolderSelectedView()
