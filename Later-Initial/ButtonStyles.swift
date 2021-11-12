@@ -22,6 +22,7 @@ struct SaveButton: ButtonStyle {
 struct SocialButton: View {
 	
 	@Environment(\.openURL) var openURL
+	@State var isHovering = false
 	
 	var gradientColourOne: Color
 	var gradientColourTwo: Color
@@ -51,6 +52,7 @@ struct SocialButton: View {
 		.onTapGesture {
 			openURL(URL(string: url)!)
 		}
+
 		.onHover { inside in
 			if inside {
 				NSCursor.pointingHand.push()
@@ -58,6 +60,7 @@ struct SocialButton: View {
 				NSCursor.pop()
 			}
 		}
+		//.animation(.linear(duration: 0.2), value: isHovering)
 	}
 	
 }

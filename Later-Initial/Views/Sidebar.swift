@@ -38,14 +38,14 @@ struct Sidebar: View {
 													parentFolder: folder,
 													filteredLinkItems: filteredLinkItems)) {
 														
-														ListItemView(name: folder.name, activeFolderList: activeFolderList, item: folder)
+														ListItemView(name: folder.name, activeFolderList: activeFolderList, listItems: listItems, item: folder)
 													
 													}
 					}
 				}
 				
 				Section(header: Text("More")) {
-					NavigationLink(destination: AboutView(timesOpened: $timesOpened)) {
+					NavigationLink(destination: AboutView(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, tipList: AppInfo.tips)) {
 						moreItemView(name: "About", imageName: "info.circle")
 					}
 				}

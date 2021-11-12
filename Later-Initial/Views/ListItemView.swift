@@ -5,6 +5,8 @@
 //  Created by Peter Salmon on 2021-11-09.
 //
 
+/// this file has two views - one for the standard list item for folders, and one for other items contained in the "more" header
+
 import SwiftUI
 
 struct ListItemView: View {
@@ -12,6 +14,8 @@ struct ListItemView: View {
 	@Binding var name: String
 	@State private var isHoveringTrash = false
 	@ObservedObject var activeFolderList: FolderClass
+	@ObservedObject var listItems: MockData
+
 	
 	@Binding var item: FolderItem
 	
@@ -31,12 +35,19 @@ struct ListItemView: View {
 			Spacer()
 			
 			/// trash icon to delete items
+			
 			if item.name != "Uncategorized" || activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
-						if (itemIndex != nil && item.name != "Uncategorized") || (itemIndex != nil && activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2) {
+												
+						if (itemIndex != nil && item.name != "Uncategorized") ||
+							(itemIndex != nil && activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2) {
+							
+							listItems.ItemList.removeAll(where: { $0.parentFolder == item } )
 							activeFolderList.folderList.remove(at: itemIndex!)
+							
+							
 						} else {
 							deleteFolderAlertPresented = true
 						}

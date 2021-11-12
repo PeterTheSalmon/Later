@@ -12,6 +12,10 @@ import SwiftUI
 struct AboutView: View {
 	
 	@Binding var timesOpened: Int
+	@ObservedObject var activeFolderList: FolderClass
+	@Binding var isShowingNewFolderSheet: Bool
+	
+	var tipList: [String]
 	
 	var body: some View {
 		
@@ -25,9 +29,9 @@ struct AboutView: View {
 				.padding(.horizontal)
 			
 			Text("""
-	  Created by \(AppInfo.creator)
-	  Version \(AppInfo.version)
-	  """)
+				Created by \(AppInfo.creator)
+				Version \(AppInfo.version)
+				""")
 				.padding()
 			
 			// Description
@@ -58,6 +62,9 @@ struct AboutView: View {
 				.help("This was made simply to test @AppStorage")
 			
 		}
+		.sheet(isPresented: $isShowingNewFolderSheet) {
+			NewFolderSheet(activeFolderList: activeFolderList)
+		}
 		.toolbar {
 			ToolbarItem(placement: .navigation) {
 				Button {
@@ -80,6 +87,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4))
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), tipList: AppInfo.tips)
 	}
 }
