@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FavouriteButton: View {
-	
 	@ObservedObject var listItems: MockData
-	
+
 	var hoveringReference: Bool
 	var item: LinkItem
 	var itemIsFavourite: Bool
-	
+
 	var body: some View {
 		HStack {
 			Image(systemName: itemIsFavourite ? "star.fill" : "star")
@@ -28,10 +27,10 @@ struct FavouriteButton: View {
 }
 
 struct LinkSheetIcons_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		FavouriteButton(listItems: MockData(),
-						hoveringReference: true,
-						item: MockData.exampleItem,
-						itemIsFavourite: true)
-    }
+		                hoveringReference: true,
+		                item: MockData.exampleItem,
+		                itemIsFavourite: true)
+	}
 }

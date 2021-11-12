@@ -12,8 +12,7 @@ struct LinkItem: Codable, Hashable, Identifiable {
 	var title: String
 	var url: String
 	var isFavourite: Bool = false
-	var parentFolder: FolderItem = FolderItem(name: "Uncategorized")
-	
+	var parentFolder = FolderItem(name: "Uncategorized")
 }
 
 class MockData: ObservableObject {
@@ -21,8 +20,8 @@ class MockData: ObservableObject {
 	static let exampleItem = LinkItem(title: "Reddit", url: "https://www.reddit.com", isFavourite: true)
 	
 	// general list of stuff
-	@Published var ItemList: [LinkItem] = [LinkItem]() {
-		didSet {			
+	@Published var ItemList = [LinkItem]() {
+		didSet {
 			if let encoded = try? JSONEncoder().encode(ItemList) {
 				UserDefaults.standard.set(encoded, forKey: "Items")
 			}
@@ -40,5 +39,4 @@ class MockData: ObservableObject {
 		
 		ItemList = []
 	}
-	
 }

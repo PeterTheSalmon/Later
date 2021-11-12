@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NewItemSheet: View {
-	
 	@ObservedObject var listItems: MockData
 	@ObservedObject var activeFolderList: FolderClass
 	@Environment(\.dismiss) var dismiss
@@ -31,18 +30,14 @@ struct NewItemSheet: View {
 					dismiss()
 					
 				} label: {
-					
 					Label("Cancel", systemImage: "xmark.circle")
 						.font(.title3)
-					
 				}
 				.buttonStyle(.borderless)
 				.padding()
-				
 			}
 			
 			Form {
-				
 				TextField("Title", text: $title, prompt: Text("Title"))
 					.font(.title2)
 				
@@ -55,7 +50,6 @@ struct NewItemSheet: View {
 					}
 				}
 				.font(.title3)
-				
 			}
 			.textFieldStyle(.roundedBorder)
 			.padding(.leading)
@@ -65,8 +59,8 @@ struct NewItemSheet: View {
 			HStack {
 				Button {
 					let item = LinkItem(title: title,
-										url: checkURLconventions(urlString: urlString),
-										parentFolder: parentFolder)
+					                    url: checkURLconventions(urlString: urlString),
+					                    parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {
@@ -76,9 +70,9 @@ struct NewItemSheet: View {
 				
 				Button {
 					let item = LinkItem(title: title,
-										url: checkURLconventions(urlString: urlString),
-										isFavourite: true,
-										parentFolder: parentFolder)
+					                    url: checkURLconventions(urlString: urlString),
+					                    isFavourite: true,
+					                    parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {
@@ -93,11 +87,8 @@ struct NewItemSheet: View {
 	}
 }
 
-
 struct NewItemSheet_Previews: PreviewProvider {
-	
 	static var previews: some View {
 		NewItemSheet(listItems: MockData(), activeFolderList: FolderClass(), parentFolder: FolderItem(name: "Preview"))
-			
 	}
 }

@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct FolderView: View {
-	
 	@ObservedObject var listItems: MockData
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingSheet: Bool
@@ -23,43 +22,36 @@ struct FolderView: View {
 	var filteredLinkItems: [LinkItem]
 	
 	var body: some View {
-		
 		if !justDeletedFolder { /// this is the normal, almost always used folderview
 			VStack {
-				
 				let filteredAgain = filteredLinkItems.filter { toFilterItem in
-					return toFilterItem.parentFolder == parentFolder
+					toFilterItem.parentFolder == parentFolder
 				}
 				
 				if filteredAgain.count == 0 && !showFavouritesOnly {
-					
 					EmptyListView()
 					
 				} else {
-					
 					Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
 						.toggleStyle(.switch)
 						.padding(.top, 7)
 					
-					
 					List {
-						
 						ForEach(filteredAgain) { item in
 							LinkDisplaySheet(item: item,
-											 listItems: listItems)
+							                 listItems: listItems)
 						}
 						.onDelete(perform: removeItems)
 					}
 				}
-				
 			}
 			.onAppear {
 				selectedFolder = parentFolder
 			}
 			.animation(.linear(duration: 0.1),
-					   value: listItems.ItemList.count)
+			           value: listItems.ItemList.count)
 			.animation(.linear(duration: 0.1),
-					   value: showFavouritesOnly)
+			           value: showFavouritesOnly)
 			.navigationTitle("Later")
 			.toolbar {
 				ToolbarItem(placement: .navigation) {
@@ -78,8 +70,6 @@ struct FolderView: View {
 					}
 					.help("New Item")
 				}
-				
-				
 			}
 			.sheet(isPresented: $isShowingSheet) {
 				NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: selectedFolder ?? activeFolderList.folderList[0])
@@ -112,8 +102,6 @@ struct FolderView: View {
 						}
 						.help("New Item")
 					}
-					
-					
 				}
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
@@ -122,9 +110,6 @@ struct FolderView: View {
 					NewFolderSheet(activeFolderList: activeFolderList)
 				}
 		}
-		
-		
-		
 	}
 	
 	func removeItems(at offsets: IndexSet) {

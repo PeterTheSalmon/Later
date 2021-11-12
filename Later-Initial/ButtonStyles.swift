@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SaveButton: ButtonStyle {
-	
 	var colour: Color
 	
 	func makeBody(configuration: Configuration) -> some View {
@@ -20,7 +19,6 @@ struct SaveButton: ButtonStyle {
 }
 
 struct SocialButton: View {
-	
 	@Environment(\.openURL) var openURL
 	@State var isHovering = false
 	
@@ -32,10 +30,9 @@ struct SocialButton: View {
 	
 	var body: some View {
 		ZStack {
-			
 			LinearGradient(colors: [gradientColourOne, gradientColourTwo],
-						   startPoint: .topLeading, endPoint: .bottomTrailing)
-			HStack() {
+			               startPoint: .topLeading, endPoint: .bottomTrailing)
+			HStack {
 				Image(image)
 					.resizable()
 					.aspectRatio(contentMode: .fit)
@@ -44,7 +41,6 @@ struct SocialButton: View {
 				Text(title)
 					.font(.title2)
 			}
-			
 		}
 		.frame(width: 140, height: 40)
 		.cornerRadius(5)
@@ -60,9 +56,8 @@ struct SocialButton: View {
 				NSCursor.pop()
 			}
 		}
-		//.animation(.linear(duration: 0.2), value: isHovering)
+		// .animation(.linear(duration: 0.2), value: isHovering)
 	}
-	
 }
 
 // testing out the look

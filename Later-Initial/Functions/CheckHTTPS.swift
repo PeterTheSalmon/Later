@@ -8,18 +8,13 @@
 import Foundation
 
 func checkURLconventions(urlString: String) -> String {
-	
-	
 	if urlString.starts(with: "https") {
 		return urlString
-	
+
 	} else if urlString.starts(with: "www") {
 		return "https://" + urlString
-	
+
 	} else {
 		return "https://www." + urlString
 	}
-
 }
-
-

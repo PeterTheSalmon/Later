@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct DeleteButton: View {
-	
 	@ObservedObject var listItems: MockData
-	
+
 	var hoveringReference: Bool
 	var item: LinkItem
-	
+
 	var body: some View {
 		HStack {
 			Image(systemName: "trash")
@@ -29,7 +28,7 @@ struct DeleteButton: View {
 struct DeleteButton_Previews: PreviewProvider {
 	static var previews: some View {
 		DeleteButton(listItems: MockData(),
-					 hoveringReference: true,
-					 item: MockData.exampleItem)
+		             hoveringReference: true,
+		             item: MockData.exampleItem)
 	}
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EmptyListView: View {
-    var body: some View {
+	var body: some View {
 		VStack {
 			Text("You don't have any saved links in this Folder")
 				.font(.title)
@@ -20,11 +20,11 @@ struct EmptyListView: View {
 			.font(.headline)
 			.padding()
 		}
-    }
+	}
 }
 
 struct EmptyListView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmptyListView()
-    }
+	static var previews: some View {
+		EmptyListView()
+	}
 }

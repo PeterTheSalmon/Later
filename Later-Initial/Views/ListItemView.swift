@@ -10,7 +10,6 @@
 import SwiftUI
 
 struct ListItemView: View {
-	
 	@Binding var name: String
 	@State private var isHoveringTrash = false
 	@ObservedObject var activeFolderList: FolderClass
@@ -28,7 +27,6 @@ struct ListItemView: View {
 	
 	var body: some View {
 		HStack {
-			
 			Image(systemName: "folder.fill")
 			
 			Text(name)
@@ -37,20 +35,18 @@ struct ListItemView: View {
 			
 			/// trash icon to delete items
 			
-			if item.name != "Uncategorized" || activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2 {
+			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
-												
 						if (itemIndex != nil && item.name != "Uncategorized") ||
-							(itemIndex != nil && activeFolderList.folderList.filter{$0.name == "Uncategorized"}.count >= 2) {
-							
+							(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
+						{
 							if selectedFolder == item {
 								justDeletedFolder = true
 							}
-							listItems.ItemList.removeAll(where: { $0.parentFolder == item } )
+							listItems.ItemList.removeAll(where: { $0.parentFolder == item })
 							activeFolderList.folderList.remove(at: itemIndex!)
-							
 							
 						} else {
 							deleteFolderAlertPresented = true
@@ -60,8 +56,6 @@ struct ListItemView: View {
 						Alert(title: Text("Don't do this..."), message: Text("You really don't want to delete this folder!"))
 					}
 			}
-			
-			
 		}
 		.onHover { hovering in
 			isHoveringTrash = hovering
@@ -70,7 +64,6 @@ struct ListItemView: View {
 }
 
 struct moreItemView: View {
-	
 	var name: String
 	var imageName: String
 	
@@ -81,12 +74,11 @@ struct moreItemView: View {
 			Spacer()
 		}
 	}
-	
 }
 
-//struct ListItemView_Previews: PreviewProvider {
-//    	
+// struct ListItemView_Previews: PreviewProvider {
+//
 //	static var previews: some View {
 //		ListItemView(name: .constant("Test"), activeFolderList: FolderClass())
 //    }
-//}
+// }

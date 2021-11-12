@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PrimaryView: View {
-	
 	@StateObject var listItems = MockData()
 	@StateObject var activeFolderList = FolderClass()
 	@State private var isShowingSheet = false
@@ -20,22 +19,21 @@ struct PrimaryView: View {
 	
 	var filteredLinkItems: [LinkItem] {
 		listItems.ItemList.filter { item in
-			(!showFavouritesOnly || item.isFavourite)
+			!showFavouritesOnly || item.isFavourite
 		}
 	}
 	
 	var body: some View {
 		NavigationView {
-			
 			Sidebar(listItems: listItems,
-					activeFolderList: activeFolderList,
-					isShowingSheet: $isShowingSheet,
-					isShowingNewFolderSheet: $isShowingNewFolderSheet,
-				    showFavouritesOnly: $showFavouritesOnly,
-					timesOpened: $timesOpened,
-					justDeletedFolder: $justDeletedFolder,
-					selectedFolder: $selectedFolder,
-					filteredLinkItems: filteredLinkItems)
+			        activeFolderList: activeFolderList,
+			        isShowingSheet: $isShowingSheet,
+			        isShowingNewFolderSheet: $isShowingNewFolderSheet,
+			        showFavouritesOnly: $showFavouritesOnly,
+			        timesOpened: $timesOpened,
+			        justDeletedFolder: $justDeletedFolder,
+			        selectedFolder: $selectedFolder,
+			        filteredLinkItems: filteredLinkItems)
 			
 			NoFolderSelectedView()
 				.navigationTitle("Later")
@@ -56,11 +54,8 @@ struct PrimaryView: View {
 						}
 						.help("New Item")
 					}
-					
-					
 				}
 			
-// changes start here
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
 				}
@@ -72,10 +67,9 @@ struct PrimaryView: View {
 			timesOpened += 1
 			print(timesOpened)
 		}
-    }
+	}
 	
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
 }
-

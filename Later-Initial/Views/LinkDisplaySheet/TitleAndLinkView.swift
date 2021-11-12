@@ -9,14 +9,12 @@ import Foundation
 import SwiftUI
 
 struct TitleLink: View {
-	
 	var subItem: LinkItem
 	
 	@Environment(\.openURL) var openURL
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 1.5) {
-			
 			Text(subItem.title)
 				.font(.title2)
 				.fontWeight(.medium)

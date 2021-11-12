@@ -10,8 +10,6 @@ import SwiftUI
 // FIXME: when in fullscreen with the sidebar collapsed, moving cursor to the left edge for the slideout sidebar and clicking a folder crashes the app
 
 struct Sidebar: View {
-	
-	
 	@ObservedObject var listItems: MockData
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingSheet: Bool
@@ -20,15 +18,12 @@ struct Sidebar: View {
 	@Binding var timesOpened: Int
 	@Binding var justDeletedFolder: Bool
 	@Binding var selectedFolder: FolderItem?
-		
+	
 	var filteredLinkItems: [LinkItem]
 	
 	var body: some View {
-		
-		
 		VStack {
 			List {
-				
 				Section(header: Text("Folders")) {
 					ForEach($activeFolderList.folderList) { folder in
 						NavigationLink(
@@ -37,19 +32,28 @@ struct Sidebar: View {
 													isShowingSheet: $isShowingSheet,
 													isShowingNewFolderSheet: $isShowingNewFolderSheet,
 													showFavouritesOnly: $showFavouritesOnly,
-													parentFolder: folder, selectedFolder: $selectedFolder,
-													justDeletedFolder: $justDeletedFolder, filteredLinkItems: filteredLinkItems)) {
-														
-														ListItemView(name: folder.name, activeFolderList: activeFolderList, listItems: listItems, justDeletedFolder: $justDeletedFolder, item: folder, selectedFolder: $selectedFolder)
-													
+													parentFolder: folder,
+													selectedFolder: $selectedFolder,
+													justDeletedFolder: $justDeletedFolder,
+													filteredLinkItems: filteredLinkItems)) {
+														ListItemView(name: folder.name,
+																	 activeFolderList: activeFolderList,
+																	 listItems: listItems,
+																	 justDeletedFolder: $justDeletedFolder,
+																	 item: folder,
+																	 selectedFolder: $selectedFolder)
 													}
 					}
 				}
 				
 				Section(header: Text("More")) {
-					NavigationLink(destination: AboutView(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, tipList: AppInfo.tips)) {
-						moreItemView(name: "About", imageName: "info.circle")
-					}
+					NavigationLink(destination: AboutView(
+						timesOpened: $timesOpened,
+						activeFolderList: activeFolderList,
+						isShowingNewFolderSheet: $isShowingNewFolderSheet,
+						tipList: AppInfo.tips)) {
+							moreItemView(name: "About", imageName: "info.circle")
+						}
 				}
 			}
 			.listStyle(.sidebar)
@@ -59,7 +63,6 @@ struct Sidebar: View {
 				.padding(0)
 			
 			HStack {
-				
 				Button {
 					isShowingNewFolderSheet = true
 				} label: {
@@ -75,12 +78,10 @@ struct Sidebar: View {
 	}
 }
 
-
-
-//struct Sidebar_Previews: PreviewProvider {
+// struct Sidebar_Previews: PreviewProvider {
 //
 //
 //	static var previews: some View {
 //		Sidebar(listItems: MockData(), activeFolderList: FolderClass(), isShowingSheet: .constant(false), isShowingNewFolderSheet: .constant(false), showFavouritesOnly: .constant(false), filteredLinkItems: filteredLinkItems)
 //	}
-//}
+// }

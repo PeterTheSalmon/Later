@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // main program
 @main
 struct Later_Initial: App {

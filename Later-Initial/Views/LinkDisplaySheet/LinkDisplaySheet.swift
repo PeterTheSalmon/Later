@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LinkDisplaySheet: View {
-	
 	var item: LinkItem
 	
 	@Environment(\.openURL) var openURL
@@ -23,21 +22,17 @@ struct LinkDisplaySheet: View {
 	}
 	
 	var body: some View {
-		
 		ZStack {
-			
 			BackgroundRectangle(hoverStatus: isHoveringRectangle)
 			
 			HStack {
-				
 				TitleLink(subItem: item)
 				
 				Spacer()
 				
-				
 				DeleteButton(listItems: listItems,
-							 hoveringReference: isHoveringRectangle,
-							 item: item)
+				             hoveringReference: isHoveringRectangle,
+				             item: item)
 					.onTapGesture {
 						if itemIndex != nil {
 							listItems.ItemList.remove(at: itemIndex!)
@@ -45,16 +40,15 @@ struct LinkDisplaySheet: View {
 					}
 				
 				FavouriteButton(listItems: listItems,
-								hoveringReference: isHoveringRectangle,
-								item: item,
-								itemIsFavourite: item.isFavourite)
+				                hoveringReference: isHoveringRectangle,
+				                item: item,
+				                itemIsFavourite: item.isFavourite)
 					.onTapGesture {
 						if itemIndex != nil {
 							listItems.ItemList[itemIndex!].isFavourite.toggle()
 						}
 					}
 				 
-				
 				Divider()
 					.frame(height: 40)
 
@@ -62,7 +56,6 @@ struct LinkDisplaySheet: View {
 				/// splitting this into two lines seems to fix the issue
 				let faviconURL = URL(string: extractDomain(urlString: item.url))
 				AsyncImage(url: faviconURL, content: faviconStateManager)
-				
 			}
 		}
 		.frame(height: 50)
@@ -120,7 +113,7 @@ struct LinkDisplaySheet: View {
 					}
 				}
 			
-		case .failure(_):
+		case .failure:
 			VStack {
 				Image(systemName: "questionmark.circle.fill")
 					.resizable()
@@ -145,7 +138,6 @@ struct LinkDisplaySheet: View {
 							NSCursor.pop()
 						}
 					}
-				
 			}
 			.onTapGesture {
 				openLink(urlString: item.url)
@@ -155,15 +147,10 @@ struct LinkDisplaySheet: View {
 				.foregroundColor(.gray)
 		}
 	}
-	
 }
 
 struct LinkDisplaySheet_Previews: PreviewProvider {
 	static var previews: some View {
 		LinkDisplaySheet(item: MockData.exampleItem, listItems: MockData())
-		
 	}
 }
-
-
-

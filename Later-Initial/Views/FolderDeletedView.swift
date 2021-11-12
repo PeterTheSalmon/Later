@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct FolderDeletedView: View {
-    var body: some View {
+	var body: some View {
 		HStack {
-			
 			Image(systemName: "questionmark.folder")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 70, height: 70)
-			
+
 			VStack(alignment: .leading) {
 				Text("You just deleted this folder!")
 					.font(.title)
@@ -24,11 +23,11 @@ struct FolderDeletedView: View {
 			}
 			.padding()
 		}
-    }
+	}
 }
 
 struct FolderDeletedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FolderDeletedView()
-    }
+	static var previews: some View {
+		FolderDeletedView()
+	}
 }
