@@ -18,52 +18,34 @@ struct SaveButton: ButtonStyle {
 	}
 }
 
-struct SocialButton: View {
-	@Environment(\.openURL) var openURL
-	@State var isHovering = false
+struct SocialButtonStyle: ButtonStyle {
+	var gradient: [Color]
 
-	var gradientColourOne: Color
-	var gradientColourTwo: Color
-	var title: String
-	var image: String
-	var url: String
-
-	var body: some View {
-		ZStack {
-			LinearGradient(colors: [gradientColourOne, gradientColourTwo],
-			               startPoint: .topLeading, endPoint: .bottomTrailing)
-			HStack {
-				Image(image)
-					.resizable()
-					.aspectRatio(contentMode: .fit)
-					.frame(width: 30, height: 30)
-
-				Text(title)
-					.font(.title2)
-			}
-		}
-		.frame(width: 140, height: 40)
-		.cornerRadius(5)
-		.help("Click to open!")
-		.onTapGesture {
-			openURL(URL(string: url)!)
-		}
-
-		.onHover { inside in
-			if inside {
-				NSCursor.pointingHand.push()
-			} else {
-				NSCursor.pop()
-			}
-		}
-		// .animation(.linear(duration: 0.2), value: isHovering)
+	func makeBody(configuration: Configuration) -> some View {
+		configuration.label
+			.clipShape(RoundedRectangle(cornerRadius: 5))
+			.background(LinearGradient(gradient: Gradient(colors: gradient), startPoint: .topLeading, endPoint: .bottomTrailing))
+			.scaleEffect(configuration.isPressed ? 1.15 : 1.0)
+			.animation(.spring(), value: configuration.isPressed)
+			.frame(width: 140, height: 40)
+			.cornerRadius(5)
 	}
 }
 
 // testing out the look
 struct ButtonStyles_Previews: PreviewProvider {
 	static var previews: some View {
-		SocialButton(gradientColourOne: .green, gradientColourTwo: .blue, title: "Test", image: "GitHub", url: "https://reddit.com")
-		SocialButton(gradientColourOne: .orange, gradientColourTwo: .red, title: "Reddit", image: "Discord", url: "https://reddit.com")
+		Button {} label: {
+			HStack {
+				Image("Discord")
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(width: 30, height: 30)
+				Text("Discord")
+					.font(.title2)
+			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+		}
+		.buttonStyle(SocialButtonStyle(gradient: [.red, .blue]))
 	}
 }
