@@ -18,47 +18,45 @@ struct ListItemView: View {
 	@Binding var justDeletedFolder: Bool
 	@Binding var item: FolderItem
 	@Binding var selectedFolder: FolderItem?
-	
-	@State var deleteFolderAlertPresented = false
-	
+
+	@State private var deleteAlertPresented = false // this is for deleting
+
 	var itemIndex: Int? {
 		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
 	}
-	
+
 	var body: some View {
 		HStack {
 			Image(systemName: "folder.fill")
-			
+
 			Text(name)
-			
+
 			Spacer()
-			
+
 			/// trash icon to delete items
-			
+
 			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
-						if (itemIndex != nil && item.name != "Uncategorized") ||
-							(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
-						{
-							if selectedFolder == item {
-								justDeletedFolder = true
-							}
-							listItems.ItemList.removeAll(where: { $0.parentFolder == item })
-							activeFolderList.folderList.remove(at: itemIndex!)
-							
-						} else {
-							deleteFolderAlertPresented = true
-						}
-					}
-					.alert(isPresented: $deleteFolderAlertPresented) {
-						Alert(title: Text("Don't do this..."), message: Text("You really don't want to delete this folder!"))
+						deleteAlertPresented = true
 					}
 			}
 		}
 		.onHover { hovering in
 			isHoveringTrash = hovering
+		}
+		.alert("Delete \"\(item.name)\"?\n All items in the folder will be deleted.", isPresented: $deleteAlertPresented) {
+			Button("Delete", role: .destructive) {
+				if (itemIndex != nil && item.name != "Uncategorized") ||
+					(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
+				{
+					justDeletedFolder = true
+					listItems.ItemList.removeAll(where: { $0.parentFolder == item })
+					activeFolderList.folderList.remove(at: itemIndex!)
+				}
+			}
+			.keyboardShortcut(.defaultAction)
 		}
 	}
 }
@@ -66,7 +64,7 @@ struct ListItemView: View {
 struct moreItemView: View {
 	var name: String
 	var imageName: String
-	
+
 	var body: some View {
 		HStack {
 			Image(systemName: imageName)

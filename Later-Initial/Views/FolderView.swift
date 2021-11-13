@@ -20,6 +20,7 @@ struct FolderView: View {
 	@Binding var justDeletedFolder: Bool
 	
 	var filteredLinkItems: [LinkItem]
+	var showFavouritesOnlyAnimation: Bool
 	
 	var body: some View {
 		if !justDeletedFolder { /// this is the normal, almost always used folderview
@@ -28,30 +29,33 @@ struct FolderView: View {
 					toFilterItem.parentFolder == parentFolder
 				}
 				
-				if filteredAgain.count == 0 && !showFavouritesOnly {
+				if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
 					EmptyListView()
 					
 				} else {
-					Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-						.toggleStyle(.switch)
-						.padding(.top, 7)
+					let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count
+					
+					if numberFavourites > 0 {
+						Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+							.toggleStyle(.switch)
+							.padding(.top, 7)
+					}
 					
 					List {
 						ForEach(filteredAgain) { item in
 							LinkDisplaySheet(item: item,
-							                 listItems: listItems)
+											 listItems: listItems)
 						}
 						.onDelete(perform: removeItems)
 					}
 				}
 			}
+			
 			.onAppear {
 				selectedFolder = parentFolder
 			}
 			.animation(.linear(duration: 0.1),
-			           value: listItems.ItemList.count)
-			.animation(.linear(duration: 0.1),
-			           value: showFavouritesOnly)
+					   value: showFavouritesOnlyAnimation)
 			.navigationTitle("Later")
 			.toolbar {
 				ToolbarItem(placement: .navigation) {
@@ -78,7 +82,7 @@ struct FolderView: View {
 				NewFolderSheet(activeFolderList: activeFolderList)
 			}
 			.frame(minWidth: 400, minHeight: 300)
-		
+			
 		} else if justDeletedFolder { /// for the rare case in which a user deletes a folder that they currently have selected
 			FolderDeletedView()
 				.navigationTitle("Later")
@@ -123,6 +127,6 @@ struct FolderView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		PrimaryView(listItems: MockData(), activeFolderList: FolderClass(), isShowingNewFolderSheet: false)
+		PrimaryView(listItems: MockData(), activeFolderList: FolderClass(), isShowingNewItemSheet: .constant(false), isShowingNewFolderSheet: .constant(false))
 	}
 }

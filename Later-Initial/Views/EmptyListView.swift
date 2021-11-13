@@ -12,13 +12,13 @@ struct EmptyListView: View {
 		VStack {
 			Text("You don't have any saved links in this Folder")
 				.font(.title)
+				.padding()
 			HStack {
 				Text("Click the")
 				Image(systemName: "plus.circle.fill")
 				Text("to add one!")
 			}
 			.font(.headline)
-			.padding()
 		}
 	}
 }

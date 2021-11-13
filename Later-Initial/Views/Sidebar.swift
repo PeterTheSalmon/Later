@@ -35,7 +35,8 @@ struct Sidebar: View {
 													parentFolder: folder,
 													selectedFolder: $selectedFolder,
 													justDeletedFolder: $justDeletedFolder,
-													filteredLinkItems: filteredLinkItems)) {
+													filteredLinkItems: filteredLinkItems,
+													showFavouritesOnlyAnimation: showFavouritesOnly)) {
 														ListItemView(name: folder.name,
 																	 activeFolderList: activeFolderList,
 																	 listItems: listItems,
@@ -51,6 +52,8 @@ struct Sidebar: View {
 						timesOpened: $timesOpened,
 						activeFolderList: activeFolderList,
 						isShowingNewFolderSheet: $isShowingNewFolderSheet,
+						isShowingSheet: $isShowingSheet,
+						listItems: listItems,
 						tipList: AppInfo.tips)) {
 							moreItemView(name: "About", imageName: "info.circle")
 						}

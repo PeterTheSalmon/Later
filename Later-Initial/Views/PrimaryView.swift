@@ -10,9 +10,9 @@ import SwiftUI
 struct PrimaryView: View {
 	@StateObject var listItems = MockData()
 	@StateObject var activeFolderList = FolderClass()
-	@State private var isShowingSheet = false
+	@Binding var isShowingNewItemSheet: Bool
 	@State private var showFavouritesOnly = false
-	@State var isShowingNewFolderSheet = false
+	@Binding var isShowingNewFolderSheet: Bool
 	@State var justDeletedFolder = false
 	@State var selectedFolder: FolderItem?
 	@AppStorage("timesOpened") var timesOpened = 0
@@ -27,7 +27,7 @@ struct PrimaryView: View {
 		NavigationView {
 			Sidebar(listItems: listItems,
 			        activeFolderList: activeFolderList,
-			        isShowingSheet: $isShowingSheet,
+			        isShowingSheet: $isShowingNewItemSheet,
 			        isShowingNewFolderSheet: $isShowingNewFolderSheet,
 			        showFavouritesOnly: $showFavouritesOnly,
 			        timesOpened: $timesOpened,
@@ -48,7 +48,7 @@ struct PrimaryView: View {
 					
 					ToolbarItem {
 						Button {
-							isShowingSheet = true
+							isShowingNewItemSheet = true
 						} label: {
 							Image(systemName: "plus.circle.fill")
 						}
@@ -56,7 +56,7 @@ struct PrimaryView: View {
 					}
 				}
 			
-				.sheet(isPresented: $isShowingSheet) {
+				.sheet(isPresented: $isShowingNewItemSheet) {
 					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {

@@ -39,6 +39,10 @@ struct NewFolderSheet: View {
 			}
 			.padding(.leading)
 			.padding(.trailing)
+			.onSubmit {
+				activeFolderList.folderList.append(FolderItem(name: name))
+				dismiss()
+			}
 			
 			Button {
 				activeFolderList.folderList.append(FolderItem(name: name))

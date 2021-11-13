@@ -43,6 +43,13 @@ struct NewItemSheet: View {
 				
 				TextField("URL", text: $urlString, prompt: Text("URL"))
 					.font(.title3)
+					.onSubmit {
+						let item = LinkItem(title: title,
+											url: checkURLconventions(urlString: urlString),
+											parentFolder: parentFolder)
+						listItems.ItemList.append(item)
+						dismiss()
+					}
 				
 				Picker("Folder", selection: $parentFolder) {
 					ForEach(activeFolderList.folderList, id: \.self) { folder in
@@ -57,7 +64,7 @@ struct NewItemSheet: View {
 			.padding(.bottom)
 			
 			HStack {
-				Button {
+				Button { // save normally
 					let item = LinkItem(title: title,
 					                    url: checkURLconventions(urlString: urlString),
 					                    parentFolder: parentFolder)
@@ -67,8 +74,10 @@ struct NewItemSheet: View {
 					Label("Save", systemImage: "square.and.arrow.down")
 				}
 				.buttonStyle(SaveButton(colour: Color.accentColor))
+				.keyboardShortcut(.defaultAction)
+
 				
-				Button {
+				Button { // save as fave
 					let item = LinkItem(title: title,
 					                    url: checkURLconventions(urlString: urlString),
 					                    isFavourite: true,

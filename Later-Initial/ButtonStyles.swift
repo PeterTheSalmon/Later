@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SaveButton: ButtonStyle {
 	var colour: Color
-	
+
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
 			.frame(width: 150, height: 30)
@@ -21,13 +21,13 @@ struct SaveButton: ButtonStyle {
 struct SocialButton: View {
 	@Environment(\.openURL) var openURL
 	@State var isHovering = false
-	
+
 	var gradientColourOne: Color
 	var gradientColourTwo: Color
 	var title: String
 	var image: String
 	var url: String
-	
+
 	var body: some View {
 		ZStack {
 			LinearGradient(colors: [gradientColourOne, gradientColourTwo],
@@ -37,7 +37,7 @@ struct SocialButton: View {
 					.resizable()
 					.aspectRatio(contentMode: .fit)
 					.frame(width: 30, height: 30)
-				
+
 				Text(title)
 					.font(.title2)
 			}

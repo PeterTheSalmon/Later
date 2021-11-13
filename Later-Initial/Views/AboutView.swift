@@ -13,6 +13,8 @@ struct AboutView: View {
 	@Binding var timesOpened: Int
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
+	@Binding var isShowingSheet: Bool
+	@ObservedObject var listItems: MockData
 	
 	var tipList: [String]
 	
@@ -58,6 +60,9 @@ struct AboutView: View {
 		.sheet(isPresented: $isShowingNewFolderSheet) {
 			NewFolderSheet(activeFolderList: activeFolderList)
 		}
+		.sheet(isPresented: $isShowingSheet) {
+			NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+		}
 		.toolbar {
 			ToolbarItem(placement: .navigation) {
 				Button {
@@ -77,6 +82,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), tipList: AppInfo.tips)
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData(), tipList: AppInfo.tips)
 	}
 }
