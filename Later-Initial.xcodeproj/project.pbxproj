@@ -27,6 +27,7 @@
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FC27408C3000CD9A99 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC67FB27408C3000CD9A99 /* CachedAsyncImage */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
+		55EC68012740DCF100CD9A99 /* TempTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC68002740DCF100CD9A99 /* TempTest.swift */; };
 		55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C98273AFB2400224070 /* ButtonStyles.swift */; };
 		55FE7C9B273B069500224070 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9A273B069500224070 /* FolderModel.swift */; };
 		55FE7C9D273B097700224070 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9C273B097700224070 /* FolderView.swift */; };
@@ -57,6 +58,7 @@
 		55C78AE02739F18700E711CF /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
+		55EC68002740DCF100CD9A99 /* TempTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTest.swift; sourceTree = "<group>"; };
 		55FE7C98273AFB2400224070 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		55FE7C9A273B069500224070 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 		55FE7C9C273B097700224070 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				55338107272E189C005496A7 /* Assets.xcassets */,
 				5533810C272E189C005496A7 /* Later_Initial.entitlements */,
 				55338109272E189C005496A7 /* Preview Content */,
+				55EC68002740DCF100CD9A99 /* TempTest.swift */,
 			);
 			path = "Later-Initial";
 			sourceTree = "<group>";
@@ -154,11 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				55338139272E1D45005496A7 /* LinkDisplaySheet.swift */,
-				55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */,
-				55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */,
-				55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */,
-				55C78AE02739F18700E711CF /* FavouriteButton.swift */,
-				5592736A273A017E00CBC001 /* DeleteButton.swift */,
+				55EC67FF2740905700CD9A99 /* ViewModel */,
 			);
 			path = LinkDisplayer;
 			sourceTree = "<group>";
@@ -188,6 +187,18 @@
 				55FE7C98273AFB2400224070 /* ButtonStyles.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		55EC67FF2740905700CD9A99 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */,
+				55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */,
+				55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */,
+				55C78AE02739F18700E711CF /* FavouriteButton.swift */,
+				5592736A273A017E00CBC001 /* DeleteButton.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
 				55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */,
 				55C78ADD2739ED6600E711CF /* BackgroundRectangle.swift in Sources */,
+				55EC68012740DCF100CD9A99 /* TempTest.swift in Sources */,
 				55338106272E1899005496A7 /* PrimaryView.swift in Sources */,
 				55338136272E1AD6005496A7 /* Sidebar.swift in Sources */,
 				553BB319273DF53E00612C66 /* FolderDeletedView.swift in Sources */,

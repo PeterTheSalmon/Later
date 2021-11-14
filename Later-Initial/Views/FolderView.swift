@@ -39,6 +39,11 @@ struct FolderView: View {
 						Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
 							.toggleStyle(.switch)
 							.padding(.top, 7)
+					} else {
+						Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+							.toggleStyle(.switch)
+							.padding(.top, 7)
+							.disabled(true)
 					}
 					
 					List {
@@ -50,7 +55,6 @@ struct FolderView: View {
 					}
 				}
 			}
-			
 			.onAppear {
 				selectedFolder = parentFolder
 			}

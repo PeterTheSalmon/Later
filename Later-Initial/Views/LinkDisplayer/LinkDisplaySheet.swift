@@ -5,15 +5,14 @@
 //  Created by Peter Salmon on 2021-10-30.
 //
 
-import CachedAsyncImage
 import SwiftUI
 
 struct LinkDisplaySheet: View {
 	var item: LinkItem
 	@Environment(\.openURL) var openURL
 	@ObservedObject var listItems: MockData
-	@State private var isHoveringRectangle: Bool = false
-	@State private var isHoveringText: Bool = false
+	@State var isHoveringRectangle: Bool = false
+	@State var isHoveringText: Bool = false
 
 	var itemIndex: Int? {
 		listItems.ItemList.firstIndex(where: { $0.id == item.id }) ?? nil
@@ -29,7 +28,7 @@ struct LinkDisplaySheet: View {
 				Spacer()
 
 				DeleteButton(listItems: listItems,
-				             hoveringReference: isHoveringRectangle,
+							 hoveringReference: isHoveringRectangle,
 				             item: item,
 				             itemIndex: itemIndex)
 
