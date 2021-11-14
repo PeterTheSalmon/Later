@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct ListItemView: View {
+struct SidebarFolderItemView: View {
 	@Binding var name: String
 	@State private var isHoveringTrash = false
 	@ObservedObject var activeFolderList: FolderClass
@@ -61,7 +61,7 @@ struct ListItemView: View {
 	}
 }
 
-struct moreItemView: View {
+struct SidebarExtraItemView: View {
 	var name: String
 	var imageName: String
 
@@ -77,6 +77,6 @@ struct moreItemView: View {
 // struct ListItemView_Previews: PreviewProvider {
 //
 //	static var previews: some View {
-//		ListItemView(name: .constant("Test"), activeFolderList: FolderClass())
+//		SidebarFolderItemView(name: .constant("Test"), activeFolderList: FolderClass())
 //    }
 // }

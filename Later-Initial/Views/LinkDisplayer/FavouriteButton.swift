@@ -13,6 +13,7 @@ struct FavouriteButton: View {
 	var hoveringReference: Bool
 	var item: LinkItem
 	var itemIsFavourite: Bool
+	var itemIndex: Int?
 
 	var body: some View {
 		HStack {
@@ -23,6 +24,11 @@ struct FavouriteButton: View {
 				.foregroundColor(itemIsFavourite ? .accentColor : .gray)
 		}
 		.opacity(item.isFavourite ? 100 : hoveringReference ? 100 : 0)
+		.onTapGesture {
+			if itemIndex != nil {
+				listItems.ItemList[itemIndex!].isFavourite.toggle()
+			}
+		}
 	}
 }
 

@@ -30,7 +30,7 @@ struct FolderView: View {
 				}
 				
 				if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
-					EmptyListView()
+					EmptyFolderView()
 					
 				} else {
 					let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count

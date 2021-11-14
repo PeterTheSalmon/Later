@@ -12,6 +12,7 @@ struct DeleteButton: View {
 
 	var hoveringReference: Bool
 	var item: LinkItem
+	var itemIndex: Int?
 
 	var body: some View {
 		HStack {
@@ -22,6 +23,11 @@ struct DeleteButton: View {
 				.foregroundColor(.gray)
 		}
 		.opacity(hoveringReference ? 100 : 0)
+		.onTapGesture {
+			if itemIndex != nil {
+				listItems.ItemList.remove(at: itemIndex!)
+			}
+		}
 	}
 }
 

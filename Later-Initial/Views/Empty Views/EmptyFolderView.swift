@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyListView: View {
+struct EmptyFolderView: View {
 	var body: some View {
 		VStack {
 			Text("You don't have any saved links in this Folder")
@@ -25,6 +25,6 @@ struct EmptyListView: View {
 
 struct EmptyListView_Previews: PreviewProvider {
 	static var previews: some View {
-		EmptyListView()
+		EmptyFolderView()
 	}
 }

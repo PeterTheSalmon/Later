@@ -4,7 +4,6 @@
 //
 //  Created by Peter Salmon on 2021-11-07.
 //
-
 import SwiftUI
 
 struct NewItemSheet: View {
@@ -66,8 +65,8 @@ struct NewItemSheet: View {
 			HStack {
 				Button { // save normally
 					let item = LinkItem(title: title,
-					                    url: checkURLconventions(urlString: urlString),
-					                    parentFolder: parentFolder)
+										url: checkURLconventions(urlString: urlString),
+										parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {
@@ -75,13 +74,13 @@ struct NewItemSheet: View {
 				}
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 				.keyboardShortcut(.defaultAction)
-
+				
 				
 				Button { // save as fave
 					let item = LinkItem(title: title,
-					                    url: checkURLconventions(urlString: urlString),
-					                    isFavourite: true,
-					                    parentFolder: parentFolder)
+										url: checkURLconventions(urlString: urlString),
+										isFavourite: true,
+										parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {

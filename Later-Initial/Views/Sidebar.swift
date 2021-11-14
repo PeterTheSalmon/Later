@@ -37,7 +37,7 @@ struct Sidebar: View {
 													justDeletedFolder: $justDeletedFolder,
 													filteredLinkItems: filteredLinkItems,
 													showFavouritesOnlyAnimation: showFavouritesOnly)) {
-														ListItemView(name: folder.name,
+														SidebarFolderItemView(name: folder.name,
 																	 activeFolderList: activeFolderList,
 																	 listItems: listItems,
 																	 justDeletedFolder: $justDeletedFolder,
@@ -55,7 +55,7 @@ struct Sidebar: View {
 						isShowingSheet: $isShowingSheet,
 						listItems: listItems,
 						tipList: AppInfo.tips)) {
-							moreItemView(name: "About", imageName: "info.circle")
+							SidebarExtraItemView(name: "About", imageName: "info.circle")
 						}
 				}
 			}
