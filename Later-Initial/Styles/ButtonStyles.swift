@@ -32,6 +32,18 @@ struct SocialButtonStyle: ButtonStyle {
 	}
 }
 
+struct DisplaySheetButtonStyle: ButtonStyle {
+	var hoveringReference: Bool
+	var item: LinkItem
+	
+	func makeBody(configuration: Configuration) -> some View {
+		configuration.label
+			.foregroundColor(configuration.isPressed ? .white : hoveringReference ? .gray : Color("Icon"))
+			.animation(.linear(duration: 0.1), value: hoveringReference)
+		
+	}
+}
+
 // testing out the look
 struct ButtonStyles_Previews: PreviewProvider {
 	static var previews: some View {

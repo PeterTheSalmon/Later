@@ -23,7 +23,7 @@ struct FavouriteButton: View {
 				.frame(width: 20, height: 20)
 				.foregroundColor(itemIsFavourite ? .accentColor : hoveringReference ? .gray : Color("Icon"))
 		}
-		.animation(.linear(duration: 0.2), value: hoveringReference)
+		.animation(.linear(duration: 0.1), value: hoveringReference)
 		.onTapGesture {
 			if itemIndex != nil {
 				listItems.ItemList[itemIndex!].isFavourite.toggle()

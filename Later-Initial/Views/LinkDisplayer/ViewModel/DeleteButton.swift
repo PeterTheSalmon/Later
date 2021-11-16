@@ -13,21 +13,23 @@ struct DeleteButton: View {
 	var hoveringReference: Bool
 	var item: LinkItem
 	var itemIndex: Int?
+	
+	func deleteItem() {
+		if itemIndex != nil {
+			listItems.ItemList.remove(at: itemIndex!)
+		}
+	}
 
 	var body: some View {
-		HStack {
+		Button {
+			deleteItem()
+		} label: {
 			Image(systemName: "trash")
 				.resizable()
-				.aspectRatio(contentMode: .fill)
+				.aspectRatio(contentMode: .fit)
 				.frame(width: 18, height: 18)
-				.foregroundColor(hoveringReference ? .gray : Color("Icon"))
 		}
-		.animation(.linear(duration: 0.2), value: hoveringReference)
-		.onTapGesture {
-			if itemIndex != nil {
-				listItems.ItemList.remove(at: itemIndex!)
-			}
-		}
+		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: item))
 	}
 }
 

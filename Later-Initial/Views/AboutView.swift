@@ -86,6 +86,11 @@ struct AboutView: View {
 			Text("**Fun Fact:** you've opened Later \(timesOpened) times.")
 				.padding(.horizontal)
 				.help("This was made simply to test @AppStorage")
+			
+			Button("Open Source Licenses") {
+				OpenSourceLicenses().openInWindow(title: "Open Source Licenses", sender: self)
+			}
+			.padding()
 		}
 		.sheet(isPresented: $isShowingNewFolderSheet) {
 			NewFolderSheet(activeFolderList: activeFolderList)
@@ -113,5 +118,18 @@ struct AboutView: View {
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
 		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData(), tipList: AppInfo.tips)
+	}
+}
+
+extension View {
+	
+	@discardableResult
+	func openInWindow(title: String, sender: Any?) -> NSWindow {
+		let controller = NSHostingController(rootView: self)
+		let win = NSWindow(contentViewController: controller)
+		win.contentViewController = controller
+		win.title = title
+		win.makeKeyAndOrderFront(sender)
+		return win
 	}
 }

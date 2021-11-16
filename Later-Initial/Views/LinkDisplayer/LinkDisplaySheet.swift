@@ -26,6 +26,9 @@ struct LinkDisplaySheet: View {
 				TitleLink(subItem: item)
 
 				Spacer()
+				
+				CopyButton(hoveringReference: isHoveringRectangle,
+						   item: item)
 
 				DeleteButton(listItems: listItems,
 							 hoveringReference: isHoveringRectangle,
