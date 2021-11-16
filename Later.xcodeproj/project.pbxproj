@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55338104272E1899005496A7 /* Later_Initial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338103272E1899005496A7 /* Later_Initial.swift */; };
+		55338104272E1899005496A7 /* Later_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338103272E1899005496A7 /* Later_App.swift */; };
 		55338106272E1899005496A7 /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338105272E1899005496A7 /* PrimaryView.swift */; };
 		55338108272E189C005496A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55338107272E189C005496A7 /* Assets.xcassets */; };
 		5533810B272E189C005496A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5533810A272E189C005496A7 /* Preview Assets.xcassets */; };
@@ -39,8 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		55338100272E1899005496A7 /* Later-Initial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Later-Initial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55338103272E1899005496A7 /* Later_Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Later_Initial.swift; sourceTree = "<group>"; };
+		55338100272E1899005496A7 /* Later.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Later.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55338103272E1899005496A7 /* Later_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Later_App.swift; sourceTree = "<group>"; };
 		55338105272E1899005496A7 /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
 		55338107272E189C005496A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5533810A272E189C005496A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		55338101272E1899005496A7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				55338100272E1899005496A7 /* Later-Initial.app */,
+				55338100272E1899005496A7 /* Later.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +102,7 @@
 		55338102272E1899005496A7 /* Later-Initial */ = {
 			isa = PBXGroup;
 			children = (
-				55338103272E1899005496A7 /* Later_Initial.swift */,
+				55338103272E1899005496A7 /* Later_App.swift */,
 				5592736E273AF7F200CBC001 /* Views */,
 				55C3203A2739ACEB00F3B118 /* Models */,
 				55C320392739ACAD00F3B118 /* Functions */,
@@ -210,9 +210,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		553380FF272E1899005496A7 /* Later-Initial */ = {
+		553380FF272E1899005496A7 /* Later */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5533810F272E189C005496A7 /* Build configuration list for PBXNativeTarget "Later-Initial" */;
+			buildConfigurationList = 5533810F272E189C005496A7 /* Build configuration list for PBXNativeTarget "Later" */;
 			buildPhases = (
 				553380FC272E1899005496A7 /* Sources */,
 				553380FD272E1899005496A7 /* Frameworks */,
@@ -222,12 +222,12 @@
 			);
 			dependencies = (
 			);
-			name = "Later-Initial";
+			name = Later;
 			packageProductDependencies = (
 				55EC67FB27408C3000CD9A99 /* CachedAsyncImage */,
 			);
 			productName = "Later-Initial";
-			productReference = 55338100272E1899005496A7 /* Later-Initial.app */;
+			productReference = 55338100272E1899005496A7 /* Later.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -245,7 +245,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 553380FB272E1899005496A7 /* Build configuration list for PBXProject "Later-Initial" */;
+			buildConfigurationList = 553380FB272E1899005496A7 /* Build configuration list for PBXProject "Later" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -261,7 +261,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				553380FF272E1899005496A7 /* Later-Initial */,
+				553380FF272E1899005496A7 /* Later */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 				55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */,
 				5592736D273AF1F000CBC001 /* EmptyFolderView.swift in Sources */,
 				5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */,
-				55338104272E1899005496A7 /* Later_Initial.swift in Sources */,
+				55338104272E1899005496A7 /* Later_App.swift in Sources */,
 				55FE7CA1273B3B8D00224070 /* NoFolderSelectedView.swift in Sources */,
 				55FE7C9F273B1A0300224070 /* SidebarItemViews.swift in Sources */,
 				55C78ADF2739ED9800E711CF /* TitleAndLinkView.swift in Sources */,
@@ -487,7 +487,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		553380FB272E1899005496A7 /* Build configuration list for PBXProject "Later-Initial" */ = {
+		553380FB272E1899005496A7 /* Build configuration list for PBXProject "Later" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5533810D272E189C005496A7 /* Debug */,
@@ -496,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5533810F272E189C005496A7 /* Build configuration list for PBXNativeTarget "Later-Initial" */ = {
+		5533810F272E189C005496A7 /* Build configuration list for PBXNativeTarget "Later" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55338110272E189C005496A7 /* Debug */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 // main program
 @main
-struct Later_Initial: App {
+struct Later: App {
 	
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
