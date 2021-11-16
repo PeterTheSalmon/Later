@@ -23,6 +23,8 @@
 		5592736D273AF1F000CBC001 /* EmptyFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736C273AF1F000CBC001 /* EmptyFolderView.swift */; };
 		55927370273AF81500CBC001 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736F273AF81500CBC001 /* AppInfo.swift */; };
 		5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */; };
+		5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E62527436645009C9CE9 /* LicenseModel.swift */; };
+		5593E62827436668009C9CE9 /* OpenSourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E62727436668009C9CE9 /* OpenSourceList.swift */; };
 		55C78ADD2739ED6600E711CF /* BackgroundRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */; };
 		55C78ADF2739ED9800E711CF /* TitleAndLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */; };
 		55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78AE02739F18700E711CF /* FavouriteButton.swift */; };
@@ -57,6 +59,8 @@
 		5592736C273AF1F000CBC001 /* EmptyFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFolderView.swift; sourceTree = "<group>"; };
 		5592736F273AF81500CBC001 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicenses.swift; sourceTree = "<group>"; };
+		5593E62527436645009C9CE9 /* LicenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseModel.swift; sourceTree = "<group>"; };
+		5593E62727436668009C9CE9 /* OpenSourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceList.swift; sourceTree = "<group>"; };
 		55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRectangle.swift; sourceTree = "<group>"; };
 		55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndLinkView.swift; sourceTree = "<group>"; };
 		55C78AE02739F18700E711CF /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
@@ -131,12 +135,30 @@
 				55FE7C9C273B097700224070 /* FolderView.swift */,
 				55FE7C9E273B1A0300224070 /* SidebarItemViews.swift */,
 				553BB316273CD05900612C66 /* AboutView.swift */,
-				5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */,
+				5593E623274365C4009C9CE9 /* OpenSourceLicenses */,
 				55C78ADB2739ED4C00E711CF /* LinkDisplayer */,
 				55E8FC21274085470012F5F3 /* Empty Views */,
 				55E8FC20274084DD0012F5F3 /* Sheets */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5593E623274365C4009C9CE9 /* OpenSourceLicenses */ = {
+			isa = PBXGroup;
+			children = (
+				5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */,
+				5593E624274365D1009C9CE9 /* ViewModel */,
+			);
+			path = OpenSourceLicenses;
+			sourceTree = "<group>";
+		};
+		5593E624274365D1009C9CE9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5593E62527436645009C9CE9 /* LicenseModel.swift */,
+				5593E62727436668009C9CE9 /* OpenSourceList.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		55C320392739ACAD00F3B118 /* Functions */ = {
@@ -285,6 +307,7 @@
 			files = (
 				55FE7C9D273B097700224070 /* FolderView.swift in Sources */,
 				553BB317273CD05900612C66 /* AboutView.swift in Sources */,
+				5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */,
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
 				55FE7CA3273B544300224070 /* NewFolderSheet.swift in Sources */,
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
@@ -300,6 +323,7 @@
 				55338104272E1899005496A7 /* Later_App.swift in Sources */,
 				55FE7CA1273B3B8D00224070 /* NoFolderSelectedView.swift in Sources */,
 				55FE7C9F273B1A0300224070 /* SidebarItemViews.swift in Sources */,
+				5593E62827436668009C9CE9 /* OpenSourceList.swift in Sources */,
 				55C78ADF2739ED9800E711CF /* TitleAndLinkView.swift in Sources */,
 				55FE7C9B273B069500224070 /* FolderModel.swift in Sources */,
 				55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */,
