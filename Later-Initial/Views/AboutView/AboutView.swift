@@ -16,9 +16,6 @@ struct AboutView: View {
 	@Binding var isShowingSheet: Bool
 	@ObservedObject var listItems: MockData
 	
-
-	var tipList: [String]
-
 	var body: some View {
 		VStack(alignment: .leading) {
 			AboutTitle()
@@ -58,6 +55,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData(), tipList: AppInfo.tips)
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData())
 	}
 }
