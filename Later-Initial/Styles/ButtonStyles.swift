@@ -12,8 +12,10 @@ struct SaveButton: ButtonStyle {
 
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.frame(width: 150, height: 30)
+			.frame(width: 160, height: 30)
 			.background(configuration.isPressed ? Color.gray : colour)
+			.scaleEffect(configuration.isPressed ? 1.15 : 1.0)
+			.animation(.spring(), value: configuration.isPressed)
 			.cornerRadius(5)
 	}
 }

@@ -10,46 +10,33 @@ struct NewItemSheet: View {
 	@ObservedObject var listItems: MockData
 	@ObservedObject var activeFolderList: FolderClass
 	@Environment(\.dismiss) var dismiss
-	
+
 	@State private var title = ""
 	@State private var urlString = ""
 	@State private var isFavourite = false
 	@State var parentFolder: FolderItem
-	
+
 	var body: some View {
-		VStack(spacing: 0) {
-			HStack {
-				Text("Add New Item")
-					.font(.title)
-					.padding()
-				
-				Spacer()
-				
-				Button {
-					dismiss()
-					
-				} label: {
-					Label("Cancel", systemImage: "xmark.circle")
-						.font(.title3)
-				}
-				.buttonStyle(.borderless)
-				.padding()
-			}
+		VStack {
+			Label("Add New Item", systemImage: "link.badge.plus")
+				.font(.title)
+				.padding(.bottom)
 			
+
 			Form {
 				TextField("Title", text: $title, prompt: Text("Title"))
 					.font(.title2)
-				
+
 				TextField("URL", text: $urlString, prompt: Text("URL"))
 					.font(.title3)
 					.onSubmit {
 						let item = LinkItem(title: title,
-											url: checkURLconventions(urlString: urlString),
-											parentFolder: parentFolder)
+						                    url: checkURLconventions(urlString: urlString),
+						                    parentFolder: parentFolder)
 						listItems.ItemList.append(item)
 						dismiss()
 					}
-				
+
 				Picker("Folder", selection: $parentFolder) {
 					ForEach(activeFolderList.folderList, id: \.self) { folder in
 						Text(folder.name)
@@ -61,26 +48,25 @@ struct NewItemSheet: View {
 			.padding(.leading)
 			.padding(.trailing)
 			.padding(.bottom)
-			
+
 			HStack {
 				Button { // save normally
 					let item = LinkItem(title: title,
-										url: checkURLconventions(urlString: urlString),
-										parentFolder: parentFolder)
+					                    url: checkURLconventions(urlString: urlString),
+					                    parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {
-					Label("Save", systemImage: "square.and.arrow.down")
+					Label("Save", systemImage: "tray.and.arrow.down")
 				}
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 				.keyboardShortcut(.defaultAction)
-				
-				
+
 				Button { // save as fave
 					let item = LinkItem(title: title,
-										url: checkURLconventions(urlString: urlString),
-										isFavourite: true,
-										parentFolder: parentFolder)
+					                    url: checkURLconventions(urlString: urlString),
+					                    isFavourite: true,
+					                    parentFolder: parentFolder)
 					listItems.ItemList.append(item)
 					dismiss()
 				} label: {
@@ -88,9 +74,8 @@ struct NewItemSheet: View {
 				}
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 			}
-			.padding(.bottom)
 		}
-		.frame(width: 400, height: 200)
+		.frame(width: 400, height: 220)
 		.onExitCommand { dismiss() }
 	}
 }

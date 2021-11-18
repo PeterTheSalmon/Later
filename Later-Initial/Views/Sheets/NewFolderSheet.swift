@@ -11,54 +11,45 @@ struct NewFolderSheet: View {
 	@Environment(\.dismiss) var dismiss
 	@State private var name = ""
 	@ObservedObject var activeFolderList: FolderClass
-	
+	@State var isPressed = false
+
 	var body: some View {
 		VStack {
-			HStack {
-				Text("Add New Folder")
-					.font(.title)
-					.padding()
-				
-				Spacer()
-				
-				Button {
-					dismiss()
-					
-				} label: {
-					Label("Cancel", systemImage: "xmark.circle")
-						.font(.title3)
-				}
-				.buttonStyle(.borderless)
-				.padding()
-			}
+			Label("Add New Folder", systemImage: "folder.badge.plus")
+				.font(.title)
 			
 			Form {
-				TextField("Name", text: $name, prompt: Text("folder name"))
-					.font(.title2)
-					.textFieldStyle(.roundedBorder)
+				TextField("", text: $name, prompt: Text("Name"))
+					.font(.title3)
+					.onSubmit {
+						activeFolderList.folderList.append(FolderItem(name: name))
+						dismiss()
+					}
 			}
-			.padding(.leading)
-			.padding(.trailing)
-			.onSubmit {
-				activeFolderList.folderList.append(FolderItem(name: name))
-				dismiss()
-			}
+			.textFieldStyle(.roundedBorder)
 			
-			Button {
-				activeFolderList.folderList.append(FolderItem(name: name))
-				dismiss()
-			} label: {
-				Label("Save", systemImage: "square.and.arrow.down")
+			
+			HStack {
+				Button { // save normally
+					activeFolderList.folderList.append(FolderItem(name: name))
+					dismiss()
+				} label: {
+					Label("Save", systemImage: "tray.and.arrow.down")
+				}
+				.buttonStyle(SaveButton(colour: Color.accentColor))
+				.keyboardShortcut(.defaultAction)
 			}
-			.buttonStyle(SaveButton(colour: Color.accentColor))
-			.padding()
+			.padding(.top, 6)
 		}
-		.frame(width: 300, height: 150)
+		.padding()
+		.frame(width: 300, height: 135)
 		.onExitCommand { dismiss() }
 	}
 }
 
 struct NewFolderSheet_Previews: PreviewProvider {
+	
+	
 	static var previews: some View {
 		NewFolderSheet(activeFolderList: FolderClass())
 	}
