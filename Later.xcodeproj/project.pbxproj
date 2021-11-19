@@ -286,12 +286,12 @@
 		55EC67FF2740905700CD9A99 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */,
 				55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */,
 				55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */,
 				55C78AE02739F18700E711CF /* FavouriteButton.swift */,
 				5539ACB72741A48100B0F22C /* CopyButton.swift */,
 				5592736A273A017E00CBC001 /* DeleteButton.swift */,
+				55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

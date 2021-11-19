@@ -13,6 +13,7 @@ struct LinkDisplaySheet: View {
 	@ObservedObject var listItems: MockData
 	@State var isHoveringRectangle: Bool = false
 	@State var isHoveringText: Bool = false
+	@State var justCopied: Bool = false
 
 	var itemIndex: Int? {
 		listItems.ItemList.firstIndex(where: { $0.id == item.id }) ?? nil
@@ -23,12 +24,13 @@ struct LinkDisplaySheet: View {
 			BackgroundRectangle(hoverStatus: isHoveringRectangle)
 
 			HStack {
-				TitleLink(subItem: item)
+				TitleLink(subItem: item, justCopied: $justCopied)
 
 				Spacer()
 				
 				CopyButton(hoveringReference: isHoveringRectangle,
-						   item: item)
+						   item: item, justCopied: $justCopied)
+
 
 				DeleteButton(listItems: listItems,
 							 hoveringReference: isHoveringRectangle,

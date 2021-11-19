@@ -10,6 +10,8 @@ import CachedAsyncImage
 
 struct FaviconDisplay: View {
 	
+	@State var test: Bool = false
+	
 	@Environment(\.openURL) var openURL
 	var item: LinkItem
 	@State var isHoveringIcon = false

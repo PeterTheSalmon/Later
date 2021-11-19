@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BackgroundRectangle: View {
 	var hoverStatus: Bool
-
+	
 	var body: some View {
 		RoundedRectangle(cornerRadius: 10,
 		                 style: .circular)
