@@ -17,6 +17,7 @@ struct CopyButton: View {
 		let pasteboard = NSPasteboard.general
 		pasteboard.declareTypes([.string], owner: nil)
 		pasteboard.setString(item.url, forType: .string)
+		
 	}
 	
 	func noLongerCopied() {
