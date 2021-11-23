@@ -44,6 +44,14 @@ struct AboutView: View {
 					Image(systemName: "sidebar.left")
 				}
 			}
+			ToolbarItem(placement: .navigation) {
+				Button {
+					isShowingSheet = true
+				} label: {
+					Image(systemName: "plus.circle.fill")
+				}
+				.help("New Item")
+			}
 		}
 		.navigationTitle("Later")
 	}

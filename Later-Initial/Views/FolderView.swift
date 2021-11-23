@@ -15,84 +15,63 @@ struct FolderView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
 	@Binding var parentFolder: FolderItem
-	
+
 	@Binding var selectedFolder: FolderItem?
 	@Binding var justDeletedFolder: Bool
-	
+
 	var filteredLinkItems: [LinkItem]
 	var showFavouritesOnlyAnimation: Bool
-	
+
+	@Environment(\.dismissSearch) var dismissSearch
+	@Environment(\.isSearching) var isSearching
+	@Binding var query: String
+
 	var body: some View {
-		if !justDeletedFolder { /// this is the normal, almost always used folderview
-			VStack {
-				let filteredAgain = filteredLinkItems.filter { toFilterItem in
-					toFilterItem.parentFolder == parentFolder
-				}
-				
-				if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
-					EmptyFolderView()
-					
-				} else {
-					let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count
-					
-					if numberFavourites > 0 {
-						Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-							.toggleStyle(.switch)
-							.padding(.top, 7)
+		if isSearching && !query.isEmpty {
+			SearchView(query: $query,
+					   listItems: listItems,
+					   isShowingNewItemSheet: $isShowingSheet,
+					   activeFolderList: activeFolderList,
+					   isShowingNewFolderSheet: $isShowingNewFolderSheet)
+		} else {
+			if !justDeletedFolder { /// this is the normal, almost always used folderview
+				VStack {
+					let filteredAgain = filteredLinkItems.filter { toFilterItem in
+						toFilterItem.parentFolder == parentFolder
+					}
+
+					if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
+						EmptyFolderView()
+
 					} else {
-						Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-							.toggleStyle(.switch)
-							.padding(.top, 7)
-							.disabled(true)
-					}
-					
-					List {
-						ForEach(filteredAgain) { item in
-							LinkDisplaySheet(item: item,
-											 listItems: listItems)
+						let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count
+
+						if numberFavourites > 0 {
+							Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+								.toggleStyle(.switch)
+								.padding(.top, 7)
+						} else {
+							Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+								.toggleStyle(.switch)
+								.padding(.top, 7)
+								.disabled(true)
 						}
-						.onDelete(perform: removeItems)
+
+						List {
+							ForEach(filteredAgain) { item in
+								LinkDisplaySheet(item: item,
+								                 listItems: listItems)
+							}
+							.onDelete(perform: removeItems)
+						}
 					}
 				}
-			}
-			.onAppear {
-				selectedFolder = parentFolder
-			}
-			.animation(.linear(duration: 0.1),
-					   value: showFavouritesOnlyAnimation)
-			.navigationTitle("Later")
-			.toolbar {
-				ToolbarItem(placement: .navigation) {
-					Button {
-						toggleSidebar()
-					} label: {
-						Image(systemName: "sidebar.left")
-					}
+				.onAppear {
+					selectedFolder = parentFolder
 				}
-				
-				ToolbarItem {
-					Button {
-						isShowingSheet = true
-					} label: {
-						Image(systemName: "plus.circle.fill")
-					}
-					.help("New Item")
-				}
-			}
-			.sheet(isPresented: $isShowingSheet) {
-				NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: selectedFolder ?? activeFolderList.folderList[0])
-			}
-			.sheet(isPresented: $isShowingNewFolderSheet) {
-				NewFolderSheet(activeFolderList: activeFolderList)
-			}
-			.frame(minWidth: 400, minHeight: 300)
-			
-		} else if justDeletedFolder { /// for the rare case in which a user deletes a folder that they currently have selected
-			FolderDeletedView()
+				.animation(.linear(duration: 0.1),
+				           value: showFavouritesOnlyAnimation)
 				.navigationTitle("Later")
-				.onDisappear {
-					justDeletedFolder = false
-				}
 				.toolbar {
 					ToolbarItem(placement: .navigation) {
 						Button {
@@ -101,8 +80,8 @@ struct FolderView: View {
 							Image(systemName: "sidebar.left")
 						}
 					}
-					
-					ToolbarItem {
+
+					ToolbarItem(placement: .navigation) {
 						Button {
 							isShowingSheet = true
 						} label: {
@@ -112,18 +91,51 @@ struct FolderView: View {
 					}
 				}
 				.sheet(isPresented: $isShowingSheet) {
-					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: selectedFolder ?? activeFolderList.folderList[0])
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
 					NewFolderSheet(activeFolderList: activeFolderList)
 				}
+				.frame(minWidth: 400, minHeight: 300)
+
+			} else if justDeletedFolder { /// for the rare case in which a user deletes a folder that they currently have selected
+				FolderDeletedView()
+					.navigationTitle("Later")
+					.onDisappear {
+						justDeletedFolder = false
+					}
+					.toolbar {
+						ToolbarItem(placement: .navigation) {
+							Button {
+								toggleSidebar()
+							} label: {
+								Image(systemName: "sidebar.left")
+							}
+						}
+
+						ToolbarItem(placement: .navigation) {
+							Button {
+								isShowingSheet = true
+							} label: {
+								Image(systemName: "plus.circle.fill")
+							}
+							.help("New Item")
+						}
+					}
+					.sheet(isPresented: $isShowingSheet) {
+						NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+					}
+					.sheet(isPresented: $isShowingNewFolderSheet) {
+						NewFolderSheet(activeFolderList: activeFolderList)
+					}
+			}
 		}
 	}
-	
+
 	func removeItems(at offsets: IndexSet) {
 		listItems.ItemList.remove(atOffsets: offsets)
 	}
-	
+
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}

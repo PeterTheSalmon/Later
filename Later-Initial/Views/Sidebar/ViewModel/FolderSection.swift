@@ -21,6 +21,8 @@ struct FolderSection: View {
 	
 	var filteredLinkItems: [LinkItem]
 	
+	@Binding var query: String
+	
 	var body: some View {
 		Section(header: Text("Folders")) {
 			ForEach($activeFolderList.folderList) { folder in
@@ -34,7 +36,7 @@ struct FolderSection: View {
 											selectedFolder: $selectedFolder,
 											justDeletedFolder: $justDeletedFolder,
 											filteredLinkItems: filteredLinkItems,
-											showFavouritesOnlyAnimation: showFavouritesOnly)) {
+											showFavouritesOnlyAnimation: showFavouritesOnly, query: $query)) {
 												SidebarFolderItemView(name: folder.name,
 																	  activeFolderList: activeFolderList,
 																	  listItems: listItems,

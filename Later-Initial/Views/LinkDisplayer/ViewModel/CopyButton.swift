@@ -17,9 +17,8 @@ struct CopyButton: View {
 		let pasteboard = NSPasteboard.general
 		pasteboard.declareTypes([.string], owner: nil)
 		pasteboard.setString(item.url, forType: .string)
-		
 	}
-	
+
 	func noLongerCopied() {
 		Task {
 			await Task.sleep(1 * 1_000_000_000) // two seconds
@@ -42,11 +41,9 @@ struct CopyButton: View {
 	}
 }
 
-
-
 struct CopyButton_Previews: PreviewProvider {
 	static var previews: some View {
 		CopyButton(hoveringReference: true,
-				   item: MockData.exampleItem, justCopied: .constant(false))
+		           item: MockData.exampleItem, justCopied: .constant(false))
 	}
 }

@@ -20,11 +20,12 @@ struct Sidebar: View {
 	@Binding var selectedFolder: FolderItem?
 
 	var filteredLinkItems: [LinkItem]
+	@Binding var query: String
 
 	var body: some View {
 		VStack {
 			List {
-				FolderSection(listItems: listItems, activeFolderList: activeFolderList, isShowingSheet: $isShowingSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet, showFavouritesOnly: $showFavouritesOnly, timesOpened: $timesOpened, justDeletedFolder: $justDeletedFolder, selectedFolder: $selectedFolder, filteredLinkItems: filteredLinkItems)
+				FolderSection(listItems: listItems, activeFolderList: activeFolderList, isShowingSheet: $isShowingSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet, showFavouritesOnly: $showFavouritesOnly, timesOpened: $timesOpened, justDeletedFolder: $justDeletedFolder, selectedFolder: $selectedFolder, filteredLinkItems: filteredLinkItems, query: $query)
 
 				MoreSection(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, isShowingSheet: $isShowingSheet, listItems: listItems)
 			}

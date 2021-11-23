@@ -16,13 +16,16 @@ struct PrimaryView: View {
 	@State var justDeletedFolder = false
 	@State var selectedFolder: FolderItem?
 	@AppStorage("timesOpened") var timesOpened = 0
-	
+	@State var query: String = ""
+	@Environment(\.dismissSearch) var dismissSearch
+	@Environment(\.isSearching) var isSearching
+
 	var filteredLinkItems: [LinkItem] {
 		listItems.ItemList.filter { item in
 			!showFavouritesOnly || item.isFavourite
 		}
 	}
-	
+
 	var body: some View {
 		NavigationView {
 			Sidebar(listItems: listItems,
@@ -33,8 +36,8 @@ struct PrimaryView: View {
 			        timesOpened: $timesOpened,
 			        justDeletedFolder: $justDeletedFolder,
 			        selectedFolder: $selectedFolder,
-			        filteredLinkItems: filteredLinkItems)
-			
+					filteredLinkItems: filteredLinkItems, query: $query)
+
 			NoFolderSelectedView()
 				.navigationTitle("Later")
 				.toolbar {
@@ -45,8 +48,8 @@ struct PrimaryView: View {
 							Image(systemName: "sidebar.left")
 						}
 					}
-					
-					ToolbarItem {
+
+					ToolbarItem(placement: .navigation) {
 						Button {
 							isShowingNewItemSheet = true
 						} label: {
@@ -55,7 +58,7 @@ struct PrimaryView: View {
 						.help("New Item")
 					}
 				}
-			
+
 				.sheet(isPresented: $isShowingNewItemSheet) {
 					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
 				}
@@ -67,8 +70,9 @@ struct PrimaryView: View {
 			timesOpened += 1
 			print(timesOpened)
 		}
+		.searchable(text: $query, prompt: Text("Search..."))
 	}
-	
+
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
