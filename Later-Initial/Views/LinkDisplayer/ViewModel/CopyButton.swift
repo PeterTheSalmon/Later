@@ -44,6 +44,6 @@ struct CopyButton: View {
 struct CopyButton_Previews: PreviewProvider {
 	static var previews: some View {
 		CopyButton(hoveringReference: true,
-		           item: MockData.exampleItem, justCopied: .constant(false))
+				   item: MockData.exampleItem, justCopied: .constant(false))
 	}
 }

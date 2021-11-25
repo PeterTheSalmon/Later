@@ -9,10 +9,9 @@ import Foundation
 
 struct AppInfo {
 	static let name = "Later"
-	static let version = "v0.1.0-alpha"
+	static let version = "v0.1.1-alpha"
 	static let creator = "Peter Salmon"
 	static let description = "\(AppInfo.name) started as a solution to Reddit's atrocious post saving, and evolved into a larger-scoped link manager. I hope you enjoy!"
-	static let website = "CURRENTLY NONE"
 	static let tips = [
 		"You can swipe notes to the left on your trackpad to delete them!",
 		"Later follows your accent colour preference from system preferences!",
@@ -20,7 +19,4 @@ struct AppInfo {
 		"Suggestions? Let me know on Discord or Github!",
 		"Later is completely private; nothing leaves your device."
 	]
-	/// links
-	static let githubLink = "https://github.com/PeterTheSalmon/Later"
-	static let discordLink = "https://discord.gg/vCBAkhAgFn"
 }

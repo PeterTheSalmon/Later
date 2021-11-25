@@ -38,7 +38,7 @@ struct PrimaryView: View {
 			        selectedFolder: $selectedFolder,
 					filteredLinkItems: filteredLinkItems, query: $query)
 
-			NoFolderSelectedView()
+			NoFolderSelectedView(query: $query, listItems: listItems, isShowingSheet: $isShowingNewItemSheet, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {

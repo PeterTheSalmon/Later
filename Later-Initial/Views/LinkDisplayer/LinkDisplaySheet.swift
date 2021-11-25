@@ -28,6 +28,8 @@ struct LinkDisplaySheet: View {
 
 				Spacer()
 				
+				EditButton(hoveringReference: isHoveringRectangle, item: item, listItems: listItems, itemIndex: itemIndex ?? 0)
+				
 				CopyButton(hoveringReference: isHoveringRectangle,
 						   item: item, justCopied: $justCopied)
 

@@ -15,7 +15,7 @@ struct AboutView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
 	@ObservedObject var listItems: MockData
-	
+
 	var body: some View {
 		VStack(alignment: .leading) {
 			AboutTitle()

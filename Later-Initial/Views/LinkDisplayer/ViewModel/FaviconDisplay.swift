@@ -25,12 +25,26 @@ struct FaviconDisplay: View {
 	func faviconStateManager(for phase: AsyncImagePhase) -> some View {
 		switch phase {
 		case .empty:
-			ProgressView()
+			Image(systemName: "link.circle")
+				.resizable()
+				.aspectRatio(contentMode: .fit)
 				.frame(width: 40, height: 40)
 				.padding(.leading, 4)
 				.padding(.trailing, 10)
+				.shadow(color: .gray, radius: isHoveringIcon ? 2 : 0)
+				.onHover { hoveringIcon in
+					isHoveringIcon = hoveringIcon
+				}
+				.animation(.linear(duration: 0.15), value: isHoveringIcon)
 				.onTapGesture {
 					openLink(urlString: item.url)
+				}
+				.onHover { inside in
+					if inside {
+						NSCursor.pointingHand.push()
+					} else {
+						NSCursor.pop()
+					}
 				}
 			
 		case let .success(image):

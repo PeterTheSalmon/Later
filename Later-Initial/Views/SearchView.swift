@@ -15,19 +15,30 @@ struct SearchView: View {
 	@Binding var isShowingNewItemSheet: Bool
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
+	@State var showFavouritesOnly = false
 
 	var body: some View {
 		let filtered = listItems.ItemList.filter { toFilter in
-			toFilter.title.contains(query) || toFilter.url.contains(query)
+			toFilter.title.uppercased().contains(query.uppercased()) || toFilter.url.uppercased().contains(query.uppercased())
+		}
+		let faveFiltered = filtered.filter { toFilter in
+			toFilter.isFavourite
 		}
 
-		List {
-			ForEach(filtered) { item in
-				withAnimation(.linear) {
-					LinkDisplaySheet(item: item, listItems: listItems)
+		VStack {
+			Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+				.toggleStyle(.switch)
+				.padding(.top, 7)
+			
+			List {
+				ForEach(showFavouritesOnly ? faveFiltered : filtered) { item in
+					withAnimation(.linear) {
+						LinkDisplaySheet(item: item, listItems: listItems)
+					}
 				}
 			}
 		}
+		.animation(.linear, value: showFavouritesOnly)
 		.sheet(isPresented: $isShowingNewItemSheet) {
 			NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
 		}
@@ -42,7 +53,7 @@ struct SearchView: View {
 					Image(systemName: "sidebar.left")
 				}
 			}
-			
+
 			ToolbarItem(placement: .navigation) {
 				Button {
 					isShowingNewItemSheet = true
@@ -53,6 +64,7 @@ struct SearchView: View {
 			}
 		}
 	}
+
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
