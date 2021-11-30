@@ -17,7 +17,6 @@ struct PrimaryView: View {
 	@State var selectedFolder: FolderItem?
 	@AppStorage("timesOpened") var timesOpened = 0
 	@State var query: String = ""
-	@Environment(\.dismissSearch) var dismissSearch
 	@Environment(\.isSearching) var isSearching
 
 	var filteredLinkItems: [LinkItem] {

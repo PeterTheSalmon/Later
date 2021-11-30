@@ -27,7 +27,7 @@ struct Sidebar: View {
 			List {
 				FolderSection(listItems: listItems, activeFolderList: activeFolderList, isShowingSheet: $isShowingSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet, showFavouritesOnly: $showFavouritesOnly, timesOpened: $timesOpened, justDeletedFolder: $justDeletedFolder, selectedFolder: $selectedFolder, filteredLinkItems: filteredLinkItems, query: $query)
 
-				MoreSection(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, isShowingSheet: $isShowingSheet, listItems: listItems)
+				MoreSection(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, isShowingSheet: $isShowingSheet, listItems: listItems, query: $query)
 			}
 			.listStyle(.sidebar)
 			.listItemTint(Color.accentColor)

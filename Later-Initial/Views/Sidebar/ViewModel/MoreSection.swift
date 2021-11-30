@@ -14,6 +14,7 @@ struct MoreSection: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
 	var listItems: MockData
+	@Binding var query: String
 	
 	var body: some View {
 		Section(header: Text("More")) {
@@ -22,7 +23,7 @@ struct MoreSection: View {
 				activeFolderList: activeFolderList,
 				isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				isShowingSheet: $isShowingSheet,
-				listItems: listItems
+				listItems: listItems, query: $query
 			)) {
 				SidebarExtraItemView(name: "About", imageName: "info.circle")
 			}

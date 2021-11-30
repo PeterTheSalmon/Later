@@ -15,45 +15,55 @@ struct AboutView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
 	@ObservedObject var listItems: MockData
+	@Environment(\.isSearching) var isSearching
+	@Binding var query: String
 
 	var body: some View {
-		VStack(alignment: .leading) {
-			AboutTitle()
+		if isSearching && !query.isEmpty {
+			SearchView(query: $query,
+			           listItems: listItems,
+			           isShowingNewItemSheet: $isShowingSheet,
+			           activeFolderList: activeFolderList,
+			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
+		} else {
+			VStack(alignment: .leading) {
+				AboutTitle()
 
-			CreatorVersion()
+				CreatorVersion()
 
-			AppDescription()
+				AppDescription()
 
-			SocialButtons()
+				SocialButtons()
 
-			TimesOpenedMessage(timesOpened: timesOpened)
+				TimesOpenedMessage(timesOpened: timesOpened)
 
-			LicenseseButton()
-		}
-		.sheet(isPresented: $isShowingNewFolderSheet) {
-			NewFolderSheet(activeFolderList: activeFolderList)
-		}
-		.sheet(isPresented: $isShowingSheet) {
-			NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
-		}
-		.toolbar {
-			ToolbarItem(placement: .navigation) {
-				Button {
-					toggleSidebar()
-				} label: {
-					Image(systemName: "sidebar.left")
+				LicenseseButton()
+			}
+			.sheet(isPresented: $isShowingNewFolderSheet) {
+				NewFolderSheet(activeFolderList: activeFolderList)
+			}
+			.sheet(isPresented: $isShowingSheet) {
+				NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+			}
+			.toolbar {
+				ToolbarItem(placement: .navigation) {
+					Button {
+						toggleSidebar()
+					} label: {
+						Image(systemName: "sidebar.left")
+					}
+				}
+				ToolbarItem(placement: .navigation) {
+					Button {
+						isShowingSheet = true
+					} label: {
+						Image(systemName: "plus.circle.fill")
+					}
+					.help("New Item")
 				}
 			}
-			ToolbarItem(placement: .navigation) {
-				Button {
-					isShowingSheet = true
-				} label: {
-					Image(systemName: "plus.circle.fill")
-				}
-				.help("New Item")
-			}
+			.navigationTitle("Later")
 		}
-		.navigationTitle("Later")
 	}
 
 	private func toggleSidebar() {
@@ -63,6 +73,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData())
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData(), query: .constant("goo"))
 	}
 }

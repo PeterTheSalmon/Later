@@ -22,7 +22,6 @@ struct FolderView: View {
 	var filteredLinkItems: [LinkItem]
 	var showFavouritesOnlyAnimation: Bool
 
-	@Environment(\.dismissSearch) var dismissSearch
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 
