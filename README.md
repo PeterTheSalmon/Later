@@ -28,8 +28,7 @@ Currently, updates are manual, meaning you will have to download new versions ma
 
 ### Feedback, Bugs, Feature Requests
 
-Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab or let me know on [Discord](https://discord.gg/vCBAkhAgFn)!
-
+Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 ### Planned Features
 
 - Onboarding experience
