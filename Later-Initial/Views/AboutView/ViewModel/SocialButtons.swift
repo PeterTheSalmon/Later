@@ -14,25 +14,6 @@ struct SocialButtons: View {
 	
 	var body: some View {
 		HStack {
-			Button { openURL(URL(string: "https://discord.gg/vCBAkhAgFn")!) } label: {
-				HStack {
-					Image("Discord")
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.frame(width: 30, height: 30)
-					Text("Discord")
-						.font(.title2)
-				}
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
-			}
-			.buttonStyle(SocialButtonStyle(gradient: [Color("Discord 1"), Color("Discord 2")]))
-			.onHover { inside in
-				if inside {
-					NSCursor.pointingHand.push()
-				} else {
-					NSCursor.pop()
-				}
-			}
 			
 			Button { openURL(URL(string: "https://github.com/PeterTheSalmon/Later")!) } label: {
 				HStack {

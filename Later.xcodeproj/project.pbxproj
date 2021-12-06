@@ -40,6 +40,7 @@
 		55C78ADD2739ED6600E711CF /* BackgroundRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */; };
 		55C78ADF2739ED9800E711CF /* TitleAndLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */; };
 		55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78AE02739F18700E711CF /* FavouriteButton.swift */; };
+		55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E84D9827594D5A0017A735 /* WelcomeScreen.swift */; };
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FC27408C3000CD9A99 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC67FB27408C3000CD9A99 /* CachedAsyncImage */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
@@ -87,6 +88,7 @@
 		55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRectangle.swift; sourceTree = "<group>"; };
 		55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndLinkView.swift; sourceTree = "<group>"; };
 		55C78AE02739F18700E711CF /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
+		55E84D9827594D5A0017A735 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
 		55FE7C98273AFB2400224070 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				55338105272E1899005496A7 /* PrimaryView.swift */,
+				55E84D9827594D5A0017A735 /* WelcomeScreen.swift */,
 				55FE7C9C273B097700224070 /* FolderView.swift */,
 				558DE1D827436BBB009A6694 /* Sidebar */,
 				558DE1C72743677B009A6694 /* AboutView */,
@@ -380,6 +383,7 @@
 			files = (
 				55FE7C9D273B097700224070 /* FolderView.swift in Sources */,
 				553BB317273CD05900612C66 /* AboutView.swift in Sources */,
+				55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */,
 				5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */,
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
 				55FE7CA3273B544300224070 /* NewFolderSheet.swift in Sources */,
@@ -551,6 +555,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Later-Initial/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -578,6 +583,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Later-Initial/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

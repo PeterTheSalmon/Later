@@ -51,7 +51,10 @@ struct SidebarFolderItemView: View {
 				if (itemIndex != nil && item.name != "Uncategorized") ||
 					(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
 				{
-					justDeletedFolder = true
+					if selectedFolder == activeFolderList.folderList[itemIndex!] {
+						justDeletedFolder = true
+					}
+					
 					listItems.ItemList.removeAll(where: { $0.parentFolder == item })
 					activeFolderList.folderList.remove(at: itemIndex!)
 				}

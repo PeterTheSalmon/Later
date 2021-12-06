@@ -18,6 +18,8 @@ struct PrimaryView: View {
 	@AppStorage("timesOpened") var timesOpened = 0
 	@State var query: String = ""
 	@Environment(\.isSearching) var isSearching
+	@AppStorage("introSeen") var newUser = true
+ 	@Environment(\.dismiss) var dismiss
 
 	var filteredLinkItems: [LinkItem] {
 		listItems.ItemList.filter { item in
@@ -64,6 +66,9 @@ struct PrimaryView: View {
 				.sheet(isPresented: $isShowingNewFolderSheet) {
 					NewFolderSheet(activeFolderList: activeFolderList)
 				}
+		}
+		.sheet(isPresented: $newUser) {
+			WelcomeScreen(newUserValue: $newUser)
 		}
 		.onAppear {
 			timesOpened += 1
