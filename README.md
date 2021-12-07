@@ -16,9 +16,10 @@ I was tired of Reddit's terrible post saving, and wanted an easy, convenient pla
 ### Installation
 
 Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/download/0.2.0-beta/Later.v0.2.0-beta.zip)
-Later requires macOS 12 Monterey or newer. This is due to several new SwiftUI features only available on recent macOS versions.
 
-Currently, updates are manual, meaning you will have to download new versions manually.
+**Later requires macOS 12 Monterey or newer.** This is due to several new SwiftUI features only available on recent macOS versions.
+
+Currently, updates are manual, meaning you will have to download new versions from GitHub to update.
 
 ![Screen Shot 2021-11-18 at 8 45 28 PM](https://user-images.githubusercontent.com/87033324/142566402-1fcb1ae9-95bc-495a-bf00-fd93afa8aeb4.png)
 
