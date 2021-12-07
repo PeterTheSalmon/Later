@@ -15,7 +15,7 @@ I was tired of Reddit's terrible post saving, and wanted an easy, convenient pla
 
 ### Installation
 
-Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/download/Later/Later-v0.1.1-alpha.zip)
+Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/download/0.2.0-beta/Later.v0.2.0-beta.zip)
 
 Currently, updates are manual, meaning you will have to download new versions manually.
 
