@@ -19,7 +19,7 @@ struct PrimaryView: View {
 	@State var query: String = ""
 	@Environment(\.isSearching) var isSearching
 	@AppStorage("introSeen") var newUser = true
- 	@Environment(\.dismiss) var dismiss
+	@Environment(\.dismiss) var dismiss
 
 	var filteredLinkItems: [LinkItem] {
 		listItems.ItemList.filter { item in
@@ -37,7 +37,7 @@ struct PrimaryView: View {
 			        timesOpened: $timesOpened,
 			        justDeletedFolder: $justDeletedFolder,
 			        selectedFolder: $selectedFolder,
-					filteredLinkItems: filteredLinkItems, query: $query)
+			        filteredLinkItems: filteredLinkItems, query: $query)
 
 			NoFolderSelectedView(query: $query, listItems: listItems, isShowingSheet: $isShowingNewItemSheet, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.navigationTitle("Later")

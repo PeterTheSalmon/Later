@@ -11,12 +11,20 @@ import SwiftUI
 @main
 struct Later: App {
 	
+	// these states are declared here as they are used in keyboard shortcuts
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
+	@Environment(\.isSearching) var isSearching
 	
 	var body: some Scene {
 		WindowGroup {
 			PrimaryView(isShowingNewItemSheet: $isShowingNewItemSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet)
+				.onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
+					for window in NSApplication.shared.windows {
+						window.standardWindowButton(.zoomButton)?.isEnabled = false
+					}
+				})
+				.frame(minWidth: 400, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
 		}
 		.commands {
 			SidebarCommands()
@@ -28,6 +36,11 @@ struct Later: App {
 				Button("New Folder") {
 					isShowingNewFolderSheet = true
 				}.keyboardShortcut("n", modifiers: [.command, .shift])
+			}
+			CommandGroup(before: CommandGroupPlacement.sidebar) {
+				Button("Test Button") {
+//					isSearching = true
+				}.keyboardShortcut("f", modifiers: [.command])
 			}
 		}
 	}
