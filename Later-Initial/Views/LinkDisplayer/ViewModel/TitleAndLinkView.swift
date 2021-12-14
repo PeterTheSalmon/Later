@@ -26,7 +26,6 @@ struct TitleLink: View {
 				Text("Copied!")
 					.font(.title2)
 					.fontWeight(.medium)
-//					.foregroundColor(justCopied ? .blue : Color("Icon"))
 					.foregroundColor(.white)
 					.colorMultiply(justCopied ? .blue : Color("Icon"))
 					.animation(.linear(duration: 0.15), value: justCopied)

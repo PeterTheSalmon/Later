@@ -16,12 +16,30 @@ struct NewItemSheet: View {
 	@State private var isFavourite = false
 	@State var parentFolder: FolderItem
 
+	@AppStorage("notesCreated") var notesCreated = 0
+	
+	private func submitNote() {
+		let item = LinkItem(title: title,
+							url: checkURLconventions(urlString: urlString),
+							parentFolder: parentFolder)
+		listItems.ItemList.append(item)
+		notesCreated += 1
+		dismiss()
+	}
+	private func submitFaveNote() {
+		let item = LinkItem(title: title,
+							url: checkURLconventions(urlString: urlString),
+							parentFolder: parentFolder)
+		listItems.ItemList.append(item)
+		notesCreated += 1
+		dismiss()
+	}
+
 	var body: some View {
 		VStack {
 			Label("Add New Item", systemImage: "link.badge.plus")
 				.font(.title)
 				.padding(.bottom)
-			
 
 			Form {
 				TextField("Title", text: $title, prompt: Text("Title"))
@@ -30,11 +48,7 @@ struct NewItemSheet: View {
 				TextField("URL", text: $urlString, prompt: Text("URL"))
 					.font(.title3)
 					.onSubmit {
-						let item = LinkItem(title: title,
-						                    url: checkURLconventions(urlString: urlString),
-						                    parentFolder: parentFolder)
-						listItems.ItemList.append(item)
-						dismiss()
+						submitNote()
 					}
 
 				Picker("Folder", selection: $parentFolder) {
@@ -51,11 +65,7 @@ struct NewItemSheet: View {
 
 			HStack {
 				Button { // save normally
-					let item = LinkItem(title: title,
-					                    url: checkURLconventions(urlString: urlString),
-					                    parentFolder: parentFolder)
-					listItems.ItemList.append(item)
-					dismiss()
+					submitNote()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}
@@ -63,12 +73,7 @@ struct NewItemSheet: View {
 				.keyboardShortcut(.defaultAction)
 
 				Button { // save as fave
-					let item = LinkItem(title: title,
-					                    url: checkURLconventions(urlString: urlString),
-					                    isFavourite: true,
-					                    parentFolder: parentFolder)
-					listItems.ItemList.append(item)
-					dismiss()
+					submitFaveNote()
 				} label: {
 					Label("Save as Favourite", systemImage: "star")
 				}

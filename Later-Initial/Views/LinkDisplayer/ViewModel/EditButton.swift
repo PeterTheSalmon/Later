@@ -55,7 +55,7 @@ struct EditButton: View {
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 				.keyboardShortcut(.defaultAction)
 			}
-			.frame(minWidth: 100, maxWidth: 300, maxHeight: 80)
+			.frame(minWidth: 300, maxWidth: 500, maxHeight: 80)
 			.padding()
 		}
 		.onAppear {

@@ -9,6 +9,7 @@ import Foundation
 
 struct LinkItem: Codable, Hashable, Identifiable {
 	var id = UUID()
+	var dateCreated = Date.now
 	var title: String
 	var url: String
 	var isFavourite: Bool = false

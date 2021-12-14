@@ -14,7 +14,7 @@ struct NoFolderSelectedView: View {
 	@Binding var isShowingSheet: Bool
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
-	@State private var randomInt = Int.random(in: 0 ... 4)
+	@State private var randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
 	@State private var opacity = 1.0
 
 	func updateProgressValue() {
@@ -26,7 +26,7 @@ struct NoFolderSelectedView: View {
 					opacity = 1.0
 					let previousInt = randomInt
 					repeat {
-						randomInt = Int.random(in: 0 ... 4)
+						randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
 					} while previousInt == randomInt
 				}
 			}
@@ -81,7 +81,7 @@ struct NoFolderSelectedView: View {
 					opacity = 1.0
 					let previousInt = randomInt
 					repeat {
-						randomInt = Int.random(in: 0 ... 4)
+						randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
 					} while previousInt == randomInt
 				}
 

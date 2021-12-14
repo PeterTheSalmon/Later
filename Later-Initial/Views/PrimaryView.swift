@@ -37,9 +37,14 @@ struct PrimaryView: View {
 			        timesOpened: $timesOpened,
 			        justDeletedFolder: $justDeletedFolder,
 			        selectedFolder: $selectedFolder,
-			        filteredLinkItems: filteredLinkItems, query: $query)
+			        filteredLinkItems: filteredLinkItems,
+					query: $query)
 
-			NoFolderSelectedView(query: $query, listItems: listItems, isShowingSheet: $isShowingNewItemSheet, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			NoFolderSelectedView(query: $query,
+								 listItems: listItems,
+								 isShowingSheet: $isShowingNewItemSheet,
+								 activeFolderList: activeFolderList,
+								 isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {
@@ -73,6 +78,7 @@ struct PrimaryView: View {
 		.onAppear {
 			timesOpened += 1
 			print(timesOpened)
+			print(Date.now)
 		}
 		.searchable(text: $query, prompt: Text("Search..."))
 	}

@@ -13,6 +13,7 @@ struct DeleteButton: View {
 	var hoveringReference: Bool
 	var item: LinkItem
 	var itemIndex: Int?
+	@State var alertPresented = false
 	
 	func deleteItem() {
 		if itemIndex != nil {
@@ -22,7 +23,7 @@ struct DeleteButton: View {
 
 	var body: some View {
 		Button {
-			deleteItem()
+			alertPresented = true
 		} label: {
 			Image(systemName: "trash")
 				.resizable()
@@ -30,6 +31,9 @@ struct DeleteButton: View {
 				.frame(width: 18, height: 18)
 		}
 		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: item))
+		.alert("Delete Item?", isPresented: $alertPresented) {
+			Button("Delete", role: .destructive) { deleteItem() }
+		}
 	}
 }
 

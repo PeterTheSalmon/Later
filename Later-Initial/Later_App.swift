@@ -19,6 +19,7 @@ struct Later: App {
 	var body: some Scene {
 		WindowGroup {
 			PrimaryView(isShowingNewItemSheet: $isShowingNewItemSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			// this onReceive disables full screen mode, graying out the green button
 				.onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
 					for window in NSApplication.shared.windows {
 						window.standardWindowButton(.zoomButton)?.isEnabled = false
@@ -42,6 +43,9 @@ struct Later: App {
 //					isSearching = true
 				}.keyboardShortcut("f", modifiers: [.command])
 			}
+		}
+		Settings {
+			SettingsView()
 		}
 	}
 }

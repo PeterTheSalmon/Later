@@ -25,25 +25,32 @@ struct LinkDisplaySheet: View {
 
 			HStack {
 				TitleLink(subItem: item, justCopied: $justCopied)
-
+				
 				Spacer()
 				
+				InfoButton(hoveringReference: isHoveringRectangle, item: item)
+					.help("Link Info")
+				
 				EditButton(hoveringReference: isHoveringRectangle, item: item, listItems: listItems, itemIndex: itemIndex ?? 0)
+					.help("edit Link")
 				
 				CopyButton(hoveringReference: isHoveringRectangle,
 						   item: item, justCopied: $justCopied)
+					.help("Copy Link")
 
 
 				DeleteButton(listItems: listItems,
 							 hoveringReference: isHoveringRectangle,
 				             item: item,
 				             itemIndex: itemIndex)
+					.help("Delete Link")
 
 				FavouriteButton(listItems: listItems,
 				                hoveringReference: isHoveringRectangle,
 				                item: item,
 				                itemIsFavourite: item.isFavourite,
 				                itemIndex: itemIndex)
+					.help("Add to Favourites")
 
 				Divider().frame(height: 40)
 

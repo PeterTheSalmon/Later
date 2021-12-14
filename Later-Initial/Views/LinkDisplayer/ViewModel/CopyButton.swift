@@ -19,6 +19,7 @@ struct CopyButton: View {
 		pasteboard.setString(item.url, forType: .string)
 	}
 
+
 	func noLongerCopied() {
 		Task {
 			await Task.sleep(1 * 1_000_000_000) // two seconds

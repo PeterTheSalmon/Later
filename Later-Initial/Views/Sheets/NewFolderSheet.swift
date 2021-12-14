@@ -12,27 +12,32 @@ struct NewFolderSheet: View {
 	@State private var name = ""
 	@ObservedObject var activeFolderList: FolderClass
 	@State var isPressed = false
-
+	@AppStorage("folderCreated") var foldersCreated = 0
+	
+	/// Add the folder to the list of all folders, and add 1 to the foldersCreated stat
+	private func createFolder() {
+		activeFolderList.folderList.append(FolderItem(name: name))
+		foldersCreated += 1
+		dismiss()
+	}
+	
 	var body: some View {
 		VStack {
 			Label("Add New Folder", systemImage: "folder.badge.plus")
 				.font(.title)
-			
+
 			Form {
 				TextField("", text: $name, prompt: Text("Name"))
 					.font(.title3)
 					.onSubmit {
-						activeFolderList.folderList.append(FolderItem(name: name))
-						dismiss()
+						createFolder()
 					}
 			}
 			.textFieldStyle(.roundedBorder)
-			
-			
+
 			HStack {
 				Button { // save normally
-					activeFolderList.folderList.append(FolderItem(name: name))
-					dismiss()
+					createFolder()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}
@@ -48,8 +53,6 @@ struct NewFolderSheet: View {
 }
 
 struct NewFolderSheet_Previews: PreviewProvider {
-	
-	
 	static var previews: some View {
 		NewFolderSheet(activeFolderList: FolderClass())
 	}
