@@ -35,9 +35,9 @@ struct AboutView: View {
 
 				SocialButtons()
 
-				TimesOpenedMessage(timesOpened: timesOpened)
+				StatisticsMessage(timesOpened: timesOpened)
 
-				LicenseseButton()
+				LicensesButton()
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {
 				NewFolderSheet(activeFolderList: activeFolderList)

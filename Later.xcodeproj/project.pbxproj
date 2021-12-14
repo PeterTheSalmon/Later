@@ -27,7 +27,7 @@
 		558DE1CF27436884009A6694 /* CreatorVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1CE27436884009A6694 /* CreatorVersion.swift */; };
 		558DE1D1274368BE009A6694 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1D0274368BE009A6694 /* AppDescription.swift */; };
 		558DE1D327436913009A6694 /* SocialButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1D227436913009A6694 /* SocialButtons.swift */; };
-		558DE1D527436972009A6694 /* TimesOpenedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1D427436972009A6694 /* TimesOpenedMessage.swift */; };
+		558DE1D527436972009A6694 /* StatisticsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1D427436972009A6694 /* StatisticsMessage.swift */; };
 		558DE1D7274369AC009A6694 /* LicensesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1D6274369AC009A6694 /* LicensesButton.swift */; };
 		558DE1DB27436C5C009A6694 /* NewFolderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1DA27436C5C009A6694 /* NewFolderButton.swift */; };
 		558DE1DD27436D4E009A6694 /* FolderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1DC27436D4E009A6694 /* FolderSection.swift */; };
@@ -80,7 +80,7 @@
 		558DE1CE27436884009A6694 /* CreatorVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorVersion.swift; sourceTree = "<group>"; };
 		558DE1D0274368BE009A6694 /* AppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
 		558DE1D227436913009A6694 /* SocialButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialButtons.swift; sourceTree = "<group>"; };
-		558DE1D427436972009A6694 /* TimesOpenedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesOpenedMessage.swift; sourceTree = "<group>"; };
+		558DE1D427436972009A6694 /* StatisticsMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMessage.swift; sourceTree = "<group>"; };
 		558DE1D6274369AC009A6694 /* LicensesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesButton.swift; sourceTree = "<group>"; };
 		558DE1DA27436C5C009A6694 /* NewFolderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderButton.swift; sourceTree = "<group>"; };
 		558DE1DC27436D4E009A6694 /* FolderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSection.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 				558DE1CE27436884009A6694 /* CreatorVersion.swift */,
 				558DE1D0274368BE009A6694 /* AppDescription.swift */,
 				558DE1D227436913009A6694 /* SocialButtons.swift */,
-				558DE1D427436972009A6694 /* TimesOpenedMessage.swift */,
+				558DE1D427436972009A6694 /* StatisticsMessage.swift */,
 				558DE1D6274369AC009A6694 /* LicensesButton.swift */,
 			);
 			path = ViewModel;
@@ -439,7 +439,7 @@
 				55FE7CA1273B3B8D00224070 /* NoFolderSelectedView.swift in Sources */,
 				558DE1D7274369AC009A6694 /* LicensesButton.swift in Sources */,
 				55FE7C9F273B1A0300224070 /* SidebarItemViews.swift in Sources */,
-				558DE1D527436972009A6694 /* TimesOpenedMessage.swift in Sources */,
+				558DE1D527436972009A6694 /* StatisticsMessage.swift in Sources */,
 				558DE1D1274368BE009A6694 /* AppDescription.swift in Sources */,
 				5593E62827436668009C9CE9 /* OpenSourceList.swift in Sources */,
 				55C78ADF2739ED9800E711CF /* TitleAndLinkView.swift in Sources */,

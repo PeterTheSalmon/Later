@@ -49,8 +49,7 @@ struct SidebarFolderItemView: View {
 
 			Spacer()
 
-			/// trash icon to delete items
-
+			// trash icon to delete items, on the condition that the folder isn't the default uncategorized one
 			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)

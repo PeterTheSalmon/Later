@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct LicenseseButton: View {
+struct LicensesButton: View {
 	var body: some View {
 		Button("Open Source Licenses") {
 			OpenSourceLicenses().openInWindow(title: "Open Source Licenses", sender: self)
