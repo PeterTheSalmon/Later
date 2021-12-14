@@ -21,8 +21,24 @@ struct SidebarFolderItemView: View {
 
 	@State private var deleteAlertPresented = false // this is for deleting
 
+	// If true, folders are deleted in one click
+	@AppStorage("instantDeleteFolder") var instantDeleteFolder = false
+
 	var itemIndex: Int? {
 		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
+	}
+
+	func deleteFolder() {
+		if (itemIndex != nil && item.name != "Uncategorized") ||
+			(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
+		{
+			if selectedFolder == activeFolderList.folderList[itemIndex!] {
+				justDeletedFolder = true
+			}
+
+			listItems.ItemList.removeAll(where: { $0.parentFolder == item })
+			activeFolderList.folderList.remove(at: itemIndex!)
+		}
 	}
 
 	var body: some View {
@@ -39,7 +55,7 @@ struct SidebarFolderItemView: View {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
-						deleteAlertPresented = true
+						if instantDeleteFolder { deleteFolder() } else { deleteAlertPresented = true }
 					}
 			}
 		}
@@ -48,16 +64,7 @@ struct SidebarFolderItemView: View {
 		}
 		.alert("Delete \"\(item.name)\"?\n All items in the folder will be deleted.", isPresented: $deleteAlertPresented) {
 			Button("Delete", role: .destructive) {
-				if (itemIndex != nil && item.name != "Uncategorized") ||
-					(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
-				{
-					if selectedFolder == activeFolderList.folderList[itemIndex!] {
-						justDeletedFolder = true
-					}
-					
-					listItems.ItemList.removeAll(where: { $0.parentFolder == item })
-					activeFolderList.folderList.remove(at: itemIndex!)
-				}
+				deleteFolder()
 			}
 			.keyboardShortcut(.defaultAction)
 		}

@@ -14,6 +14,9 @@ struct DeleteButton: View {
 	var item: LinkItem
 	var itemIndex: Int?
 	@State var alertPresented = false
+
+	// If true, link items are deleted in one click
+	@AppStorage("instantDeleteLink") var instantDeleteLink = false
 	
 	func deleteItem() {
 		if itemIndex != nil {
@@ -23,7 +26,7 @@ struct DeleteButton: View {
 
 	var body: some View {
 		Button {
-			alertPresented = true
+			if instantDeleteLink { deleteItem() } else { alertPresented = true }
 		} label: {
 			Image(systemName: "trash")
 				.resizable()
