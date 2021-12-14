@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// Displays the list of links in a respective folder. This code is an absolute disaster.
 struct FolderView: View {
 	@ObservedObject var listItems: MockData
 	@ObservedObject var activeFolderList: FolderClass
@@ -28,12 +29,12 @@ struct FolderView: View {
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
-					   listItems: listItems,
-					   isShowingNewItemSheet: $isShowingSheet,
-					   activeFolderList: activeFolderList,
-					   isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			           listItems: listItems,
+			           isShowingNewItemSheet: $isShowingSheet,
+			           activeFolderList: activeFolderList,
+			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
 		} else {
-			if !justDeletedFolder { /// this is the normal, almost always used folderview
+			if !justDeletedFolder { /// this is the normal, almost always used folderView
 				VStack {
 					let filteredAgain = filteredLinkItems.filter { toFilterItem in
 						toFilterItem.parentFolder == parentFolder
@@ -45,16 +46,19 @@ struct FolderView: View {
 					} else {
 						let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count
 
-						if numberFavourites > 0 {
-							Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-								.toggleStyle(.switch)
-								.padding(.top, 7)
-						} else {
-							Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-								.toggleStyle(.switch)
-								.padding(.top, 7)
-								.disabled(true)
+						HStack {
+							if numberFavourites > 0 {
+								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+							} else {
+								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+									.disabled(true)
+							}
+							Spacer().frame(width: 40)
+							
+							SortStylePicker()
 						}
+						.padding(.top, 7)
+						
 
 						List {
 							ForEach(filteredAgain) { item in

@@ -21,6 +21,7 @@
 		553BB319273DF53E00612C66 /* FolderDeletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB318273DF53E00612C66 /* FolderDeletedView.swift */; };
 		553E3272276847310071A366 /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3271276847310071A366 /* AdvancedSettings.swift */; };
 		5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544582C2731974E009A4DF0 /* ExtractDomain.swift */; };
+		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckHTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */; };
 		558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1C9274367CA009A6694 /* AboutTitle.swift */; };
 		558DE1CD274367FF009A6694 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1CC274367FF009A6694 /* Extensions.swift */; };
@@ -47,7 +48,6 @@
 		55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C78AE02739F18700E711CF /* FavouriteButton.swift */; };
 		55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E84D9827594D5A0017A735 /* WelcomeScreen.swift */; };
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
-		55EC67FC27408C3000CD9A99 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC67FB27408C3000CD9A99 /* CachedAsyncImage */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
 		55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C98273AFB2400224070 /* ButtonStyles.swift */; };
 		55FE7C9B273B069500224070 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9A273B069500224070 /* FolderModel.swift */; };
@@ -74,6 +74,7 @@
 		553BB318273DF53E00612C66 /* FolderDeletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDeletedView.swift; sourceTree = "<group>"; };
 		553E3271276847310071A366 /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
 		5544582C2731974E009A4DF0 /* ExtractDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractDomain.swift; sourceTree = "<group>"; };
+		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHTTPS.swift; sourceTree = "<group>"; };
 		558DE1C9274367CA009A6694 /* AboutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTitle.swift; sourceTree = "<group>"; };
 		558DE1CC274367FF009A6694 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC67FC27408C3000CD9A99 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +140,7 @@
 		55338102272E1899005496A7 /* Later-Initial */ = {
 			isa = PBXGroup;
 			children = (
+				55750F8B27695C38006B24E3 /* SortStylePicker.swift */,
 				55338103272E1899005496A7 /* Later_App.swift */,
 				55C6A04027668A7F00A8E54D /* AppSettings.swift */,
 				5592736E273AF7F200CBC001 /* Views */,
@@ -353,7 +354,6 @@
 			);
 			name = Later;
 			packageProductDependencies = (
-				55EC67FB27408C3000CD9A99 /* CachedAsyncImage */,
 			);
 			productName = "Later-Initial";
 			productReference = 55338100272E1899005496A7 /* Later.app */;
@@ -384,7 +384,6 @@
 			);
 			mainGroup = 553380F7272E1899005496A7;
 			packageReferences = (
-				55EC67FA27408C3000CD9A99 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
 			);
 			productRefGroup = 55338101272E1899005496A7 /* Products */;
 			projectDirPath = "";
@@ -421,6 +420,7 @@
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
 				558DE1DF27436E8B009A6694 /* MoreSection.swift in Sources */,
 				558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */,
+				55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */,
 				55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */,
 				558DE1D327436913009A6694 /* SocialButtons.swift in Sources */,
 				55C78ADD2739ED6600E711CF /* BackgroundRectangle.swift in Sources */,
@@ -656,25 +656,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		55EC67FA27408C3000CD9A99 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		55EC67FB27408C3000CD9A99 /* CachedAsyncImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 55EC67FA27408C3000CD9A99 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */;
-			productName = CachedAsyncImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 553380F8272E1899005496A7 /* Project object */;
 }

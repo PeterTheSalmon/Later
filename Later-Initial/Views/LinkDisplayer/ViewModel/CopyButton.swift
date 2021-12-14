@@ -22,7 +22,11 @@ struct CopyButton: View {
 
 	func noLongerCopied() {
 		Task {
-			await Task.sleep(1 * 1_000_000_000) // two seconds
+			do {
+				try await Task.sleep(nanoseconds: 1000000000)
+			} catch {
+				print("well shit")
+			}
 			justCopied = false
 		}
 	}

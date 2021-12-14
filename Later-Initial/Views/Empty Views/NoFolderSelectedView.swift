@@ -20,7 +20,11 @@ struct NoFolderSelectedView: View {
 	func updateProgressValue() {
 		Task {
 			while true {
-				await Task.sleep(1 * 100_000_000) // one second
+				do {
+					try await Task.sleep(nanoseconds: 100000000) // 0.1 seconds
+				} catch {
+					print("I see literally no situation in which waiting three seconds would fail. ")
+				}
 				opacity -= 0.02
 				if opacity <= 0.0 {
 					opacity = 1.0

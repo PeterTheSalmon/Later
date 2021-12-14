@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+//import CachedAsyncImage
 
 struct FaviconDisplay: View {
 	
@@ -18,7 +18,8 @@ struct FaviconDisplay: View {
 	
     var body: some View {
 		let faviconURL = URL(string: extractDomain(urlString: item.url))
-		CachedAsyncImage(url: faviconURL, content: faviconStateManager)
+		/// TODO: Fix CachedAsyncImage
+		AsyncImage(url: faviconURL, content: faviconStateManager)
     }
 	
 	@ViewBuilder
