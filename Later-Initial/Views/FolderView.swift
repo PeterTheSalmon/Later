@@ -54,11 +54,10 @@ struct FolderView: View {
 									.disabled(true)
 							}
 							Spacer().frame(width: 40)
-							
+
 							SortStylePicker()
 						}
 						.padding(.top, 7)
-						
 
 						List {
 							ForEach(filteredAgain) { item in
