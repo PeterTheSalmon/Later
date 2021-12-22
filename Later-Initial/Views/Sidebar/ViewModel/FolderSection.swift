@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FolderSection: View {
 	
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool

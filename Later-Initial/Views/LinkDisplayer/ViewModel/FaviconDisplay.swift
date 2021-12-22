@@ -117,6 +117,6 @@ struct FaviconDisplay: View {
 
 struct FaviconDisplay_Previews: PreviewProvider {
     static var previews: some View {
-		FaviconDisplay(item: MockData.exampleItem, isHoveringIcon: true)
+		FaviconDisplay(item: LinkItems.exampleItem, isHoveringIcon: true)
     }
 }

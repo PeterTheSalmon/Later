@@ -10,7 +10,7 @@ import SwiftUI
 struct LinkDisplaySheet: View {
 	var item: LinkItem
 	@Environment(\.openURL) var openURL
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@State var isHoveringRectangle: Bool = false
 	@State var isHoveringText: Bool = false
 	@State var justCopied: Bool = false
@@ -68,6 +68,6 @@ struct LinkDisplaySheet: View {
 
 struct LinkDisplaySheet_Previews: PreviewProvider {
 	static var previews: some View {
-		LinkDisplaySheet(item: MockData.exampleItem, listItems: MockData())
+		LinkDisplaySheet(item: LinkItems.exampleItem, listItems: LinkItems())
 	}
 }

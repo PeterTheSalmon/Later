@@ -13,7 +13,7 @@ struct MoreSection: View {
 	var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
-	var listItems: MockData
+	var listItems: LinkItems
 	@Binding var query: String
 	
 	var body: some View {

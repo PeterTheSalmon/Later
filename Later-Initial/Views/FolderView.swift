@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Displays the list of links in a respective folder. This code is an absolute disaster.
 struct FolderView: View {
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
@@ -145,6 +145,6 @@ struct FolderView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		PrimaryView(listItems: MockData(), activeFolderList: FolderClass(), isShowingNewItemSheet: .constant(false), isShowingNewFolderSheet: .constant(false))
+		PrimaryView(listItems: LinkItems(), activeFolderList: FolderClass(), isShowingNewItemSheet: .constant(false), isShowingNewFolderSheet: .constant(false))
 	}
 }

@@ -10,7 +10,7 @@ import SwiftUI
 // FIXME: when in fullscreen with the sidebar collapsed, moving cursor to the left edge for the slideout sidebar and clicking a folder crashes the app
 
 struct Sidebar: View {
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool

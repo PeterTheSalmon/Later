@@ -13,7 +13,7 @@ struct EditButton: View {
 	@State var isPresented = false
 	@State var newTitle = ""
 	@State var newLink = ""
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@Environment(\.dismiss) var dismiss
 	var itemIndex: Int
 

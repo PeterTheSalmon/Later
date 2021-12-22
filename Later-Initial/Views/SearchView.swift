@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
 	@Binding var query: String
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@Environment(\.openURL) var openURL
 	@State var isHoveringRectangle = false
 	@Binding var isShowingNewItemSheet: Bool
@@ -26,10 +26,15 @@ struct SearchView: View {
 		}
 
 		VStack {
-			Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-				.toggleStyle(.switch)
-				.padding(.top, 7)
-			
+			HStack {
+				Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
+
+				Spacer().frame(width: 40)
+
+				SortStylePicker()
+			}
+			.padding(.top, 7)
+
 			List {
 				ForEach(showFavouritesOnly ? faveFiltered : filtered) { item in
 					withAnimation(.linear) {
@@ -72,6 +77,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
 	static var previews: some View {
-		SearchView(query: .constant("reddit"), listItems: MockData(), isShowingNewItemSheet: .constant(false), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false))
+		SearchView(query: .constant("reddit"), listItems: LinkItems(), isShowingNewItemSheet: .constant(false), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false))
 	}
 }

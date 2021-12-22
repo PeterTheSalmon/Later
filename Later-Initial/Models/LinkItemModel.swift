@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The basis for each link saved
 struct LinkItem: Codable, Hashable, Identifiable {
 	var id = UUID()
 	var dateCreated = Date.now
@@ -16,11 +17,11 @@ struct LinkItem: Codable, Hashable, Identifiable {
 	var parentFolder = FolderItem(name: "Uncategorized")
 }
 
-class MockData: ObservableObject {
-	// example item for previews and such
+class LinkItems: ObservableObject {
+	/// Example item for previews
 	static let exampleItem = LinkItem(title: "Reddit", url: "https://www.reddit.com", isFavourite: true)
-	
-	// general list of stuff
+
+	/// List of link items used throughout the app
 	@Published var ItemList = [LinkItem]() {
 		didSet {
 			if let encoded = try? JSONEncoder().encode(ItemList) {
@@ -28,8 +29,8 @@ class MockData: ObservableObject {
 			}
 		}
 	}
-	
-	// decoding JSON of LinkItems
+
+	/// decoding JSON of LinkItems
 	init() {
 		if let savedItems = UserDefaults.standard.data(forKey: "Items") {
 			if let decodedItems = try? JSONDecoder().decode([LinkItem].self, from: savedItems) {
@@ -37,7 +38,7 @@ class MockData: ObservableObject {
 				return
 			}
 		}
-		
+
 		ItemList = []
 	}
 }

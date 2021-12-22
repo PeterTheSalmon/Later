@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavouriteButton: View {
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 
 	var hoveringReference: Bool
 	var item: LinkItem
@@ -34,9 +34,9 @@ struct FavouriteButton: View {
 
 struct LinkSheetIcons_Previews: PreviewProvider {
 	static var previews: some View {
-		FavouriteButton(listItems: MockData(),
+		FavouriteButton(listItems: LinkItems(),
 		                hoveringReference: true,
-		                item: MockData.exampleItem,
+		                item: LinkItems.exampleItem,
 		                itemIsFavourite: true)
 	}
 }

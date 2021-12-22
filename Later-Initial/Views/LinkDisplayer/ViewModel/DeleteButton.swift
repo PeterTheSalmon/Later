@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DeleteButton: View {
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 
 	var hoveringReference: Bool
 	var item: LinkItem
@@ -42,8 +42,8 @@ struct DeleteButton: View {
 
 struct DeleteButton_Previews: PreviewProvider {
 	static var previews: some View {
-		DeleteButton(listItems: MockData(),
+		DeleteButton(listItems: LinkItems(),
 					 hoveringReference: true,
-		             item: MockData.exampleItem)
+		             item: LinkItems.exampleItem)
 	}
 }

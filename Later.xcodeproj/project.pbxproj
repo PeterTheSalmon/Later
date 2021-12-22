@@ -33,6 +33,7 @@
 		558DE1DB27436C5C009A6694 /* NewFolderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1DA27436C5C009A6694 /* NewFolderButton.swift */; };
 		558DE1DD27436D4E009A6694 /* FolderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1DC27436D4E009A6694 /* FolderSection.swift */; };
 		558DE1DF27436E8B009A6694 /* MoreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1DE27436E8B009A6694 /* MoreSection.swift */; };
+		559208CB2773BBCC001F92F0 /* CodableColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559208CA2773BBCC001F92F0 /* CodableColourExtension.swift */; };
 		5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736A273A017E00CBC001 /* DeleteButton.swift */; };
 		5592736D273AF1F000CBC001 /* EmptyFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736C273AF1F000CBC001 /* EmptyFolderView.swift */; };
 		55927370273AF81500CBC001 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592736F273AF81500CBC001 /* AppInfo.swift */; };
@@ -86,6 +87,7 @@
 		558DE1DA27436C5C009A6694 /* NewFolderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderButton.swift; sourceTree = "<group>"; };
 		558DE1DC27436D4E009A6694 /* FolderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSection.swift; sourceTree = "<group>"; };
 		558DE1DE27436E8B009A6694 /* MoreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSection.swift; sourceTree = "<group>"; };
+		559208CA2773BBCC001F92F0 /* CodableColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColourExtension.swift; sourceTree = "<group>"; };
 		5592736A273A017E00CBC001 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		5592736C273AF1F000CBC001 /* EmptyFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFolderView.swift; sourceTree = "<group>"; };
 		5592736F273AF81500CBC001 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				558DE1CC274367FF009A6694 /* Extensions.swift */,
+				559208CA2773BBCC001F92F0 /* CodableColourExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				55A2853327613A7800F17C5A /* InfoButton.swift in Sources */,
 				5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */,
 				55927370273AF81500CBC001 /* AppInfo.swift in Sources */,
+				559208CB2773BBCC001F92F0 /* CodableColourExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

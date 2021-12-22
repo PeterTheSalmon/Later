@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrimaryView: View {
-	@StateObject var listItems = MockData()
+	@StateObject var listItems = LinkItems()
 	@StateObject var activeFolderList = FolderClass()
 	@Binding var isShowingNewItemSheet: Bool
 	@State private var showFavouritesOnly = false

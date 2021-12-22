@@ -43,8 +43,8 @@ struct InfoButton: View {
 
 struct InfoButton_Previews: PreviewProvider {
 	static var previews: some View {
-		DeleteButton(listItems: MockData(),
+		DeleteButton(listItems: LinkItems(),
 					 hoveringReference: true,
-		             item: MockData.exampleItem)
+		             item: LinkItems.exampleItem)
 	}
 }

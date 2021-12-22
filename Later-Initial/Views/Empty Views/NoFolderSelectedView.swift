@@ -10,7 +10,7 @@ import SwiftUI
 struct NoFolderSelectedView: View {
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@Binding var isShowingSheet: Bool
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
@@ -101,6 +101,6 @@ struct NoFolderSelectedView: View {
 
 struct NoFolderSelectedView_Previews: PreviewProvider {
 	static var previews: some View {
-		NoFolderSelectedView(query: .constant("test"), listItems: MockData(), isShowingSheet: .constant(false), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false))
+		NoFolderSelectedView(query: .constant("test"), listItems: LinkItems(), isShowingSheet: .constant(false), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false))
 	}
 }

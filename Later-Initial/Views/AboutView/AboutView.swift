@@ -14,7 +14,7 @@ struct AboutView: View {
 	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 
@@ -73,6 +73,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: MockData(), query: .constant("goo"))
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: LinkItems(), query: .constant("goo"))
 	}
 }

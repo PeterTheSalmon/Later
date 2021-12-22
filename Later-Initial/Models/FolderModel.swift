@@ -6,12 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct FolderItem: Codable, Hashable, Identifiable {
+/// Basis for all folders
+///
+/// TODO: add custom colours and icons
+struct FolderItem: Codable, Hashable, Identifiable {	
 	var id = UUID()
 	var name: String
+	var colour: Color?
 }
 
+/// Class containing the list of folders for use in the app
 class FolderClass: ObservableObject {
 	@Published var folderList: [FolderItem] = [FolderItem(name: "Uncategorized")] {
 		didSet {

@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct NewItemSheet: View {
-	@ObservedObject var listItems: MockData
+	@ObservedObject var listItems: LinkItems
 	@ObservedObject var activeFolderList: FolderClass
 	@Environment(\.dismiss) var dismiss
 
@@ -87,6 +87,6 @@ struct NewItemSheet: View {
 
 struct NewItemSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		NewItemSheet(listItems: MockData(), activeFolderList: FolderClass(), parentFolder: FolderItem(name: "Preview"))
+		NewItemSheet(listItems: LinkItems(), activeFolderList: FolderClass(), parentFolder: FolderItem(name: "Preview"))
 	}
 }
