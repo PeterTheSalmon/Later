@@ -24,4 +24,9 @@ struct AppSettings {
 	// While true, the user is presented with a modal explaining basic functions
 	// Set to false when the modal is dismissed
 	@AppStorage("introSeen") var newUser = true
+	
+	// When changing the link displayer view in any way, favicons stop displaying
+	@AppStorage("updateFavicon") var updateFavicon = false
+	
+	@AppStorage("selectedSortStyle") private var selectedStyle = 0
 }

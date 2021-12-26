@@ -21,6 +21,7 @@
 		553BB319273DF53E00612C66 /* FolderDeletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB318273DF53E00612C66 /* FolderDeletedView.swift */; };
 		553E3272276847310071A366 /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3271276847310071A366 /* AdvancedSettings.swift */; };
 		5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544582C2731974E009A4DF0 /* ExtractDomain.swift */; };
+		5554E5402779108D00285209 /* SortingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554E53F2779108D00285209 /* SortingMethods.swift */; };
 		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckHTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */; };
 		558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1C9274367CA009A6694 /* AboutTitle.swift */; };
@@ -75,6 +76,7 @@
 		553BB318273DF53E00612C66 /* FolderDeletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDeletedView.swift; sourceTree = "<group>"; };
 		553E3271276847310071A366 /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
 		5544582C2731974E009A4DF0 /* ExtractDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractDomain.swift; sourceTree = "<group>"; };
+		5554E53F2779108D00285209 /* SortingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMethods.swift; sourceTree = "<group>"; };
 		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHTTPS.swift; sourceTree = "<group>"; };
 		558DE1C9274367CA009A6694 /* AboutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTitle.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				558B6A2D2735E2B90068A73E /* CheckHTTPS.swift */,
 				5544582C2731974E009A4DF0 /* ExtractDomain.swift */,
+				5554E53F2779108D00285209 /* SortingMethods.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				558DE1CD274367FF009A6694 /* Extensions.swift in Sources */,
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
 				5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */,
+				5554E5402779108D00285209 /* SortingMethods.swift in Sources */,
 				55C6A04527668CC200A8E54D /* GeneralSettings.swift in Sources */,
 				55C6A04127668A7F00A8E54D /* AppSettings.swift in Sources */,
 				55A2853327613A7800F17C5A /* InfoButton.swift in Sources */,

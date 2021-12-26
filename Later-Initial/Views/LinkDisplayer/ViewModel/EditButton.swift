@@ -16,6 +16,7 @@ struct EditButton: View {
 	@ObservedObject var listItems: LinkItems
 	@Environment(\.dismiss) var dismiss
 	var itemIndex: Int
+	@AppStorage("selectedSortStyle") var selectedStyle = 0
 
 	func editItem() {
 		isPresented = false
@@ -26,6 +27,7 @@ struct EditButton: View {
 		                       parentFolder: item.parentFolder)
 		listItems.ItemList.remove(at: itemIndex)
 		listItems.ItemList.insert(newItem, at: currentIndex)
+		SortListWithDelay(selectedStyle: selectedStyle, listItems: listItems)
 	}
 
 	var body: some View {

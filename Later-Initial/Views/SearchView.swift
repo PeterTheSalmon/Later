@@ -31,7 +31,7 @@ struct SearchView: View {
 
 				Spacer().frame(width: 40)
 
-				SortStylePicker()
+				SortStylePicker(listItems: listItems)
 			}
 			.padding(.top, 7)
 

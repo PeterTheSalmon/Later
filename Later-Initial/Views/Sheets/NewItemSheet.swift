@@ -17,6 +17,7 @@ struct NewItemSheet: View {
 	@State var parentFolder: FolderItem
 
 	@AppStorage("notesCreated") var notesCreated = 0
+	@AppStorage("selectedSortStyle") var selectedStyle = 0
 	
 	private func submitNote() {
 		let item = LinkItem(title: title,
@@ -24,6 +25,7 @@ struct NewItemSheet: View {
 							parentFolder: parentFolder)
 		listItems.ItemList.append(item)
 		notesCreated += 1
+		SortList(selectedStyle: selectedStyle, listItems: listItems)
 		dismiss()
 	}
 	private func submitFaveNote() {
@@ -32,6 +34,7 @@ struct NewItemSheet: View {
 							parentFolder: parentFolder)
 		listItems.ItemList.append(item)
 		notesCreated += 1
+		SortList(selectedStyle: selectedStyle, listItems: listItems)
 		dismiss()
 	}
 

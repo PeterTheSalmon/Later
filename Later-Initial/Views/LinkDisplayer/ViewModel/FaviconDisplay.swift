@@ -6,22 +6,25 @@
 //
 
 import SwiftUI
-//import CachedAsyncImage
+// import CachedAsyncImage
 
 struct FaviconDisplay: View {
-	
 	@State var test: Bool = false
-	
 	@Environment(\.openURL) var openURL
 	var item: LinkItem
 	@State var isHoveringIcon = false
-	
-    var body: some View {
+	@AppStorage("updateFavicon") var updateFavicon = false
+
+	var body: some View {
 		let faviconURL = URL(string: extractDomain(urlString: item.url))
-		/// TODO: Fix CachedAsyncImage
-		AsyncImage(url: faviconURL, content: faviconStateManager)
-    }
-	
+		// TODO: Fix CachedAsyncImage
+		VStack {
+			if updateFavicon { AsyncImage(url: faviconURL, content: faviconStateManager)
+			} else { AsyncImage(url: faviconURL, content: faviconStateManager) }
+		}
+		.animation(.linear(duration: 0.1), value: updateFavicon)
+	}
+
 	@ViewBuilder
 	func faviconStateManager(for phase: AsyncImagePhase) -> some View {
 		switch phase {
@@ -29,6 +32,7 @@ struct FaviconDisplay: View {
 			Image(systemName: "link.circle")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
+				.foregroundColor(.gray)
 				.frame(width: 40, height: 40)
 				.padding(.leading, 4)
 				.padding(.trailing, 10)
@@ -47,7 +51,7 @@ struct FaviconDisplay: View {
 						NSCursor.pop()
 					}
 				}
-			
+
 		case let .success(image):
 			image
 				.resizable()
@@ -70,10 +74,10 @@ struct FaviconDisplay: View {
 						NSCursor.pop()
 					}
 				}
-			
+
 		case .failure:
 			VStack {
-				Image(systemName: "questionmark.circle.fill")
+				Image(systemName: "link.circle")
 					.resizable()
 					.aspectRatio(contentMode: .fill)
 					.foregroundColor(.gray)
@@ -105,18 +109,17 @@ struct FaviconDisplay: View {
 				.foregroundColor(.gray)
 		}
 	}
-	
+
 	func openLink(urlString: String) {
 		guard let url = URL(string: urlString) else {
 			return
 		}
 		openURL(url)
 	}
-	
 }
 
 struct FaviconDisplay_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		FaviconDisplay(item: LinkItems.exampleItem, isHoveringIcon: true)
-    }
+	}
 }

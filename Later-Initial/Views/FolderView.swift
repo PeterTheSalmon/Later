@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 /// Displays the list of links in a respective folder. This code is an absolute disaster.
+///
+/// TODO: When changing any value in this view (for example: item name, sorting method, etc.) favicon displaying breaks until the view is reloaded
 struct FolderView: View {
 	@ObservedObject var listItems: LinkItems
 	@ObservedObject var activeFolderList: FolderClass
@@ -55,7 +57,7 @@ struct FolderView: View {
 							}
 							Spacer().frame(width: 40)
 
-							SortStylePicker()
+							SortStylePicker(listItems: listItems)
 						}
 						.padding(.top, 7)
 
@@ -73,6 +75,7 @@ struct FolderView: View {
 				}
 				.animation(.linear(duration: 0.1),
 				           value: showFavouritesOnlyAnimation)
+
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {
