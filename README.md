@@ -33,10 +33,11 @@ Currently, updates are manual, meaning you will have to download new versions fr
 Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 ### Planned Features
 
-- ~~Onboarding experience~~
-- ~~Custom sorting rules~~
 - Sharing
+- An actual app icon
+
+#### Finished
 - ~~Editing folder and links~~
 - ~~Search~~
-- ~~An actual app icon~~
-- And more™
+- ~~Onboarding experience~~
+- ~~Custom sorting rules~~
