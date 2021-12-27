@@ -34,7 +34,7 @@ Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 ### Planned Features
 
 - ~~Onboarding experience~~
-- Custom sorting rules
+- ~~Custom sorting rules~~
 - Sharing
 - ~~Editing folder and links~~
 - ~~Search~~
