@@ -10,6 +10,10 @@
 import SwiftUI
 
 struct SidebarFolderItemView: View {
+	// Detect wether the user is in light or dark mode.
+	// This is used to change the colour in the folder edit view to be something more pleasing to the eye
+	@Environment(\.colorScheme) var colorScheme
+
 	@Binding var name: String
 	@State private var isHoveringTrash = false
 	@ObservedObject var activeFolderList: FolderClass
@@ -45,7 +49,7 @@ struct SidebarFolderItemView: View {
 
 	var body: some View {
 		HStack {
-			Image(systemName: "folder.fill")
+			Image(systemName: item.iconName ?? "folder")
 				.foregroundColor(item.colour ?? nil)
 
 			Text(name)
@@ -70,24 +74,34 @@ struct SidebarFolderItemView: View {
 		} // *HStack
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour
 		.onAppear { if item.colour != nil { folderColour = item.colour! } }
-		
+
 		/// popover for editing folder values
 		.popover(isPresented: $editPopoverPresented, arrowEdge: .trailing) {
 			VStack {
-				ColorPicker("Folder Colour", selection: $folderColour, supportsOpacity: false)
-				Button("Save") {
-					item.colour = folderColour
-					editPopoverPresented = false
-				}.keyboardShortcut(.defaultAction)
-
+				HStack {
+					ColorPicker("Folder Colour", selection: $folderColour, supportsOpacity: false)
+					Button {
+						item.colour = nil
+						if colorScheme == .dark {
+							folderColour = .white
+						} else {
+							folderColour = .black
+						}
+					} label: {
+						Image(systemName: "gobackward")
+					}
+				}
 			}.padding()
 		}
-		
+		.onChange(of: folderColour) { _ in
+			item.colour = folderColour
+		}
+
 		/// hover check to see if buttons should have opacity or not
 		.onHover { hovering in
 			isHoveringTrash = hovering
 		}
-		
+
 		/// alert before deleting items - if one-click deletions are on from preferences this won't show
 		.alert("Delete \"\(item.name)\"?\n All items in the folder will be deleted.", isPresented: $deleteAlertPresented) {
 			Button("Delete", role: .destructive) {
@@ -110,10 +124,3 @@ struct SidebarExtraItemView: View {
 		}
 	}
 }
-
-// struct ListItemView_Previews: PreviewProvider {
-//
-//	static var previews: some View {
-//		SidebarFolderItemView(name: .constant("Test"), activeFolderList: FolderClass())
-//    }
-// }

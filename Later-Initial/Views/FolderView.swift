@@ -18,7 +18,6 @@ struct FolderView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
 	@Binding var parentFolder: FolderItem
-
 	@Binding var selectedFolder: FolderItem?
 	@Binding var justDeletedFolder: Bool
 
@@ -39,11 +38,11 @@ struct FolderView: View {
 			if !justDeletedFolder { /// this is the normal, almost always used folderView
 				VStack {
 					let filteredAgain = filteredLinkItems.filter { toFilterItem in
-						toFilterItem.parentFolder == parentFolder
+						toFilterItem.parentFolder.id == parentFolder.id
 					}
 
 					if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
-						EmptyFolderView()
+						EmptyFolderView(folder: selectedFolder)
 
 					} else {
 						let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count

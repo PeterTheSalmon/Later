@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct EmptyFolderView: View {
+	
+	var folder: FolderItem?
+	var fallbackFolder = FolderItem(name: "this folder")
+	
 	var body: some View {
 		VStack {
-			Text("You don't have any saved links in this Folder")
+			Text("You don't have any saved links in \"\(folder?.name ?? fallbackFolder.name)\"")
 				.font(.title)
 				.padding()
-			HStack {
-				Text("Click the")
-				Image(systemName: "plus.circle.fill")
-				Text("to add one!")
-			}
+
+				Text("Click the \(Image(systemName: "plus.circle.fill")) to add one!")
+
 			.font(.headline)
 		}
 	}
@@ -25,6 +27,6 @@ struct EmptyFolderView: View {
 
 struct EmptyListView_Previews: PreviewProvider {
 	static var previews: some View {
-		EmptyFolderView()
+		EmptyFolderView(folder: FolderItem(name: "Test"))
 	}
 }

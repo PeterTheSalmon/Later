@@ -15,6 +15,7 @@ struct FolderItem: Codable, Hashable, Identifiable {
 	var id = UUID()
 	var name: String
 	var colour: Color?
+	var iconName: String?
 }
 
 /// Class containing the list of folders for use in the app
