@@ -78,7 +78,7 @@ struct NewFolderSheet: View {
 
 			Picker("", selection: $symbolName) {
 				ForEach(0 ..< symbolNames.count) {
-					Image(systemName: self.symbolNames[$0])
+					Image(systemName: symbolNames[$0])
 				}
 			}
 			.pickerStyle(.segmented)

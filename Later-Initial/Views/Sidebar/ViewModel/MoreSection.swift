@@ -15,7 +15,8 @@ struct MoreSection: View {
 	@Binding var isShowingSheet: Bool
 	var listItems: LinkItems
 	@Binding var query: String
-	
+	@Binding var justDeletedFolder: Bool
+
 	var body: some View {
 		Section(header: Text("More")) {
 			NavigationLink(destination: AboutView(
@@ -23,7 +24,9 @@ struct MoreSection: View {
 				activeFolderList: activeFolderList,
 				isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				isShowingSheet: $isShowingSheet,
-				listItems: listItems, query: $query
+				listItems: listItems,
+				query: $query,
+				justDeletedFolder: $justDeletedFolder
 			)) {
 				SidebarExtraItemView(name: "About", imageName: "info.circle")
 			}

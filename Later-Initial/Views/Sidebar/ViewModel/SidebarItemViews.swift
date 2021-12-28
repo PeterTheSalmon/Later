@@ -30,6 +30,18 @@ struct SidebarFolderItemView: View {
 	// If true, folders are deleted in one click
 	@AppStorage("instantDeleteFolder") var instantDeleteFolder = false
 
+	@State private var symbolName = 0
+	var symbolNames = [
+		"folder",
+		"display",
+		"music.note",
+		"star",
+		"link",
+		"cloud.fill",
+		"externaldrive",
+		"wrench.and.screwdriver",
+	]
+
 	var itemIndex: Int? {
 		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
 	}
@@ -75,26 +87,53 @@ struct SidebarFolderItemView: View {
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour
 		.onAppear { if item.colour != nil { folderColour = item.colour! } }
 
+		/// find which symbol is associated with the folder already
+		.onAppear {
+			var initialIndex = 0 // start the count at zero, representing the folder
+			for possibleSymbol in symbolNames {
+				if possibleSymbol == item.iconName {
+					symbolName = initialIndex
+					/// if the symbol matches the value in the folder,
+					/// let symbolName take the value of the index of that icon
+				}
+				initialIndex += 1
+			}
+		}
+
 		/// popover for editing folder values
 		.popover(isPresented: $editPopoverPresented, arrowEdge: .trailing) {
 			VStack {
 				HStack {
 					ColorPicker("Folder Colour", selection: $folderColour, supportsOpacity: false)
 					Button {
-						item.colour = nil
 						if colorScheme == .dark {
 							folderColour = .white
 						} else {
 							folderColour = .black
 						}
+						item.colour = nil
 					} label: {
 						Image(systemName: "gobackward")
 					}
+					.buttonStyle(.borderless)
 				}
+
+				Picker("", selection: $symbolName) {
+					ForEach(0 ..< symbolNames.count) {
+						Image(systemName: symbolNames[$0])
+					}
+				}
+				.pickerStyle(.segmented)
+
 			}.padding()
-		}
+		} // popover
+
 		.onChange(of: folderColour) { _ in
 			item.colour = folderColour
+		}
+		
+		.onChange(of: symbolName) { _ in 
+			item.iconName = symbolNames[symbolName]
 		}
 
 		/// hover check to see if buttons should have opacity or not

@@ -17,6 +17,7 @@ struct AboutView: View {
 	@ObservedObject var listItems: LinkItems
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
+	@Binding var justDeletedFolder: Bool
 
 	var body: some View {
 		if isSearching && !query.isEmpty {
@@ -38,6 +39,9 @@ struct AboutView: View {
 				StatisticsMessage(timesOpened: timesOpened)
 
 				LicensesButton()
+			}
+			.onDisappear {
+				justDeletedFolder = false
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {
 				NewFolderSheet(activeFolderList: activeFolderList)
@@ -73,6 +77,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: LinkItems(), query: .constant("goo"))
+		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: LinkItems(), query: .constant("goo"), justDeletedFolder: .constant(false))
 	}
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-// import CachedAsyncImage
+import CachedAsyncImage
 
 struct FaviconDisplay: View {
 	@State var test: Bool = false
@@ -19,8 +19,8 @@ struct FaviconDisplay: View {
 		let faviconURL = URL(string: extractDomain(urlString: item.url))
 		// TODO: Fix CachedAsyncImage
 		VStack {
-			if updateFavicon { AsyncImage(url: faviconURL, content: faviconStateManager)
-			} else { AsyncImage(url: faviconURL, content: faviconStateManager) }
+			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
+			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
 		}
 		.animation(.linear(duration: 0.1), value: updateFavicon)
 	}
