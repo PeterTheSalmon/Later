@@ -23,11 +23,6 @@ Currently, updates are manual, meaning you will have to download new versions fr
 
 ![Screen Shot 2021-11-18 at 8 45 28 PM](https://user-images.githubusercontent.com/87033324/142566402-1fcb1ae9-95bc-495a-bf00-fd93afa8aeb4.png)
 
-### Known Bugs
-
-- Some animations are broken
-- In fullscreen, with the sidebar collapsed, clicking a sidebar item from the sildeover sidebar causes a crash
-
 ### Feedback, Bugs, Feature Requests
 
 Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
