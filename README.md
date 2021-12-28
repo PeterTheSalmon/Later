@@ -15,7 +15,7 @@ I was tired of Reddit's terrible post saving, and wanted an easy, convenient pla
 
 ### Installation
 
-Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/download/0.2.0-beta/Later.v0.2.0-beta.zip)
+Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/download/0.3.0-beta/Later.v0.3.0-beta.zip)
 
 **Later requires macOS 12 Monterey or newer.** This is due to several new SwiftUI features only available on recent macOS versions.
 
@@ -33,10 +33,11 @@ Currently, updates are manual, meaning you will have to download new versions fr
 Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 ### Planned Features
 
-- ~~Onboarding experience~~
-- Custom sorting rules
 - Sharing
+- An actual app icon
+
+#### Finished
 - ~~Editing folder and links~~
 - ~~Search~~
-- ~~An actual app icon~~
-- And more™
+- ~~Onboarding experience~~
+- ~~Custom sorting rules~~
