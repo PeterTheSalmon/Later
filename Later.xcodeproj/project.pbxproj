@@ -17,6 +17,7 @@
 		55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338137272E1B55005496A7 /* LinkItemModel.swift */; };
 		5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338139272E1D45005496A7 /* LinkDisplaySheet.swift */; };
 		5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539ACB72741A48100B0F22C /* CopyButton.swift */; };
+		5539CB0E278278B4008F13CD /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 5539CB0D278278B4008F13CD /* Neumorphic */; };
 		553BB317273CD05900612C66 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB316273CD05900612C66 /* AboutView.swift */; };
 		553BB319273DF53E00612C66 /* FolderDeletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB318273DF53E00612C66 /* FolderDeletedView.swift */; };
 		553E3272276847310071A366 /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3271276847310071A366 /* AdvancedSettings.swift */; };
@@ -120,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5539CB0E278278B4008F13CD /* Neumorphic in Frameworks */,
 				557248D3277B8ED20040CCB7 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +365,7 @@
 			name = Later;
 			packageProductDependencies = (
 				557248D2277B8ED20040CCB7 /* CachedAsyncImage */,
+				5539CB0D278278B4008F13CD /* Neumorphic */,
 			);
 			productName = "Later-Initial";
 			productReference = 55338100272E1899005496A7 /* Later.app */;
@@ -394,6 +397,7 @@
 			mainGroup = 553380F7272E1899005496A7;
 			packageReferences = (
 				557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
+				5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */,
 			);
 			productRefGroup = 55338101272E1899005496A7 /* Products */;
 			projectDirPath = "";
@@ -670,6 +674,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/costachung/neumorphic/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage";
@@ -681,6 +693,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5539CB0D278278B4008F13CD /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */;
+			productName = Neumorphic;
+		};
 		557248D2277B8ED20040CCB7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */;

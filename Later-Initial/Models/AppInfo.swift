@@ -21,6 +21,7 @@ struct AppInfo {
 		"You can see your statistics on the about page.",
 		"There are no bugs. I hope.",
 		"Later receives periodic updates to add and improve functionality",
-		"What's this? A tips box? Strange"
+		"What's this? A tips box? Strange",
+		"You can click the link or the website favicon to open a link"
 	]
 }

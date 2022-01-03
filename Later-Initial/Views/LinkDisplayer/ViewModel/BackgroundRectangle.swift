@@ -14,8 +14,7 @@ struct BackgroundRectangle: View {
 	var body: some View {
 		RoundedRectangle(cornerRadius: 10,
 		                 style: .circular)
-			.frame(height: 50)
-			.shadow(color: hoverStatus ? Color("Rectangle") : .gray, radius: 2)
+			.frame(height: 55)
 			.animation(.linear(duration: 0.15), value: hoverStatus)
 			.foregroundColor(Color("BG"))
 	}

@@ -16,7 +16,7 @@ struct GeneralSettings: View {
 
 	var body: some View {
 		Form {
-			Section("Folder and Links") {
+			Section("Folders and Links") {
 				Toggle("Instantly delete folders", isOn: $instantDeleteFolder)
 					.help("Delete folders in one click. Off by default")
 				Toggle("Instantly delete links", isOn: $instantDeleteLink)

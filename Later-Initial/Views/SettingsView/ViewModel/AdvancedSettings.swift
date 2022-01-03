@@ -11,13 +11,23 @@ struct AdvancedSettings: View {
 	@AppStorage("notesCreated") var notesCreated = 0
 	@AppStorage("folderCreated") var foldersCreated = 0
 	@AppStorage("timesOpened") var timesOpened = 0
-	@State var alertPresented = false
+	@State private var alertPresented = false
+	@State private var introSheetPresented = false
 
 	var body: some View {
-		VStack {
+		Form {
+			Section("General") {
+				Button("Replay Intro") {
+					introSheetPresented = true
+				}
+			}
+
 			Section("Danger Zone") {
 				Button("Clear Statistics") { alertPresented = true }
 			}
+		}
+		.sheet(isPresented: $introSheetPresented) {
+			WelcomeScreen(newUserValue: $introSheetPresented)
 		}
 		.alert("Clear statistics? This cannot be undone", isPresented: $alertPresented) {
 			Button("Confirm", role: .destructive) {
