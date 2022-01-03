@@ -21,12 +21,7 @@ Downoad the [lastest release](https://github.com/PeterTheSalmon/Later/releases/d
 
 Currently, updates are manual, meaning you will have to download new versions from GitHub to update.
 
-![Screen Shot 2021-11-18 at 8 45 28 PM](https://user-images.githubusercontent.com/87033324/142566402-1fcb1ae9-95bc-495a-bf00-fd93afa8aeb4.png)
-
-### Known Bugs
-
-- Some animations are broken
-- In fullscreen, with the sidebar collapsed, clicking a sidebar item from the sildeover sidebar causes a crash
+![Screen Shot 2021-12-28 at 11 27 54 AM](https://user-images.githubusercontent.com/87033324/147600490-bb230d43-6df9-42a3-9af4-c4644513064e.png)
 
 ### Feedback, Bugs, Feature Requests
 
@@ -35,6 +30,7 @@ Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 
 - Sharing
 - An actual app icon
+- Auto-update system
 
 #### Finished
 - ~~Editing folder and links~~
