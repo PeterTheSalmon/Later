@@ -21,7 +21,7 @@ struct NoFolderSelectedView: View {
 		Task {
 			while true {
 				do {
-					try await Task.sleep(nanoseconds: 150000000) // 0.15 seconds
+					try await Task.sleep(nanoseconds: 150_000_000) // 0.15 seconds
 				} catch {
 					print("I see literally no situation in which waiting three seconds would fail. ")
 				}

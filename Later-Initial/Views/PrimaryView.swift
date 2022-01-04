@@ -38,13 +38,13 @@ struct PrimaryView: View {
 			        justDeletedFolder: $justDeletedFolder,
 			        selectedFolder: $selectedFolder,
 			        filteredLinkItems: filteredLinkItems,
-					query: $query)
+			        query: $query)
 
 			NoFolderSelectedView(query: $query,
-								 listItems: listItems,
-								 isShowingSheet: $isShowingNewItemSheet,
-								 activeFolderList: activeFolderList,
-								 isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			                     listItems: listItems,
+			                     isShowingSheet: $isShowingNewItemSheet,
+			                     activeFolderList: activeFolderList,
+			                     isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {
@@ -72,6 +72,7 @@ struct PrimaryView: View {
 					NewFolderSheet(activeFolderList: activeFolderList)
 				}
 		}
+
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}

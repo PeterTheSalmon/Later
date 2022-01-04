@@ -69,6 +69,7 @@ struct FolderView: View {
 						}
 					}
 				}
+
 				.onAppear {
 					selectedFolder = parentFolder
 				}

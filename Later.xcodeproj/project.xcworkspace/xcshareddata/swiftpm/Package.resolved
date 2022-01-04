@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Neumorphic",
-        "repositoryURL": "https://github.com/costachung/neumorphic/",
-        "state": {
-          "branch": "master",
-          "revision": "3fa56e844a5e375ff3d38e3c770886bcc949f6f5",
-          "version": null
-        }
-      },
-      {
         "package": "CachedAsyncImage",
         "repositoryURL": "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage",
         "state": {

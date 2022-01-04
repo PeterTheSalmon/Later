@@ -17,7 +17,9 @@
 		55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338137272E1B55005496A7 /* LinkItemModel.swift */; };
 		5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338139272E1D45005496A7 /* LinkDisplaySheet.swift */; };
 		5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539ACB72741A48100B0F22C /* CopyButton.swift */; };
-		5539CB0E278278B4008F13CD /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 5539CB0D278278B4008F13CD /* Neumorphic */; };
+		5539CB1527828040008F13CD /* SharingImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539CB1427828040008F13CD /* SharingImplementation.swift */; };
+		5539CB17278281E6008F13CD /* Test sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539CB16278281E6008F13CD /* Test sharing.swift */; };
+		5539CB192782884C008F13CD /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539CB182782884C008F13CD /* ShareButton.swift */; };
 		553BB317273CD05900612C66 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB316273CD05900612C66 /* AboutView.swift */; };
 		553BB319273DF53E00612C66 /* FolderDeletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB318273DF53E00612C66 /* FolderDeletedView.swift */; };
 		553E3272276847310071A366 /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3271276847310071A366 /* AdvancedSettings.swift */; };
@@ -74,6 +76,9 @@
 		55338137272E1B55005496A7 /* LinkItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemModel.swift; sourceTree = "<group>"; };
 		55338139272E1D45005496A7 /* LinkDisplaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDisplaySheet.swift; sourceTree = "<group>"; };
 		5539ACB72741A48100B0F22C /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
+		5539CB1427828040008F13CD /* SharingImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingImplementation.swift; sourceTree = "<group>"; };
+		5539CB16278281E6008F13CD /* Test sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test sharing.swift"; sourceTree = "<group>"; };
+		5539CB182782884C008F13CD /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		553BB316273CD05900612C66 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		553BB318273DF53E00612C66 /* FolderDeletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDeletedView.swift; sourceTree = "<group>"; };
 		553E3271276847310071A366 /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
@@ -121,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5539CB0E278278B4008F13CD /* Neumorphic in Frameworks */,
 				557248D3277B8ED20040CCB7 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +163,8 @@
 				55338109272E189C005496A7 /* Preview Content */,
 				5533810C272E189C005496A7 /* Later_Initial.entitlements */,
 				55338107272E189C005496A7 /* Assets.xcassets */,
+				5539CB1427828040008F13CD /* SharingImplementation.swift */,
+				5539CB16278281E6008F13CD /* Test sharing.swift */,
 			);
 			path = "Later-Initial";
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 			children = (
 				55C78ADC2739ED6600E711CF /* BackgroundRectangle.swift */,
 				55C78ADE2739ED9800E711CF /* TitleAndLinkView.swift */,
+				5539CB182782884C008F13CD /* ShareButton.swift */,
 				55C78AE02739F18700E711CF /* FavouriteButton.swift */,
 				5539ACB72741A48100B0F22C /* CopyButton.swift */,
 				5505A699274D60650083EC3E /* EditButton.swift */,
@@ -365,7 +372,6 @@
 			name = Later;
 			packageProductDependencies = (
 				557248D2277B8ED20040CCB7 /* CachedAsyncImage */,
-				5539CB0D278278B4008F13CD /* Neumorphic */,
 			);
 			productName = "Later-Initial";
 			productReference = 55338100272E1899005496A7 /* Later.app */;
@@ -397,7 +403,6 @@
 			mainGroup = 553380F7272E1899005496A7;
 			packageReferences = (
 				557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
-				5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */,
 			);
 			productRefGroup = 55338101272E1899005496A7 /* Products */;
 			projectDirPath = "";
@@ -430,8 +435,10 @@
 				55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */,
 				5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */,
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
+				5539CB17278281E6008F13CD /* Test sharing.swift in Sources */,
 				55FE7CA3273B544300224070 /* NewFolderSheet.swift in Sources */,
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
+				5539CB1527828040008F13CD /* SharingImplementation.swift in Sources */,
 				558DE1DF27436E8B009A6694 /* MoreSection.swift in Sources */,
 				558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */,
 				55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */,
@@ -468,6 +475,7 @@
 				5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */,
 				5554E5402779108D00285209 /* SortingMethods.swift in Sources */,
 				55C6A04527668CC200A8E54D /* GeneralSettings.swift in Sources */,
+				5539CB192782884C008F13CD /* ShareButton.swift in Sources */,
 				55C6A04127668A7F00A8E54D /* AppSettings.swift in Sources */,
 				55A2853327613A7800F17C5A /* InfoButton.swift in Sources */,
 				5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */,
@@ -674,14 +682,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/costachung/neumorphic/";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage";
@@ -693,11 +693,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5539CB0D278278B4008F13CD /* Neumorphic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5539CB0C278278B4008F13CD /* XCRemoteSwiftPackageReference "neumorphic" */;
-			productName = Neumorphic;
-		};
 		557248D2277B8ED20040CCB7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 557248D1277B8ED20040CCB7 /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */;

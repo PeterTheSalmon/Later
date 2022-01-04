@@ -37,6 +37,8 @@ struct FolderSection: View {
 											justDeletedFolder: $justDeletedFolder,
 											filteredLinkItems: filteredLinkItems,
 											showFavouritesOnlyAnimation: showFavouritesOnly, query: $query)) {
+												
+												// This is what is displayed in the sidebar
 												SidebarFolderItemView(name: folder.name,
 																	  activeFolderList: activeFolderList,
 																	  listItems: listItems,
