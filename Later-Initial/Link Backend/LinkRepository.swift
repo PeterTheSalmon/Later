@@ -70,4 +70,15 @@ class LinkRepository: ObservableObject {
 			fatalError("Unable to update link: \(error.localizedDescription)")
 		}
 	}
+
+	func remove(_ item: LinkItem) {
+		guard let itemId = item.id else { return }
+
+		/// Get a reference to the path to the document in firebase and remove it
+		store.collection(path).document(itemId).delete { error in
+			if let error = error {
+				print("Unable to remove link: \(error.localizedDescription)")
+			}
+		}
+	}
 }

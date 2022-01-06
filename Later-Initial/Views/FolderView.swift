@@ -20,8 +20,6 @@ struct FolderView: View {
 	@Binding var selectedFolder: FolderItem?
 	@Binding var justDeletedFolder: Bool
 
-	var showFavouritesOnlyAnimation: Bool
-
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 
@@ -79,7 +77,7 @@ struct FolderView: View {
 					selectedFolder = parentFolder
 				}
 				.animation(.linear(duration: 0.1),
-				           value: showFavouritesOnlyAnimation)
+				           value: showFavouritesOnly)
 
 				.navigationTitle("Later")
 				.toolbar {

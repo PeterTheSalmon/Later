@@ -36,4 +36,8 @@ class LinkViewModel: ObservableObject, Identifiable {
 		linkRepository.update(item)
 	}
 	
+	func remove() {
+		linkRepository.remove(link)
+	}
+	
 }

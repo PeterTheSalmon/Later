@@ -34,7 +34,6 @@ struct FolderSection: View {
 					parentFolder: folder.folder,
 					selectedFolder: $selectedFolder,
 					justDeletedFolder: $justDeletedFolder,
-					showFavouritesOnlyAnimation: showFavouritesOnly,
 					query: $query
 				)) {
 					// This is what is displayed in the sidebar

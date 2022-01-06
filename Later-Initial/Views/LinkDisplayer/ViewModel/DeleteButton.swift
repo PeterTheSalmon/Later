@@ -10,31 +10,29 @@ import SwiftUI
 struct DeleteButton: View {
 
 	var hoveringReference: Bool
-	var item: LinkItem
+	var linkViewModel: LinkViewModel
 	var itemIndex: Int?
 	@State var alertPresented = false
 
 	// If true, link items are deleted in one click
 	@AppStorage("instantDeleteLink") var instantDeleteLink = false
 	
-	func deleteItem() {
-//		if itemIndex != nil {
-//			listItems.ItemList.remove(at: itemIndex!)
-//		}
-	}
 
 	var body: some View {
 		Button {
-			if instantDeleteLink { deleteItem() } else { alertPresented = true }
+			if instantDeleteLink { linkViewModel.remove() } else { alertPresented = true }
 		} label: {
 			Image(systemName: "trash")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 18, height: 18)
 		}
-		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: item))
-		.alert("Delete Item?", isPresented: $alertPresented) {
-			Button("Delete", role: .destructive) { deleteItem() }
+		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: linkViewModel.link))
+		.alert(isPresented: $alertPresented) {
+			let confirm = Alert.Button.destructive(Text("Confirm")) { linkViewModel.remove() }
+			let cancel = Alert.Button.cancel()
+			
+			return Alert(title: Text("Delete link?"), message: Text("This cannot be undone"), primaryButton: confirm, secondaryButton: cancel)
 		}
 	}
 }

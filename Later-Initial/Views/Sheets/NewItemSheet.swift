@@ -36,10 +36,6 @@ struct NewItemSheet: View {
 		linkListViewModel.add(link)
 		notesCreated += 1
 		dismiss()
-		print(selectedFolder as Any)
-		print(selectedFolder!.id)
-		print(link.id)
-		print(link.parentFolderId)
 	}
 
 	private func addFavouriteLink() {

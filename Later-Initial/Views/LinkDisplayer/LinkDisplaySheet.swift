@@ -44,7 +44,7 @@ struct LinkDisplaySheet: View {
 						.help("Copy")
 
 					DeleteButton(hoveringReference: isHoveringRectangle,
-					             item: linkViewModel.link)
+					             linkViewModel: linkViewModel)
 						.help("Delete")
 
 					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel)
