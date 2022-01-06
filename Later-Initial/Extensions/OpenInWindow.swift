@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension View {
-	
 	@discardableResult
 	func openInWindow(title: String, sender: Any?) -> NSWindow {
 		let controller = NSHostingController(rootView: self)
