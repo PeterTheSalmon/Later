@@ -34,5 +34,9 @@ class FolderViewModel: ObservableObject, Identifiable {
 	func update(item: FolderItem) {
 		folderRepository.update(item)
 	}
+	
+	func remove() {
+		folderRepository.remove(folder)
+	}
 
 }

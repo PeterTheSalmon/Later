@@ -18,7 +18,9 @@ struct FolderView: View {
 	@Binding var showFavouritesOnly: Bool
 	@Binding var parentFolder: FolderItem
 	@Binding var selectedFolder: FolderItem?
+
 	@Binding var justDeletedFolder: Bool
+	@State private var deleteTimeHasPassed = false
 
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
@@ -31,7 +33,6 @@ struct FolderView: View {
 		} else {
 			if !justDeletedFolder { /// this is the normal, almost always used folderView
 				VStack {
-
 					/// Base filtering for the FolderView - by folder only
 					let filteredByFolder = linkListViewModel.linkViewModels.filter { linkViewModel in
 						linkViewModel.link.parentFolderId == parentFolder.id
@@ -46,7 +47,6 @@ struct FolderView: View {
 						EmptyFolderView(folder: selectedFolder)
 
 					} else {
-
 						let numberFavourites = filteredByFavourite.count
 
 						/// Favourites Toggle and SortStylesPicker
@@ -104,7 +104,7 @@ struct FolderView: View {
 					             linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(folderViewModel: FolderListViewModel())
+					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 				}
 				.frame(minWidth: 400, minHeight: 300)
 
@@ -138,23 +138,18 @@ struct FolderView: View {
 						             linkListViewModel: linkListViewModel)
 					}
 					.sheet(isPresented: $isShowingNewFolderSheet) {
-						NewFolderSheet(folderViewModel: FolderListViewModel())
+						NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 					}
 			}
 		}
 	}
-
-	// TODO: make removeItems part of the Link and Folder View Models
-//	func removeItems(at offsets: IndexSet) {
-//		listItems.ItemList.remove(atOffsets: offsets)
-//	}
 
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FolderView_Previews: PreviewProvider {
 	static var previews: some View {
 		Text("Blank")
 		// TODO: Fix preview

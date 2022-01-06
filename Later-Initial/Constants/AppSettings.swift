@@ -3,6 +3,9 @@ import SwiftUI
 
 /// Contains the settings used throughout the app. They are gathered here for convenience.
 struct AppSettings {
+		
+	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
+	
 	// If true, folders are deleted in one click
 	@AppStorage("instantDeleteFolder") var instantDeleteFolder = false
 

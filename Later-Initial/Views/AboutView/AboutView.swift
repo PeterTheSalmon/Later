@@ -50,7 +50,7 @@ struct AboutView: View {
 										 linkListViewModel: linkListViewModel)
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {
-				NewFolderSheet(folderViewModel: FolderListViewModel())
+				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 			}
 			.toolbar {
 				ToolbarItem(placement: .navigation) {

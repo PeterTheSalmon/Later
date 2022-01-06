@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
 	@Binding var newUserValue: Bool
+	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
 	var body: some View {
 		VStack {
 			Text("Welcome to Later")
@@ -16,7 +17,7 @@ struct WelcomeScreen: View {
 				.fontWeight(.semibold)
 			Text("\(AppInfo.version)")
 				.font(.title3)
-			HStack { /// elements
+			HStack { /// Elements
 				VStack {
 					WelcomeScreenElement(title: "Save Links",
 					                     description: Text("Easily record and access links for later use"),
@@ -49,6 +50,7 @@ struct WelcomeScreen: View {
 			.frame(alignment: .leading)
 			Button {
 				newUserValue = false
+				folderListIsEmpty = true
 			} label: {
 				Text("Get Started")
 					.font(.title2)

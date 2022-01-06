@@ -18,7 +18,8 @@ struct SidebarFolderItemView: View {
 	@State private var isHoveringTrash = false
 
 	@Binding var justDeletedFolder: Bool
-	@Binding var item: FolderItem
+	@Binding var folderViewModel: FolderViewModel
+	@ObservedObject var folderListViewModel: FolderListViewModel
 	@Binding var selectedFolder: FolderItem?
 
 	@State private var deleteAlertPresented = false // this is for deleting
@@ -46,51 +47,45 @@ struct SidebarFolderItemView: View {
 	var itemIndex = 0
 
 	func deleteFolder() {
-//		if (itemIndex != nil && item.name != "Uncategorized") ||
-//			(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
-//		{
-//			if selectedFolder == activeFolderList.folderList[itemIndex!] {
-//				justDeletedFolder = true
-//			}
-//
-//			listItems.ItemList.removeAll(where: { $0.parentFolder == item })
-//			activeFolderList.folderList.remove(at: itemIndex!)
-//		}
+		folderViewModel.remove()
+		if selectedFolder == folderViewModel.folder {
+			justDeletedFolder =  true
+		}
 	}
 
 	var body: some View {
 		HStack {
-			Image(systemName: item.iconName ?? "folder")
-				.foregroundColor(item.colour ?? nil)
+			Image(systemName: folderViewModel.folder.iconName ?? "folder")
+				.foregroundColor(folderViewModel.folder.colour ?? nil)
 
 			Text(name)
 
 			Spacer()
 
-			// trash icon to delete items, on the condition that the folder isn't the default uncategorized one
-
+			/// The AppSettings folderID value is assigned to the uncategorized folder when the folderList is initialized.
+			/// We can ensure that it is never deleted by disabling these features if the folder id matches that value
 			Image(systemName: "pencil")
 				.opacity(isHoveringTrash ? 100 : 0)
 				.onTapGesture {
 					editPopoverPresented = true
 				}
 
-//			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
+			if folderListViewModel.folderViewModels.count > 1 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
 						if instantDeleteFolder { deleteFolder() } else { deleteAlertPresented = true }
 					}
-			//}
+			}
 		} // *HStack
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour
-		.onAppear { if item.colour != nil { folderColour = item.colour! } }
+		.onAppear { if folderViewModel.folder.colour != nil { folderColour = folderViewModel.folder.colour! } }
 
 		/// find which symbol is associated with the folder already
 		.onAppear {
 			var initialIndex = 0 // start the count at zero, representing the folder
 			for possibleSymbol in symbolNames {
-				if possibleSymbol == item.iconName {
+				if possibleSymbol == folderViewModel.folder.iconName {
 					symbolName = initialIndex
 					/// if the symbol matches the value in the folder,
 					/// let symbolName take the value of the index of that icon
@@ -110,7 +105,7 @@ struct SidebarFolderItemView: View {
 						} else {
 							folderColour = .black
 						}
-						item.colour = nil
+						folderViewModel.folder.colour = nil
 					} label: {
 						Image(systemName: "gobackward")
 					}
@@ -128,11 +123,11 @@ struct SidebarFolderItemView: View {
 		} // popover
 
 		.onChange(of: folderColour) { _ in
-			item.colour = folderColour
+			folderViewModel.folder.colour = folderColour
 		}
-		
-		.onChange(of: symbolName) { _ in 
-			item.iconName = symbolNames[symbolName]
+
+		.onChange(of: symbolName) { _ in
+			folderViewModel.folder.iconName = symbolNames[symbolName]
 		}
 
 		/// hover check to see if buttons should have opacity or not
@@ -141,11 +136,11 @@ struct SidebarFolderItemView: View {
 		}
 
 		/// alert before deleting items - if one-click deletions are on from preferences this won't show
-		.alert("Delete \"\(item.name)\"?\n All items in the folder will be deleted.", isPresented: $deleteAlertPresented) {
-			Button("Delete", role: .destructive) {
-				deleteFolder()
-			}
-			.keyboardShortcut(.defaultAction)
+		.alert(isPresented: $deleteAlertPresented) {
+			let confirm = Alert.Button.destructive(Text("Confirm")) { deleteFolder() }
+			let cancel = Alert.Button.cancel(Text("Cancel")) {}
+
+			return Alert(title: Text("Delete \"\(folderViewModel.folder.name)\"?"), message: Text("All links in the folder will be deleted"), primaryButton: confirm, secondaryButton: cancel)
 		}
 	}
 }

@@ -11,6 +11,8 @@ struct PrimaryView: View {
 	@ObservedObject var linkListViewModel = LinkListViewModel()
 	@ObservedObject var folderListViewModel = FolderListViewModel()
 
+	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
+	
 	@Binding var isShowingNewItemSheet: Bool
 	@State private var showFavouritesOnly = false
 	@Binding var isShowingNewFolderSheet: Bool
@@ -77,13 +79,18 @@ struct PrimaryView: View {
 											 linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(folderViewModel: FolderListViewModel())
+					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 				}
 		}
 
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}
+		
+		.sheet(isPresented: $folderListIsEmpty) {
+			NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: false)
+		}
+		
 		.onAppear {
 			timesOpened += 1
 			print(timesOpened)

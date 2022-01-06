@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct NewFolderSheet: View {
 	@Environment(\.dismiss) var dismiss
 
@@ -34,23 +33,22 @@ struct NewFolderSheet: View {
 	@State var newFolderColour = Color.primary
 	@State private var folderColour = Color.primary
 	@State private var finalFolderColour: Color?
+	var allowExitCommand: Bool
 
-	
 	private func addFolder() {
 		let folder = FolderItem(name: name,
-								colour: finalFolderColour,
-								iconName: symbolNames[symbolName])
+		                        colour: finalFolderColour,
+		                        iconName: symbolNames[symbolName])
 		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
 	}
 
-
 	var body: some View {
 		VStack {
 			Label("Add New Folder", systemImage: "folder.badge.plus")
 				.font(.title)
-			
+
 			// Colour Picker
 			HStack {
 				ColorPicker("Folder Colour", selection: $folderColour, supportsOpacity: false)
@@ -87,7 +85,6 @@ struct NewFolderSheet: View {
 			}
 			.pickerStyle(.segmented)
 
-
 			HStack {
 				Button { // save normally
 					addFolder()
@@ -101,12 +98,16 @@ struct NewFolderSheet: View {
 		}
 		.padding()
 		.frame(width: 350)
-		.onExitCommand { dismiss() }
+		.onExitCommand {
+			if allowExitCommand {
+				dismiss()
+			}
+		}
 	}
 }
 
 struct NewFolderSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		NewFolderSheet(folderViewModel: FolderListViewModel())
+		NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 	}
 }

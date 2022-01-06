@@ -20,7 +20,6 @@ class FolderRepository: ObservableObject {
 
 	@Published var folders: [FolderItem] = []
 
-	// 2
 	init() {
 		get()
 	}
@@ -57,6 +56,16 @@ class FolderRepository: ObservableObject {
 			try store.collection(path).document(itemID).setData(from: item)
 		} catch {
 			fatalError("Unable to update folder: \(error.localizedDescription).")
+		}
+	}
+	
+	func remove(_ item: FolderItem) {
+		guard let folderId = item.id else { return }
+		
+		store.collection(path).document(folderId).delete { error in
+			if let error = error {
+				print("Unable to remove folder: \(error.localizedDescription)")
+			}
 		}
 	}
 }

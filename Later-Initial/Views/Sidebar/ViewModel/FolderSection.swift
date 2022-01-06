@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+// MARK: STATUS: Works
+// Deleting of any folder is allowed as long as there is always one default folder
+
 struct FolderSection: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@ObservedObject var folderListViewModel: FolderListViewModel
@@ -39,8 +42,8 @@ struct FolderSection: View {
 					// This is what is displayed in the sidebar
 					SidebarFolderItemView(name: folder.folder.name,
 					                      justDeletedFolder: $justDeletedFolder,
-																item: folder.folder,
-					                      selectedFolder: $selectedFolder)
+																folderViewModel: folder,
+																folderListViewModel: folderListViewModel, selectedFolder: $selectedFolder)
 				}
 			 }
 		}
