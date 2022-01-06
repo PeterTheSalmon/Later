@@ -5,6 +5,8 @@
 //  Created by Peter Salmon on 2021-11-14.
 //
 
+// MARK: STATUS: Works
+
 import SwiftUI
 
 struct CopyButton: View {
@@ -49,6 +51,6 @@ struct CopyButton: View {
 struct CopyButton_Previews: PreviewProvider {
 	static var previews: some View {
 		CopyButton(hoveringReference: true,
-				   item: LinkItems.exampleItem, justCopied: .constant(false))
+							 item: LinkItem(title: "Test", url: "google.ca", parentFolderId: "blahblahblah"), justCopied: .constant(false))
 	}
 }

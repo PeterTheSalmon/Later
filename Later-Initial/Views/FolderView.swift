@@ -8,12 +8,11 @@
 import Foundation
 import SwiftUI
 
-/// Displays the list of links in a respective folder. This code is an absolute disaster.
-///
-/// TODO: When changing any value in this view (for example: item name, sorting method, etc.) favicon displaying breaks until the view is reloaded
+// Displays the list of links in a respective folder. This code is an absolute disaster.
 struct FolderView: View {
-	@ObservedObject var listItems: LinkItems
-	@ObservedObject var activeFolderList: FolderClass
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@ObservedObject var folderListViewModel: FolderListViewModel
+
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
@@ -21,7 +20,6 @@ struct FolderView: View {
 	@Binding var selectedFolder: FolderItem?
 	@Binding var justDeletedFolder: Bool
 
-	var filteredLinkItems: [LinkItem]
 	var showFavouritesOnlyAnimation: Bool
 
 	@Environment(\.isSearching) var isSearching
@@ -30,23 +28,30 @@ struct FolderView: View {
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
-			           listItems: listItems,
 			           isShowingNewItemSheet: $isShowingSheet,
-			           activeFolderList: activeFolderList,
 			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
 		} else {
 			if !justDeletedFolder { /// this is the normal, almost always used folderView
 				VStack {
-					let filteredAgain = filteredLinkItems.filter { toFilterItem in
-						toFilterItem.parentFolder.id == parentFolder.id
+
+					/// Base filtering for the FolderView - by folder only
+					let filteredByFolder = linkListViewModel.linkViewModels.filter { linkViewModel in
+						linkViewModel.link.parentFolderId == parentFolder.id
 					}
 
-					if filteredAgain.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
+					/// Filtering by favourites as well
+					let filteredByFavourite = filteredByFolder.filter { linkViewModel in
+						linkViewModel.link.isFavourite
+					}
+
+					if filteredByFolder.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
 						EmptyFolderView(folder: selectedFolder)
 
 					} else {
-						let numberFavourites = listItems.ItemList.filter { $0.parentFolder == parentFolder && $0.isFavourite }.count
 
+						let numberFavourites = filteredByFavourite.count
+
+						/// Favourites Toggle and SortStylesPicker
 						HStack {
 							if numberFavourites > 0 {
 								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
@@ -56,20 +61,20 @@ struct FolderView: View {
 							}
 							Spacer().frame(width: 40)
 
-							SortStylePicker(listItems: listItems)
+							// SortStylePicker(listItems: listItems)
+							Text("sort style picker goes here")
 						}
 						.padding(.top, 7)
 
 						List {
-							ForEach(filteredAgain) { item in
-								LinkDisplaySheet(item: item,
-								                 listItems: listItems)
+							ForEach(showFavouritesOnly ? filteredByFavourite : filteredByFolder) { linkViewModel in
+								LinkDisplaySheet(linkViewModel: linkViewModel)
 							}
-							.onDelete(perform: removeItems)
+							// TODO: .onDelete()
 						}
 					}
 				}
-
+				// sets the selected folder to the current parent folder
 				.onAppear {
 					selectedFolder = parentFolder
 				}
@@ -96,10 +101,12 @@ struct FolderView: View {
 					}
 				}
 				.sheet(isPresented: $isShowingSheet) {
-					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: selectedFolder ?? activeFolderList.folderList[0])
+					NewItemSheet(folderListViewModel: folderListViewModel,
+					             selectedFolder: $selectedFolder,
+					             linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(activeFolderList: activeFolderList)
+					NewFolderSheet(folderViewModel: FolderListViewModel())
 				}
 				.frame(minWidth: 400, minHeight: 300)
 
@@ -128,18 +135,21 @@ struct FolderView: View {
 						}
 					}
 					.sheet(isPresented: $isShowingSheet) {
-						NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+						NewItemSheet(folderListViewModel: folderListViewModel,
+						             selectedFolder: $selectedFolder,
+						             linkListViewModel: linkListViewModel)
 					}
 					.sheet(isPresented: $isShowingNewFolderSheet) {
-						NewFolderSheet(activeFolderList: activeFolderList)
+						NewFolderSheet(folderViewModel: FolderListViewModel())
 					}
 			}
 		}
 	}
 
-	func removeItems(at offsets: IndexSet) {
-		listItems.ItemList.remove(atOffsets: offsets)
-	}
+	// TODO: make removeItems part of the Link and Folder View Models
+//	func removeItems(at offsets: IndexSet) {
+//		listItems.ItemList.remove(atOffsets: offsets)
+//	}
 
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
@@ -148,6 +158,7 @@ struct FolderView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		PrimaryView(listItems: LinkItems(), activeFolderList: FolderClass(), isShowingNewItemSheet: .constant(false), isShowingNewFolderSheet: .constant(false))
+		Text("Blank")
+		// TODO: Fix preview
 	}
 }

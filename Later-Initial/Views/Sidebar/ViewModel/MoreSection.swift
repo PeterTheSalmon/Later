@@ -9,22 +9,25 @@ import Foundation
 import SwiftUI
 
 struct MoreSection: View {
+	@ObservedObject var folderListViewModel: FolderListViewModel
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@Binding var selectedFolder: FolderItem?
+	
 	@Binding var timesOpened: Int
-	var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
-	var listItems: LinkItems
 	@Binding var query: String
 	@Binding var justDeletedFolder: Bool
 
 	var body: some View {
 		Section(header: Text("More")) {
 			NavigationLink(destination: AboutView(
+				folderListViewModel: folderListViewModel,
+				linkListViewModel: linkListViewModel,
+				selectedFolder: $selectedFolder,
 				timesOpened: $timesOpened,
-				activeFolderList: activeFolderList,
 				isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				isShowingSheet: $isShowingSheet,
-				listItems: listItems,
 				query: $query,
 				justDeletedFolder: $justDeletedFolder
 			)) {

@@ -8,42 +8,48 @@
 import SwiftUI
 
 struct PrimaryView: View {
-	@StateObject var listItems = LinkItems()
-	@StateObject var activeFolderList = FolderClass()
+	@ObservedObject var linkListViewModel = LinkListViewModel()
+	@ObservedObject var folderListViewModel = FolderListViewModel()
+
 	@Binding var isShowingNewItemSheet: Bool
 	@State private var showFavouritesOnly = false
 	@Binding var isShowingNewFolderSheet: Bool
 	@State var justDeletedFolder = false
+
+	// selectedFolder is changed in FolderView.swift
 	@State var selectedFolder: FolderItem?
 	@AppStorage("timesOpened") var timesOpened = 0
+
+	// Query for searching
 	@State var query: String = ""
 	@Environment(\.isSearching) var isSearching
 	@AppStorage("introSeen") var newUser = true
 	@Environment(\.dismiss) var dismiss
 
-	var filteredLinkItems: [LinkItem] {
-		listItems.ItemList.filter { item in
-			!showFavouritesOnly || item.isFavourite
-		}
-	}
+	// TODO: item filtering for favourites
+	// Here is the old implementation
+	//	var filteredLinkItems: [LinkItem] {
+	//		listItems.ItemList.filter { item in
+	//			!showFavouritesOnly || item.isFavourite
+	//		}
+	//	}
 
 	var body: some View {
 		NavigationView {
-			Sidebar(listItems: listItems,
-			        activeFolderList: activeFolderList,
-			        isShowingSheet: $isShowingNewItemSheet,
-			        isShowingNewFolderSheet: $isShowingNewFolderSheet,
-			        showFavouritesOnly: $showFavouritesOnly,
-			        timesOpened: $timesOpened,
-			        justDeletedFolder: $justDeletedFolder,
-			        selectedFolder: $selectedFolder,
-			        filteredLinkItems: filteredLinkItems,
-			        query: $query)
+			Sidebar(
+				linkListViewModel: linkListViewModel,
+				folderListViewModel: folderListViewModel,
+				isShowingSheet: $isShowingNewItemSheet,
+				isShowingNewFolderSheet: $isShowingNewFolderSheet,
+				showFavouritesOnly: $showFavouritesOnly,
+				timesOpened: $timesOpened,
+				justDeletedFolder: $justDeletedFolder,
+				selectedFolder: $selectedFolder,
+				query: $query
+			)
 
 			NoFolderSelectedView(query: $query,
-			                     listItems: listItems,
 			                     isShowingSheet: $isShowingNewItemSheet,
-			                     activeFolderList: activeFolderList,
 			                     isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.navigationTitle("Later")
 				.toolbar {
@@ -66,10 +72,12 @@ struct PrimaryView: View {
 				}
 
 				.sheet(isPresented: $isShowingNewItemSheet) {
-					NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+					NewItemSheet(folderListViewModel: folderListViewModel,
+											 selectedFolder: $selectedFolder,
+											 linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(activeFolderList: activeFolderList)
+					NewFolderSheet(folderViewModel: FolderListViewModel())
 				}
 		}
 

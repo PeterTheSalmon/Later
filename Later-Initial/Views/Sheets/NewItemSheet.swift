@@ -7,35 +7,51 @@
 import SwiftUI
 
 struct NewItemSheet: View {
-	@ObservedObject var listItems: LinkItems
-	@ObservedObject var activeFolderList: FolderClass
+	@ObservedObject var folderListViewModel: FolderListViewModel
+
+	// To dismiss sheet
 	@Environment(\.dismiss) var dismiss
 
+	// Values for new link item
 	@State private var title = ""
 	@State private var urlString = ""
 	@State private var isFavourite = false
-	@State var parentFolder: FolderItem
 
+	// FIXME: Rebuild selected folder variable
+	@Binding var selectedFolder: FolderItem?
+
+	// Statistics to update
 	@AppStorage("notesCreated") var notesCreated = 0
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
-	
-	private func submitNote() {
-		let item = LinkItem(title: title,
-							url: checkURLconventions(urlString: urlString),
-							parentFolder: parentFolder)
-		listItems.ItemList.append(item)
+
+	// ObservedObject for the LinkViewModel
+	@ObservedObject var linkListViewModel: LinkListViewModel
+
+	private func addLink() {
+		let link = LinkItem(title: title,
+		                    url: CheckURLConventions(urlString: urlString),
+		                    isFavourite: false,
+												parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
+
+		linkListViewModel.add(link)
 		notesCreated += 1
-		SortList(selectedStyle: selectedStyle, listItems: listItems)
 		dismiss()
+		print(selectedFolder as Any)
+		print(selectedFolder!.id)
+		print(link.id)
+		print(link.parentFolderId)
 	}
-	private func submitFaveNote() {
-		let item = LinkItem(title: title,
-							url: checkURLconventions(urlString: urlString),
-							parentFolder: parentFolder)
-		listItems.ItemList.append(item)
+
+	private func addFavouriteLink() {
+		let link = LinkItem(title: title,
+		                    url: urlString,
+		                    isFavourite: true,
+												parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
+
+		linkListViewModel.add(link)
 		notesCreated += 1
-		SortList(selectedStyle: selectedStyle, listItems: listItems)
 		dismiss()
+		print(selectedFolder as Any)
 	}
 
 	var body: some View {
@@ -51,13 +67,13 @@ struct NewItemSheet: View {
 				TextField("URL", text: $urlString, prompt: Text("URL"))
 					.font(.title3)
 					.onSubmit {
-						submitNote()
+						addLink()
 					}
 
-				Picker("Folder", selection: $parentFolder) {
-					ForEach(activeFolderList.folderList, id: \.self) { folder in
-						Text(folder.name)
-					}
+				Picker("Folder", selection: $selectedFolder) {
+//					ForEach(activeFolderList.folderList, id: \.self) { folder in
+//						Text(folder.name)
+//					}
 				}
 				.font(.title3)
 			}
@@ -66,9 +82,11 @@ struct NewItemSheet: View {
 			.padding(.trailing)
 			.padding(.bottom)
 
+			// MARK: Save buttons
+
 			HStack {
 				Button { // save normally
-					submitNote()
+					addLink()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}
@@ -76,7 +94,7 @@ struct NewItemSheet: View {
 				.keyboardShortcut(.defaultAction)
 
 				Button { // save as fave
-					submitFaveNote()
+					addFavouriteLink()
 				} label: {
 					Label("Save as Favourite", systemImage: "star")
 				}
@@ -85,11 +103,17 @@ struct NewItemSheet: View {
 		}
 		.frame(width: 400, height: 220)
 		.onExitCommand { dismiss() }
+		.onAppear {
+			if selectedFolder == nil {
+				selectedFolder = folderListViewModel.folderViewModels[0].folder
+			}
+		}
 	}
 }
 
 struct NewItemSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		NewItemSheet(listItems: LinkItems(), activeFolderList: FolderClass(), parentFolder: FolderItem(name: "Preview"))
+		// TODO: Fix this
+		Text("fix")
 	}
 }

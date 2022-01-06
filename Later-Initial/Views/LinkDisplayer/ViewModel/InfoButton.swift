@@ -5,6 +5,8 @@
 //  Created by Peter Salmon on 2021-11-08.
 //
 
+// MARK: STATUS: Works
+
 import SwiftUI
 
 struct InfoButton: View {
@@ -43,8 +45,6 @@ struct InfoButton: View {
 
 struct InfoButton_Previews: PreviewProvider {
 	static var previews: some View {
-		DeleteButton(listItems: LinkItems(),
-					 hoveringReference: true,
-		             item: LinkItems.exampleItem)
+		Text("fix")
 	}
 }

@@ -28,19 +28,23 @@ struct NewFolderSheet: View {
 	]
 
 	@State private var name = ""
-	@ObservedObject var activeFolderList: FolderClass
+	@ObservedObject var folderViewModel: FolderListViewModel
 	@State var isPressed = false
 	@AppStorage("folderCreated") var foldersCreated = 0
 	@State var newFolderColour = Color.primary
 	@State private var folderColour = Color.primary
 	@State private var finalFolderColour: Color?
 
-	/// Add the folder to the list of all folders, and add 1 to the foldersCreated stat
-	private func createFolder() {
-		activeFolderList.folderList.append(FolderItem(name: name, colour: finalFolderColour, iconName: symbolNames[symbolName]))
+	
+	private func addFolder() {
+		let folder = FolderItem(name: name,
+								colour: finalFolderColour,
+								iconName: symbolNames[symbolName])
+		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
 	}
+
 
 	var body: some View {
 		VStack {
@@ -71,7 +75,7 @@ struct NewFolderSheet: View {
 				TextField("", text: $name, prompt: Text("Name"))
 					.font(.title3)
 					.onSubmit {
-						createFolder()
+						addFolder()
 					}
 			}
 			.textFieldStyle(.roundedBorder)
@@ -86,7 +90,7 @@ struct NewFolderSheet: View {
 
 			HStack {
 				Button { // save normally
-					createFolder()
+					addFolder()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}
@@ -103,6 +107,6 @@ struct NewFolderSheet: View {
 
 struct NewFolderSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		NewFolderSheet(activeFolderList: FolderClass())
+		NewFolderSheet(folderViewModel: FolderListViewModel())
 	}
 }

@@ -10,11 +10,14 @@
 import SwiftUI
 
 struct AboutView: View {
+	
+	@ObservedObject var folderListViewModel: FolderListViewModel
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@Binding var selectedFolder: FolderItem?
+	
 	@Binding var timesOpened: Int
-	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
-	@ObservedObject var listItems: LinkItems
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 	@Binding var justDeletedFolder: Bool
@@ -22,9 +25,7 @@ struct AboutView: View {
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
-			           listItems: listItems,
 			           isShowingNewItemSheet: $isShowingSheet,
-			           activeFolderList: activeFolderList,
 			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
 		} else {
 			VStack(alignment: .leading) {
@@ -43,11 +44,13 @@ struct AboutView: View {
 			.onDisappear {
 				justDeletedFolder = false
 			}
-			.sheet(isPresented: $isShowingNewFolderSheet) {
-				NewFolderSheet(activeFolderList: activeFolderList)
-			}
 			.sheet(isPresented: $isShowingSheet) {
-				NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+				NewItemSheet(folderListViewModel: folderListViewModel,
+										 selectedFolder: $selectedFolder,
+										 linkListViewModel: linkListViewModel)
+			}
+			.sheet(isPresented: $isShowingNewFolderSheet) {
+				NewFolderSheet(folderViewModel: FolderListViewModel())
 			}
 			.toolbar {
 				ToolbarItem(placement: .navigation) {
@@ -77,6 +80,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
 	static var previews: some View {
-		AboutView(timesOpened: .constant(4), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false), isShowingSheet: .constant(false), listItems: LinkItems(), query: .constant("goo"), justDeletedFolder: .constant(false))
+		Text("fix")
 	}
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DeleteButton: View {
-	@ObservedObject var listItems: LinkItems
 
 	var hoveringReference: Bool
 	var item: LinkItem
@@ -19,9 +18,9 @@ struct DeleteButton: View {
 	@AppStorage("instantDeleteLink") var instantDeleteLink = false
 	
 	func deleteItem() {
-		if itemIndex != nil {
-			listItems.ItemList.remove(at: itemIndex!)
-		}
+//		if itemIndex != nil {
+//			listItems.ItemList.remove(at: itemIndex!)
+//		}
 	}
 
 	var body: some View {
@@ -42,8 +41,6 @@ struct DeleteButton: View {
 
 struct DeleteButton_Previews: PreviewProvider {
 	static var previews: some View {
-		DeleteButton(listItems: LinkItems(),
-					 hoveringReference: true,
-		             item: LinkItems.exampleItem)
+		Text("Fix")
 	}
 }

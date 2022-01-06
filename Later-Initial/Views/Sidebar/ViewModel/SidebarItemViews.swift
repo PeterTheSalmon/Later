@@ -16,8 +16,6 @@ struct SidebarFolderItemView: View {
 
 	@Binding var name: String
 	@State private var isHoveringTrash = false
-	@ObservedObject var activeFolderList: FolderClass
-	@ObservedObject var listItems: LinkItems
 
 	@Binding var justDeletedFolder: Bool
 	@Binding var item: FolderItem
@@ -42,21 +40,22 @@ struct SidebarFolderItemView: View {
 		"wrench.and.screwdriver",
 	]
 
-	var itemIndex: Int? {
-		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
-	}
+//	var itemIndex: Int? {
+//		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
+//	}
+	var itemIndex = 0
 
 	func deleteFolder() {
-		if (itemIndex != nil && item.name != "Uncategorized") ||
-			(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
-		{
-			if selectedFolder == activeFolderList.folderList[itemIndex!] {
-				justDeletedFolder = true
-			}
-
-			listItems.ItemList.removeAll(where: { $0.parentFolder == item })
-			activeFolderList.folderList.remove(at: itemIndex!)
-		}
+//		if (itemIndex != nil && item.name != "Uncategorized") ||
+//			(itemIndex != nil && activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2)
+//		{
+//			if selectedFolder == activeFolderList.folderList[itemIndex!] {
+//				justDeletedFolder = true
+//			}
+//
+//			listItems.ItemList.removeAll(where: { $0.parentFolder == item })
+//			activeFolderList.folderList.remove(at: itemIndex!)
+//		}
 	}
 
 	var body: some View {
@@ -76,13 +75,13 @@ struct SidebarFolderItemView: View {
 					editPopoverPresented = true
 				}
 
-			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
+//			if item.name != "Uncategorized" || activeFolderList.folderList.filter { $0.name == "Uncategorized" }.count >= 2 {
 				Image(systemName: "trash")
 					.opacity(isHoveringTrash ? 100 : 0)
 					.onTapGesture {
 						if instantDeleteFolder { deleteFolder() } else { deleteAlertPresented = true }
 					}
-			}
+			//}
 		} // *HStack
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour
 		.onAppear { if item.colour != nil { folderColour = item.colour! } }
