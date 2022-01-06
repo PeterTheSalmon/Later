@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-func extractDomain(urlString: String) -> String {
+func ExtractDomain(urlString: String) -> String {
 	let url = URL(string: urlString)
 
 	if let domain = url?.host {

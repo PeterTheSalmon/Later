@@ -9,21 +9,20 @@ import SwiftUI
 
 struct SearchView: View {
 	@Binding var query: String
-	@ObservedObject var listItems: LinkItems
 	@Environment(\.openURL) var openURL
 	@State var isHoveringRectangle = false
 	@Binding var isShowingNewItemSheet: Bool
-	@ObservedObject var activeFolderList: FolderClass
 	@Binding var isShowingNewFolderSheet: Bool
 	@State var showFavouritesOnly = false
 
 	var body: some View {
-		let filtered = listItems.ItemList.filter { toFilter in
-			toFilter.title.uppercased().contains(query.uppercased()) || toFilter.url.uppercased().contains(query.uppercased())
-		}
-		let faveFiltered = filtered.filter { toFilter in
-			toFilter.isFavourite
-		}
+		// FIXME: Logic for the SearchView
+//		let filtered = listItems.ItemList.filter { toFilter in
+//			toFilter.title.uppercased().contains(query.uppercased()) || toFilter.url.uppercased().contains(query.uppercased())
+//		}
+//		let faveFiltered = filtered.filter { toFilter in
+//			toFilter.isFavourite
+//		}
 
 		VStack {
 			HStack {
@@ -31,24 +30,24 @@ struct SearchView: View {
 
 				Spacer().frame(width: 40)
 
-				SortStylePicker(listItems: listItems)
+				SortStylePicker(linkViewModel: LinkListViewModel())
 			}
 			.padding(.top, 7)
 
 			List {
-				ForEach(showFavouritesOnly ? faveFiltered : filtered) { item in
-					withAnimation(.linear) {
-						LinkDisplaySheet(item: item, listItems: listItems)
-					}
-				}
+//				ForEach(showFavouritesOnly ? faveFiltered : filtered) { item in
+//					withAnimation(.linear) {
+//						LinkDisplaySheet(item: item, listItems: listItems)
+//					}
+//				}
 			}
 		}
 		.animation(.linear, value: showFavouritesOnly)
 		.sheet(isPresented: $isShowingNewItemSheet) {
-			NewItemSheet(listItems: listItems, activeFolderList: activeFolderList, parentFolder: activeFolderList.folderList[0])
+			// FIXME: New Item Sheet goes here
 		}
 		.sheet(isPresented: $isShowingNewFolderSheet) {
-			NewFolderSheet(activeFolderList: activeFolderList)
+			// FIXME: New Folder Sheet goes here
 		}
 		.toolbar {
 			ToolbarItem(placement: .navigation) {
@@ -77,6 +76,7 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
 	static var previews: some View {
-		SearchView(query: .constant("reddit"), listItems: LinkItems(), isShowingNewItemSheet: .constant(false), activeFolderList: FolderClass(), isShowingNewFolderSheet: .constant(false))
+		Text("Fix")
+		// FIXME: Add previews
 	}
 }

@@ -5,11 +5,13 @@
 //  Created by Peter Salmon on 2022-01-02.
 //
 
+// MARK: STATUS: Works
+
 import AppKit
 import SwiftUI
 
 struct ShareButton: View {
-	var item: LinkItem
+	var linkViewModel: LinkViewModel
 	var hoveringReference: Bool
 	@State var sharePresented = false
 
@@ -23,13 +25,13 @@ struct ShareButton: View {
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)
 		}
-		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: item))
+		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: linkViewModel.link))
 		.foregroundColor(hoveringReference ? .gray : Color("Icon"))
 		.animation(.linear(duration: 0.1), value: hoveringReference)
 
 		.popover(isPresented: $sharePresented) {
 			VStack(alignment: .leading, spacing: 2) {				
-				ForEach(NSSharingService.sharingServices(forItems: [item.title, item.url]), id: \.title) { service in
+				ForEach(NSSharingService.sharingServices(forItems: [linkViewModel.link.title, linkViewModel.link.url]), id: \.title) { service in
 					HStack {
 						Image(nsImage: service.image)
 							.resizable()
@@ -37,7 +39,7 @@ struct ShareButton: View {
 							.frame(width: 20, height: 20)
 						Text(service.title)
 					}
-					.onTapGesture { service.perform(withItems: [item.title, item.url]) }
+					.onTapGesture { service.perform(withItems: [linkViewModel.link.title, linkViewModel.link.url]) }
 				}
 			}
 			.font(.title3)
@@ -58,6 +60,6 @@ struct SimpleMenuStyle: MenuStyle {
 
 struct ShareButton_Previews: PreviewProvider {
 	static var previews: some View {
-		ShareButton(item: LinkItems.exampleItem, hoveringReference: true)
+		ShareButton(linkViewModel: LinkViewModel(link: LinkItem(title: "preview", url: "test.com", parentFolderId: "blahblahbladh")), hoveringReference: true)
 	}
 }

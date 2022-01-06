@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct Sidebar: View {
-	@ObservedObject var listItems: LinkItems
-	@ObservedObject var activeFolderList: FolderClass
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@ObservedObject var folderListViewModel: FolderListViewModel
+
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
@@ -17,15 +18,34 @@ struct Sidebar: View {
 	@Binding var justDeletedFolder: Bool
 	@Binding var selectedFolder: FolderItem?
 
-	var filteredLinkItems: [LinkItem]
+	// var filteredLinkItems: [LinkItem]
 	@Binding var query: String
 
 	var body: some View {
 		VStack {
 			List {
-				FolderSection(listItems: listItems, activeFolderList: activeFolderList, isShowingSheet: $isShowingSheet, isShowingNewFolderSheet: $isShowingNewFolderSheet, showFavouritesOnly: $showFavouritesOnly, timesOpened: $timesOpened, justDeletedFolder: $justDeletedFolder, selectedFolder: $selectedFolder, filteredLinkItems: filteredLinkItems, query: $query)
+				FolderSection(
+					linkListViewModel: linkListViewModel,
+					folderListViewModel: folderListViewModel,
+					isShowingNewLinkSheet: $isShowingSheet,
+					isShowingNewFolderSheet: $isShowingNewFolderSheet,
+					showFavouritesOnly: $showFavouritesOnly,
+					timesOpened: $timesOpened,
+					justDeletedFolder: $justDeletedFolder,
+					selectedFolder: $selectedFolder,
+					query: $query
+				)
 
-				MoreSection(timesOpened: $timesOpened, activeFolderList: activeFolderList, isShowingNewFolderSheet: $isShowingNewFolderSheet, isShowingSheet: $isShowingSheet, listItems: listItems, query: $query, justDeletedFolder: $justDeletedFolder)
+				// MARK: This section, containing only the about view, should be unaffected by the Firebase changes
+
+				MoreSection(folderListViewModel: folderListViewModel,
+				            linkListViewModel: linkListViewModel,
+				            selectedFolder: $selectedFolder,
+				            timesOpened: $timesOpened,
+				            isShowingNewFolderSheet: $isShowingNewFolderSheet,
+				            isShowingSheet: $isShowingSheet,
+				            query: $query,
+				            justDeletedFolder: $justDeletedFolder)
 			}
 			.listStyle(.sidebar)
 			.listItemTint(Color.accentColor)
@@ -37,5 +57,3 @@ struct Sidebar: View {
 		}
 	}
 }
-
-

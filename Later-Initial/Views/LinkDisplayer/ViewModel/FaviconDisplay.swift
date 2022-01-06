@@ -5,22 +5,22 @@
 //  Created by Peter Salmon on 2021-11-13.
 //
 
-import SwiftUI
 import CachedAsyncImage
+import SwiftUI
 
 struct FaviconDisplay: View {
 	@State var test: Bool = false
 	@Environment(\.openURL) var openURL
-	var item: LinkItem
+	var linkViewModel: LinkViewModel
 	@State var isHoveringIcon = false
 	@AppStorage("updateFavicon") var updateFavicon = false
 
 	var body: some View {
-		let faviconURL = URL(string: extractDomain(urlString: item.url))
-		// TODO: Fix CachedAsyncImage
+		let faviconURL = URL(string: ExtractDomain(urlString: linkViewModel.link.url))
 		VStack {
-			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
-			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
+			CachedAsyncImage(url: faviconURL, content: faviconStateManager)
+//			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
+//			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
 		}
 		.animation(.linear(duration: 0.1), value: updateFavicon)
 	}
@@ -42,7 +42,7 @@ struct FaviconDisplay: View {
 				}
 				.animation(.linear(duration: 0.15), value: isHoveringIcon)
 				.onTapGesture {
-					openLink(urlString: item.url)
+					openLink(urlString: linkViewModel.link.url)
 				}
 				.onHover { inside in
 					if inside {
@@ -65,7 +65,7 @@ struct FaviconDisplay: View {
 				}
 				.animation(.linear(duration: 0.15), value: isHoveringIcon)
 				.onTapGesture {
-					openLink(urlString: item.url)
+					openLink(urlString: linkViewModel.link.url)
 				}
 				.onHover { inside in
 					if inside {
@@ -91,7 +91,7 @@ struct FaviconDisplay: View {
 					}
 					.animation(.linear(duration: 0.15), value: isHoveringIcon)
 					.onTapGesture {
-						openLink(urlString: item.url)
+						openLink(urlString: linkViewModel.link.url)
 					}
 					.onHover { inside in
 						if inside {
@@ -102,7 +102,7 @@ struct FaviconDisplay: View {
 					}
 			}
 			.onTapGesture {
-				openLink(urlString: item.url)
+				openLink(urlString: linkViewModel.link.url)
 			}
 		@unknown default:
 			Text("Unknown")
@@ -120,6 +120,7 @@ struct FaviconDisplay: View {
 
 struct FaviconDisplay_Previews: PreviewProvider {
 	static var previews: some View {
-		FaviconDisplay(item: LinkItems.exampleItem, isHoveringIcon: true)
+		Text("fix")
+		//FaviconDisplay(linkViewModel: LinkViewModel(link: LinkItem(title: "google testing", url: "google.ca")))
 	}
 }

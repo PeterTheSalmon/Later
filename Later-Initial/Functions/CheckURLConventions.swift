@@ -7,7 +7,7 @@
 
 import Foundation
 
-func checkURLconventions(urlString: String) -> String {
+func CheckURLConventions(urlString: String) -> String {
 	if urlString.starts(with: "https") {
 		return urlString
 

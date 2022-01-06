@@ -13,21 +13,21 @@ struct EditButton: View {
 	@State var isPresented = false
 	@State var newTitle = ""
 	@State var newLink = ""
-	@ObservedObject var listItems: LinkItems
 	@Environment(\.dismiss) var dismiss
 	var itemIndex: Int
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
 
 	func editItem() {
-		isPresented = false
-		let currentIndex = itemIndex
-		let newItem = LinkItem(title: newTitle,
-		                       url: checkURLconventions(urlString: newLink),
-		                       isFavourite: item.isFavourite,
-		                       parentFolder: item.parentFolder)
-		listItems.ItemList.remove(at: itemIndex)
-		listItems.ItemList.insert(newItem, at: currentIndex)
-		SortListWithDelay(selectedStyle: selectedStyle, listItems: listItems)
+		// TODO: Remake editing
+//		isPresented = false
+//		let currentIndex = itemIndex
+//		let newItem = LinkItem(title: newTitle,
+//		                       url: CheckURLConventions(urlString: newLink),
+//		                       isFavourite: item.isFavourite,
+//		                       parentFolder: item.parentFolder)
+//		listItems.ItemList.remove(at: itemIndex)
+//		listItems.ItemList.insert(newItem, at: currentIndex)
+//		SortListWithDelay(selectedStyle: selectedStyle, listItems: listItems)
 	}
 
 	var body: some View {
