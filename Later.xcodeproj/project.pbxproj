@@ -63,7 +63,6 @@
 		55CB5D7F278628A30074A950 /* FolderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CB5D7E278628A30074A950 /* FolderListViewModel.swift */; };
 		55CB5D81278628AD0074A950 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CB5D80278628AD0074A950 /* FolderViewModel.swift */; };
 		55D3B2982786EDE900A9BBD5 /* file.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55D3B2972786EDE900A9BBD5 /* file.txt */; };
-		55D3B29B278777FF00A9BBD5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 55D3B29A278777FF00A9BBD5 /* .gitignore */; };
 		55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E84D9827594D5A0017A735 /* WelcomeScreen.swift */; };
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
@@ -128,7 +127,6 @@
 		55CB5D7E278628A30074A950 /* FolderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewModel.swift; sourceTree = "<group>"; };
 		55CB5D80278628AD0074A950 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		55D3B2972786EDE900A9BBD5 /* file.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = file.txt; sourceTree = "<group>"; };
-		55D3B29A278777FF00A9BBD5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		55E84D9827594D5A0017A735 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				55606D572784310800B56511 /* GoogleService-Info.plist */,
 				55338107272E189C005496A7 /* Assets.xcassets */,
 				55D3B2972786EDE900A9BBD5 /* file.txt */,
-				55D3B29A278777FF00A9BBD5 /* .gitignore */,
 			);
 			path = "Later-Initial";
 			sourceTree = "<group>";
@@ -473,7 +470,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D3B29B278777FF00A9BBD5 /* .gitignore in Resources */,
 				5533810B272E189C005496A7 /* Preview Assets.xcassets in Resources */,
 				55338108272E189C005496A7 /* Assets.xcassets in Resources */,
 				55D3B2982786EDE900A9BBD5 /* file.txt in Resources */,
