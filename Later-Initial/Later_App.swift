@@ -4,9 +4,9 @@
 //
 //  Created by Peter Salmon on 2021-10-30.
 //
-
-import Firebase
 import SwiftUI
+import Firebase
+
 
 @main
 struct Later: App {
