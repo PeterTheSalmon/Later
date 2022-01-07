@@ -36,7 +36,7 @@ struct LinkDisplaySheet: View {
 					InfoButton(hoveringReference: isHoveringRectangle, item: linkViewModel.link)
 						.help("Info")
 
-					EditButton(hoveringReference: isHoveringRectangle, item: linkViewModel.link, itemIndex: 0)
+					EditLinkButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, itemIndex: 0)
 						.help("Edit")
 
 					CopyButton(hoveringReference: isHoveringRectangle,

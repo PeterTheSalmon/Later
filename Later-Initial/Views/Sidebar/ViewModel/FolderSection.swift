@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
-// MARK: STATUS: Works
+// MARK: STATUS: Does not work as intended
+
 // Deleting of any folder is allowed as long as there is always one default folder
 
 struct FolderSection: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@ObservedObject var folderListViewModel: FolderListViewModel
-	
+
 	@Binding var isShowingNewLinkSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
@@ -23,6 +24,8 @@ struct FolderSection: View {
 	@Binding var selectedFolder: FolderItem?
 
 	@Binding var query: String
+	
+	@AppStorage("firstFolderActive") var firstFolderActive = false
 
 	var body: some View {
 		Section(header: Text("Folders")) {
@@ -45,7 +48,7 @@ struct FolderSection: View {
 																folderViewModel: folder,
 																folderListViewModel: folderListViewModel, selectedFolder: $selectedFolder)
 				}
-			 }
+			}
 		}
 		.onAppear {
 			print("SELECTED FOLDER IS \(String(describing: selectedFolder))")

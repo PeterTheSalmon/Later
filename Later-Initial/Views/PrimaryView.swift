@@ -50,9 +50,7 @@ struct PrimaryView: View {
 				query: $query
 			)
 
-			NoFolderSelectedView(query: $query,
-			                     isShowingSheet: $isShowingNewItemSheet,
-			                     isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			ProgressView()
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {

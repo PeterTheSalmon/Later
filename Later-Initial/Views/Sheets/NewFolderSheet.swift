@@ -34,6 +34,8 @@ struct NewFolderSheet: View {
 	@State private var folderColour = Color.primary
 	@State private var finalFolderColour: Color?
 	var allowExitCommand: Bool
+	
+	@AppStorage("firstFolderActive") var firstFolderActive = false
 
 	private func addFolder() {
 		let folder = FolderItem(name: name,
@@ -42,6 +44,7 @@ struct NewFolderSheet: View {
 		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
+		firstFolderActive = true
 	}
 
 	var body: some View {
@@ -86,7 +89,7 @@ struct NewFolderSheet: View {
 			.pickerStyle(.segmented)
 
 			HStack {
-				Button { // save normally
+				Button { // save folder
 					addFolder()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")

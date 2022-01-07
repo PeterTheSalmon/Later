@@ -20,10 +20,20 @@ struct Sidebar: View {
 
 	// var filteredLinkItems: [LinkItem]
 	@Binding var query: String
+	@State var noFolderViewSelected = true
 
 	var body: some View {
 		VStack {
 			List {
+				NavigationLink(destination: NoFolderSelectedView(folderListViewModel: folderListViewModel,
+																												 linkListViewModel: linkListViewModel,
+																												 selectedFolder: $selectedFolder,
+				                                                 query: $query,
+				                                                 isShowingSheet: $isShowingSheet,
+				                                                 isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $noFolderViewSelected) {
+					SidebarExtraItemView(name: "Home", imageName: "house.fill")
+				}
+
 				FolderSection(
 					linkListViewModel: linkListViewModel,
 					folderListViewModel: folderListViewModel,

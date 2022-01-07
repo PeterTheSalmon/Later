@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct EditButton: View {
+struct EditLinkButton: View {
 	var hoveringReference: Bool
-	var item: LinkItem
+	var linkViewModel: LinkViewModel
 	@State var isPresented = false
 	@State var newTitle = ""
 	@State var newLink = ""
@@ -17,17 +17,18 @@ struct EditButton: View {
 	var itemIndex: Int
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
 
-	func editItem() {
-		// TODO: Remake editing
-//		isPresented = false
-//		let currentIndex = itemIndex
-//		let newItem = LinkItem(title: newTitle,
-//		                       url: CheckURLConventions(urlString: newLink),
-//		                       isFavourite: item.isFavourite,
-//		                       parentFolder: item.parentFolder)
-//		listItems.ItemList.remove(at: itemIndex)
-//		listItems.ItemList.insert(newItem, at: currentIndex)
-//		SortListWithDelay(selectedStyle: selectedStyle, listItems: listItems)
+	
+	private func editLink() {
+		isPresented = false
+		var updatedLink = linkViewModel.link
+		updatedLink.title = newTitle
+		updatedLink.url = newLink
+		update(item: updatedLink)
+		// TODO: Add sorting
+	}
+	
+	private func update(item: LinkItem) {
+		linkViewModel.update(item: item)
 	}
 
 	var body: some View {
@@ -39,7 +40,7 @@ struct EditButton: View {
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)
 		}
-		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: item))
+		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: linkViewModel.link))
 		.popover(isPresented: $isPresented, arrowEdge: .trailing) {
 			VStack {
 				Form {
@@ -47,10 +48,10 @@ struct EditButton: View {
 					TextField("URL", text: $newLink)
 				}
 				.textFieldStyle(.roundedBorder)
-				.onSubmit { editItem() }
+				.onSubmit { editLink() }
 				
 				Button {
-					editItem()
+					editLink()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}
@@ -61,8 +62,8 @@ struct EditButton: View {
 			.padding()
 		}
 		.onAppear {
-			newTitle = item.title
-			newLink = item.url
+			newTitle = linkViewModel.link.title
+			newLink = linkViewModel.link.url
 		}
 	}
 }

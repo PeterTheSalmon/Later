@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct NoFolderSelectedView: View {
+	@ObservedObject var folderListViewModel: FolderListViewModel
+	@ObservedObject var linkListViewModel: LinkListViewModel
+
+	@Binding var selectedFolder: FolderItem?
+
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 	@Binding var isShowingSheet: Bool
@@ -18,11 +23,8 @@ struct NoFolderSelectedView: View {
 	func updateProgressValue() {
 		Task {
 			while true {
-				do {
-					try await Task.sleep(nanoseconds: 150_000_000) // 0.15 seconds
-				} catch {
-					print("I see literally no situation in which waiting three seconds would fail. ")
-				}
+				try await Task.sleep(nanoseconds: 150_000_000) // 0.15 seconds
+
 				opacity -= 0.02
 				if opacity <= 0.0 {
 					opacity = 1.0
@@ -49,7 +51,7 @@ struct NoFolderSelectedView: View {
 					.fontWeight(.bold)
 					.padding()
 
-				Text("Select a folder, or presss ⌘-⇧-n create a new one")
+				Text("Select a folder, or presss ⌘ ⇧ n create a new one")
 
 				Spacer()
 
@@ -87,11 +89,43 @@ struct NoFolderSelectedView: View {
 
 				Spacer()
 			}
+			.navigationTitle("Later")
+			.toolbar {
+				ToolbarItem(placement: .navigation) {
+					Button {
+						toggleSidebar()
+					} label: {
+						Image(systemName: "sidebar.left")
+					}
+				}
+
+				ToolbarItem(placement: .navigation) {
+					Button {
+						isShowingSheet = true
+					} label: {
+						Image(systemName: "plus.circle.fill")
+					}
+					.help("New Item")
+				}
+			}
 			.onAppear {
 				updateProgressValue()
 			}
+
+			.sheet(isPresented: $isShowingSheet) {
+				NewItemSheet(folderListViewModel: folderListViewModel,
+				             selectedFolder: $selectedFolder,
+				             linkListViewModel: linkListViewModel)
+			}
+			.sheet(isPresented: $isShowingNewFolderSheet) {
+				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+			}
 			.padding()
 		}
+	}
+
+	private func toggleSidebar() {
+		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
 }
 

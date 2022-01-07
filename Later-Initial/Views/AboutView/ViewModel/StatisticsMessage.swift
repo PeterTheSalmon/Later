@@ -17,7 +17,7 @@ struct StatisticsMessage: View {
 		VStack(alignment: .leading) {
 			Text("**Fun Fact:** you've opened Later \(timesOpened) times.")
 
-			Text("\(notesCreated) notes created | \(foldersCreated) folders created")
+			Text("\(notesCreated) links saved | \(foldersCreated) folders created")
 		}
 		.padding(.horizontal)
 	}

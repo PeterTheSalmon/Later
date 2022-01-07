@@ -2,7 +2,7 @@
 //  NewItemSheet.swift
 //  Later-Initial
 //
-//  Created by Peter Salmon on 2021-11-07. 
+//  Created by Peter Salmon on 2021-11-07.
 //
 import SwiftUI
 
@@ -17,7 +17,6 @@ struct NewItemSheet: View {
 	@State private var urlString = ""
 	@State private var isFavourite = false
 
-	// FIXME: Rebuild selected folder variable
 	@Binding var selectedFolder: FolderItem?
 
 	// Statistics to update
@@ -31,7 +30,7 @@ struct NewItemSheet: View {
 		let link = LinkItem(title: title,
 		                    url: CheckURLConventions(urlString: urlString),
 		                    isFavourite: false,
-												parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
+		                    parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
 
 		linkListViewModel.add(link)
 		notesCreated += 1
@@ -42,12 +41,11 @@ struct NewItemSheet: View {
 		let link = LinkItem(title: title,
 		                    url: urlString,
 		                    isFavourite: true,
-												parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
+		                    parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
 
 		linkListViewModel.add(link)
 		notesCreated += 1
 		dismiss()
-		print(selectedFolder as Any)
 	}
 
 	var body: some View {
@@ -66,10 +64,10 @@ struct NewItemSheet: View {
 						addLink()
 					}
 
-				Picker("Folder", selection: $selectedFolder) {
-//					ForEach(activeFolderList.folderList, id: \.self) { folder in
-//						Text(folder.name)
-//					}
+				Picker("Folder", selection: $folderListViewModel.folderViewModels[0]) {
+					ForEach(folderListViewModel.folderViewModels) { folderViewModel in
+						Text(folderViewModel.folder.name)
+					}
 				}
 				.font(.title3)
 			}
@@ -103,6 +101,7 @@ struct NewItemSheet: View {
 			if selectedFolder == nil {
 				selectedFolder = folderListViewModel.folderViewModels[0].folder
 			}
+			print("selected folder is", selectedFolder as Any)
 		}
 	}
 }

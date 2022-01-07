@@ -3,6 +3,8 @@ import SwiftUI
 
 /// Contains the settings used throughout the app. They are gathered here for convenience.
 struct AppSettings {
+	
+	@AppStorage("firstFolderActive") var firstFolderActive = false
 		
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
 	

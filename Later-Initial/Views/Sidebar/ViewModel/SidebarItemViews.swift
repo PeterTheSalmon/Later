@@ -41,15 +41,10 @@ struct SidebarFolderItemView: View {
 		"wrench.and.screwdriver",
 	]
 
-//	var itemIndex: Int? {
-//		activeFolderList.folderList.firstIndex(where: { $0.id == item.id }) ?? nil
-//	}
-	var itemIndex = 0
-
 	func deleteFolder() {
 		folderViewModel.remove()
 		if selectedFolder == folderViewModel.folder {
-			justDeletedFolder =  true
+			//justDeletedFolder = true
 		}
 	}
 
