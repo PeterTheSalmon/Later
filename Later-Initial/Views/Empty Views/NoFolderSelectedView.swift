@@ -114,8 +114,9 @@ struct NoFolderSelectedView: View {
 
 			.sheet(isPresented: $isShowingSheet) {
 				NewItemSheet(folderListViewModel: folderListViewModel,
+										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
 				             selectedFolder: $selectedFolder,
-				             linkListViewModel: linkListViewModel)
+										 linkListViewModel: linkListViewModel)
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {
 				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)

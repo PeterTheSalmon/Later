@@ -16,8 +16,11 @@ struct NewItemSheet: View {
 	@State private var title = ""
 	@State private var urlString = ""
 	@State private var isFavourite = false
+	
+	@State var parentFolderViewModel: FolderViewModel
 
 	@Binding var selectedFolder: FolderItem?
+	
 
 	// Statistics to update
 	@AppStorage("notesCreated") var notesCreated = 0
@@ -27,11 +30,11 @@ struct NewItemSheet: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	private func addLink() {
+		
 		let link = LinkItem(title: title,
 		                    url: CheckURLConventions(urlString: urlString),
 		                    isFavourite: false,
-		                    parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
-
+												parentFolderId: parentFolderViewModel.folder.id!)
 		linkListViewModel.add(link)
 		notesCreated += 1
 		dismiss()
@@ -41,7 +44,7 @@ struct NewItemSheet: View {
 		let link = LinkItem(title: title,
 		                    url: urlString,
 		                    isFavourite: true,
-		                    parentFolderId: selectedFolder!.id ?? folderListViewModel.folderViewModels[0].folder.id!)
+												parentFolderId: parentFolderViewModel.folder.id!)
 
 		linkListViewModel.add(link)
 		notesCreated += 1
@@ -64,11 +67,24 @@ struct NewItemSheet: View {
 						addLink()
 					}
 
-				Picker("Folder", selection: $folderListViewModel.folderViewModels[0]) {
-					ForEach(folderListViewModel.folderViewModels) { folderViewModel in
+//				Picker("Folder", selection: $folderListViewModel.folderViewModels[0]) {
+//					ForEach(folderListViewModel.folderViewModels) { folderViewModel in
+//						Text(folderViewModel.folder.name)
+//					}
+//				}
+				
+//				Picker("Folder", selection: $selectedFolderViewModel) {
+//					ForEach(folderListViewModel.folderViewModels, id: \.self) { folderViewModel in
+//						Text(folderViewModel.folder.name)
+//					}
+//				}
+				
+				Picker("Folder", selection: $parentFolderViewModel) {
+					ForEach(folderListViewModel.folderViewModels, id: \.self) { folderViewModel in
 						Text(folderViewModel.folder.name)
 					}
 				}
+				
 				.font(.title3)
 			}
 			.textFieldStyle(.roundedBorder)
@@ -97,18 +113,12 @@ struct NewItemSheet: View {
 		}
 		.frame(width: 400, height: 220)
 		.onExitCommand { dismiss() }
-		.onAppear {
-			if selectedFolder == nil {
-				selectedFolder = folderListViewModel.folderViewModels[0].folder
-			}
-			print("selected folder is", selectedFolder as Any)
-		}
+
 	}
 }
 
 struct NewItemSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		// TODO: Fix this
-		Text("fix")
+		NewItemSheet(folderListViewModel: FolderListViewModel(), parentFolderViewModel: FolderViewModel(folder: FolderItem(name: "testing")), selectedFolder: .constant(FolderItem(name: "testing")), linkListViewModel: LinkListViewModel())
 	}
 }

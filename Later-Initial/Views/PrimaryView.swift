@@ -73,6 +73,7 @@ struct PrimaryView: View {
 
 				.sheet(isPresented: $isShowingNewItemSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
+											 parentFolderViewModel: folderListViewModel.folderViewModels[0],
 											 selectedFolder: $selectedFolder,
 											 linkListViewModel: linkListViewModel)
 				}

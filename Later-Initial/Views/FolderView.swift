@@ -100,7 +100,7 @@ struct FolderView: View {
 				}
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
-					             selectedFolder: $selectedFolder,
+											 parentFolderViewModel: folderListViewModel.folderViewModels[0], selectedFolder: $selectedFolder,
 					             linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
@@ -134,6 +134,7 @@ struct FolderView: View {
 					}
 					.sheet(isPresented: $isShowingSheet) {
 						NewItemSheet(folderListViewModel: folderListViewModel,
+												 parentFolderViewModel: folderListViewModel.folderViewModels[0],
 						             selectedFolder: $selectedFolder,
 						             linkListViewModel: linkListViewModel)
 					}

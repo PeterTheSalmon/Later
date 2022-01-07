@@ -10,7 +10,15 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-class FolderListViewModel: ObservableObject {
+class FolderListViewModel: ObservableObject, Hashable {
+	static func == (lhs: FolderListViewModel, rhs: FolderListViewModel) -> Bool {
+		return lhs.folderViewModels == rhs.folderViewModels
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(folderViewModels)
+	}
+	
 	@Published var folderRepository = FolderRepository()
 
 	// Can be subscribed to
