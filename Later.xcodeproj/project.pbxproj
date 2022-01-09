@@ -276,18 +276,18 @@
 			isa = PBXGroup;
 			children = (
 				5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */,
-				5593E624274365D1009C9CE9 /* ViewModel */,
+				5593E624274365D1009C9CE9 /* SubViews */,
 			);
 			path = OpenSourceLicenses;
 			sourceTree = "<group>";
 		};
-		5593E624274365D1009C9CE9 /* ViewModel */ = {
+		5593E624274365D1009C9CE9 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
 				5593E62527436645009C9CE9 /* LicenseModel.swift */,
 				5593E62727436668009C9CE9 /* OpenSourceList.swift */,
 			);
-			path = ViewModel;
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		55C320392739ACAD00F3B118 /* Functions */ = {

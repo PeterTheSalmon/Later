@@ -19,15 +19,45 @@ struct AboutView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
 	@Environment(\.isSearching) var isSearching
-	@Binding var query: String
+	@State var query: String = ""
 	@Binding var justDeletedFolder: Bool
+	@AppStorage("homeViewSelected") var homeViewSelected = true
+
 
 	var body: some View {
 		if isSearching && !query.isEmpty {
-			SearchView(query: $query,
-			           isShowingNewItemSheet: $isShowingSheet,
-								 isShowingNewFolderSheet: $isShowingNewFolderSheet,
-								 linkListViewModel: linkListViewModel)
+			
+			Text("What were you searching for?")
+				.onDisappear {
+					justDeletedFolder = false
+				}
+				.sheet(isPresented: $isShowingSheet) {
+					NewItemSheet(folderListViewModel: folderListViewModel,
+											 parentFolderViewModel: folderListViewModel.folderViewModels[0],
+											 linkListViewModel: linkListViewModel)
+				}
+				.sheet(isPresented: $isShowingNewFolderSheet) {
+					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+				}
+				.toolbar {
+					ToolbarItem(placement: .navigation) {
+						Button {
+							toggleSidebar()
+						} label: {
+							Image(systemName: "sidebar.left")
+						}
+					}
+					ToolbarItem(placement: .navigation) {
+						Button {
+							isShowingSheet = true
+						} label: {
+							Image(systemName: "plus.circle.fill")
+						}
+						.help("New Item")
+					}
+				}
+				.navigationTitle("About")
+			
 		} else {
 			VStack(alignment: .leading) {
 				AboutTitle()
@@ -70,7 +100,7 @@ struct AboutView: View {
 					.help("New Item")
 				}
 			}
-			.navigationTitle("Later")
+			.navigationTitle("About")
 		}
 	}
 

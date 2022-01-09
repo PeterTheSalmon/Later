@@ -18,9 +18,8 @@ struct FaviconDisplay: View {
 	var body: some View {
 		let faviconURL = URL(string: ExtractDomain(urlString: linkViewModel.link.url))
 		VStack {
-			CachedAsyncImage(url: faviconURL, content: faviconStateManager)
-//			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
-//			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
+			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
+			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
 		}
 		.animation(.linear(duration: 0.1), value: updateFavicon)
 	}

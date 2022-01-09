@@ -10,21 +10,24 @@
 import SwiftUI
 
 struct FavouriteButton: View {
-
 	var hoveringReference: Bool
 	var linkViewModel: LinkViewModel
 	var itemIndex: Int?
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@State private var needToChangeFaveStatusOnDisappear = false
+	@AppStorage("updateFavicon") var updateFavicon = false
 
+	
 	private func toggleFavourite() {
 		var updatedLink = linkViewModel.link
 		updatedLink.isFavourite.toggle()
 		update(item: updatedLink)
 	}
-	
+
 	private func update(item: LinkItem) {
 		linkViewModel.update(item: item)
 	}
-	
+
 	var body: some View {
 		HStack {
 			Image(systemName: linkViewModel.link.isFavourite ? "star.fill" : "star")
@@ -35,7 +38,18 @@ struct FavouriteButton: View {
 		}
 		.animation(.linear(duration: 0.1), value: hoveringReference)
 		.onTapGesture {
-			toggleFavourite()
+			withAnimation(.linear) {
+				toggleFavourite()
+				Task {
+					try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+					withAnimation(.linear) {
+						SortList(linkListViewModel: linkListViewModel)
+					}
+					updateFavicon.toggle()
+
+				}
+			}
+			
 		}
 	}
 }

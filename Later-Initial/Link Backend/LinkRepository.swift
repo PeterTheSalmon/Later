@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: This is the repository that talks to the Firestore database
 
-class LinkRepository: ObservableObject {
+final class LinkRepository: ObservableObject {
 	// Firestore path
 	private let path = "links"
 

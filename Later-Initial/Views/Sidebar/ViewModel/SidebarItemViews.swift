@@ -55,8 +55,10 @@ struct SidebarFolderItemView: View {
 	var body: some View {
 		HStack {
 			Image(systemName: folderViewModel.folder.iconName ?? "folder")
+				.resizable()
+				.aspectRatio(contentMode: .fit)
 				.foregroundColor(folderViewModel.folder.colour ?? nil)
-				.frame(width: 14)
+				.frame(width: 14, height: 14)
 
 			Text(name)
 
@@ -64,11 +66,6 @@ struct SidebarFolderItemView: View {
 
 			/// The AppSettings folderID value is assigned to the uncategorized folder when the folderList is initialized.
 			/// We can ensure that it is never deleted by disabling these features if the folder id matches that value
-			Image(systemName: "pencil")
-				.opacity(isHoveringTrash ? 100 : 0)
-				.onTapGesture {
-					editPopoverPresented = true
-				}
 		} // *HStack
 		
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour

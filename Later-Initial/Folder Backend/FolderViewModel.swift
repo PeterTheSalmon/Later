@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-class FolderViewModel: ObservableObject, Identifiable, Hashable {
+final class FolderViewModel: ObservableObject, Identifiable, Hashable {
 	// For equatable
 	static func == (lhs: FolderViewModel, rhs: FolderViewModel) -> Bool {
 		return lhs.folder == rhs.folder && lhs.id == rhs.id

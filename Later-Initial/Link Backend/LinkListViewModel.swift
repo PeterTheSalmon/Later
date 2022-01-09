@@ -13,7 +13,7 @@ import SwiftUI
 
 // MARK: This is the **LIST** ViewModel that handles the local logic
 
-class LinkListViewModel: ObservableObject {
+final class LinkListViewModel: ObservableObject {
 	@Published var linkRepository = LinkRepository()
 
 	// Can be subscribed to

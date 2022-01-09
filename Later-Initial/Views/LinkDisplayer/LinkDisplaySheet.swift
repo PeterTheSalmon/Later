@@ -15,10 +15,7 @@ struct LinkDisplaySheet: View {
 	@State var isHoveringText: Bool = false
 	@State var justCopied: Bool = false
 	@State private var showShareSheet = false
-
-//	var itemIndex: Int? {
-//		listItems.ItemList.firstIndex(where: { $0.id == item.id }) ?? nil
-//	}
+	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	var body: some View {
 		ZStack {
@@ -36,7 +33,7 @@ struct LinkDisplaySheet: View {
 					InfoButton(hoveringReference: isHoveringRectangle, item: linkViewModel.link)
 						.help("Info")
 
-					EditLinkButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, itemIndex: 0)
+					EditLinkButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, itemIndex: 0, linkListViewModel: linkListViewModel)
 						.help("Edit")
 
 					CopyButton(hoveringReference: isHoveringRectangle,
@@ -47,7 +44,7 @@ struct LinkDisplaySheet: View {
 					             linkViewModel: linkViewModel)
 						.help("Delete")
 
-					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel)
+					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
 						.help("Add to Favourites")
 
 					Divider().frame(height: 40)

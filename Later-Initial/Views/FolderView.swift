@@ -12,25 +12,25 @@ import SwiftUI
 struct FolderView: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@ObservedObject var folderListViewModel: FolderListViewModel
-
+	
 	@Binding var isShowingSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
-	@Binding var showFavouritesOnly: Bool
+	@State var showFavouritesOnly = false
 	@Binding var parentFolder: FolderItem
 	@Binding var parentFolderViewModel: FolderViewModel
 	@Binding var selectedFolder: FolderItem?
 	@Binding var selectedFolderViewModel: FolderViewModel?
-
+	
 	@Binding var justDeletedFolder: Bool
 	@State private var deleteTimeHasPassed = false
-
+	
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 	
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
-			           isShowingNewItemSheet: $isShowingSheet,
+								 isShowingNewItemSheet: $isShowingSheet,
 								 isShowingNewFolderSheet: $isShowingNewFolderSheet,
 								 linkListViewModel: linkListViewModel)
 		} else {
@@ -40,50 +40,51 @@ struct FolderView: View {
 					let filteredByFolder = linkListViewModel.linkViewModels.filter { linkViewModel in
 						linkViewModel.link.parentFolderId == parentFolder.id
 					}
-
+					
 					/// Filtering by favourites as well
 					let filteredByFavourite = filteredByFolder.filter { linkViewModel in
 						linkViewModel.link.isFavourite
 					}
-
+					
 					if filteredByFolder.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
 						EmptyFolderView(folder: selectedFolder)
-
+						
 					} else {
 						let numberFavourites = filteredByFavourite.count
-
+						
 						/// Favourites Toggle and SortStylesPicker
 						HStack {
-							if numberFavourites > 0 {
 								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-							} else {
-								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
-									.disabled(true)
-							}
+									.disabled(numberFavourites == 0 ? true : false)
+									.animation(.linear, value: numberFavourites)
+							
 							Spacer().frame(width: 40)
-
+							
 							SortStylePicker(linkListViewModel: linkListViewModel)
 							
 						}
 						.padding(.top, 7)
-
+						
 						List {
 							ForEach(showFavouritesOnly ? filteredByFavourite : filteredByFolder) { linkViewModel in
-								LinkDisplaySheet(linkViewModel: linkViewModel)
+								LinkDisplaySheet(linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
 							}
 							// TODO: .onDelete()
 						}
 					}
 				}
+				.navigationTitle(parentFolderViewModel.folder.name)
+				
 				// sets the selected folder to the current parent folder
 				.onAppear {
 					selectedFolder = parentFolder
 					selectedFolderViewModel = parentFolderViewModel
 					SortList(linkListViewModel: linkListViewModel)
 				}
+				
 				.animation(.linear(duration: 0.1),
-				           value: showFavouritesOnly)
-
+									 value: showFavouritesOnly)
+				
 				.navigationTitle("Later")
 				.toolbar {
 					ToolbarItem(placement: .navigation) {
@@ -93,7 +94,7 @@ struct FolderView: View {
 							Image(systemName: "sidebar.left")
 						}
 					}
-
+					
 					ToolbarItem(placement: .navigation) {
 						Button {
 							isShowingSheet = true
@@ -106,13 +107,13 @@ struct FolderView: View {
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
 											 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
-					             linkListViewModel: linkListViewModel)
+											 linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
 					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 				}
 				.frame(minWidth: 400, minHeight: 300)
-
+				
 			} else if justDeletedFolder { /// for the rare case in which a user deletes a folder that they currently have selected
 				FolderDeletedView()
 					.navigationTitle("Later")
@@ -127,7 +128,7 @@ struct FolderView: View {
 								Image(systemName: "sidebar.left")
 							}
 						}
-
+						
 						ToolbarItem(placement: .navigation) {
 							Button {
 								isShowingSheet = true
@@ -140,7 +141,7 @@ struct FolderView: View {
 					.sheet(isPresented: $isShowingSheet) {
 						NewItemSheet(folderListViewModel: folderListViewModel,
 												 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
-						             linkListViewModel: linkListViewModel)
+												 linkListViewModel: linkListViewModel)
 					}
 					.sheet(isPresented: $isShowingNewFolderSheet) {
 						NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
@@ -148,7 +149,7 @@ struct FolderView: View {
 			}
 		}
 	}
-
+	
 	private func toggleSidebar() {
 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}

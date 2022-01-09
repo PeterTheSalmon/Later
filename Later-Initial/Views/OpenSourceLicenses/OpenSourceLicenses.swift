@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OpenSourceLicenses: View {
-	let openSourceItems: [License] = [.CachedAsyncImage]
+	let openSourceItems: [License] = [.CachedAsyncImage, .FireBase]
 
 	var body: some View {
 		VStack(alignment: .leading) {

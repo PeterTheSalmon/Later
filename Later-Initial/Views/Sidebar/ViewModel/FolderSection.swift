@@ -40,7 +40,6 @@ struct FolderSection: View {
 						folderListViewModel: folderListViewModel,
 						isShowingSheet: $isShowingNewLinkSheet,
 						isShowingNewFolderSheet: $isShowingNewFolderSheet,
-						showFavouritesOnly: $showFavouritesOnly,
 						parentFolder: $folderListViewModel.folderViewModels[0].folder,
 						parentFolderViewModel: $folderListViewModel.folderViewModels[0],
 						selectedFolder: $selectedFolder,
@@ -66,7 +65,6 @@ struct FolderSection: View {
 						folderListViewModel: folderListViewModel,
 						isShowingSheet: $isShowingNewLinkSheet,
 						isShowingNewFolderSheet: $isShowingNewFolderSheet,
-						showFavouritesOnly: $showFavouritesOnly,
 						parentFolder: $folderListViewModel.folderViewModels[1].folder,
 						parentFolderViewModel: $folderListViewModel.folderViewModels[1],
 						selectedFolder: $selectedFolder,
@@ -91,7 +89,6 @@ struct FolderSection: View {
 							folderListViewModel: folderListViewModel,
 							isShowingSheet: $isShowingNewLinkSheet,
 							isShowingNewFolderSheet: $isShowingNewFolderSheet,
-							showFavouritesOnly: $showFavouritesOnly,
 							parentFolder: folder.folder,
 							parentFolderViewModel: folder,
 							selectedFolder: $selectedFolder,
@@ -110,7 +107,7 @@ struct FolderSection: View {
 			}
 		}
 		
-		NavigationLink(destination: FolderManagerView(folderListViewModel: folderListViewModel, linkListViewModel: linkListViewModel, isShowingNewItemSheet: $isShowingNewLinkSheet), isActive: $folderManagerActive) {
+		NavigationLink(destination: FolderManagerView(folderListViewModel: folderListViewModel, linkListViewModel: linkListViewModel, isShowingNewItemSheet: $isShowingNewLinkSheet, query: $query), isActive: $folderManagerActive) {
 			SidebarExtraItemView(name: "Manage Folders", imageName: "gear")
 		}
 		

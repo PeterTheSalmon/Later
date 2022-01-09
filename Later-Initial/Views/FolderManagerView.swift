@@ -8,64 +8,120 @@
 import SwiftUI
 
 struct FolderManagerView: View {
+	// MARK: Passed-in objects
+
 	@ObservedObject var folderListViewModel: FolderListViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@Binding var isShowingNewItemSheet: Bool
 
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
 
+	// MARK: Searching variables
+
+	@Environment(\.isSearching) var isSearching
+	@Binding var query: String
+
 	var body: some View {
-		VStack(alignment: .leading) {
-			Group {
-				Text("Manage folders")
-					.font(.title)
-					.padding(.top)
-
-				Text("Total Folders: \(folderListViewModel.folderViewModels.count)")
-					.font(.title3)
-
-				Button { folderSheetPresented = true } label: { Label("New Folder", systemImage: "folder") }
-					.buttonStyle(.borderless)
-					.padding(.top, -5)
+		if isSearching && !query.isEmpty {
+			let filteredFolders = folderListViewModel.folderViewModels.filter { folderViewModel in
+				folderViewModel.folder.name.uppercased().contains(query.uppercased())
 			}
 
-			Divider()
-			ScrollView {
-				ForEach(folderListViewModel.folderViewModels) { folderViewModel in
-					FolderListedView(folderViewModel: folderViewModel, linkListViewModel: linkListViewModel, folderListViewModel: folderListViewModel)
+
+			VStack {
+				ScrollView {
+					ForEach(filteredFolders) { folderViewModel in
+						FolderListedView(folderViewModel: folderViewModel, linkListViewModel: linkListViewModel, folderListViewModel: folderListViewModel)
+					}
 				}
 			}
-		}
-		.padding(.horizontal)
-		.frame(width: 350)
-		.onDisappear {
-			folderSheetPresented = false
-		}
-		.toolbar {
-			ToolbarItem(placement: .navigation) {
-				Button {
-					toggleSidebar()
-				} label: {
-					Image(systemName: "sidebar.left")
+			.padding()
+			.navigationTitle("Searching Folders...")
+			.frame(width: 350)
+			.onDisappear {
+				folderSheetPresented = false
+			}
+			.toolbar {
+				ToolbarItem(placement: .navigation) {
+					Button {
+						toggleSidebar()
+					} label: {
+						Image(systemName: "sidebar.left")
+					}
+				}
+				
+				ToolbarItem(placement: .navigation) {
+					Button {
+						isShowingNewItemSheet = true
+					} label: {
+						Image(systemName: "plus.circle.fill")
+					}
+					.help("New Item")
 				}
 			}
+			.sheet(isPresented: $folderSheetPresented) {
+				NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: true)
+			}
+			.sheet(isPresented: $isShowingNewItemSheet) {
+				NewItemSheet(folderListViewModel: folderListViewModel,
+										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
+										 linkListViewModel: linkListViewModel)
+			}
+			
+		} else {
+			VStack(alignment: .leading) {
+				Group {
+					Text("Manage folders")
+						.font(.title)
+						.padding(.top)
 
-			ToolbarItem(placement: .navigation) {
-				Button {
-					isShowingNewItemSheet = true
-				} label: {
-					Image(systemName: "plus.circle.fill")
+					Text("Total Folders: \(folderListViewModel.folderViewModels.count)")
+						.font(.title3)
+
+					Button { folderSheetPresented = true } label: { Label("New Folder", systemImage: "folder") }
+						.buttonStyle(.borderless)
+						.padding(.top, -5)
 				}
-				.help("New Item")
+
+				Divider()
+				ScrollView {
+					ForEach(folderListViewModel.folderViewModels) { folderViewModel in
+						FolderListedView(folderViewModel: folderViewModel, linkListViewModel: linkListViewModel, folderListViewModel: folderListViewModel)
+					}
+				}
 			}
-		}
-		.sheet(isPresented: $folderSheetPresented) {
-			NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: true)
-		}
-		.sheet(isPresented: $isShowingNewItemSheet) {
-			NewItemSheet(folderListViewModel: folderListViewModel,
-			             parentFolderViewModel: folderListViewModel.folderViewModels[0],
-			             linkListViewModel: linkListViewModel)
+			.navigationTitle("Manage Folders")
+			.padding(.horizontal)
+			.frame(width: 350)
+			.onDisappear {
+				folderSheetPresented = false
+			}
+			.toolbar {
+				ToolbarItem(placement: .navigation) {
+					Button {
+						toggleSidebar()
+					} label: {
+						Image(systemName: "sidebar.left")
+					}
+				}
+
+				ToolbarItem(placement: .navigation) {
+					Button {
+						isShowingNewItemSheet = true
+					} label: {
+						Image(systemName: "plus.circle.fill")
+					}
+					.help("New Item")
+				}
+			}
+			.sheet(isPresented: $folderSheetPresented) {
+				NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: true)
+			}
+			.sheet(isPresented: $isShowingNewItemSheet) {
+				NewItemSheet(folderListViewModel: folderListViewModel,
+				             parentFolderViewModel: folderListViewModel.folderViewModels[0],
+				             linkListViewModel: linkListViewModel)
+			}
 		}
 	}
 
@@ -105,7 +161,7 @@ struct FolderListedView: View {
 
 	private func editFolder() {
 		var updatedFolder = folderViewModel.folder
-		
+
 		/// As Color.Primary can't be encoded, we can only change the folder colour to not primary
 		if folderColour != Color.primary {
 			updatedFolder.colour = folderColour
@@ -187,7 +243,6 @@ struct FolderListedView: View {
 						Image(systemName: "gobackward")
 					}
 					.buttonStyle(.borderless)
-					
 				}
 
 				Picker("", selection: $symbolName) {
@@ -235,6 +290,6 @@ struct FolderListedView: View {
 
 struct FolderManagerView_Previews: PreviewProvider {
 	static var previews: some View {
-		FolderManagerView(folderListViewModel: FolderListViewModel(), linkListViewModel: LinkListViewModel(), isShowingNewItemSheet: .constant(false))
+		FolderManagerView(folderListViewModel: FolderListViewModel(), linkListViewModel: LinkListViewModel(), isShowingNewItemSheet: .constant(false), query: .constant("test"))
 	}
 }

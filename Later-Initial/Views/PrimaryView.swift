@@ -15,7 +15,7 @@ struct PrimaryView: View {
 	@ObservedObject var folderListViewModel = FolderListViewModel()
 
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
-	
+
 	@Binding var isShowingNewItemSheet: Bool
 	@State private var showFavouritesOnly = false
 	@Binding var isShowingNewFolderSheet: Bool
@@ -24,8 +24,9 @@ struct PrimaryView: View {
 	// selectedFolder/viewModel are changed in FolderView.swift
 	@State var selectedFolder: FolderItem?
 	@State var selectedFolderViewModel: FolderViewModel?
-	
+
 	@AppStorage("timesOpened") var timesOpened = 0
+	@AppStorage("homeViewSelected") var homeViewSelected = true
 
 	// Query for searching
 	@State var query: String = ""
@@ -48,49 +49,51 @@ struct PrimaryView: View {
 				query: $query
 			)
 
-			ProgressView()
-				.navigationTitle("Later")
-				.toolbar {
-					ToolbarItem(placement: .navigation) {
-						Button {
-							toggleSidebar()
-						} label: {
-							Image(systemName: "sidebar.left")
-						}
-					}
-
-					ToolbarItem(placement: .navigation) {
-						Button {
-							isShowingNewItemSheet = true
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-						.help("New Item")
+			VStack {
+				ProgressView()
+				Text("If you are seeing this, something has probably gone wrong.\nTry quitting restarting Later")
+			}
+			.navigationTitle("Later")
+			.toolbar {
+				ToolbarItem(placement: .navigation) {
+					Button {
+						toggleSidebar()
+					} label: {
+						Image(systemName: "sidebar.left")
 					}
 				}
 
-				.sheet(isPresented: $isShowingNewItemSheet) {
-					NewItemSheet(folderListViewModel: folderListViewModel,
-											 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
-											 linkListViewModel: linkListViewModel)
+				ToolbarItem(placement: .navigation) {
+					Button {
+						isShowingNewItemSheet = true
+					} label: {
+						Image(systemName: "plus.circle.fill")
+					}
+					.help("New Item")
 				}
-				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
-				}
+			}
+
+			.sheet(isPresented: $isShowingNewItemSheet) {
+				NewItemSheet(folderListViewModel: folderListViewModel,
+				             parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
+				             linkListViewModel: linkListViewModel)
+			}
+			.sheet(isPresented: $isShowingNewFolderSheet) {
+				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+			}
 		}
 
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}
-		
+
 		.sheet(isPresented: $folderListIsEmpty) {
 			NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: false)
 		}
-		
+
 		.onAppear {
 			timesOpened += 1
-			print(timesOpened)
-			print(Date.now)
+			homeViewSelected = true
 		}
 		.searchable(text: $query, prompt: Text("Search..."))
 	}

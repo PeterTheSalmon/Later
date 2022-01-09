@@ -16,6 +16,8 @@ struct EditLinkButton: View {
 	@Environment(\.dismiss) var dismiss
 	var itemIndex: Int
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@AppStorage("updateFavicon") var updateFavicon = false
 
 	
 	private func editLink() {
@@ -52,6 +54,14 @@ struct EditLinkButton: View {
 				
 				Button {
 					editLink()
+					// Sort List after editing as Firebase messes it up
+					Task {
+						try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+						withAnimation(.linear) {
+							SortList(linkListViewModel: linkListViewModel)
+						}
+					}
+					updateFavicon.toggle()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
 				}

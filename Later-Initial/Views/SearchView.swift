@@ -17,13 +17,15 @@ struct SearchView: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	var body: some View {
-		// FIXME: Logic for the SearchView
-//		let filtered = listItems.ItemList.filter { toFilter in
-//			toFilter.title.uppercased().contains(query.uppercased()) || toFilter.url.uppercased().contains(query.uppercased())
-//		}
-//		let faveFiltered = filtered.filter { toFilter in
-//			toFilter.isFavourite
-//		}
+		/// Filtered is all items in which the title or url contain the search term
+		let filtered = linkListViewModel.linkViewModels.filter { linkViewModel in
+			linkViewModel.link.title.uppercased().contains(query.uppercased()) || linkViewModel.link.url.uppercased().contains(query.uppercased())
+		}
+
+		/// FaveFiltered is only favourite items
+		let faveFiltered = filtered.filter { linkViewModel in
+			linkViewModel.link.isFavourite
+		}
 
 		VStack {
 			HStack {
@@ -34,15 +36,15 @@ struct SearchView: View {
 				SortStylePicker(linkListViewModel: linkListViewModel)
 			}
 			.padding(.top, 7)
-
 			List {
-//				ForEach(showFavouritesOnly ? faveFiltered : filtered) { item in
-//					withAnimation(.linear) {
-//						LinkDisplaySheet(item: item, listItems: listItems)
-//					}
-//				}
+				ForEach(showFavouritesOnly ? faveFiltered : filtered) { linkViewModel in
+					withAnimation(.linear) {
+						LinkDisplaySheet(linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
+					}
+				}
 			}
 		}
+		.navigationTitle("Searching...")
 		.animation(.linear, value: showFavouritesOnly)
 		.sheet(isPresented: $isShowingNewItemSheet) {
 			// FIXME: New Item Sheet goes here

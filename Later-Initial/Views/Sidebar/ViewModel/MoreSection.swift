@@ -28,7 +28,6 @@ struct MoreSection: View {
 				timesOpened: $timesOpened,
 				isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				isShowingSheet: $isShowingSheet,
-				query: $query,
 				justDeletedFolder: $justDeletedFolder
 			)) {
 				SidebarExtraItemView(name: "About", imageName: "info.circle")

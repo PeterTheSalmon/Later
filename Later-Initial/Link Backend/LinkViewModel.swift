@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import Foundation
 
 // Observable to emit changes. Identifiable so we can iterate over an array of links
-class LinkViewModel: ObservableObject, Identifiable {
+final class LinkViewModel: ObservableObject, Identifiable {
 	private let linkRepository = LinkRepository()
 
 	@Published var link: LinkItem

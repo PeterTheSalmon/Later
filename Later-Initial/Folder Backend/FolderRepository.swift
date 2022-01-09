@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import Foundation
 
 // Observable to emit changes
-class FolderRepository: ObservableObject {
+final class FolderRepository: ObservableObject {
 	// Firestore path
 	private let path = "folders"
 

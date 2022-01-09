@@ -23,7 +23,7 @@ struct HomeView: View {
 	func updateProgressValue() {
 		Task {
 			while true {
-				try await Task.sleep(nanoseconds: 150_000_000) // 0.15 seconds
+				try await Task.sleep(nanoseconds: 550_000_000) // 0.15 seconds
 
 				opacity -= 0.02
 				if opacity <= 0.0 {
@@ -39,10 +39,41 @@ struct HomeView: View {
 
 	var body: some View {
 		if isSearching && !query.isEmpty {
-			SearchView(query: $query,
-			           isShowingNewItemSheet: $isShowingSheet,
-								 isShowingNewFolderSheet: $isShowingNewFolderSheet,
-								 linkListViewModel: linkListViewModel)
+			Text("Ah yes, searching a static view.\nMay I recommend selecting a folder?")
+				.multilineTextAlignment(.center)
+				.navigationTitle("Later")
+				.toolbar {
+					ToolbarItem(placement: .navigation) {
+						Button {
+							toggleSidebar()
+						} label: {
+							Image(systemName: "sidebar.left")
+						}
+					}
+					
+					ToolbarItem(placement: .navigation) {
+						Button {
+							isShowingSheet = true
+						} label: {
+							Image(systemName: "plus.circle.fill")
+						}
+						.help("New Item")
+					}
+				}
+				.onAppear {
+					updateProgressValue()
+				}
+			
+				.sheet(isPresented: $isShowingSheet) {
+					NewItemSheet(folderListViewModel: folderListViewModel,
+											 parentFolderViewModel: folderListViewModel.folderViewModels[0],
+											 linkListViewModel: linkListViewModel)
+				}
+				.sheet(isPresented: $isShowingNewFolderSheet) {
+					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+				}
+				.padding()
+			
 		} else {
 			VStack {
 				Spacer()
