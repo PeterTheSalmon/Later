@@ -48,5 +48,5 @@ struct AppSettings {
 	// When changing the link displayer view in any way, favicons stop displaying
 	@AppStorage("updateFavicon") var updateFavicon = false
 	
-	@AppStorage("selectedSortStyle") private var selectedStyle = 0
+	@AppStorage("selectedSortStyle") var selectedStyle = 0
 }

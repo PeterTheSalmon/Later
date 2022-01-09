@@ -26,7 +26,8 @@ struct AboutView: View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
 			           isShowingNewItemSheet: $isShowingSheet,
-			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
+								 isShowingNewFolderSheet: $isShowingNewFolderSheet,
+								 linkListViewModel: linkListViewModel)
 		} else {
 			VStack(alignment: .leading) {
 				AboutTitle()

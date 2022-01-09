@@ -26,12 +26,13 @@ struct FolderView: View {
 
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
-
+	
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
 			           isShowingNewItemSheet: $isShowingSheet,
-			           isShowingNewFolderSheet: $isShowingNewFolderSheet)
+								 isShowingNewFolderSheet: $isShowingNewFolderSheet,
+								 linkListViewModel: linkListViewModel)
 		} else {
 			if !justDeletedFolder { /// this is the normal, almost always used folderView
 				VStack {
@@ -61,8 +62,8 @@ struct FolderView: View {
 							}
 							Spacer().frame(width: 40)
 
-							// SortStylePicker(listItems: listItems)
-							Text("sort style picker goes here")
+							SortStylePicker(linkListViewModel: linkListViewModel)
+							
 						}
 						.padding(.top, 7)
 
@@ -78,6 +79,7 @@ struct FolderView: View {
 				.onAppear {
 					selectedFolder = parentFolder
 					selectedFolderViewModel = parentFolderViewModel
+					SortList(linkListViewModel: linkListViewModel)
 				}
 				.animation(.linear(duration: 0.1),
 				           value: showFavouritesOnly)

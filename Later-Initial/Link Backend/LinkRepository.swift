@@ -43,7 +43,7 @@ class LinkRepository: ObservableObject {
 				self.links = querySnapshot?.documents.compactMap { document in
 
 					// Using FirebaseFirestoreSwift and Codable we are able to directly map the documents to linkitems
-					try? document.data(as: LinkItem.self)
+					try? document.data	(as: LinkItem.self)
 				} ?? []
 			}
 	}

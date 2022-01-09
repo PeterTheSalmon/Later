@@ -13,7 +13,7 @@ import SwiftUI
 struct SortStylePicker: View {
 	var sortStyles = ["Name", "Date", "Url"]
 	@AppStorage("selectedSortStyle") private var selectedStyle = 0
-	@ObservedObject var linkViewModel: LinkListViewModel
+	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	var body: some View {
 		VStack {
@@ -26,14 +26,14 @@ struct SortStylePicker: View {
 		.frame(maxWidth: 130)
 		.pickerStyle(.menu)
 		.onChange(of: selectedStyle) { _ in
-			// TODO: SortList is declared in a separate file. It need to be updated to support Firebase
-			// SortList(selectedStyle: selectedStyle, listItems: listItems)
+			print(selectedStyle)
+			SortList(linkListViewModel: linkListViewModel)
 		}
 	}
 }
 
 struct Previews_SortStylePicker_Previews: PreviewProvider {
 	static var previews: some View {
-		SortStylePicker(linkViewModel: LinkListViewModel())
+		SortStylePicker(linkListViewModel: LinkListViewModel())
 	}
 }

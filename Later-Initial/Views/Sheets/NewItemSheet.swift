@@ -34,6 +34,7 @@ struct NewItemSheet: View {
 												parentFolderId: parentFolderViewModel.folder.id!)
 		linkListViewModel.add(link)
 		notesCreated += 1
+		SortList(linkListViewModel: linkListViewModel)
 		dismiss()
 	}
 
@@ -45,6 +46,7 @@ struct NewItemSheet: View {
 
 		linkListViewModel.add(link)
 		notesCreated += 1
+		SortList(linkListViewModel: linkListViewModel)
 		dismiss()
 	}
 

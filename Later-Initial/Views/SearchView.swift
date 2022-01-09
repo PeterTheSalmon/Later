@@ -14,6 +14,7 @@ struct SearchView: View {
 	@Binding var isShowingNewItemSheet: Bool
 	@Binding var isShowingNewFolderSheet: Bool
 	@State var showFavouritesOnly = false
+	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	var body: some View {
 		// FIXME: Logic for the SearchView
@@ -30,7 +31,7 @@ struct SearchView: View {
 
 				Spacer().frame(width: 40)
 
-				SortStylePicker(linkViewModel: LinkListViewModel())
+				SortStylePicker(linkListViewModel: linkListViewModel)
 			}
 			.padding(.top, 7)
 
