@@ -113,39 +113,6 @@ struct FolderView: View {
 					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 				}
 				.frame(minWidth: 400, minHeight: 300)
-				
-			} else if justDeletedFolder { /// for the rare case in which a user deletes a folder that they currently have selected
-				FolderDeletedView()
-					.navigationTitle("Later")
-					.onDisappear {
-						justDeletedFolder = false
-					}
-					.toolbar {
-						ToolbarItem(placement: .navigation) {
-							Button {
-								toggleSidebar()
-							} label: {
-								Image(systemName: "sidebar.left")
-							}
-						}
-						
-						ToolbarItem(placement: .navigation) {
-							Button {
-								isShowingSheet = true
-							} label: {
-								Image(systemName: "plus.circle.fill")
-							}
-							.help("New Item")
-						}
-					}
-					.sheet(isPresented: $isShowingSheet) {
-						NewItemSheet(folderListViewModel: folderListViewModel,
-												 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
-												 linkListViewModel: linkListViewModel)
-					}
-					.sheet(isPresented: $isShowingNewFolderSheet) {
-						NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
-					}
 			}
 		}
 	}

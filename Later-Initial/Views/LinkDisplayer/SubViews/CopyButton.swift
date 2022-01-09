@@ -21,7 +21,8 @@ struct CopyButton: View {
 		pasteboard.setString(item.url, forType: .string)
 	}
 
-
+	
+	/// Wait a few seconds and then hide the copy message
 	func noLongerCopied() {
 		Task {
 			do {

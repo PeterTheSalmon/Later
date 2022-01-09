@@ -17,7 +17,6 @@ struct FavouriteButton: View {
 	@State private var needToChangeFaveStatusOnDisappear = false
 	@AppStorage("updateFavicon") var updateFavicon = false
 
-	
 	private func toggleFavourite() {
 		var updatedLink = linkViewModel.link
 		updatedLink.isFavourite.toggle()
@@ -46,10 +45,8 @@ struct FavouriteButton: View {
 						SortList(linkListViewModel: linkListViewModel)
 					}
 					updateFavicon.toggle()
-
 				}
 			}
-			
 		}
 	}
 }
