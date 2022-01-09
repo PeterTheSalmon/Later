@@ -2,7 +2,22 @@ import Foundation
 import SwiftUI
 
 /// Contains the settings used throughout the app. They are gathered here for convenience.
+
 struct AppSettings {
+
+	/// If true, the NewFolderSheet in the FolderManagerView will be show
+	///
+	/// Use in conjunction with
+	/// ```
+	/// @AppStorage("folderManagerActive")
+	/// ```
+	/// in order to activate FolderManagerView and then show the sheet
+	@AppStorage("folderSheetPresented") var folderSheetPresented = false
+	
+	@AppStorage("homeViewSelected") var homeViewSelected = true
+	
+	// If true, the FolderManagerView.swift is active
+	@AppStorage("folderManagerActive") var folderManagerActive = false
 	
 	@AppStorage("firstFolderActive") var firstFolderActive = false
 		

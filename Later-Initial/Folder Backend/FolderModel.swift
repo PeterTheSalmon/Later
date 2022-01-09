@@ -11,12 +11,11 @@ import FirebaseFirestoreSwift
 /// SwiftUI is used for the colour of the folder
 import SwiftUI
 
-/// Basis for all folders
-///
-/// TODO: add custom colours and icons
+/// Folder Model
 struct FolderItem: Codable, Hashable, Identifiable {	
 	@DocumentID var id: String?
 	var name: String
 	var colour: Color?
 	var iconName: String?
+	var dateCreated = Date.now
 }

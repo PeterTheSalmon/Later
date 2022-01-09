@@ -46,7 +46,7 @@ struct AboutView: View {
 			}
 			.sheet(isPresented: $isShowingSheet) {
 				NewItemSheet(folderListViewModel: folderListViewModel,
-										 parentFolderViewModel: folderListViewModel.folderViewModels[0], selectedFolder: $selectedFolder,
+										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
 										 linkListViewModel: linkListViewModel)
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {

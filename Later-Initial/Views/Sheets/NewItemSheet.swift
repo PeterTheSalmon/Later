@@ -19,9 +19,6 @@ struct NewItemSheet: View {
 	
 	@State var parentFolderViewModel: FolderViewModel
 
-	@Binding var selectedFolder: FolderItem?
-	
-
 	// Statistics to update
 	@AppStorage("notesCreated") var notesCreated = 0
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
@@ -66,18 +63,6 @@ struct NewItemSheet: View {
 					.onSubmit {
 						addLink()
 					}
-
-//				Picker("Folder", selection: $folderListViewModel.folderViewModels[0]) {
-//					ForEach(folderListViewModel.folderViewModels) { folderViewModel in
-//						Text(folderViewModel.folder.name)
-//					}
-//				}
-				
-//				Picker("Folder", selection: $selectedFolderViewModel) {
-//					ForEach(folderListViewModel.folderViewModels, id: \.self) { folderViewModel in
-//						Text(folderViewModel.folder.name)
-//					}
-//				}
 				
 				Picker("Folder", selection: $parentFolderViewModel) {
 					ForEach(folderListViewModel.folderViewModels, id: \.self) { folderViewModel in
@@ -119,6 +104,6 @@ struct NewItemSheet: View {
 
 struct NewItemSheet_Previews: PreviewProvider {
 	static var previews: some View {
-		NewItemSheet(folderListViewModel: FolderListViewModel(), parentFolderViewModel: FolderViewModel(folder: FolderItem(name: "testing")), selectedFolder: .constant(FolderItem(name: "testing")), linkListViewModel: LinkListViewModel())
+		NewItemSheet(folderListViewModel: FolderListViewModel(), parentFolderViewModel: FolderViewModel(folder: FolderItem(name: "testing")), linkListViewModel: LinkListViewModel())
 	}
 }

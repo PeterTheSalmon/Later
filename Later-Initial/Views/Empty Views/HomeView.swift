@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoFolderSelectedView: View {
+struct HomeView: View {
 	@ObservedObject var folderListViewModel: FolderListViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
 
@@ -115,7 +115,6 @@ struct NoFolderSelectedView: View {
 			.sheet(isPresented: $isShowingSheet) {
 				NewItemSheet(folderListViewModel: folderListViewModel,
 										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-				             selectedFolder: $selectedFolder,
 										 linkListViewModel: linkListViewModel)
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {

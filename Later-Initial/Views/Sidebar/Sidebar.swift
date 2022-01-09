@@ -17,20 +17,21 @@ struct Sidebar: View {
 	@Binding var timesOpened: Int
 	@Binding var justDeletedFolder: Bool
 	@Binding var selectedFolder: FolderItem?
+	@Binding var selectedFolderViewModel: FolderViewModel?
 
 	// var filteredLinkItems: [LinkItem]
 	@Binding var query: String
-	@State var noFolderViewSelected = true
+	@AppStorage("homeViewSelected") var homeViewSelected = true
 
 	var body: some View {
 		VStack {
 			List {
-				NavigationLink(destination: NoFolderSelectedView(folderListViewModel: folderListViewModel,
+				NavigationLink(destination: HomeView(folderListViewModel: folderListViewModel,
 																												 linkListViewModel: linkListViewModel,
 																												 selectedFolder: $selectedFolder,
 				                                                 query: $query,
 				                                                 isShowingSheet: $isShowingSheet,
-				                                                 isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $noFolderViewSelected) {
+				                                                 isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $homeViewSelected) {
 					SidebarExtraItemView(name: "Home", imageName: "house.fill")
 				}
 
@@ -43,6 +44,7 @@ struct Sidebar: View {
 					timesOpened: $timesOpened,
 					justDeletedFolder: $justDeletedFolder,
 					selectedFolder: $selectedFolder,
+					selectedFolderViewModel: $selectedFolderViewModel,
 					query: $query
 				)
 
@@ -63,7 +65,7 @@ struct Sidebar: View {
 			Divider()
 				.padding(0)
 
-			NewFolderButton(isShowingNewFolderSheet: $isShowingNewFolderSheet)
+			NewFolderButton()
 		}
 	}
 }

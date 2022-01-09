@@ -17,7 +17,9 @@ struct FolderView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var showFavouritesOnly: Bool
 	@Binding var parentFolder: FolderItem
+	@Binding var parentFolderViewModel: FolderViewModel
 	@Binding var selectedFolder: FolderItem?
+	@Binding var selectedFolderViewModel: FolderViewModel?
 
 	@Binding var justDeletedFolder: Bool
 	@State private var deleteTimeHasPassed = false
@@ -75,6 +77,7 @@ struct FolderView: View {
 				// sets the selected folder to the current parent folder
 				.onAppear {
 					selectedFolder = parentFolder
+					selectedFolderViewModel = parentFolderViewModel
 				}
 				.animation(.linear(duration: 0.1),
 				           value: showFavouritesOnly)
@@ -100,7 +103,7 @@ struct FolderView: View {
 				}
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
-											 parentFolderViewModel: folderListViewModel.folderViewModels[0], selectedFolder: $selectedFolder,
+											 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
 					             linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
@@ -134,8 +137,7 @@ struct FolderView: View {
 					}
 					.sheet(isPresented: $isShowingSheet) {
 						NewItemSheet(folderListViewModel: folderListViewModel,
-												 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-						             selectedFolder: $selectedFolder,
+												 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
 						             linkListViewModel: linkListViewModel)
 					}
 					.sheet(isPresented: $isShowingNewFolderSheet) {

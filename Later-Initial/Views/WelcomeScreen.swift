@@ -10,6 +10,7 @@ import SwiftUI
 struct WelcomeScreen: View {
 	@Binding var newUserValue: Bool
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
+	@ObservedObject var folderListViewModel = FolderListViewModel()
 	var body: some View {
 		VStack {
 			Text("Welcome to Later")
@@ -50,7 +51,9 @@ struct WelcomeScreen: View {
 			.frame(alignment: .leading)
 			Button {
 				newUserValue = false
-				folderListIsEmpty = true
+				if folderListViewModel.folderViewModels.count == 0 {
+					folderListIsEmpty = true
+				}
 			} label: {
 				Text("Get Started")
 					.font(.title2)

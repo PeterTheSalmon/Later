@@ -22,36 +22,97 @@ struct FolderSection: View {
 	@Binding var timesOpened: Int
 	@Binding var justDeletedFolder: Bool
 	@Binding var selectedFolder: FolderItem?
+	@Binding var selectedFolderViewModel: FolderViewModel?
 
 	@Binding var query: String
-	
+
 	@AppStorage("firstFolderActive") var firstFolderActive = false
+	@AppStorage("folderManagerActive") var folderManagerActive = false
 
 	var body: some View {
 		Section(header: Text("Folders")) {
-			ForEach($folderListViewModel.folderViewModels) { folder in
-			NavigationLink(
-				destination: FolderView(
-					linkListViewModel: linkListViewModel,
-					folderListViewModel: folderListViewModel,
-					isShowingSheet: $isShowingNewLinkSheet,
-					isShowingNewFolderSheet: $isShowingNewFolderSheet,
-					showFavouritesOnly: $showFavouritesOnly,
-					parentFolder: folder.folder,
-					selectedFolder: $selectedFolder,
-					justDeletedFolder: $justDeletedFolder,
-					query: $query
-				)) {
+			
+			/// If there is one item, display it
+			if folderListViewModel.folderViewModels.indices.contains(0) {
+				NavigationLink(
+					destination: FolderView(
+						linkListViewModel: linkListViewModel,
+						folderListViewModel: folderListViewModel,
+						isShowingSheet: $isShowingNewLinkSheet,
+						isShowingNewFolderSheet: $isShowingNewFolderSheet,
+						showFavouritesOnly: $showFavouritesOnly,
+						parentFolder: $folderListViewModel.folderViewModels[0].folder,
+						parentFolderViewModel: $folderListViewModel.folderViewModels[0],
+						selectedFolder: $selectedFolder,
+						selectedFolderViewModel: $selectedFolderViewModel,
+						justDeletedFolder: $justDeletedFolder,
+						query: $query
+					), isActive: $firstFolderActive
+				) {
 					// This is what is displayed in the sidebar
-					SidebarFolderItemView(name: folder.folder.name,
+					SidebarFolderItemView(name: $folderListViewModel.folderViewModels[0].folder.name,
 					                      justDeletedFolder: $justDeletedFolder,
-																folderViewModel: folder,
-																folderListViewModel: folderListViewModel, selectedFolder: $selectedFolder)
+					                      folderViewModel: $folderListViewModel.folderViewModels[0],
+					                      folderListViewModel: folderListViewModel,
+					                      selectedFolder: $selectedFolder)
+				}
+			}
+
+			/// If only indexes 1 and 2 exist, just display 1 (above) and 2 (here)
+			if folderListViewModel.folderViewModels.indices.contains(1) && !folderListViewModel.folderRepository.folders.indices.contains(2) {
+				NavigationLink(
+					destination: FolderView(
+						linkListViewModel: linkListViewModel,
+						folderListViewModel: folderListViewModel,
+						isShowingSheet: $isShowingNewLinkSheet,
+						isShowingNewFolderSheet: $isShowingNewFolderSheet,
+						showFavouritesOnly: $showFavouritesOnly,
+						parentFolder: $folderListViewModel.folderViewModels[1].folder,
+						parentFolderViewModel: $folderListViewModel.folderViewModels[1],
+						selectedFolder: $selectedFolder,
+						selectedFolderViewModel: $selectedFolderViewModel,
+						justDeletedFolder: $justDeletedFolder,
+						query: $query
+					)) {
+						// This is what is displayed in the sidebar
+						SidebarFolderItemView(name: $folderListViewModel.folderViewModels[1].folder.name,
+						                      justDeletedFolder: $justDeletedFolder,
+						                      folderViewModel: $folderListViewModel.folderViewModels[1],
+						                      folderListViewModel: folderListViewModel,
+						                      selectedFolder: $selectedFolder)
+					}
+
+				/// If at least 3 items exist, display index 0 up top and then the rest in a for-each
+			} else if folderListViewModel.folderViewModels.indices.contains(1) && folderListViewModel.folderRepository.folders.indices.contains(2) {
+				ForEach($folderListViewModel.folderViewModels[1 ... folderListViewModel.folderViewModels.count - 1]) { folder in
+					NavigationLink(
+						destination: FolderView(
+							linkListViewModel: linkListViewModel,
+							folderListViewModel: folderListViewModel,
+							isShowingSheet: $isShowingNewLinkSheet,
+							isShowingNewFolderSheet: $isShowingNewFolderSheet,
+							showFavouritesOnly: $showFavouritesOnly,
+							parentFolder: folder.folder,
+							parentFolderViewModel: folder,
+							selectedFolder: $selectedFolder,
+							selectedFolderViewModel: $selectedFolderViewModel,
+							justDeletedFolder: $justDeletedFolder,
+							query: $query
+						)) {
+							// This is what is displayed in the sidebar
+							SidebarFolderItemView(name: folder.folder.name,
+							                      justDeletedFolder: $justDeletedFolder,
+							                      folderViewModel: folder,
+							                      folderListViewModel: folderListViewModel,
+							                      selectedFolder: $selectedFolder)
+						}
 				}
 			}
 		}
-		.onAppear {
-			print("SELECTED FOLDER IS \(String(describing: selectedFolder))")
+		
+		NavigationLink(destination: FolderManagerView(folderListViewModel: folderListViewModel, linkListViewModel: linkListViewModel, isShowingNewItemSheet: $isShowingNewLinkSheet), isActive: $folderManagerActive) {
+			SidebarExtraItemView(name: "Manage Folders", imageName: "gear")
 		}
+		
 	}
 }

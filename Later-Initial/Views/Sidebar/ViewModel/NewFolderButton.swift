@@ -9,11 +9,15 @@ import Foundation
 import SwiftUI
 
 struct NewFolderButton: View {
-	@Binding var isShowingNewFolderSheet: Bool
+	
+	@AppStorage("folderManagerActive") var folderManagerActive = false
+	@AppStorage("folderSheetPresented") var folderSheetPresented = false
+	
 	var body: some View {
 		HStack {
 			Button {
-				isShowingNewFolderSheet = true
+				folderManagerActive = true
+				folderSheetPresented = true
 			} label: {
 				Label("New Folder", systemImage: "folder.badge.plus")
 			}

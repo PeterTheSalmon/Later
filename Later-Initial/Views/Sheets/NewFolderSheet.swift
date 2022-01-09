@@ -44,7 +44,6 @@ struct NewFolderSheet: View {
 		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
-		firstFolderActive = true
 	}
 
 	var body: some View {

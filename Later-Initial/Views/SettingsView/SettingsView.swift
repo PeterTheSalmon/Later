@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-	private enum Tabs: Hashable {
-		case general, advanced
-	}
 
 	var body: some View {
 		TabView {
@@ -18,6 +15,12 @@ struct SettingsView: View {
 				.tabItem {
 					Label("General", systemImage: "gear")
 				}
+			
+			Text("Appearance Settings Go Here")
+				.tabItem {
+					Label("Appearance", systemImage: "paintpalette")
+				}
+			
 			AdvancedSettings()
 				.tabItem {
 					Label("Advanced", systemImage: "wrench.and.screwdriver")

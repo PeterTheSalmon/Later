@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Serves as host for main NavigationView
+///
+/// PrimaryView contains most App States and Objects. These are then passed to subviews.
 struct PrimaryView: View {
 	@ObservedObject var linkListViewModel = LinkListViewModel()
 	@ObservedObject var folderListViewModel = FolderListViewModel()
@@ -18,8 +21,10 @@ struct PrimaryView: View {
 	@Binding var isShowingNewFolderSheet: Bool
 	@State var justDeletedFolder = false
 
-	// selectedFolder is changed in FolderView.swift
+	// selectedFolder/viewModel are changed in FolderView.swift
 	@State var selectedFolder: FolderItem?
+	@State var selectedFolderViewModel: FolderViewModel?
+	
 	@AppStorage("timesOpened") var timesOpened = 0
 
 	// Query for searching
@@ -27,14 +32,6 @@ struct PrimaryView: View {
 	@Environment(\.isSearching) var isSearching
 	@AppStorage("introSeen") var newUser = true
 	@Environment(\.dismiss) var dismiss
-
-	// TODO: item filtering for favourites
-	// Here is the old implementation
-	//	var filteredLinkItems: [LinkItem] {
-	//		listItems.ItemList.filter { item in
-	//			!showFavouritesOnly || item.isFavourite
-	//		}
-	//	}
 
 	var body: some View {
 		NavigationView {
@@ -47,6 +44,7 @@ struct PrimaryView: View {
 				timesOpened: $timesOpened,
 				justDeletedFolder: $justDeletedFolder,
 				selectedFolder: $selectedFolder,
+				selectedFolderViewModel: $selectedFolderViewModel,
 				query: $query
 			)
 
@@ -73,8 +71,7 @@ struct PrimaryView: View {
 
 				.sheet(isPresented: $isShowingNewItemSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
-											 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-											 selectedFolder: $selectedFolder,
+											 parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
 											 linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {

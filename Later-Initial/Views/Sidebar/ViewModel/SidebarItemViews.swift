@@ -28,6 +28,7 @@ struct SidebarFolderItemView: View {
 
 	// If true, folders are deleted in one click
 	@AppStorage("instantDeleteFolder") var instantDeleteFolder = false
+	@AppStorage("firstFolderActive") var firstFolderActive = false
 
 	@State private var symbolName = 0
 	var symbolNames = [
@@ -43,8 +44,11 @@ struct SidebarFolderItemView: View {
 
 	func deleteFolder() {
 		folderViewModel.remove()
-		if selectedFolder == folderViewModel.folder {
-			//justDeletedFolder = true
+		Task {
+			try await Task.sleep(nanoseconds: 20_000_000)
+			firstFolderActive = true
+			try await Task.sleep(nanoseconds: 20_000_000)
+			firstFolderActive = true
 		}
 	}
 
@@ -52,6 +56,7 @@ struct SidebarFolderItemView: View {
 		HStack {
 			Image(systemName: folderViewModel.folder.iconName ?? "folder")
 				.foregroundColor(folderViewModel.folder.colour ?? nil)
+				.frame(width: 14)
 
 			Text(name)
 
@@ -64,15 +69,8 @@ struct SidebarFolderItemView: View {
 				.onTapGesture {
 					editPopoverPresented = true
 				}
-
-			if folderListViewModel.folderViewModels.count > 1 {
-				Image(systemName: "trash")
-					.opacity(isHoveringTrash ? 100 : 0)
-					.onTapGesture {
-						if instantDeleteFolder { deleteFolder() } else { deleteAlertPresented = true }
-					}
-			}
 		} // *HStack
+		
 		/// if the folder colour isn't set to default (Color.primary), adjust the folderColour state to reflect this colour
 		.onAppear { if folderViewModel.folder.colour != nil { folderColour = folderViewModel.folder.colour! } }
 
@@ -147,6 +145,7 @@ struct SidebarExtraItemView: View {
 	var body: some View {
 		HStack {
 			Image(systemName: imageName)
+				.frame(width: 14)
 			Text(name)
 			Spacer()
 		}

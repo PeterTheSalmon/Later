@@ -4,8 +4,8 @@
 //
 //  Created by Peter Salmon on 2021-10-30.
 //
-import SwiftUI
 import Firebase
+import SwiftUI
 
 // Comment to check for changes again again
 
@@ -15,8 +15,15 @@ struct Later: App {
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
 
+	@AppStorage("firstFolderActive") var firstFolderActive = false
+	@AppStorage("folderManagerActive") var folderManagerActive = false
+	@AppStorage("homeViewSelected") var homeViewSelected = true
+	@AppStorage("folderSheetPresented") var folderSheetPresented = false
+
 	init() {
-		/// Prepare Firestore when app launches
+		firstFolderActive = false
+		folderManagerActive = false
+		homeViewSelected = true
 		FirebaseApp.configure()
 	}
 
@@ -27,10 +34,9 @@ struct Later: App {
 			            isShowingNewFolderSheet: $isShowingNewFolderSheet)
 
 				/// This onReceive disables full screen mode, greying out the green button
+				/// To be perfectly honest, though, I don't have a single fucking clue what this does
 				.onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
-					for window in NSApplication.shared.windows {
-						window.standardWindowButton(.zoomButton)?.isEnabled = false
-					}
+					for window in NSApplication.shared.windows { window.standardWindowButton(.zoomButton)?.isEnabled = false }
 				})
 
 				/// Framing for the app as a whole.
@@ -38,19 +44,20 @@ struct Later: App {
 				.frame(minWidth: 400, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
 		}
 		.commands {
-			SidebarCommands() /// toggle sidebar button
+			SidebarCommands()
 			CommandGroup(replacing: CommandGroupPlacement.newItem) {
 				Button("New Item") {
 					isShowingNewItemSheet = true
 				}.keyboardShortcut("n")
 
 				Button("New Folder") {
-					isShowingNewFolderSheet = true
+					folderManagerActive = true
+					folderSheetPresented = true
 				}.keyboardShortcut("n", modifiers: [.command, .shift])
 			}
 		}
 
-		// Putting settings here allows for better-looking tabs and ⌘, by default
+		/// Putting settings here allows for better-looking tabs and ⌘, by default
 		Settings {
 			SettingsView()
 		}
