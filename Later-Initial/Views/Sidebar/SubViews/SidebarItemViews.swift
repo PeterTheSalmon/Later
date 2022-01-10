@@ -28,7 +28,6 @@ struct SidebarFolderItemView: View {
 
 	// If true, folders are deleted in one click
 	@AppStorage("instantDeleteFolder") var instantDeleteFolder = false
-	@AppStorage("firstFolderActive") var firstFolderActive = false
 
 	@State private var symbolName = 0
 	var symbolNames = [
@@ -44,17 +43,11 @@ struct SidebarFolderItemView: View {
 
 	func deleteFolder() {
 		folderViewModel.remove()
-		Task {
-			try await Task.sleep(nanoseconds: 20_000_000)
-			firstFolderActive = true
-			try await Task.sleep(nanoseconds: 20_000_000)
-			firstFolderActive = true
-		}
 	}
 
 	var body: some View {
 		HStack {
-			Image(systemName: folderViewModel.folder.iconName ?? "folder")
+			Image(systemName: folderViewModel.folder.iconName ?? Icons().folder)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.foregroundColor(folderViewModel.folder.colour ?? nil)

@@ -15,7 +15,7 @@ struct BackgroundRectangle: View {
 		RoundedRectangle(cornerRadius: 10,
 		                 style: .circular)
 			.frame(height: 55)
-			.animation(.linear(duration: 0.15), value: hoverStatus)
+			.animation(.linear(duration: Constants().animationDuration), value: hoverStatus)
 			.foregroundColor(Color("BG"))
 	}
 }

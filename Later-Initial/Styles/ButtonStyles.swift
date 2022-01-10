@@ -41,12 +41,11 @@ struct DisplaySheetButtonStyle: ButtonStyle {
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
 			.foregroundColor(configuration.isPressed ? .white : hoveringReference ? .gray : Color("Icon"))
-			.animation(.linear(duration: 0.1), value: hoveringReference)
+			.animation(.linear(duration: Constants().animationDuration), value: hoveringReference)
 		
 	}
 }
 
-// testing out the look
 struct ButtonStyles_Previews: PreviewProvider {
 	static var previews: some View {
 		Button {} label: {

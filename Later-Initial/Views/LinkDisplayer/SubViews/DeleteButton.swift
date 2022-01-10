@@ -22,10 +22,10 @@ struct DeleteButton: View {
 		Button {
 			if instantDeleteLink { linkViewModel.remove() } else { alertPresented = true }
 		} label: {
-			Image(systemName: "trash")
+			Image(systemName: Icons().delete)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-				.frame(width: 18, height: 18)
+				.frame(width: 20, height: 20)
 		}
 		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: linkViewModel.link))
 		.alert(isPresented: $alertPresented) {

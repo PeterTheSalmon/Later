@@ -29,13 +29,13 @@ struct WelcomeScreen: View {
 					                     imageName: "folder",
 					                     imageColour: .green)
 					WelcomeScreenElement(title: "Customize and colourize",
-					                     description: Text("Click the \(Image(systemName: "pencil")) to change folder colours and icons"),
+															 description: Text("Click the \(Image(systemName: Icons().edit)) to change folder colours and icons"),
 					                     imageName: "paintpalette",
 					                     imageColour: .blue)
 				}
 				VStack {
 					WelcomeScreenElement(title: "Search and copy",
-					                     description: Text("Search links and click \(Image(systemName: "doc.on.doc")) copy to grab the link"),
+															 description: Text("Search links and click \(Image(systemName: Icons().copy)) copy to grab the link"),
 					                     imageName: "magnifyingglass",
 					                     imageColour: .red)
 					WelcomeScreenElement(title: "Easy sorting",

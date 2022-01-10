@@ -20,14 +20,14 @@ struct ShareButton: View {
 			sharePresented = true
 
 		} label: {
-			Image(systemName: "square.and.arrow.up")
+			Image(systemName: Icons().share)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)
 		}
 		.buttonStyle(DisplaySheetButtonStyle(hoveringReference: hoveringReference, item: linkViewModel.link))
 		.foregroundColor(hoveringReference ? .gray : Color("Icon"))
-		.animation(.linear(duration: 0.1), value: hoveringReference)
+		.animation(.linear(duration: Constants().animationDuration), value: hoveringReference)
 
 		.popover(isPresented: $sharePresented) {
 			VStack(alignment: .leading, spacing: 2) {				

@@ -37,7 +37,7 @@ struct EditLinkButton: View {
 		Button {
 			isPresented = true
 		} label: {
-			Image(systemName: "pencil.circle")
+			Image(systemName: Icons().edit)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)

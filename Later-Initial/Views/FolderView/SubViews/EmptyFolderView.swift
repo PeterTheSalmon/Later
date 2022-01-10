@@ -18,7 +18,7 @@ struct EmptyFolderView: View {
 				.font(.title)
 				.padding()
 
-				Text("Click the \(Image(systemName: "plus.circle.fill")) to add one!")
+			Text("Click the \(Image(systemName: Icons().newItem)) to add one!")
 
 			.font(.headline)
 		}

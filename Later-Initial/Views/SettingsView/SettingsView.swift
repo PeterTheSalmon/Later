@@ -16,7 +16,7 @@ struct SettingsView: View {
 					Label("General", systemImage: "gear")
 				}
 			
-			Text("Appearance Settings Go Here")
+			AppearanceSettings()
 				.tabItem {
 					Label("Appearance", systemImage: "paintpalette")
 				}

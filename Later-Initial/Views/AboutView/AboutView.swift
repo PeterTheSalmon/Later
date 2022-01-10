@@ -51,7 +51,7 @@ struct AboutView: View {
 						Button {
 							isShowingSheet = true
 						} label: {
-							Image(systemName: "plus.circle.fill")
+							Image(systemName: Icons().newItem)
 						}
 						.help("New Item")
 					}
@@ -95,7 +95,7 @@ struct AboutView: View {
 					Button {
 						isShowingSheet = true
 					} label: {
-						Image(systemName: "plus.circle.fill")
+						Image(systemName: Icons().newItem)
 					}
 					.help("New Item")
 				}

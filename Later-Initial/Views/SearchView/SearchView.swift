@@ -45,7 +45,7 @@ struct SearchView: View {
 			}
 		}
 		.navigationTitle("Searching...")
-		.animation(.linear, value: showFavouritesOnly)
+		.animation(.linear(duration: Constants().animationDuration), value: showFavouritesOnly)
 		.sheet(isPresented: $isShowingNewItemSheet) {
 			// FIXME: New Item Sheet goes here
 		}
@@ -65,7 +65,7 @@ struct SearchView: View {
 				Button {
 					isShowingNewItemSheet = true
 				} label: {
-					Image(systemName: "plus.circle.fill")
+					Image(systemName: Icons().newItem)
 				}
 				.help("New Item")
 			}

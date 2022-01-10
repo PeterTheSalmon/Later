@@ -30,7 +30,7 @@ struct MoreSection: View {
 				isShowingSheet: $isShowingSheet,
 				justDeletedFolder: $justDeletedFolder
 			)) {
-				SidebarExtraItemView(name: "About", imageName: "info.circle")
+				SidebarExtraItemView(name: "About", imageName: Icons().info)
 			}
 		}
 	}

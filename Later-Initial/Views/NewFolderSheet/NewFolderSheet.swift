@@ -15,16 +15,7 @@ struct NewFolderSheet: View {
 	@Environment(\.colorScheme) var colorScheme
 
 	@State private var symbolName = 0
-	var symbolNames = [
-		"folder",
-		"display",
-		"music.note",
-		"star",
-		"link",
-		"cloud.fill",
-		"externaldrive",
-		"wrench.and.screwdriver",
-	]
+
 
 	@State private var name = ""
 	@ObservedObject var folderViewModel: FolderListViewModel
@@ -35,12 +26,11 @@ struct NewFolderSheet: View {
 	@State private var finalFolderColour: Color?
 	var allowExitCommand: Bool
 	
-	@AppStorage("firstFolderActive") var firstFolderActive = false
 
 	private func addFolder() {
 		let folder = FolderItem(name: name,
 		                        colour: finalFolderColour,
-		                        iconName: symbolNames[symbolName])
+														iconName: Icons().symbolNames[symbolName])
 		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
@@ -81,8 +71,8 @@ struct NewFolderSheet: View {
 			.textFieldStyle(.roundedBorder)
 
 			Picker("", selection: $symbolName) {
-				ForEach(0 ..< symbolNames.count) {
-					Image(systemName: symbolNames[$0])
+				ForEach(0 ..< Icons().symbolNames.count) {
+					Image(systemName: Icons().symbolNames[$0])
 				}
 			}
 			.pickerStyle(.segmented)

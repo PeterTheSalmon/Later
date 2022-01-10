@@ -56,7 +56,7 @@ struct FolderView: View {
 						HStack {
 								Toggle("Show Favourites Only", isOn: $showFavouritesOnly)
 									.disabled(numberFavourites == 0 ? true : false)
-									.animation(.linear, value: numberFavourites)
+									.animation(.linear(duration: Constants().animationDuration), value: numberFavourites)
 							
 							Spacer().frame(width: 40)
 							
@@ -82,7 +82,7 @@ struct FolderView: View {
 					SortList(linkListViewModel: linkListViewModel)
 				}
 				
-				.animation(.linear(duration: 0.1),
+				.animation(.linear(duration: Constants().animationDuration),
 									 value: showFavouritesOnly)
 				
 				.navigationTitle("Later")
@@ -99,7 +99,7 @@ struct FolderView: View {
 						Button {
 							isShowingSheet = true
 						} label: {
-							Image(systemName: "plus.circle.fill")
+							Image(systemName: Icons().newItem)
 						}
 						.help("New Item")
 					}

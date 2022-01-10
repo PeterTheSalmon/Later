@@ -7,21 +7,17 @@
 import Firebase
 import SwiftUI
 
-// Comment to check for changes again again
-
 @main
 struct Later: App {
 	/// These states are declared here as they are used in keyboard shortcuts
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
 
-	@AppStorage("firstFolderActive") var firstFolderActive = false
 	@AppStorage("folderManagerActive") var folderManagerActive = false
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
 
 	init() {
-		firstFolderActive = false
 		folderManagerActive = false
 		homeViewSelected = true
 		FirebaseApp.configure()

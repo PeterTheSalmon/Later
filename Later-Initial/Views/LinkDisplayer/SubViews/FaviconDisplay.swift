@@ -21,14 +21,14 @@ struct FaviconDisplay: View {
 			if updateFavicon { CachedAsyncImage(url: faviconURL, content: faviconStateManager)
 			} else { CachedAsyncImage(url: faviconURL, content: faviconStateManager) }
 		}
-		.animation(.linear(duration: 0.1), value: updateFavicon)
+		.animation(.linear(duration: Constants().animationDuration), value: updateFavicon)
 	}
 
 	@ViewBuilder
 	func faviconStateManager(for phase: AsyncImagePhase) -> some View {
 		switch phase {
 		case .empty:
-			Image(systemName: "link.circle")
+			Image(systemName: Icons().link)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.foregroundColor(.gray)
@@ -39,7 +39,7 @@ struct FaviconDisplay: View {
 				.onHover { hoveringIcon in
 					isHoveringIcon = hoveringIcon
 				}
-				.animation(.linear(duration: 0.15), value: isHoveringIcon)
+				.animation(.linear(duration: Constants().animationDuration), value: isHoveringIcon)
 				.onTapGesture {
 					openLink(urlString: linkViewModel.link.url)
 				}
@@ -62,7 +62,7 @@ struct FaviconDisplay: View {
 				.onHover { hoveringIcon in
 					isHoveringIcon = hoveringIcon
 				}
-				.animation(.linear(duration: 0.15), value: isHoveringIcon)
+				.animation(.linear(duration: Constants().animationDuration), value: isHoveringIcon)
 				.onTapGesture {
 					openLink(urlString: linkViewModel.link.url)
 				}
@@ -76,7 +76,7 @@ struct FaviconDisplay: View {
 
 		case .failure:
 			VStack {
-				Image(systemName: "link.circle")
+				Image(systemName: Icons().link)
 					.resizable()
 					.aspectRatio(contentMode: .fill)
 					.foregroundColor(.gray)
@@ -88,7 +88,7 @@ struct FaviconDisplay: View {
 					.onHover { hoveringIcon in
 						isHoveringIcon = hoveringIcon
 					}
-					.animation(.linear(duration: 0.15), value: isHoveringIcon)
+					.animation(.linear(duration: Constants().animationDuration), value: isHoveringIcon)
 					.onTapGesture {
 						openLink(urlString: linkViewModel.link.url)
 					}

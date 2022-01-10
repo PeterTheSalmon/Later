@@ -67,7 +67,7 @@ struct PrimaryView: View {
 					Button {
 						isShowingNewItemSheet = true
 					} label: {
-						Image(systemName: "plus.circle.fill")
+						Image(systemName: Icons().newItem)
 					}
 					.help("New Item")
 				}

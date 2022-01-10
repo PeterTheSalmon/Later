@@ -19,7 +19,7 @@ struct InfoButton: View {
 		Button {
 			isPresented = true
 		} label: {
-			Image(systemName: "info.circle")
+			Image(systemName: Icons().info)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)

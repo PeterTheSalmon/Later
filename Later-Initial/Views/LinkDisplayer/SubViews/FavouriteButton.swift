@@ -29,13 +29,13 @@ struct FavouriteButton: View {
 
 	var body: some View {
 		HStack {
-			Image(systemName: linkViewModel.link.isFavourite ? "star.fill" : "star")
+			Image(systemName: linkViewModel.link.isFavourite ? Icons().filledStar : Icons().emptyStar)
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.frame(width: 20, height: 20)
 				.foregroundColor(linkViewModel.link.isFavourite ? .accentColor : hoveringReference ? .gray : Color("Icon"))
 		}
-		.animation(.linear(duration: 0.1), value: hoveringReference)
+		.animation(.linear(duration: Constants().animationDuration), value: hoveringReference)
 		.onTapGesture {
 			withAnimation(.linear) {
 				toggleFavourite()

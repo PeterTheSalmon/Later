@@ -40,7 +40,7 @@ struct CopyButton: View {
 			justCopied = true
 			noLongerCopied()
 		} label: {
-			Image(systemName: "doc.on.clipboard")
+			Image(systemName: Icons().copy)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 20, height: 20)

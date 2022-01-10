@@ -55,7 +55,7 @@ struct HomeView: View {
 						Button {
 							isShowingSheet = true
 						} label: {
-							Image(systemName: "plus.circle.fill")
+							Image(systemName: Icons().newItem)
 						}
 						.help("New Item")
 					}
@@ -98,12 +98,12 @@ struct HomeView: View {
 							Spacer()
 							VStack {
 								Spacer()
-								Image(systemName: "arrow.forward.circle")
+								Image(systemName: Icons().arrow)
 									.resizable()
 									.aspectRatio(contentMode: .fit)
 									.frame(width: 20, height: 20)
 									.opacity(opacity)
-									.animation(.linear(duration: 0.1), value: opacity)
+									.animation(.linear(duration: Constants().animationDuration), value: opacity)
 									.padding(3)
 							}
 						}
@@ -135,7 +135,7 @@ struct HomeView: View {
 					Button {
 						isShowingSheet = true
 					} label: {
-						Image(systemName: "plus.circle.fill")
+						Image(systemName: Icons().newItem)
 					}
 					.help("New Item")
 				}

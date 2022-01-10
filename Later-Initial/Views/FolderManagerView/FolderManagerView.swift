@@ -54,7 +54,7 @@ struct FolderManagerView: View {
 					Button {
 						isShowingNewItemSheet = true
 					} label: {
-						Image(systemName: "plus.circle.fill")
+						Image(systemName: Icons().newItem)
 					}
 					.help("New Item")
 				}
@@ -109,7 +109,7 @@ struct FolderManagerView: View {
 					Button {
 						isShowingNewItemSheet = true
 					} label: {
-						Image(systemName: "plus.circle.fill")
+						Image(systemName: Icons().newItem)
 					}
 					.help("New Item")
 				}
@@ -148,16 +148,7 @@ struct FolderListedView: View {
 	@State private var editPopoverPresented = false
 	@State private var folderColour = Color.primary
 	@State private var symbolName = 0
-	var symbolNames = [
-		"folder",
-		"display",
-		"music.note",
-		"star",
-		"link",
-		"cloud.fill",
-		"externaldrive",
-		"wrench.and.screwdriver",
-	]
+
 
 	private func editFolder() {
 		var updatedFolder = folderViewModel.folder
@@ -166,7 +157,7 @@ struct FolderListedView: View {
 		if folderColour != Color.primary {
 			updatedFolder.colour = folderColour
 		}
-		updatedFolder.iconName = symbolNames[symbolName]
+		updatedFolder.iconName = Icons().symbolNames[symbolName]
 		update(item: updatedFolder)
 	}
 
@@ -184,7 +175,7 @@ struct FolderListedView: View {
 				.foregroundColor(Color("BG"))
 
 			HStack {
-				Image(systemName: folderViewModel.folder.iconName ?? "folder")
+				Image(systemName: folderViewModel.folder.iconName ?? Icons().folder)
 					.foregroundColor(folderViewModel.folder.colour ?? .primary)
 					.frame(width: 14)
 
@@ -215,7 +206,7 @@ struct FolderListedView: View {
 		// Find the index of the folder's icon
 		.onAppear {
 			var initialIndex = 0 // start the count at zero, representing the folder
-			for possibleSymbol in symbolNames {
+			for possibleSymbol in Icons().symbolNames {
 				if possibleSymbol == folderViewModel.folder.iconName {
 					symbolName = initialIndex
 					/// if the symbol matches the value in the folder,
@@ -246,8 +237,8 @@ struct FolderListedView: View {
 				}
 
 				Picker("", selection: $symbolName) {
-					ForEach(0 ..< symbolNames.count) {
-						Image(systemName: symbolNames[$0])
+					ForEach(0 ..< Icons().symbolNames.count) {
+						Image(systemName: Icons().symbolNames[$0])
 					}
 				}
 				.pickerStyle(.segmented)

@@ -32,7 +32,7 @@ struct Sidebar: View {
 				                                                 query: $query,
 				                                                 isShowingSheet: $isShowingSheet,
 				                                                 isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $homeViewSelected) {
-					SidebarExtraItemView(name: "Home", imageName: "house.fill")
+					SidebarExtraItemView(name: "Home", imageName: Icons().home)
 				}
 
 				FolderSection(

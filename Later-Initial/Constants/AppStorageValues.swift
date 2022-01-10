@@ -3,8 +3,13 @@ import SwiftUI
 
 /// Contains the settings used throughout the app. They are gathered here for convenience.
 
-struct AppSettings {
-
+struct AppStorageValues {
+	
+	@AppStorage("animationDuration") var animationDuration = 0.1
+	
+	/// If true, all icons will be round instead of shapeless
+	@AppStorage("roundIcons") var roundIcons = false
+	
 	/// If true, the NewFolderSheet in the FolderManagerView will be show
 	///
 	/// Use in conjunction with
@@ -19,7 +24,6 @@ struct AppSettings {
 	// If true, the FolderManagerView.swift is active
 	@AppStorage("folderManagerActive") var folderManagerActive = false
 	
-	@AppStorage("firstFolderActive") var firstFolderActive = false
 		
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
 	
