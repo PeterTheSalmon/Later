@@ -5,6 +5,9 @@
 //  Created by Peter Salmon on 2021-11-15.
 //
 
+// MARK: WARNING
+// This file is very long. It will cause lag.
+
 import Foundation
 
 struct License: Identifiable {

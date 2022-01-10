@@ -20,6 +20,7 @@ struct LinkItem: Codable, Hashable, Identifiable {
 	var url: String
 	var isFavourite: Bool = false
 	var parentFolderId: String
+	var userId: String?
 }
 
 

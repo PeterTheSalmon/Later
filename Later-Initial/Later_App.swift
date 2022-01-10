@@ -21,6 +21,8 @@ struct Later: App {
 		folderManagerActive = false
 		homeViewSelected = true
 		FirebaseApp.configure()
+		/// If not signed in, sign in anonymously
+		AuthenticationService.signIn()
 	}
 
 	var body: some Scene {

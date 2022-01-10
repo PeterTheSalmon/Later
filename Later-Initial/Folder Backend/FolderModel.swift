@@ -18,4 +18,5 @@ struct FolderItem: Codable, Hashable, Identifiable {
 	var colour: Color?
 	var iconName: String?
 	var dateCreated = Date.now
+	var userId: String?
 }
