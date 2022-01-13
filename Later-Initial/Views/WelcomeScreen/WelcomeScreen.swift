@@ -28,20 +28,14 @@ struct WelcomeScreen: View {
 					                     description: Text("Use folders and favourites to organize your links"),
 					                     imageName: "folder",
 					                     imageColour: .green)
-					WelcomeScreenElement(title: "Customize and colourize",
-															 description: Text("Click the \(Image(systemName: Icons().edit)) to change folder colours and icons"),
-					                     imageName: "paintpalette",
-					                     imageColour: .blue)
+
 				}
 				VStack {
 					WelcomeScreenElement(title: "Search and copy",
 															 description: Text("Search links and click \(Image(systemName: Icons().copy)) copy to grab the link"),
 					                     imageName: "magnifyingglass",
 					                     imageColour: .red)
-					WelcomeScreenElement(title: "Easy sorting",
-					                     description: Text("Choose from three sorting methods to find whatever you are looking for"),
-					                     imageName: "arrow.up.arrow.down",
-					                     imageColour: .purple)
+
 					WelcomeScreenElement(title: "More to Come",
 					                     description: Text("Later is still in beta, so you can expect more features on a regular basis"),
 					                     imageName: "square.and.arrow.down",
