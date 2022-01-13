@@ -8,39 +8,17 @@
 import Foundation
 import SwiftUI
 
-func SortList(selectedStyle: Int, listItems: LinkItems) {
-	@AppStorage("updateFavicon") var updateFavicon = false
-	updateFavicon.toggle()
+func SortList(linkListViewModel: LinkListViewModel) {
+	@AppStorage("selectedSortStyle") var selectedStyle = 0
+	
 	switch selectedStyle {
 	case 0:
-		listItems.ItemList.sort { $0.title < $1.title }
+		linkListViewModel.linkViewModels.sort(by: { $0.link.title.uppercased() < $1.link.title.uppercased() })
 	case 1:
-		listItems.ItemList.sort { $0.dateCreated < $1.dateCreated }
+		linkListViewModel.linkViewModels.sort(by: { $0.link.dateCreated < $1.link.dateCreated })
 	case 2:
-		listItems.ItemList.sort { $0.url < $1.url }
+		linkListViewModel.linkViewModels.sort(by: { $0.link.url < $1.link.url })
 	default:
-		print("default")
-	}
-}
-
-func SortListWithDelay(selectedStyle: Int, listItems: LinkItems) {
-	Task {
-		do {
-			try await Task.sleep(nanoseconds: 100000000)
-		} catch {
-			print("well shit")
-		}
-		@AppStorage("updateFavicon") var updateFavicon = false
-		updateFavicon.toggle()
-		switch selectedStyle {
-		case 0:
-			listItems.ItemList.sort { $0.title < $1.title }
-		case 1:
-			listItems.ItemList.sort { $0.dateCreated < $1.dateCreated }
-		case 2:
-			listItems.ItemList.sort { $0.url < $1.url }
-		default:
-			print("default")
-		}
+		fatalError("Invalid Sort Style")
 	}
 }

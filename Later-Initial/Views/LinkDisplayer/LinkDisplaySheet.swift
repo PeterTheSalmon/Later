@@ -9,57 +9,49 @@ import AppKit
 import SwiftUI
 
 struct LinkDisplaySheet: View {
-	var item: LinkItem
+	var linkViewModel: LinkViewModel
 	@Environment(\.openURL) var openURL
-	@ObservedObject var listItems: LinkItems
 	@State var isHoveringRectangle: Bool = false
 	@State var isHoveringText: Bool = false
 	@State var justCopied: Bool = false
 	@State private var showShareSheet = false
-
-	var itemIndex: Int? {
-		listItems.ItemList.firstIndex(where: { $0.id == item.id }) ?? nil
-	}
+	@ObservedObject var linkListViewModel: LinkListViewModel
 
 	var body: some View {
 		ZStack {
 			BackgroundRectangle(hoverStatus: isHoveringRectangle)
 
 			HStack {
-				TitleLink(subItem: item, justCopied: $justCopied)
+				TitleLink(subItem: linkViewModel.link, justCopied: $justCopied)
 
 				Spacer()
 
 				Group { // Buttons
-					ShareButton(item: item, hoveringReference: isHoveringRectangle)
+					ShareButton(linkViewModel: linkViewModel, hoveringReference: isHoveringRectangle)
+						.help("Share to other apps")
 
-					InfoButton(hoveringReference: isHoveringRectangle, item: item)
+					InfoButton(hoveringReference: isHoveringRectangle, item: linkViewModel.link)
 						.help("Info")
 
-					EditButton(hoveringReference: isHoveringRectangle, item: item, listItems: listItems, itemIndex: itemIndex ?? 0)
+					EditLinkButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, itemIndex: 0, linkListViewModel: linkListViewModel)
 						.help("Edit")
 
 					CopyButton(hoveringReference: isHoveringRectangle,
-					           item: item, justCopied: $justCopied)
+					           item: linkViewModel.link, justCopied: $justCopied)
 						.help("Copy")
 
-					DeleteButton(listItems: listItems,
-					             hoveringReference: isHoveringRectangle,
-					             item: item,
-					             itemIndex: itemIndex)
+					DeleteButton(hoveringReference: isHoveringRectangle,
+					             linkViewModel: linkViewModel)
 						.help("Delete")
 
-					FavouriteButton(listItems: listItems,
-					                hoveringReference: isHoveringRectangle,
-					                item: item,
-					                itemIsFavourite: item.isFavourite,
-					                itemIndex: itemIndex)
+					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
 						.help("Add to Favourites")
 
 					Divider().frame(height: 40)
 
-					FaviconDisplay(item: item)
+					
 				}
+				FaviconDisplay(linkViewModel: linkViewModel)
 			}
 		}
 
@@ -74,6 +66,6 @@ struct LinkDisplaySheet: View {
 
 struct LinkDisplaySheet_Previews: PreviewProvider {
 	static var previews: some View {
-		LinkDisplaySheet(item: LinkItems.exampleItem, listItems: LinkItems())
+		Text("fix")
 	}
 }
