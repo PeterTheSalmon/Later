@@ -34,55 +34,71 @@ struct PrimaryView: View {
 	@AppStorage("introSeen") var newUser = true
 	@Environment(\.dismiss) var dismiss
 
+	@EnvironmentObject var authViewModel: AuthViewModel
+
+	@AppStorage("logInPageActive") var logInPageActive = true
+
 	var body: some View {
 		NavigationView {
-			Sidebar(
-				linkListViewModel: linkListViewModel,
-				folderListViewModel: folderListViewModel,
-				isShowingSheet: $isShowingNewItemSheet,
-				isShowingNewFolderSheet: $isShowingNewFolderSheet,
-				showFavouritesOnly: $showFavouritesOnly,
-				timesOpened: $timesOpened,
-				justDeletedFolder: $justDeletedFolder,
-				selectedFolder: $selectedFolder,
-				selectedFolderViewModel: $selectedFolderViewModel,
-				query: $query
-			)
+			if authViewModel.signedIn {
+				Sidebar(
+					linkListViewModel: linkListViewModel,
+					folderListViewModel: folderListViewModel,
+					isShowingSheet: $isShowingNewItemSheet,
+					isShowingNewFolderSheet: $isShowingNewFolderSheet,
+					showFavouritesOnly: $showFavouritesOnly,
+					timesOpened: $timesOpened,
+					justDeletedFolder: $justDeletedFolder,
+					selectedFolder: $selectedFolder,
+					selectedFolderViewModel: $selectedFolderViewModel,
+					query: $query
+				)
+				.onAppear {
+					if folderListViewModel.folderViewModels.count == 0 { folderListIsEmpty = true }
+				}
 
-			VStack {
+				VStack {
+					ProgressView()
+					Text("If you are seeing this, something has probably gone wrong.\nTry quitting restarting Later")
+				}
+				.navigationTitle("Later")
+				.toolbar {
+					ToolbarItem(placement: .navigation) {
+						Button {
+							toggleSidebar()
+						} label: {
+							Image(systemName: "sidebar.left")
+						}
+					}
+
+					ToolbarItem(placement: .navigation) {
+						Button {
+							isShowingNewItemSheet = true
+						} label: {
+							Image(systemName: Icons().newItem)
+						}
+						.help("New Item")
+					}
+				}
+
+				.sheet(isPresented: $isShowingNewItemSheet) {
+					NewItemSheet(folderListViewModel: folderListViewModel,
+					             parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
+					             linkListViewModel: linkListViewModel)
+				}
+				.sheet(isPresented: $isShowingNewFolderSheet) {
+					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+				}
+			} else {
+				LoggedOutView()
+					.onAppear {
+						logInPageActive = true
+						folderListIsEmpty = false
+					}
+
 				ProgressView()
-				Text("If you are seeing this, something has probably gone wrong.\nTry quitting restarting Later")
-			}
-			.navigationTitle("Later")
-			.toolbar {
-				ToolbarItem(placement: .navigation) {
-					Button {
-						toggleSidebar()
-					} label: {
-						Image(systemName: "sidebar.left")
-					}
-				}
-
-				ToolbarItem(placement: .navigation) {
-					Button {
-						isShowingNewItemSheet = true
-					} label: {
-						Image(systemName: Icons().newItem)
-					}
-					.help("New Item")
-				}
-			}
-
-			.sheet(isPresented: $isShowingNewItemSheet) {
-				NewItemSheet(folderListViewModel: folderListViewModel,
-				             parentFolderViewModel: selectedFolderViewModel ?? folderListViewModel.folderViewModels[0],
-				             linkListViewModel: linkListViewModel)
-			}
-			.sheet(isPresented: $isShowingNewFolderSheet) {
-				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 			}
 		}
-
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}
@@ -92,6 +108,8 @@ struct PrimaryView: View {
 		}
 
 		.onAppear {
+			// Check if the user is signed in, and update the signedIn state based on what is returned
+			authViewModel.signedIn = authViewModel.isSignedIn
 			timesOpened += 1
 			homeViewSelected = true
 		}

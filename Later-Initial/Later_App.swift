@@ -22,14 +22,18 @@ struct Later: App {
 		homeViewSelected = true
 		FirebaseApp.configure()
 		/// If not signed in, sign in anonymously
-		AuthenticationService.signIn()
+		
 	}
 
+	
+	
 	var body: some Scene {
+		let authViewModel = AuthViewModel()
 		WindowGroup {
-			/// NavigationView
+			/// Shows either the login page or the main navigationView
 			PrimaryView(isShowingNewItemSheet: $isShowingNewItemSheet,
 			            isShowingNewFolderSheet: $isShowingNewFolderSheet)
+				.environmentObject(authViewModel)
 
 				/// This onReceive disables full screen mode, greying out the green button
 				/// To be perfectly honest, though, I don't have a single fucking clue what this does
@@ -58,6 +62,7 @@ struct Later: App {
 		/// Putting settings here allows for better-looking tabs and ⌘, by default
 		Settings {
 			SettingsView()
+				.environmentObject(authViewModel)
 		}
 	}
 }

@@ -25,6 +25,11 @@ struct SettingsView: View {
 				.tabItem {
 					Label("Advanced", systemImage: "wrench.and.screwdriver")
 				}
+			
+			AccountSettings()
+				.tabItem {
+					Label("Account", systemImage: "person")
+				}
 		}
 		.padding(20)
 		.frame(width: 375, height: 150)
