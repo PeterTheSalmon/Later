@@ -51,9 +51,6 @@ struct WelcomeScreen: View {
 			.frame(alignment: .leading)
 			Button {
 				newUserValue = false
-				if folderListViewModel.folderViewModels.count == 0 {
-					folderListIsEmpty = true
-				}
 			} label: {
 				Text("Get Started")
 					.font(.title2)

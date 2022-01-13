@@ -17,9 +17,14 @@ struct LogInPage: View {
 
 	/// Used to activate the SignUpPage
 	@AppStorage("signUpPageActive") var signUpPageActive = false
-	
+
 	// record if the user has tried to enter with an empty email or password
 	@State private var badLogIn = false
+
+	// Choose whether to show to forgot password options
+	@State private var forgotPassword = false
+	@State private var forgotPassEmail = ""
+	@State private var forgotPassEmailSent = false
 
 	var body: some View {
 		VStack {
@@ -36,7 +41,6 @@ struct LogInPage: View {
 					Image(systemName: badLogIn ? "xmark" : "envelope")
 						.frame(width: 18)
 
-
 					TextField("", text: $email, prompt: Text("email"))
 						.disableAutocorrection(true)
 				}.underlineTextField(colour: badLogIn ? .red : .primary)
@@ -50,7 +54,7 @@ struct LogInPage: View {
 			.padding()
 			.frame(maxWidth: 300)
 			.textFieldStyle(.plain)
-			
+
 			HStack {
 				if let error = authViewModel.errorDescription {
 					Text("\(error)")
@@ -73,6 +77,43 @@ struct LogInPage: View {
 			} label: {
 				Text("Log In")
 			}.buttonStyle(SaveButton(colour: .accentColor))
+
+			// Forgot password logic
+			// TODO: Separate this into a separate view
+			// Note: do not forget the onChange from below
+			VStack {
+				HStack {
+					Button("Forgot your password?") { withAnimation(.linear) { forgotPassword = true } }.buttonStyle(.borderless)
+					if forgotPassword {
+						HStack {
+							Image(systemName: "envelope")
+								.frame(width: 18)
+
+							TextField("", text: $forgotPassEmail, prompt: Text("email"))
+								.textFieldStyle(.plain)
+								.disableAutocorrection(true)
+								.onSubmit {
+									authViewModel.resetPassword(email: forgotPassEmail)
+								}
+							Button(forgotPassEmailSent ? "􀆅" : "􀈟") {
+								authViewModel.resetPassword(email: forgotPassEmail)
+								withAnimation(.linear) { forgotPassEmailSent = true }
+							}
+
+						}
+						.frame(maxWidth: 300)
+						.underlineTextField(colour: .primary)
+					}
+				}
+				if forgotPassEmailSent {
+					Text("Sent - check your email!")
+						.fontWeight(.semibold)
+						.foregroundColor(.green)
+				}
+			}
+			.onChange(of: forgotPassEmail) { _ in
+				withAnimation(.linear) { forgotPassEmailSent = false }
+			}
 			
 		}
 		.padding()
@@ -86,6 +127,7 @@ struct LogInPage: View {
 				badLogIn = false
 			}
 		}
+
 	}
 }
 
@@ -104,6 +146,5 @@ extension View {
 		padding(.vertical, 10)
 			.overlay(Rectangle().fill(Color.secondary).frame(height: 2).padding(.top, 35))
 			.foregroundColor(colour)
-			.padding(10)
 	}
 }

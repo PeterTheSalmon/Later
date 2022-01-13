@@ -59,9 +59,11 @@ class AuthViewModel: ObservableObject {
 		
 		self.errorDescription = nil
 		
-		auth.sendPasswordReset(withEmail: email) { [weak self] error in
+		auth.sendPasswordReset(withEmail: email) { error in
 			guard error == nil else {
-				self?.errorDescription = error?.localizedDescription
+				// TODO: Error handling for bad email entries in password reset field
+				// [weak self] will be required before the error above
+				print(error?.localizedDescription as Any)
 				return
 			}
 		}

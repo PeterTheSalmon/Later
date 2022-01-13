@@ -5,6 +5,10 @@ import SwiftUI
 
 struct AppStorageValues {
 	
+	@AppStorage("logInPageActive") var logInPageActive = true
+	@AppStorage("signUpPageActive") var signUpPageActive = false
+
+	
 	@AppStorage("animationDuration") var animationDuration = 0.1
 	
 	/// If true, all icons will be round instead of shapeless

@@ -53,9 +53,6 @@ struct PrimaryView: View {
 					selectedFolderViewModel: $selectedFolderViewModel,
 					query: $query
 				)
-				.onAppear {
-					if folderListViewModel.folderViewModels.count == 0 { folderListIsEmpty = true }
-				}
 
 				VStack {
 					ProgressView()
@@ -92,6 +89,7 @@ struct PrimaryView: View {
 			} else {
 				LoggedOutView()
 					.onAppear {
+						print("logged out sidebar appeared")
 						logInPageActive = true
 						folderListIsEmpty = false
 					}
@@ -101,10 +99,6 @@ struct PrimaryView: View {
 		}
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
-		}
-
-		.sheet(isPresented: $folderListIsEmpty) {
-			NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: false)
 		}
 
 		.onAppear {

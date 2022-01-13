@@ -19,7 +19,6 @@ struct SignUpPage: View {
 
 	/// This is necessary to ensure that the user is always greeted with the home page
 	@AppStorage("homeViewSelected") var homeViewSelected = true
-
 	/// Used to activate the LogInPage
 	@AppStorage("logInPageActive") var logInPageActive = true
 
