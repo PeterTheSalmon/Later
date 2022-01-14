@@ -21,15 +21,11 @@ struct CopyButton: View {
 		pasteboard.setString(item.url, forType: .string)
 	}
 
-	
 	/// Wait a few seconds and then hide the copy message
 	func noLongerCopied() {
 		Task {
-			do {
-				try await Task.sleep(nanoseconds: 1000000000)
-			} catch {
-				print("well shit")
-			}
+			try await Task.sleep(nanoseconds: 1_000_000_000)
+
 			justCopied = false
 		}
 	}
@@ -52,6 +48,6 @@ struct CopyButton: View {
 struct CopyButton_Previews: PreviewProvider {
 	static var previews: some View {
 		CopyButton(hoveringReference: true,
-							 item: LinkItem(title: "Test", url: "google.ca", parentFolderId: "blahblahblah"), justCopied: .constant(false))
+		           item: LinkItem(title: "Test", url: "google.ca", parentFolderId: "blahblahblah"), justCopied: .constant(false))
 	}
 }

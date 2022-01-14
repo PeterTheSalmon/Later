@@ -26,7 +26,6 @@ struct SortStylePicker: View {
 		.frame(maxWidth: 130)
 		.pickerStyle(.menu)
 		.onChange(of: selectedStyle) { _ in
-			print(selectedStyle)
 			SortList(linkListViewModel: linkListViewModel)
 		}
 	}
