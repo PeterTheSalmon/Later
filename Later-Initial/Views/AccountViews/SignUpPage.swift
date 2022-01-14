@@ -22,6 +22,9 @@ struct SignUpPage: View {
 	/// Used to activate the LogInPage
 	@AppStorage("logInPageActive") var logInPageActive = true
 
+	/// this is used to ensure that, if it is a new user, they must create a folder immediately upon creating an account
+	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
+
 	@State private var badSignUp = false
 
 	var body: some View {
@@ -93,11 +96,10 @@ struct SignUpPage: View {
 				}
 				// Otherwise, log in
 				authViewModel.signUp(email: email, password: password)
-				homeViewSelected = true
+
 			} label: {
 				Text("Sign Up")
 			}.buttonStyle(SaveButton(colour: .accentColor))
-
 		}
 		.padding()
 		.onChange(of: email) { _ in

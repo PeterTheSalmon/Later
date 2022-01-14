@@ -18,6 +18,9 @@ class AuthViewModel: ObservableObject {
 
 	@Published var resetPassDescription: String?
 
+	@AppStorage("homeViewSelected") var homeViewSelected = true
+	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
+	
 	var isSignedIn: Bool {
 		return auth.currentUser != nil
 	}
@@ -42,6 +45,7 @@ class AuthViewModel: ObservableObject {
 		auth.createUser(withEmail: email, password: password) { [weak self] result, error in
 			guard result != nil, error == nil else {
 				self?.errorDescription = error?.localizedDescription
+				print("this should show folder")
 				return
 			}
 
@@ -49,6 +53,10 @@ class AuthViewModel: ObservableObject {
 				self?.signedIn = true
 			}
 		}
+		homeViewSelected = true
+		folderListIsEmpty = true
+		print("made folder list empty")
+		
 	}
 
 	/// - Parameter email: user email

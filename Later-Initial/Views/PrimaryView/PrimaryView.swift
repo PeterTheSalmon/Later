@@ -100,6 +100,9 @@ struct PrimaryView: View {
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}
+		.sheet(isPresented: $folderListIsEmpty) {
+			NewFolderSheet(folderViewModel: folderListViewModel, allowExitCommand: false)
+		}
 
 		.onAppear {
 			// Check if the user is signed in, and update the signedIn state based on what is returned
