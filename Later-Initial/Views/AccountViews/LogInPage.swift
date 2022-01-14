@@ -25,7 +25,15 @@ struct LogInPage: View {
 	@State private var forgotPassword = false
 	@State private var forgotPassEmail = ""
 	@State private var forgotPassEmailSent = false
+	@State private var emailDelayPassed = false
 
+	func emailSendDelay() {
+		Task {
+			try await Task.sleep(nanoseconds: 1_000_000_000)
+			withAnimation(.linear) { emailDelayPassed = true }
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			Text("Log in to Later")
@@ -95,26 +103,20 @@ struct LogInPage: View {
 								.onSubmit {
 									authViewModel.resetPassword(email: forgotPassEmail)
 								}
-							Button(forgotPassEmailSent ? "􀆅" : "􀈟") {
+							Button("􀈟") {
 								authViewModel.resetPassword(email: forgotPassEmail)
-								withAnimation(.linear) { forgotPassEmailSent = true }
+								emailSendDelay()
 							}
-
 						}
 						.frame(maxWidth: 300)
 						.underlineTextField(colour: .primary)
 					}
 				}
-				if forgotPassEmailSent {
-					Text("Sent - check your email!")
-						.fontWeight(.semibold)
-						.foregroundColor(.green)
+				if emailDelayPassed {
+					Text(authViewModel.resetPassDescription ?? "Sent! Check your email.")
+						.foregroundColor(authViewModel.resetPassDescription == nil ? .green : .red)
 				}
 			}
-			.onChange(of: forgotPassEmail) { _ in
-				withAnimation(.linear) { forgotPassEmailSent = false }
-			}
-			
 		}
 		.padding()
 		.onChange(of: email) { _ in
@@ -127,7 +129,6 @@ struct LogInPage: View {
 				badLogIn = false
 			}
 		}
-
 	}
 }
 

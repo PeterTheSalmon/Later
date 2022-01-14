@@ -20,9 +20,7 @@ struct Later: App {
 	init() {
 		folderManagerActive = false
 		homeViewSelected = true
-		FirebaseApp.configure()
-		/// If not signed in, sign in anonymously
-		
+		FirebaseApp.configure()		
 	}
 
 	

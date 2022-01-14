@@ -11,20 +11,20 @@ import SwiftUI
 
 class AuthViewModel: ObservableObject {
 	let auth = Auth.auth()
-	
+
 	@Published var signedIn = false
 
 	@Published var errorDescription: String?
-	
-	
-	
+
+	@Published var resetPassDescription: String?
+
 	var isSignedIn: Bool {
 		return auth.currentUser != nil
 	}
 
 	func signIn(email: String, password: String) {
-		self.errorDescription = nil
-		
+		errorDescription = nil
+
 		auth.signIn(withEmail: email, password: password) { [weak self] result, error in
 			guard result != nil, error == nil else {
 				self?.errorDescription = error?.localizedDescription
@@ -32,14 +32,13 @@ class AuthViewModel: ObservableObject {
 			}
 			DispatchQueue.main.async {
 				self?.signedIn = true
-				
 			}
 		}
 	}
 
 	func signUp(email: String, password: String) {
-		self.errorDescription = nil
-		
+		errorDescription = nil
+
 		auth.createUser(withEmail: email, password: password) { [weak self] result, error in
 			guard result != nil, error == nil else {
 				self?.errorDescription = error?.localizedDescription
@@ -51,30 +50,23 @@ class AuthViewModel: ObservableObject {
 			}
 		}
 	}
-	
-	
-	/// UNFINISHED
+
 	/// - Parameter email: user email
 	func resetPassword(email: String) {
-		
-		self.errorDescription = nil
-		
-		auth.sendPasswordReset(withEmail: email) { error in
+		auth.sendPasswordReset(withEmail: email) { [weak self] error in
 			guard error == nil else {
-				// TODO: Error handling for bad email entries in password reset field
-				// [weak self] will be required before the error above
-				print(error?.localizedDescription as Any)
+				withAnimation(.linear) { self?.resetPassDescription = error!.localizedDescription }
 				return
 			}
 		}
-		
+		withAnimation(.linear) { resetPassDescription = nil }
 	}
-	
+
 	func signOut() {
 		// Try to sign out
 		try? auth.signOut()
-		
+
 		// mark user as signed out
-		self.signedIn = false
+		signedIn = false
 	}
 }
