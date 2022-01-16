@@ -27,6 +27,22 @@ struct SignUpPage: View {
 
 	@State private var badSignUp = false
 
+	func signUp() {
+		guard !email.isEmpty, !password.isEmpty else {
+			withAnimation(.linear) { badSignUp = true }
+			authViewModel.errorDescription = "Email and Password cannot be empty."
+			return
+		}
+		guard email == confirmEmail && password == confirmPassword else {
+			withAnimation(.linear) { badSignUp = true }
+			authViewModel.errorDescription = "Email or Password do not match"
+			return
+		}
+		// Otherwise, log in
+		authViewModel.signUp(email: email, password: password)
+
+	}
+	
 	var body: some View {
 		VStack {
 			Text("Sign Up")
@@ -84,22 +100,11 @@ struct SignUpPage: View {
 			}.frame(width: 300, height: 50)
 
 			Button {
-				guard !email.isEmpty, !password.isEmpty else {
-					withAnimation(.linear) { badSignUp = true }
-					authViewModel.errorDescription = "Email and Password cannot be empty."
-					return
-				}
-				guard email == confirmEmail && password == confirmPassword else {
-					withAnimation(.linear) { badSignUp = true }
-					authViewModel.errorDescription = "Email or Password do not match"
-					return
-				}
-				// Otherwise, log in
-				authViewModel.signUp(email: email, password: password)
-
+				signUp()
 			} label: {
 				Text("Sign Up")
-			}.buttonStyle(SaveButton(colour: .accentColor))
+			}
+			.buttonStyle(SaveButton(colour: .accentColor))
 		}
 		.padding()
 		.onChange(of: email) { _ in

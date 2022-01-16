@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct Later: App {
-	/// These states are declared here as they are used in keyboard shortcuts
+	/// These states are declared here as they are used in keyboard shortcuts to open the folder and link sheets
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
 
+	// Used to ensure different parts of the UI are activated
 	@AppStorage("folderManagerActive") var folderManagerActive = false
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
@@ -48,12 +49,14 @@ struct Later: App {
 			CommandGroup(replacing: CommandGroupPlacement.newItem) {
 				Button("New Item") {
 					isShowingNewItemSheet = true
-				}.keyboardShortcut("n")
+				}
+				.keyboardShortcut("n")
 
 				Button("New Folder") {
 					folderManagerActive = true
 					folderSheetPresented = true
-				}.keyboardShortcut("n", modifiers: [.command, .shift])
+				}
+				.keyboardShortcut("n", modifiers: [.command, .shift])
 			}
 		}
 

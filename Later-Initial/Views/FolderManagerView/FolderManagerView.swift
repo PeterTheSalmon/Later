@@ -27,7 +27,6 @@ struct FolderManagerView: View {
 				folderViewModel.folder.name.uppercased().contains(query.uppercased())
 			}
 
-
 			VStack {
 				ScrollView {
 					ForEach(filteredFolders) { folderViewModel in
@@ -49,7 +48,7 @@ struct FolderManagerView: View {
 						Image(systemName: "sidebar.left")
 					}
 				}
-				
+
 				ToolbarItem(placement: .navigation) {
 					Button {
 						isShowingNewItemSheet = true
@@ -64,10 +63,10 @@ struct FolderManagerView: View {
 			}
 			.sheet(isPresented: $isShowingNewItemSheet) {
 				NewItemSheet(folderListViewModel: folderListViewModel,
-										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-										 linkListViewModel: linkListViewModel)
+				             parentFolderViewModel: folderListViewModel.folderViewModels[0],
+				             linkListViewModel: linkListViewModel)
 			}
-			
+
 		} else {
 			VStack(alignment: .leading) {
 				Group {
@@ -149,6 +148,12 @@ struct FolderListedView: View {
 	@State private var folderColour = Color.primary
 	@State private var symbolName = 0
 
+	private func makeFolderColourNil() {
+		var updatedFolder = folderViewModel.folder
+
+		updatedFolder.colour = nil
+		update(item: updatedFolder)
+	}
 
 	private func editFolder() {
 		var updatedFolder = folderViewModel.folder
@@ -169,9 +174,9 @@ struct FolderListedView: View {
 		let numberOfLinks = linkListViewModel.linkViewModels.filter { $0.link.parentFolderId == folderViewModel.folder.id }.count
 
 		ZStack {
-			RoundedRectangle(cornerRadius: 2,
+			RoundedRectangle(cornerRadius: 4,
 			                 style: .circular)
-				.frame(height: 25)
+				.frame(height: 30)
 				.foregroundColor(Color("BG"))
 
 			HStack {
@@ -188,12 +193,14 @@ struct FolderListedView: View {
 
 				Spacer()
 
-				Button("Edit") { editPopoverPresented = true }.buttonStyle(DisplaySheetButtonStyle(hoveringReference: true, item: LinkItem(title: "", url: "", parentFolderId: "")))
+				Button("Edit") { editPopoverPresented = true }
+					.buttonStyle(DisplaySheetButtonStyle(hoveringReference: true, item: LinkItem(title: "", url: "", parentFolderId: "")))
 
 				if folderListViewModel.folderViewModels.count > 1 {
 					Button("Delete") {
 						if instantDeleteFolder { deleteFolder() } else { deleteAlertPresented = true }
-					}.buttonStyle(DisplaySheetButtonStyle(hoveringReference: true, item: LinkItem(title: "", url: "", parentFolderId: "")))
+					}
+					.buttonStyle(DisplaySheetButtonStyle(hoveringReference: true, item: LinkItem(title: "", url: "", parentFolderId: "")))
 				}
 			}
 			.padding(.horizontal, 5)
@@ -229,7 +236,10 @@ struct FolderListedView: View {
 						} else {
 							folderColour = .black
 						}
-						folderViewModel.folder.colour = nil
+						Task {
+							try await Task.sleep(nanoseconds: 500000000)
+							makeFolderColourNil()
+						}
 					} label: {
 						Image(systemName: "gobackward")
 					}

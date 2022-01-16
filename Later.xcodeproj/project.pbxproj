@@ -816,7 +816,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = "0.3.0-beta";
+				MARKETING_VERSION = "0.4.0-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = com.petersalmon.Later;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -844,7 +844,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = "0.3.0-beta";
+				MARKETING_VERSION = "0.4.0-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = com.petersalmon.Later;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

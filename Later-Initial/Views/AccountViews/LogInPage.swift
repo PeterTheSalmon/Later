@@ -33,7 +33,18 @@ struct LogInPage: View {
 			withAnimation(.linear) { emailDelayPassed = true }
 		}
 	}
-	
+
+	func logIn() {
+		guard !email.isEmpty, !password.isEmpty else {
+			withAnimation(.linear) { badLogIn = true }
+			authViewModel.errorDescription = "Email and Password cannot be empty."
+			return
+		}
+		// Otherwise, log in
+		authViewModel.signIn(email: email, password: password)
+		homeViewSelected = true
+	}
+
 	var body: some View {
 		VStack {
 			Text("Log in to Later")
@@ -72,19 +83,13 @@ struct LogInPage: View {
 				} else { EmptyView() }
 			}.frame(width: 300, height: 50)
 
-			// Save Button
+			// Login Button
 			Button {
-				guard !email.isEmpty, !password.isEmpty else {
-					withAnimation(.linear) { badLogIn = true }
-					authViewModel.errorDescription = "Email and Password cannot be empty."
-					return
-				}
-				// Otherwise, log in
-				authViewModel.signIn(email: email, password: password)
-				homeViewSelected = true
+				logIn()
 			} label: {
 				Text("Log In")
-			}.buttonStyle(SaveButton(colour: .accentColor))
+			}
+			.buttonStyle(SaveButton(colour: .accentColor))
 
 			// Forgot password logic
 			// TODO: Separate this into a separate view
