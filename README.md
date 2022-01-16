@@ -1,6 +1,16 @@
+
 # Later
 
-Later is a SwiftUI, macOS app to store and save links for later use!
+Later is a macOS app to save links for later
+
+## Installation
+
+Download the latest release and drag Later to your applications folder.
+
+Trying to open the app will bring up a warning - click OK, then right-click on the app and open from there. Another warning will appear, click Open again. This process is due to Later not yet being notarized by Apple.
+
+![Screen Shot 2022-01-16 at 11 44 47 AM](https://user-images.githubusercontent.com/87033324/149675395-f3ada33f-027f-4f88-b654-9592d68f2bd1.png)
+
 
 ### Why?
 
