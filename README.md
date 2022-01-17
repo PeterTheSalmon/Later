@@ -23,6 +23,7 @@ Trying to open the app will bring up a warning - click OK, then right-click on t
 - Easily save, copy, and share links
 - Fits cleanly into macOS design
 - Light and dark mode support
+- Under 20 MB of space required
 
 ![Light-Dark](https://user-images.githubusercontent.com/87033324/149676218-26699501-7222-47ae-9b78-0c15e26f1fa9.png)
 
