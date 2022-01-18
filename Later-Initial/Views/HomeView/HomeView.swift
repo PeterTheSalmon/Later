@@ -50,7 +50,7 @@ struct HomeView: View {
 							Image(systemName: "sidebar.left")
 						}
 					}
-					
+
 					ToolbarItem(placement: .navigation) {
 						Button {
 							isShowingSheet = true
@@ -63,17 +63,17 @@ struct HomeView: View {
 				.onAppear {
 					updateProgressValue()
 				}
-			
+
 				.sheet(isPresented: $isShowingSheet) {
 					NewItemSheet(folderListViewModel: folderListViewModel,
-											 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-											 linkListViewModel: linkListViewModel)
+					             parentFolderViewModel: folderListViewModel.folderViewModels[0],
+					             linkListViewModel: linkListViewModel)
 				}
 				.sheet(isPresented: $isShowingNewFolderSheet) {
 					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
 				}
 				.padding()
-			
+
 		} else {
 			VStack {
 				Spacer()
@@ -87,37 +87,41 @@ struct HomeView: View {
 
 				Spacer()
 
-				ZStack {
-					RoundedRectangle(cornerRadius: 5)
-						.foregroundColor(Color("Tip Rectangle"))
-						.frame(width: 300, height: 100)
-					Text(AppInfo.tips[randomInt])
-						.frame(width: 280, height: 80)
-					VStack {
-						HStack {
-							Spacer()
-							VStack {
+				if AppInfo.latestVersion != nil && AppInfo.version != AppInfo.latestVersion {
+					UpdatePrompt()
+				} else {
+					ZStack {
+						RoundedRectangle(cornerRadius: 5)
+							.foregroundColor(Color("Tip Rectangle"))
+							.frame(width: 300, height: 100)
+						Text(AppInfo.tips[randomInt])
+							.frame(width: 280, height: 80)
+						VStack {
+							HStack {
 								Spacer()
-								Image(systemName: Icons().arrow)
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(width: 20, height: 20)
-									.opacity(opacity)
-									.animation(.linear(duration: Constants().animationDuration), value: opacity)
-									.padding(3)
+								VStack {
+									Spacer()
+									Image(systemName: Icons().arrow)
+										.resizable()
+										.aspectRatio(contentMode: .fit)
+										.frame(width: 20, height: 20)
+										.opacity(opacity)
+										.animation(.linear(duration: Constants().animationDuration), value: opacity)
+										.padding(3)
+								}
 							}
 						}
 					}
-				}
-				.frame(width: 300, height: 100)
-				.animation(.easeInOut, value: randomInt)
-				.onTapGesture {
-					opacity = 1.0
-					let previousInt = randomInt
-					repeat {
-						randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
-					} while previousInt == randomInt
-				}
+					.frame(width: 300, height: 100)
+					.animation(.easeInOut, value: randomInt)
+					.onTapGesture {
+						opacity = 1.0
+						let previousInt = randomInt
+						repeat {
+							randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
+						} while previousInt == randomInt
+					}
+				}	
 
 				Spacer()
 			}
@@ -146,8 +150,8 @@ struct HomeView: View {
 
 			.sheet(isPresented: $isShowingSheet) {
 				NewItemSheet(folderListViewModel: folderListViewModel,
-										 parentFolderViewModel: folderListViewModel.folderViewModels[0],
-										 linkListViewModel: linkListViewModel)
+				             parentFolderViewModel: folderListViewModel.folderViewModels[0],
+				             linkListViewModel: linkListViewModel)
 			}
 			.sheet(isPresented: $isShowingNewFolderSheet) {
 				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)

@@ -9,7 +9,7 @@ import FirebaseAuth
 import Foundation
 import SwiftUI
 
-class AuthViewModel: ObservableObject {
+final class AuthViewModel: ObservableObject {
 	let auth = Auth.auth()
 
 	@Published var signedIn = false

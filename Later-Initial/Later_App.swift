@@ -13,7 +13,7 @@ struct Later: App {
 	@State var isShowingNewFolderSheet = false
 	@State var isShowingNewItemSheet = false
 
-	// Used to ensure different parts of the UI are activated
+	/// Used to ensure different parts of the UI are activated
 	@AppStorage("folderManagerActive") var folderManagerActive = false
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
@@ -21,7 +21,8 @@ struct Later: App {
 	init() {
 		folderManagerActive = false
 		homeViewSelected = true
-		FirebaseApp.configure()		
+		FirebaseApp.configure()
+		VersionViewModel().getVersion()
 	}
 
 	

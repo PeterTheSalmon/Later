@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5505A69A274D60650083EC3E /* EditLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5505A699274D60650083EC3E /* EditLinkButton.swift */; };
 		550F7D76278CB91100333A63 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7D75278CB91100333A63 /* AuthenticationService.swift */; };
+		550FFE85279764AC002BF2C2 /* VersionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FFE84279764AC002BF2C2 /* VersionViewModel.swift */; };
+		550FFE8827977671002BF2C2 /* UpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FFE8727977671002BF2C2 /* UpdatePrompt.swift */; };
 		5530BB9A2749895200DEA9DE /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5530BB992749895200DEA9DE /* SearchView.swift */; };
 		55338104272E1899005496A7 /* Later_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338103272E1899005496A7 /* Later_App.swift */; };
 		55338106272E1899005496A7 /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338105272E1899005496A7 /* PrimaryView.swift */; };
@@ -73,6 +75,7 @@
 		55D0FD83278B5E5600806EEA /* AppearanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D0FD82278B5E5600806EEA /* AppearanceSettings.swift */; };
 		55D0FD85278B7A0C00806EEA /* PreciseRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D0FD84278B7A0C00806EEA /* PreciseRound.swift */; };
 		55D3B29D2788C79600A9BBD5 /* FolderManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3B29C2788C79600A9BBD5 /* FolderManagerView.swift */; };
+		55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E18DE22797325B0052DBAC /* UpdatesSettings.swift */; };
 		55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E84D9827594D5A0017A735 /* WelcomeScreen.swift */; };
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
@@ -87,6 +90,8 @@
 /* Begin PBXFileReference section */
 		5505A699274D60650083EC3E /* EditLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLinkButton.swift; sourceTree = "<group>"; };
 		550F7D75278CB91100333A63 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		550FFE84279764AC002BF2C2 /* VersionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewModel.swift; sourceTree = "<group>"; };
+		550FFE8727977671002BF2C2 /* UpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePrompt.swift; sourceTree = "<group>"; };
 		5530BB992749895200DEA9DE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		55338100272E1899005496A7 /* Later.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Later.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55338103272E1899005496A7 /* Later_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Later_App.swift; sourceTree = "<group>"; };
@@ -147,6 +152,7 @@
 		55D0FD82278B5E5600806EEA /* AppearanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettings.swift; sourceTree = "<group>"; };
 		55D0FD84278B7A0C00806EEA /* PreciseRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciseRound.swift; sourceTree = "<group>"; };
 		55D3B29C2788C79600A9BBD5 /* FolderManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderManagerView.swift; sourceTree = "<group>"; };
+		55E18DE22797325B0052DBAC /* UpdatesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesSettings.swift; sourceTree = "<group>"; };
 		55E84D9827594D5A0017A735 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
@@ -183,6 +189,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		550FFE8627977665002BF2C2 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				550FFE8727977671002BF2C2 /* UpdatePrompt.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		553380F7272E1899005496A7 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +220,7 @@
 			children = (
 				55338103272E1899005496A7 /* Later_App.swift */,
 				5542E828278CF3E000AF4079 /* AuthViewModel.swift */,
+				550FFE84279764AC002BF2C2 /* VersionViewModel.swift */,
 				55CB5D8227862A490074A950 /* Constants */,
 				550F7D74278CB8FA00333A63 /* Services */,
 				55CB5D79278627C00074A950 /* Folder Backend */,
@@ -365,6 +380,7 @@
 				553E3271276847310071A366 /* AdvancedSettings.swift */,
 				55D0FD82278B5E5600806EEA /* AppearanceSettings.swift */,
 				5542E82A278D073D00AF4079 /* AccountSettings.swift */,
+				55E18DE22797325B0052DBAC /* UpdatesSettings.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -498,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				55FE7CA0273B3B8D00224070 /* HomeView.swift */,
+				550FFE8627977665002BF2C2 /* SubViews */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -636,6 +653,7 @@
 				55D0FD85278B7A0C00806EEA /* PreciseRound.swift in Sources */,
 				55D0FD7F278B56DC00806EEA /* Constants.swift in Sources */,
 				5592736D273AF1F000CBC001 /* EmptyFolderView.swift in Sources */,
+				550FFE85279764AC002BF2C2 /* VersionViewModel.swift in Sources */,
 				5542E82E278D32E000AF4079 /* SignUpPage.swift in Sources */,
 				5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */,
 				55338104272E1899005496A7 /* Later_App.swift in Sources */,
@@ -663,6 +681,7 @@
 				558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */,
 				55CB5D7B278627F20074A950 /* LinkListViewModel.swift in Sources */,
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
+				55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */,
 				5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */,
 				5554E5402779108D00285209 /* SortingMethods.swift in Sources */,
 				55CB5D7727850D580074A950 /* FolderRepository.swift in Sources */,
@@ -674,6 +693,7 @@
 				55D3B29D2788C79600A9BBD5 /* FolderManagerView.swift in Sources */,
 				5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */,
 				55927370273AF81500CBC001 /* AppInfo.swift in Sources */,
+				550FFE8827977671002BF2C2 /* UpdatePrompt.swift in Sources */,
 				559208CB2773BBCC001F92F0 /* CodableColour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
