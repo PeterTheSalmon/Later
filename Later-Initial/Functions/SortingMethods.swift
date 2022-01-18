@@ -10,6 +10,7 @@ import SwiftUI
 
 func SortList(linkListViewModel: LinkListViewModel) {
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
+	@AppStorage("updateFavicon") var updateFavicon = false
 	
 	switch selectedStyle {
 	case 0:
@@ -21,4 +22,6 @@ func SortList(linkListViewModel: LinkListViewModel) {
 	default:
 		fatalError("Invalid Sort Style")
 	}
+	
+	updateFavicon.toggle()
 }

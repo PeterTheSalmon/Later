@@ -10,10 +10,14 @@ import SwiftUI
 struct AppearanceSettings: View {
 	@AppStorage("roundIcons") var roundIcons = false
 	@AppStorage("animationDuration") var animationDuration: Double = 0.1
+	@AppStorage("showFavicon") var showFavicon = true
+
 
 	var body: some View {
 		Form {
 			Toggle("Prefer circular icons when possible", isOn: $roundIcons)
+			
+			Toggle("Show website favicons", isOn: $showFavicon)
 
 			Divider()
 

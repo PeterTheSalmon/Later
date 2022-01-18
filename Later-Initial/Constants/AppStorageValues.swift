@@ -5,6 +5,9 @@ import SwiftUI
 
 struct AppStorageValues {
 	
+	/// Toggleable to show or hide favicons on the link display sheet.
+	@AppStorage("showFavicon") var showFavicon = true
+	
 	@AppStorage("logInPageActive") var logInPageActive = true
 	@AppStorage("signUpPageActive") var signUpPageActive = false
 

@@ -16,6 +16,7 @@ struct LinkDisplaySheet: View {
 	@State var justCopied: Bool = false
 	@State private var showShareSheet = false
 	@ObservedObject var linkListViewModel: LinkListViewModel
+	@AppStorage("showFavicon") var showFavicon = true
 
 	var body: some View {
 		ZStack {
@@ -46,12 +47,13 @@ struct LinkDisplaySheet: View {
 
 					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
 						.help("Add to Favourites")
-
-					Divider().frame(height: 40)
-
-					
+						.padding(.trailing, showFavicon ? 0 : nil)
 				}
-				FaviconDisplay(linkViewModel: linkViewModel)
+
+				if showFavicon {
+					Divider().frame(height: 40)
+					FaviconDisplay(linkViewModel: linkViewModel)
+				}
 			}
 		}
 
