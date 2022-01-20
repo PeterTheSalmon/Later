@@ -18,7 +18,7 @@ struct LinkDisplaySheet: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@AppStorage("showFavicon") var showFavicon = true
 
-	/// Variable to
+	/// Variable to see if we need to toggle the favourite
 	@State var needToToggleFavouriteOnDisappear: Bool = false
 
 	var body: some View {
@@ -63,6 +63,11 @@ struct LinkDisplaySheet: View {
 		.onDisappear {
 			print("THE LINK SHEET FOR THE LINK \(linkViewModel.link.title) DISAPPEARED")
 			print("status of bool is \(needToToggleFavouriteOnDisappear)")
+			
+			if needToToggleFavouriteOnDisappear {
+				toggleFavourite()
+				print("toggled favourite successfully?")
+			}
 		}
 
 		.frame(height: 50)
@@ -70,6 +75,17 @@ struct LinkDisplaySheet: View {
 		.onHover { hoveringRectangle in
 			isHoveringRectangle = hoveringRectangle
 		}
+	}
+	
+	/// Two functions to toggle favourites
+	private func toggleFavourite() {
+		var updatedLink = linkViewModel.link
+		updatedLink.isFavourite.toggle()
+		update(item: updatedLink)
+	}
+	
+	private func update(item: LinkItem) {
+		linkViewModel.update(item: item)
 	}
 }
 

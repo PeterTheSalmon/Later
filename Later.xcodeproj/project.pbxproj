@@ -134,6 +134,7 @@
 		5593E62527436645009C9CE9 /* LicenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseModel.swift; sourceTree = "<group>"; };
 		5593E62727436668009C9CE9 /* OpenSourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceList.swift; sourceTree = "<group>"; };
 		55A2853227613A7800F17C5A /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		55ADE8CC2799291500B3D55A /* Know Issues.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Know Issues.md"; sourceTree = "<group>"; };
 		55C6A03E276687CC00A8E54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		55C6A04027668A7F00A8E54D /* AppStorageValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageValues.swift; sourceTree = "<group>"; };
 		55C6A04427668CC200A8E54D /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
@@ -233,6 +234,7 @@
 				5533810C272E189C005496A7 /* Later_Initial.entitlements */,
 				55606D572784310800B56511 /* GoogleService-Info.plist */,
 				55338107272E189C005496A7 /* Assets.xcassets */,
+				55ADE8CC2799291500B3D55A /* Know Issues.md */,
 			);
 			path = "Later-Initial";
 			sourceTree = "<group>";
