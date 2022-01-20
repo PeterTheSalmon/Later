@@ -17,6 +17,8 @@ struct FavouriteButton: View {
 	@State private var needToChangeFaveStatusOnDisappear = false
 	@AppStorage("updateFavicon") var updateFavicon = false
 
+	@Binding var needToToggleFavouriteOnDisappear: Bool
+	
 	private func toggleFavourite() {
 		var updatedLink = linkViewModel.link
 		updatedLink.isFavourite.toggle()
@@ -35,8 +37,13 @@ struct FavouriteButton: View {
 				.frame(width: 20, height: 20)
 				.foregroundColor(linkViewModel.link.isFavourite ? .accentColor : hoveringReference ? .gray : Color("Icon"))
 		}
+
+
 		.animation(.linear(duration: Constants().animationDuration), value: hoveringReference)
 		.onTapGesture {
+			
+			needToToggleFavouriteOnDisappear.toggle()
+			
 			withAnimation(.linear) {
 				toggleFavourite()
 				Task {

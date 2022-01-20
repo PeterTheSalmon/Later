@@ -18,6 +18,9 @@ struct LinkDisplaySheet: View {
 	@ObservedObject var linkListViewModel: LinkListViewModel
 	@AppStorage("showFavicon") var showFavicon = true
 
+	/// Variable to
+	@State var needToToggleFavouriteOnDisappear: Bool = false
+
 	var body: some View {
 		ZStack {
 			BackgroundRectangle(hoverStatus: isHoveringRectangle)
@@ -45,7 +48,7 @@ struct LinkDisplaySheet: View {
 					             linkViewModel: linkViewModel)
 						.help("Delete")
 
-					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, linkListViewModel: linkListViewModel)
+					FavouriteButton(hoveringReference: isHoveringRectangle, linkViewModel: linkViewModel, linkListViewModel: linkListViewModel, needToToggleFavouriteOnDisappear: $needToToggleFavouriteOnDisappear)
 						.help("Add to Favourites")
 						.padding(.trailing, showFavicon ? 0 : nil)
 				}
@@ -57,8 +60,12 @@ struct LinkDisplaySheet: View {
 			}
 		}
 
+		.onDisappear {
+			print("THE LINK SHEET FOR THE LINK \(linkViewModel.link.title) DISAPPEARED")
+			print("status of bool is \(needToToggleFavouriteOnDisappear)")
+		}
+
 		.frame(height: 50)
-		// .padding(.vertical, 1)
 		.padding(.horizontal, 1.5)
 		.onHover { hoveringRectangle in
 			isHoveringRectangle = hoveringRectangle
