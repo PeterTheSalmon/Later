@@ -15,6 +15,9 @@ final class LinkViewModel: ObservableObject, Identifiable {
 	private let linkRepository = LinkRepository()
 
 	@Published var link: LinkItem
+	
+	/// This is true when a user has favourited an item but not yet left a view
+	@Published var isFakeFavourite = false
 
 	private var cancellables: Set<AnyCancellable> = []
 

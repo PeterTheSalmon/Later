@@ -5,7 +5,7 @@
 //  Created by Peter Salmon on 2021-11-08.
 //
 
-// MARK: STATUS: Works
+// MARK: STATUS: Works mostly
 
 import SwiftUI
 
@@ -19,8 +19,6 @@ struct FavouriteButton: View {
 
 	@Binding var needToToggleFavouriteOnDisappear: Bool
 
-	/// Upon changing the favourite status, this variable indicates if we need to fake to the user that the item is a favourite until we update it when closing the view
-	@State private var showFakeToggledFavourite = false
 
 	private func toggleFavourite() {
 		var updatedLink = linkViewModel.link
@@ -34,7 +32,7 @@ struct FavouriteButton: View {
 
 	var body: some View {
 		HStack {
-			if showFakeToggledFavourite {
+			if linkViewModel.isFakeFavourite {
 				/// This code is basically an inversion of the below
 				Image(systemName: linkViewModel.link.isFavourite ? Icons().emptyStar : Icons().filledStar)
 					.resizable()
@@ -53,8 +51,8 @@ struct FavouriteButton: View {
 
 		.animation(.linear(duration: Constants().animationDuration), value: hoveringReference)
 		.onTapGesture {
-			/// This line only makes a temporary change
-			showFakeToggledFavourite.toggle()
+			
+			linkViewModel.isFakeFavourite.toggle()
 
 			/// This line tells the parent view to update the ACTUAL link state when this view disappears
 			needToToggleFavouriteOnDisappear.toggle()

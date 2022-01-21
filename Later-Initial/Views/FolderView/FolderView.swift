@@ -27,6 +27,8 @@ struct FolderView: View {
 	@Environment(\.isSearching) var isSearching
 	@Binding var query: String
 	
+	@AppStorage("updateFavicon") var updateFavicon = false
+	
 	var body: some View {
 		if isSearching && !query.isEmpty {
 			SearchView(query: $query,
@@ -43,8 +45,9 @@ struct FolderView: View {
 					
 					/// Filtering by favourites as well
 					let filteredByFavourite = filteredByFolder.filter { linkViewModel in
-						linkViewModel.link.isFavourite
+						linkViewModel.link.isFavourite || linkViewModel.isFakeFavourite
 					}
+
 					
 					if filteredByFolder.count == 0 && !showFavouritesOnly { /// check if there are no items in the folder
 						EmptyFolderView(folder: selectedFolder)
@@ -75,11 +78,12 @@ struct FolderView: View {
 				}
 				.navigationTitle(parentFolderViewModel.folder.name)
 				
-				// sets the selected folder to the current parent folder
+				// sets the selected folder to the current parent folder, sorts the list, and fixes the favicons
 				.onAppear {
 					selectedFolder = parentFolder
 					selectedFolderViewModel = parentFolderViewModel
 					SortList(linkListViewModel: linkListViewModel)
+					updateFavicon.toggle()
 				}
 				
 				.animation(.linear(duration: Constants().animationDuration),

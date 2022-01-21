@@ -24,7 +24,7 @@ struct SearchView: View {
 
 		/// FaveFiltered is only favourite items
 		let faveFiltered = filtered.filter { linkViewModel in
-			linkViewModel.link.isFavourite
+			linkViewModel.link.isFavourite || linkViewModel.isFakeFavourite
 		}
 
 		VStack {

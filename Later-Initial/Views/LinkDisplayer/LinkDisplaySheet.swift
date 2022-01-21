@@ -61,12 +61,9 @@ struct LinkDisplaySheet: View {
 		}
 
 		.onDisappear {
-			print("THE LINK SHEET FOR THE LINK \(linkViewModel.link.title) DISAPPEARED")
-			print("status of bool is \(needToToggleFavouriteOnDisappear)")
-			
 			if needToToggleFavouriteOnDisappear {
 				toggleFavourite()
-				print("toggled favourite successfully?")
+				linkViewModel.isFakeFavourite = false
 			}
 		}
 
