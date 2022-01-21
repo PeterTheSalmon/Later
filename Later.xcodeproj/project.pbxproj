@@ -51,6 +51,7 @@
 		5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */; };
 		5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E62527436645009C9CE9 /* LicenseModel.swift */; };
 		5593E62827436668009C9CE9 /* OpenSourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E62727436668009C9CE9 /* OpenSourceList.swift */; };
+		55A152A2279B15A400A50058 /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */; };
 		55A2853327613A7800F17C5A /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2853227613A7800F17C5A /* InfoButton.swift */; };
 		55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A03E276687CC00A8E54D /* SettingsView.swift */; };
 		55C6A04127668A7F00A8E54D /* AppStorageValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A04027668A7F00A8E54D /* AppStorageValues.swift */; };
@@ -79,6 +80,8 @@
 		55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E84D9827594D5A0017A735 /* WelcomeScreen.swift */; };
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
+		55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */; };
+		55EE8B75279B30E10039A506 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B74279B30E10039A506 /* TextFieldTests.swift */; };
 		55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C98273AFB2400224070 /* ButtonStyles.swift */; };
 		55FE7C9B273B069500224070 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9A273B069500224070 /* FolderModel.swift */; };
 		55FE7C9D273B097700224070 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9C273B097700224070 /* FolderView.swift */; };
@@ -133,6 +136,7 @@
 		5593E61F274356F2009C9CE9 /* OpenSourceLicenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicenses.swift; sourceTree = "<group>"; };
 		5593E62527436645009C9CE9 /* LicenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseModel.swift; sourceTree = "<group>"; };
 		5593E62727436668009C9CE9 /* OpenSourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceList.swift; sourceTree = "<group>"; };
+		55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		55A2853227613A7800F17C5A /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		55ADE8CC2799291500B3D55A /* Known Issues.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Known Issues.md"; sourceTree = "<group>"; };
 		55C6A03E276687CC00A8E54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 		55E84D9827594D5A0017A735 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
+		55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBorderLabelTextField.swift; sourceTree = "<group>"; };
+		55EE8B74279B30E10039A506 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
 		55FE7C98273AFB2400224070 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		55FE7C9A273B069500224070 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 		55FE7C9C273B097700224070 /* FolderView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -219,6 +225,9 @@
 		55338102272E1899005496A7 /* Later-Initial */ = {
 			isa = PBXGroup;
 			children = (
+				55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */,
+				55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */,
+				55EE8B74279B30E10039A506 /* TextFieldTests.swift */,
 				55338103272E1899005496A7 /* Later_App.swift */,
 				5542E828278CF3E000AF4079 /* AuthViewModel.swift */,
 				550FFE84279764AC002BF2C2 /* VersionViewModel.swift */,
@@ -633,6 +642,7 @@
 				5542E829278CF3E000AF4079 /* AuthViewModel.swift in Sources */,
 				55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */,
 				5593E62627436645009C9CE9 /* LicenseModel.swift in Sources */,
+				55A152A2279B15A400A50058 /* FloatingLabelTextField.swift in Sources */,
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
 				550F7D76278CB91100333A63 /* AuthenticationService.swift in Sources */,
 				5542E830278D410700AF4079 /* LoggedOutView.swift in Sources */,
@@ -676,6 +686,7 @@
 				55FE7C9B273B069500224070 /* FolderModel.swift in Sources */,
 				55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */,
 				55CB5D81278628AD0074A950 /* FolderViewModel.swift in Sources */,
+				55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */,
 				558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */,
 				5505A69A274D60650083EC3E /* EditLinkButton.swift in Sources */,
 				55CB5D6A278504910074A950 /* LinkRepository.swift in Sources */,
@@ -685,6 +696,7 @@
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
 				55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */,
 				5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */,
+				55EE8B75279B30E10039A506 /* TextFieldTests.swift in Sources */,
 				5554E5402779108D00285209 /* SortingMethods.swift in Sources */,
 				55CB5D7727850D580074A950 /* FolderRepository.swift in Sources */,
 				55CB5D7F278628A30074A950 /* FolderListViewModel.swift in Sources */,

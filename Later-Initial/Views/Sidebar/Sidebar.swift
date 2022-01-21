@@ -26,12 +26,14 @@ struct Sidebar: View {
 	var body: some View {
 		VStack {
 			List {
+				NavigationLink("Test", destination: TextFieldTests())
+
 				NavigationLink(destination: HomeView(folderListViewModel: folderListViewModel,
-																												 linkListViewModel: linkListViewModel,
-																												 selectedFolder: $selectedFolder,
-				                                                 query: $query,
-				                                                 isShowingSheet: $isShowingSheet,
-				                                                 isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $homeViewSelected) {
+				                                     linkListViewModel: linkListViewModel,
+				                                     selectedFolder: $selectedFolder,
+				                                     query: $query,
+				                                     isShowingSheet: $isShowingSheet,
+				                                     isShowingNewFolderSheet: $isShowingNewFolderSheet), isActive: $homeViewSelected) {
 					SidebarExtraItemView(name: "Home", imageName: Icons().home)
 				}
 
@@ -59,9 +61,6 @@ struct Sidebar: View {
 				            query: $query,
 				            justDeletedFolder: $justDeletedFolder)
 			}
-			.listStyle(.sidebar)
-			.listItemTint(Color.accentColor)
-
 			Divider()
 				.padding(0)
 

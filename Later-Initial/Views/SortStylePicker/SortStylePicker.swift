@@ -26,7 +26,9 @@ struct SortStylePicker: View {
 		.frame(maxWidth: 130)
 		.pickerStyle(.menu)
 		.onChange(of: selectedStyle) { _ in
-			SortList(linkListViewModel: linkListViewModel)
+			withAnimation(.linear(duration: Constants().animationTime)) {
+				SortList(linkListViewModel: linkListViewModel)
+			}
 		}
 	}
 }

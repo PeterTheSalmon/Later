@@ -97,6 +97,7 @@ struct PrimaryView: View {
 				ProgressView()
 			}
 		}
+		
 		.sheet(isPresented: $newUser) {
 			WelcomeScreen(newUserValue: $newUser)
 		}

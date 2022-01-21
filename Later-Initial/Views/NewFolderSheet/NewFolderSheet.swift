@@ -38,7 +38,7 @@ struct NewFolderSheet: View {
 
 	var body: some View {
 		VStack {
-			Label(allowExitCommand ? "Add New Folder" : "Start by Adding a Folder", systemImage: "folder.badge.plus")
+			Text(allowExitCommand ? "Add New Folder" : "Start by Adding a Folder")
 				.font(.title)
 
 			// Colour Picker

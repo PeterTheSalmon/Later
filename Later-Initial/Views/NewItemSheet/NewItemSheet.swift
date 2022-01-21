@@ -56,7 +56,7 @@ struct NewItemSheet: View {
 
 	var body: some View {
 		VStack {
-			Label("Add New Item", systemImage: "link.badge.plus")
+			Text("Add New Link")
 				.font(.title)
 				.padding(.bottom)
 

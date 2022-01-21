@@ -54,7 +54,7 @@ struct FaviconDisplay: View {
 		case let .success(image):
 			image
 				.resizable()
-				.aspectRatio(contentMode: .fill)
+				.aspectRatio(contentMode: .fit)
 				.frame(width: 40, height: 40)
 				.padding(.leading, 4)
 				.padding(.trailing, 10)
