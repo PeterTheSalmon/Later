@@ -22,6 +22,8 @@ struct NewItemSheet: View {
 	// Statistics to update
 	@AppStorage("notesCreated") var notesCreated = 0
 	@AppStorage("selectedSortStyle") var selectedStyle = 0
+	
+	@AppStorage("updateFavicon") var updateFavicon = false
 
 	// ObservedObject for the LinkViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
@@ -36,6 +38,7 @@ struct NewItemSheet: View {
 		notesCreated += 1
 		SortList(linkListViewModel: linkListViewModel)
 		dismiss()
+		updateFavicon.toggle()
 	}
 
 	private func addFavouriteLink() {
@@ -48,6 +51,7 @@ struct NewItemSheet: View {
 		notesCreated += 1
 		SortList(linkListViewModel: linkListViewModel)
 		dismiss()
+		updateFavicon.toggle()
 	}
 
 	var body: some View {

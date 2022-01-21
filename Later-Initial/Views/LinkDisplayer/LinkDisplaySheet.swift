@@ -59,6 +59,7 @@ struct LinkDisplaySheet: View {
 				}
 			}
 		}
+		
 
 		.onDisappear {
 			if needToToggleFavouriteOnDisappear {
