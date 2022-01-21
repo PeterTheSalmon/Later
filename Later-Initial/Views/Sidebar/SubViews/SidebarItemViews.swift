@@ -50,7 +50,7 @@ struct SidebarFolderItemView: View {
 			Image(systemName: folderViewModel.folder.iconName ?? Icons().folder)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-				.foregroundColor(folderViewModel.folder.colour ?? nil)
+				.foregroundColor(folderViewModel.folder.colour)
 				.frame(width: 14, height: 14)
 
 			Text(name)
