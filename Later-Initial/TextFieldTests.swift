@@ -14,8 +14,8 @@ struct TextFieldTests: View {
 	
     var body: some View {
 			VStack {
-				FloatingLabelTextField(placeholder: "Email", text: $text1)
-				FloatingBorderLabelTextField(placeholder: "Password", text: $text2)
+				TextField("", text: $text1)
+					.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Email", isEmpty: text1.isEmpty))
 			}
     }
 }

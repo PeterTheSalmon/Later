@@ -32,6 +32,7 @@
 		5554E5402779108D00285209 /* SortingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554E53F2779108D00285209 /* SortingMethods.swift */; };
 		55606D582784310800B56511 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55606D572784310800B56511 /* GoogleService-Info.plist */; };
 		557248D3277B8ED20040CCB7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 557248D2277B8ED20040CCB7 /* CachedAsyncImage */; };
+		557356E7279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */; };
 		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */; };
 		558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1C9274367CA009A6694 /* AboutTitle.swift */; };
@@ -82,6 +83,7 @@
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
 		55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */; };
 		55EE8B75279B30E10039A506 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B74279B30E10039A506 /* TextFieldTests.swift */; };
+		55EE8B79279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B78279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift */; };
 		55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C98273AFB2400224070 /* ButtonStyles.swift */; };
 		55FE7C9B273B069500224070 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9A273B069500224070 /* FolderModel.swift */; };
 		55FE7C9D273B097700224070 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9C273B097700224070 /* FolderView.swift */; };
@@ -117,6 +119,7 @@
 		5544582C2731974E009A4DF0 /* ExtractDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractDomain.swift; sourceTree = "<group>"; };
 		5554E53F2779108D00285209 /* SortingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMethods.swift; sourceTree = "<group>"; };
 		55606D572784310800B56511 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextFieldStyle.swift; sourceTree = "<group>"; };
 		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLConventions.swift; sourceTree = "<group>"; };
 		558DE1C9274367CA009A6694 /* AboutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTitle.swift; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
 		55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBorderLabelTextField.swift; sourceTree = "<group>"; };
 		55EE8B74279B30E10039A506 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
+		55EE8B78279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBorderLabelTextFieldStyle.swift; sourceTree = "<group>"; };
 		55FE7C98273AFB2400224070 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		55FE7C9A273B069500224070 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 		55FE7C9C273B097700224070 /* FolderView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -225,12 +229,9 @@
 		55338102272E1899005496A7 /* Later-Initial */ = {
 			isa = PBXGroup;
 			children = (
-				55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */,
-				55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */,
 				55EE8B74279B30E10039A506 /* TextFieldTests.swift */,
 				55338103272E1899005496A7 /* Later_App.swift */,
-				5542E828278CF3E000AF4079 /* AuthViewModel.swift */,
-				550FFE84279764AC002BF2C2 /* VersionViewModel.swift */,
+				55EE8B76279B42090039A506 /* ViewModels */,
 				55CB5D8227862A490074A950 /* Constants */,
 				550F7D74278CB8FA00333A63 /* Services */,
 				55CB5D79278627C00074A950 /* Folder Backend */,
@@ -534,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				55FE7C98273AFB2400224070 /* ButtonStyles.swift */,
+				55EE8B77279B42D10039A506 /* TextFields */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -552,6 +554,26 @@
 				55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		55EE8B76279B42090039A506 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5542E828278CF3E000AF4079 /* AuthViewModel.swift */,
+				550FFE84279764AC002BF2C2 /* VersionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		55EE8B77279B42D10039A506 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */,
+				55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */,
+				557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */,
+				55EE8B78279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -689,6 +711,7 @@
 				55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */,
 				558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */,
 				5505A69A274D60650083EC3E /* EditLinkButton.swift in Sources */,
+				55EE8B79279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift in Sources */,
 				55CB5D6A278504910074A950 /* LinkRepository.swift in Sources */,
 				55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */,
 				558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */,
@@ -706,6 +729,7 @@
 				55A2853327613A7800F17C5A /* InfoButton.swift in Sources */,
 				55D3B29D2788C79600A9BBD5 /* FolderManagerView.swift in Sources */,
 				5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */,
+				557356E7279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift in Sources */,
 				55927370273AF81500CBC001 /* AppInfo.swift in Sources */,
 				550FFE8827977671002BF2C2 /* UpdatePrompt.swift in Sources */,
 				559208CB2773BBCC001F92F0 /* CodableColour.swift in Sources */,

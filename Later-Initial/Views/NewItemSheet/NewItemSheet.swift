@@ -58,14 +58,12 @@ struct NewItemSheet: View {
 		VStack {
 			Text("Add New Link")
 				.font(.title)
-				.padding(.bottom)
 
-			Form {
-				TextField("Title", text: $title, prompt: Text("Title"))
-					.font(.title2)
+				TextField("", text: $title)
+					.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Title", isEmpty: title.isEmpty))
 
-				TextField("URL", text: $urlString, prompt: Text("URL"))
-					.font(.title3)
+				TextField("", text: $urlString)
+				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "URL", isEmpty: urlString.isEmpty))
 					.onSubmit {
 						addLink()
 					}
@@ -76,17 +74,10 @@ struct NewItemSheet: View {
 					}
 				}
 				
-				.font(.title3)
-			}
-			.textFieldStyle(.roundedBorder)
-			.padding(.leading)
-			.padding(.trailing)
-			.padding(.bottom)
-
-			// MARK: Save buttons
+			
 
 			HStack {
-				Button { // save normally
+				Button {
 					addLink()
 				} label: {
 					Label("Save", systemImage: "tray.and.arrow.down")
@@ -94,7 +85,7 @@ struct NewItemSheet: View {
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 				.keyboardShortcut(.defaultAction)
 
-				Button { // save as fave
+				Button {
 					addFavouriteLink()
 				} label: {
 					Label("Save as Favourite", systemImage: "star")
@@ -102,7 +93,9 @@ struct NewItemSheet: View {
 				.buttonStyle(SaveButton(colour: Color.accentColor))
 			}
 		}
-		.frame(width: 400, height: 220)
+		
+		//.frame(width: 400)
+		.padding()
 		.onExitCommand { dismiss() }
 
 	}

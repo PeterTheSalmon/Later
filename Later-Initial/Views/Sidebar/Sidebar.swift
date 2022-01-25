@@ -19,13 +19,13 @@ struct Sidebar: View {
 	@Binding var selectedFolder: FolderItem?
 	@Binding var selectedFolderViewModel: FolderViewModel?
 
-	// var filteredLinkItems: [LinkItem]
 	@Binding var query: String
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 
 	var body: some View {
 		VStack {
 			List {
+				// TODO: remove
 				NavigationLink("Test", destination: TextFieldTests())
 
 				NavigationLink(destination: HomeView(folderListViewModel: folderListViewModel,
@@ -51,7 +51,6 @@ struct Sidebar: View {
 				)
 
 				// MARK: This section, containing only the about view, should be unaffected by the Firebase changes
-
 				MoreSection(folderListViewModel: folderListViewModel,
 				            linkListViewModel: linkListViewModel,
 				            selectedFolder: $selectedFolder,
@@ -61,6 +60,7 @@ struct Sidebar: View {
 				            query: $query,
 				            justDeletedFolder: $justDeletedFolder)
 			}
+			
 			Divider()
 				.padding(0)
 

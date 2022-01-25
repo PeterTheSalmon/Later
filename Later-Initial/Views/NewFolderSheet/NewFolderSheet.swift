@@ -16,7 +16,6 @@ struct NewFolderSheet: View {
 
 	@State private var symbolName = 0
 
-
 	@State private var name = ""
 	@ObservedObject var folderViewModel: FolderListViewModel
 	@State var isPressed = false
@@ -25,12 +24,11 @@ struct NewFolderSheet: View {
 	@State private var folderColour = Color.primary
 	@State private var finalFolderColour: Color?
 	var allowExitCommand: Bool
-	
 
 	private func addFolder() {
 		let folder = FolderItem(name: name,
 		                        colour: finalFolderColour,
-														iconName: Icons().symbolNames[symbolName])
+		                        iconName: Icons().symbolNames[symbolName])
 		folderViewModel.add(folder)
 		foldersCreated += 1
 		dismiss()
@@ -60,15 +58,14 @@ struct NewFolderSheet: View {
 			.onChange(of: folderColour) { _ in
 				finalFolderColour = folderColour
 			}
+			.padding(.bottom, -10) // lower it down a bit
 
-			Form {
-				TextField("", text: $name, prompt: Text("Name"))
-					.font(.title3)
-					.onSubmit {
-						addFolder()
-					}
-			}
-			.textFieldStyle(.roundedBorder)
+			TextField("", text: $name)
+				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Name", isEmpty: name.isEmpty))
+				.padding(.horizontal)
+				.onSubmit {
+					addFolder()
+				}
 
 			Picker("", selection: $symbolName) {
 				ForEach(0 ..< Icons().symbolNames.count) {

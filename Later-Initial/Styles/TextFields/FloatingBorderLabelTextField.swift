@@ -17,7 +17,7 @@ struct FloatingBorderLabelTextField: View {
 		ZStack(alignment: .leading) {
 			Text(placeholder)
 				.font(.system(text.isEmpty ? .title2 : .title3, design: .rounded))
-				.foregroundColor(.blue.opacity(0.5))
+				.foregroundColor(.accentColor.opacity(0.5))
 				.padding(.horizontal, text.isEmpty ? 0 : 10)
 				.background(Color("DefaultBG"))
 				.offset(y: text.isEmpty ? 0 : -24)
@@ -26,14 +26,15 @@ struct FloatingBorderLabelTextField: View {
 			TextField("", text: $text)
 				.textFieldStyle(.plain)
 				.font(.system(.title2, design: .rounded))
-				.foregroundColor(.blue)
+				.foregroundColor(.accentColor)
 		}
 		.animation(.easeInOut(duration: Constants().animationTime * 2.5), value: text.isEmpty)
 		.padding(.horizontal)
 		.padding(.vertical, 10)
 		.background(
 			RoundedRectangle(cornerRadius: 10)
-				.stroke(text.isEmpty ? .blue.opacity(0.5) : .blue, lineWidth: 2)
+				.stroke(text.isEmpty ? Color.accentColor.opacity(0.5) : Color.accentColor, lineWidth: 2)
+				.animation(.linear(duration: Constants().animationTime), value: text.isEmpty)
 		)
 	}
 }
