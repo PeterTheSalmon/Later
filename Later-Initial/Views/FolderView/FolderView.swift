@@ -85,7 +85,12 @@ struct FolderView: View {
 					selectedFolder = parentFolder
 					selectedFolderViewModel = parentFolderViewModel
 					SortList(linkListViewModel: linkListViewModel)
-					updateFavicon.toggle()
+					Task {
+						try await Task.sleep(nanoseconds: 100000000)
+						withAnimation(.linear(duration: Constants().animationTime)) {
+						updateFavicon.toggle()
+						}
+					}
 				}
 
 				.animation(.linear(duration: Constants().animationDuration),

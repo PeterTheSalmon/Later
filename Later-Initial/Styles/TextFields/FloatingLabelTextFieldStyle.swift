@@ -10,13 +10,11 @@ import SwiftUI
 
 struct FloatingLabelTextFieldStyle: TextFieldStyle {
 	let placeholder: String
-	
+
 	var isEmpty: Bool
-	
-	var colour: Color = Color.accentColor
-	
-	var imageName: String?
-	
+
+	var colour = Color.accentColor
+
 	func _body(configuration: TextField<_Label>) -> some View {
 		ZStack(alignment: .leading) {
 			Text(placeholder)
@@ -25,7 +23,7 @@ struct FloatingLabelTextFieldStyle: TextFieldStyle {
 				.background(Color("DefaultBG"))
 				.offset(y: isEmpty ? 0 : -20)
 				.scaleEffect(isEmpty ? 1 : 0.9, anchor: .leading)
-			
+
 			configuration
 				.textFieldStyle(.plain)
 				.font(.system(.title2, design: .rounded))
@@ -35,15 +33,14 @@ struct FloatingLabelTextFieldStyle: TextFieldStyle {
 		.padding(.vertical, 5)
 		.padding(.top, 8)
 		.background(
-			
 			VStack {
 				Spacer()
 				isEmpty ? colour.opacity(0.5)
 					.frame(height: 2)
 					.cornerRadius(10)
 					.animation(.linear(duration: Constants().animationTime), value: isEmpty)
-				:
-				colour
+					:
+					colour
 					.frame(height: 2)
 					.cornerRadius(10)
 					.animation(.linear(duration: Constants().animationTime), value: isEmpty)

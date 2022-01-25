@@ -56,13 +56,12 @@ struct LogInPage: View {
 			}
 			VStack {
 				HStack {
-//					Image(systemName: badLogIn ? "xmark" : "envelope")
-//						.frame(width: 18)
+					Image(systemName: badLogIn ? "xmark" : "envelope")
+						.frame(width: 18)
 
-					TextField("", text: $email)
+					TextField("", text: $email, prompt: Text("email"))
 						.disableAutocorrection(true)
-						.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Email", isEmpty: email.isEmpty,	colour: Color.primary))
-				}
+				}.underlineTextField(colour: badLogIn ? .red : .primary)
 
 				HStack {
 					Image(systemName: badLogIn ? "xmark" : "key")
@@ -72,7 +71,7 @@ struct LogInPage: View {
 			}
 			.padding()
 			.frame(maxWidth: 300)
-			
+			.textFieldStyle(.plain)
 
 			HStack {
 				if let error = authViewModel.errorDescription {

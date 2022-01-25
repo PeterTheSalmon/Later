@@ -61,7 +61,7 @@ struct NewFolderSheet: View {
 			.padding(.bottom, -10) // lower it down a bit
 
 			TextField("", text: $name)
-				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Name", isEmpty: name.isEmpty))
+				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Name", isEmpty: name.isEmpty, colour: .primary))
 				.padding(.horizontal)
 				.onSubmit {
 					addFolder()

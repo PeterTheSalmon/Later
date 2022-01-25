@@ -58,12 +58,13 @@ struct NewItemSheet: View {
 		VStack {
 			Text("Add New Link")
 				.font(.title)
+				.padding(.bottom, -10)
 
 				TextField("", text: $title)
-					.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Title", isEmpty: title.isEmpty))
+					.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Title", isEmpty: title.isEmpty, colour: .primary))
 
 				TextField("", text: $urlString)
-				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "URL", isEmpty: urlString.isEmpty))
+				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "URL", isEmpty: urlString.isEmpty, colour: .primary))
 					.onSubmit {
 						addLink()
 					}

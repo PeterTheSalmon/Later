@@ -25,8 +25,6 @@ struct Sidebar: View {
 	var body: some View {
 		VStack {
 			List {
-				// TODO: remove
-				NavigationLink("Test", destination: TextFieldTests())
 
 				NavigationLink(destination: HomeView(folderListViewModel: folderListViewModel,
 				                                     linkListViewModel: linkListViewModel,
