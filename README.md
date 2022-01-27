@@ -1,6 +1,10 @@
 
 # Later
 
+![Lines of code](https://img.shields.io/tokei/lines/github/PeterTheSalmon/Later?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/PeterTheSalmon/Later?style=for-the-badge)
+
+
 Later is a macOS app to save links for later
 
 ![Screen Shot 2022-01-16 at 11 52 33 AM](https://user-images.githubusercontent.com/87033324/149675993-966ec2df-1e2f-4482-b89b-f51dd4e5976e.png)
