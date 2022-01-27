@@ -46,92 +46,103 @@ struct LogInPage: View {
 	}
 
 	var body: some View {
-		VStack {
-			Text("Log in to Later")
-				.font(.largeTitle)
-
-			HStack {
-				Text("No account?")
-				Button("Sign Up Instead") { withAnimation(.easeIn) { signUpPageActive = true } }.buttonStyle(.borderless)
-			}
+		HStack {
 			VStack {
-				HStack {
-					Image(systemName: badLogIn ? "xmark" : "envelope")
-						.frame(width: 18)
-
-					TextField("", text: $email, prompt: Text("email"))
-						.disableAutocorrection(true)
-				}.underlineTextField(colour: badLogIn ? .red : .primary)
+				Text("Log in to Later")
+					.font(.largeTitle)
 
 				HStack {
-					Image(systemName: badLogIn ? "xmark" : "key")
-						.frame(width: 18)
-					SecureField("", text: $password, prompt: Text("password"))
-				}.underlineTextField(colour: badLogIn ? .red : .primary)
-			}
-			.padding()
-			.frame(maxWidth: 300)
-			.textFieldStyle(.plain)
+					Text("No account?")
+					Button("Sign Up Instead") { withAnimation(.easeIn) { signUpPageActive = true } }.buttonStyle(.borderless)
+				}
+				VStack {
+					HStack {
+						Image(systemName: badLogIn ? "xmark" : "envelope")
+							.frame(width: 18)
 
-			HStack {
-				if let error = authViewModel.errorDescription {
-					Text("\(error)")
-						.animation(.linear)
-						.foregroundColor(.red)
-						.onAppear { badLogIn = true }
-				} else { EmptyView() }
-			}.frame(width: 300, height: 50)
+						TextField("", text: $email, prompt: Text("email"))
+							.disableAutocorrection(true)
+					}.underlineTextField(colour: badLogIn ? .red : .primary)
 
-			// Login Button
-			Button {
-				logIn()
-			} label: {
-				Text("Log In")
-			}
-			.buttonStyle(SaveButton(colour: .accentColor))
+					HStack {
+						Image(systemName: badLogIn ? "xmark" : "key")
+							.frame(width: 18)
+						SecureField("", text: $password, prompt: Text("password"))
+					}.underlineTextField(colour: badLogIn ? .red : .primary)
+				}
+				.padding()
+				.frame(maxWidth: 300)
+				.textFieldStyle(.plain)
 
-			// Forgot password logic
-			// TODO: Separate this into a separate view
-			// Note: do not forget the onChange from below
-			VStack {
 				HStack {
-					Button("Forgot your password?") { withAnimation(.linear) { forgotPassword = true } }.buttonStyle(.borderless)
-					if forgotPassword {
-						HStack {
-							Image(systemName: "envelope")
-								.frame(width: 18)
+					if let error = authViewModel.errorDescription {
+						Text("\(error)")
+							.animation(.linear)
+							.foregroundColor(.red)
+							.onAppear { badLogIn = true }
+					} else { EmptyView() }
+				}.frame(width: 300, height: 50)
 
-							TextField("", text: $forgotPassEmail, prompt: Text("email"))
-								.textFieldStyle(.plain)
-								.disableAutocorrection(true)
-								.onSubmit {
-									authViewModel.resetPassword(email: forgotPassEmail)
-								}
-							Button("􀈟") {
-								authViewModel.resetPassword(email: forgotPassEmail)
-								emailSendDelay()
-							}
+				// Login Button
+				Button {
+					logIn()
+				} label: {
+					Text("Log In")
+				}
+				.buttonStyle(SaveButton(colour: .accentColor))
+
+				// Forgot password logic
+				// TODO: Separate this into a separate view
+				// Note: do not forget the onChange from below
+				VStack {
+					HStack {
+						if !forgotPassword {
+							Button("Forgot your password?") { withAnimation(.linear) { forgotPassword = true } }.buttonStyle(.borderless)
 						}
-						.frame(maxWidth: 300)
-						.underlineTextField(colour: .primary)
+						if forgotPassword {
+							HStack {
+								Image(systemName: "envelope")
+									.frame(width: 18)
+
+								TextField("", text: $forgotPassEmail, prompt: Text("email"))
+									.textFieldStyle(.plain)
+									.disableAutocorrection(true)
+									.onSubmit {
+										authViewModel.resetPassword(email: forgotPassEmail)
+									}
+								Button("􀈟") {
+									authViewModel.resetPassword(email: forgotPassEmail)
+									emailSendDelay()
+								}
+							}
+							.frame(maxWidth: 300)
+							.underlineTextField(colour: .primary)
+						}
+					}
+					if emailDelayPassed {
+						Text(authViewModel.resetPassDescription ?? "Sent! Check your email.")
+							.foregroundColor(authViewModel.resetPassDescription == nil ? .green : .red)
 					}
 				}
-				if emailDelayPassed {
-					Text(authViewModel.resetPassDescription ?? "Sent! Check your email.")
-						.foregroundColor(authViewModel.resetPassDescription == nil ? .green : .red)
+			}
+			.padding()
+			.onChange(of: email) { _ in
+				withAnimation(.linear) {
+					badLogIn = false
 				}
 			}
-		}
-		.padding()
-		.onChange(of: email) { _ in
-			withAnimation(.linear) {
-				badLogIn = false
+			.onChange(of: password) { _ in
+				withAnimation(.linear) {
+					badLogIn = false
+				}
 			}
-		}
-		.onChange(of: password) { _ in
-			withAnimation(.linear) {
-				badLogIn = false
-			}
+
+			Image("Log In")
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.frame(width: 300, height: 300)
+				.shadow(color: .gray.opacity(0.7), radius: 2)
+				.padding()
 		}
 	}
 }

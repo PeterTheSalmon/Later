@@ -45,20 +45,3 @@ struct DisplaySheetButtonStyle: ButtonStyle {
 		
 	}
 }
-
-struct ButtonStyles_Previews: PreviewProvider {
-	static var previews: some View {
-		Button {} label: {
-			HStack {
-				Image("Discord")
-					.resizable()
-					.aspectRatio(contentMode: .fit)
-					.frame(width: 30, height: 30)
-				Text("Discord")
-					.font(.title2)
-			}
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-		}
-		.buttonStyle(SocialButtonStyle(gradient: [.red, .blue]))
-	}
-}

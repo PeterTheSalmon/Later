@@ -11,6 +11,8 @@ struct LoggedOutView: View {
 	@AppStorage("logInPageActive") var logInPageActive = true
 	@AppStorage("signUpPageActive") var signUpPageActive = false
 	@AppStorage("passwordResetPageActive") var passwordResetPageActive = false
+	
+	@State private var whyTextPresented = false
 
 	var body: some View {
 		VStack(alignment: .center) {
@@ -23,11 +25,14 @@ struct LoggedOutView: View {
 				.foregroundColor(.accentColor)
 			Text("\(AppInfo.version)")
 			Text("Get started by signing in or creating an account →")
+				.multilineTextAlignment(.center)
 				.padding()
 
-			DisclosureGroup("Why do I need an account?") {
-				Text("Later uses accounts to ensure that your data is saved and secured in the cloud. No personal information is collected, and you can access your data on any macOS device.")
-			}.padding()
+			Button("Why do I need an account?") { withAnimation { whyTextPresented.toggle() } }.buttonStyle(.borderless)
+			
+			if whyTextPresented {
+				Text("Later uses accounts to ensure that your data is saved and secured in the cloud. You can access your data on any macOS device.").padding()
+			}
 
 			Group {
 				NavigationLink(destination: LogInPage(), isActive: $logInPageActive) {}.hidden()

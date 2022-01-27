@@ -14,6 +14,15 @@
           "value" : "light"
         }
       ],
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.038",
+          "green" : "0.625",
+          "red" : "1.000"
+        }
+      },
       "idiom" : "universal"
     },
     {
@@ -23,6 +32,10 @@
           "value" : "dark"
         }
       ],
+      "color" : {
+        "platform" : "universal",
+        "reference" : "systemOrangeColor"
+      },
       "idiom" : "universal"
     }
   ],
