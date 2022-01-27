@@ -3,6 +3,7 @@
 
 ![Lines of code](https://img.shields.io/tokei/lines/github/PeterTheSalmon/Later?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/PeterTheSalmon/Later?style=for-the-badge)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/PeterTheSalmon/Later?include_prereleases&style=for-the-badge)
 
 
 Later is a macOS app to save links for later
