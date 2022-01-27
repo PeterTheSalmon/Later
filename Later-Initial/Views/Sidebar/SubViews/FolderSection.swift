@@ -43,7 +43,8 @@ struct FolderSection: View {
 						selectedFolderViewModel: $selectedFolderViewModel,
 						justDeletedFolder: $justDeletedFolder,
 						query: $query
-					)) {
+					).searchable(text: $query)
+				) {
 						// This is what is displayed in the sidebar
 						SidebarFolderItemView(name: folder.folder.name,
 						                      justDeletedFolder: $justDeletedFolder,

@@ -30,7 +30,6 @@ struct PrimaryView: View {
 
 	// Query for searching
 	@State var query: String = ""
-	@Environment(\.isSearching) var isSearching
 	@AppStorage("introSeen") var newUser = true
 	@Environment(\.dismiss) var dismiss
 
@@ -111,7 +110,6 @@ struct PrimaryView: View {
 			timesOpened += 1
 			homeViewSelected = true
 		}
-		.searchable(text: $query, prompt: Text("Search..."))
 	}
 
 	private func toggleSidebar() {
