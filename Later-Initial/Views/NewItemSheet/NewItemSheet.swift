@@ -74,6 +74,7 @@ struct NewItemSheet: View {
 						Text(folderViewModel.folder.name)
 					}
 				}
+				.padding(.vertical)
 				
 			
 
