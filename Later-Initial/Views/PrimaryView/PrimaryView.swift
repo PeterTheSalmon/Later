@@ -11,8 +11,8 @@ import SwiftUI
 ///
 /// PrimaryView contains most App States and Objects. These are then passed to subviews.
 struct PrimaryView: View {
-	@ObservedObject var linkListViewModel = LinkListViewModel()
-	@ObservedObject var folderListViewModel = FolderListViewModel()
+	@ObservedObject var linkListViewModel: LinkListViewModel
+	@ObservedObject var folderListViewModel: FolderListViewModel
 
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
 
@@ -52,6 +52,8 @@ struct PrimaryView: View {
 					selectedFolderViewModel: $selectedFolderViewModel,
 					query: $query
 				)
+					.environmentObject(linkListViewModel)
+					.environmentObject(folderListViewModel)
 
 				VStack {
 					ProgressView()

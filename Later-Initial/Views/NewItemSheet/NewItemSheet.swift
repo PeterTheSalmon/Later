@@ -102,9 +102,3 @@ struct NewItemSheet: View {
 
 	}
 }
-
-struct NewItemSheet_Previews: PreviewProvider {
-	static var previews: some View {
-		NewItemSheet(folderListViewModel: FolderListViewModel(), parentFolderViewModel: FolderViewModel(folder: FolderItem(name: "testing")), linkListViewModel: LinkListViewModel())
-	}
-}

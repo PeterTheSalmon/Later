@@ -18,6 +18,8 @@ struct Later: App {
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
 
+
+
 	init() {
 		folderManagerActive = false
 		homeViewSelected = true
@@ -25,13 +27,15 @@ struct Later: App {
 		VersionViewModel().getVersion()
 	}
 
-	
-	
 	var body: some Scene {
+		let linkListViewModel = LinkListViewModel()
+		let folderListViewModel = FolderListViewModel()
 		let authViewModel = AuthViewModel()
 		WindowGroup {
 			/// Shows either the login page or the main navigationView
-			PrimaryView(isShowingNewItemSheet: $isShowingNewItemSheet,
+			PrimaryView(linkListViewModel: linkListViewModel,
+			            folderListViewModel: folderListViewModel,
+			            isShowingNewItemSheet: $isShowingNewItemSheet,
 			            isShowingNewFolderSheet: $isShowingNewFolderSheet)
 				.environmentObject(authViewModel)
 
@@ -65,6 +69,8 @@ struct Later: App {
 		Settings {
 			SettingsView()
 				.environmentObject(authViewModel)
+				.environmentObject(linkListViewModel)
+				.environmentObject(folderListViewModel)
 		}
 	}
 }

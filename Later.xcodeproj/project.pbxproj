@@ -54,6 +54,7 @@
 		5593E62827436668009C9CE9 /* OpenSourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593E62727436668009C9CE9 /* OpenSourceList.swift */; };
 		55A152A2279B15A400A50058 /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */; };
 		55A2853327613A7800F17C5A /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2853227613A7800F17C5A /* InfoButton.swift */; };
+		55BFFEB027A61ECF00EEA796 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */; };
 		55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A03E276687CC00A8E54D /* SettingsView.swift */; };
 		55C6A04127668A7F00A8E54D /* AppStorageValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A04027668A7F00A8E54D /* AppStorageValues.swift */; };
 		55C6A04527668CC200A8E54D /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A04427668CC200A8E54D /* GeneralSettings.swift */; };
@@ -142,6 +143,7 @@
 		55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		55A2853227613A7800F17C5A /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		55ADE8CC2799291500B3D55A /* Known Issues.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Known Issues.md"; sourceTree = "<group>"; };
+		55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = SOURCE_ROOT; };
 		55C6A03E276687CC00A8E54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		55C6A04027668A7F00A8E54D /* AppStorageValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageValues.swift; sourceTree = "<group>"; };
 		55C6A04427668CC200A8E54D /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		5542E82C278D32B600AF4079 /* AccountViews */ = {
 			isa = PBXGroup;
 			children = (
+				55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */,
 				5542E826278CED5600AF4079 /* LogInPage.swift */,
 				5542E82D278D32E000AF4079 /* SignUpPage.swift */,
 			);
@@ -715,6 +718,7 @@
 				55CB5D6A278504910074A950 /* LinkRepository.swift in Sources */,
 				55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */,
 				558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */,
+				55BFFEB027A61ECF00EEA796 /* DeleteAccountView.swift in Sources */,
 				55CB5D7B278627F20074A950 /* LinkListViewModel.swift in Sources */,
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
 				55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */,

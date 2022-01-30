@@ -20,7 +20,7 @@ final class AuthViewModel: ObservableObject {
 
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("FolderListEmpty") var folderListIsEmpty = false
-	
+
 	var isSignedIn: Bool {
 		return auth.currentUser != nil
 	}
@@ -54,7 +54,6 @@ final class AuthViewModel: ObservableObject {
 		}
 		homeViewSelected = true
 		folderListIsEmpty = true
-		
 	}
 
 	/// - Parameter email: user email
@@ -74,5 +73,59 @@ final class AuthViewModel: ObservableObject {
 
 		// mark user as signed out
 		signedIn = false
+	}
+
+	// MARK: Vars and Funcs for account deletion
+
+	@Published var reAuthMessage: String?
+	@Published var reAuthed = false
+	func reAuthenticate(userEmail: String, userProvidedPassword: String) {
+		let user = Auth.auth().currentUser
+
+		let credential = EmailAuthProvider.credential(withEmail: userEmail, password: userProvidedPassword)
+
+		user?.reauthenticate(with: credential) { (result, error)  in
+			if let error = error {
+				self.reAuthMessage = error.localizedDescription
+				self.reAuthed = false
+			} else {
+				self.reAuthed = true
+			}
+		}
+	}
+	
+	@Published var deleteMessage: String?
+	func deleteAccount(linkListViewModel: LinkListViewModel, folderListViewModel: FolderListViewModel) {
+		let user = Auth.auth().currentUser
+		
+		let folderRepos = FolderRepository()
+		let linkRepos = LinkRepository()
+		
+		let filteredFolders = folderListViewModel.folderViewModels.filter { folderViewModel in
+			folderViewModel.folder.userId == user?.uid
+		}
+		print(filteredFolders)
+
+		let filteredLinks = linkListViewModel.linkViewModels.filter { linkViewModel in
+			linkViewModel.link.userId == user?.uid
+		}
+		print(filteredLinks)
+		
+		for folderViewModel in filteredFolders {
+			folderRepos.remove(folderViewModel.folder)
+		}
+		
+		for linkViewModel in filteredLinks {
+			linkRepos.remove(linkViewModel.link)
+		}
+
+		user?.delete { error in
+			if let error = error {
+				self.deleteMessage = error.localizedDescription
+			} else {
+				self.deleteMessage = "Account Deleted"
+				self.signedIn = false
+			}
+		}
 	}
 }
