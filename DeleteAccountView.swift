@@ -21,6 +21,9 @@ struct DeleteAccountView: View {
 	@Environment(\.dismiss) var dismiss
 
 	var body: some View {
+		
+		
+		
 		VStack {
 			if accountHasBeenDeleted {
 				Text("Thank you for using Later! You can now close this window")

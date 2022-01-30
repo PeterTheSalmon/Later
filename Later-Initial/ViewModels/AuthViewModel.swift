@@ -104,12 +104,10 @@ final class AuthViewModel: ObservableObject {
 		let filteredFolders = folderListViewModel.folderViewModels.filter { folderViewModel in
 			folderViewModel.folder.userId == user?.uid
 		}
-		print(filteredFolders)
 
 		let filteredLinks = linkListViewModel.linkViewModels.filter { linkViewModel in
 			linkViewModel.link.userId == user?.uid
 		}
-		print(filteredLinks)
 		
 		for folderViewModel in filteredFolders {
 			folderRepos.remove(folderViewModel.folder)
