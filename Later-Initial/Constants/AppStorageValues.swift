@@ -5,6 +5,8 @@ import SwiftUI
 
 struct AppStorageValues {
 	
+	@AppStorage("isShowingNewItemSheet") var isShowingNewItemSheet = false
+	
 	/// Toggleable to show or hide favicons on the link display sheet.
 	@AppStorage("showFavicon") var showFavicon = true
 	

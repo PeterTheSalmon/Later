@@ -11,6 +11,7 @@
 		550F7D76278CB91100333A63 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F7D75278CB91100333A63 /* AuthenticationService.swift */; };
 		550FFE85279764AC002BF2C2 /* VersionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FFE84279764AC002BF2C2 /* VersionViewModel.swift */; };
 		550FFE8827977671002BF2C2 /* UpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FFE8727977671002BF2C2 /* UpdatePrompt.swift */; };
+		552D6C1627A7887400279E8B /* GenericToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552D6C1527A7887400279E8B /* GenericToolbar.swift */; };
 		5530BB9A2749895200DEA9DE /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5530BB992749895200DEA9DE /* SearchView.swift */; };
 		55338104272E1899005496A7 /* Later_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338103272E1899005496A7 /* Later_App.swift */; };
 		55338106272E1899005496A7 /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55338105272E1899005496A7 /* PrimaryView.swift */; };
@@ -83,7 +84,6 @@
 		55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */; };
 		55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */; };
 		55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */; };
-		55EE8B75279B30E10039A506 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B74279B30E10039A506 /* TextFieldTests.swift */; };
 		55EE8B79279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE8B78279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift */; };
 		55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C98273AFB2400224070 /* ButtonStyles.swift */; };
 		55FE7C9B273B069500224070 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE7C9A273B069500224070 /* FolderModel.swift */; };
@@ -98,6 +98,7 @@
 		550F7D75278CB91100333A63 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		550FFE84279764AC002BF2C2 /* VersionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewModel.swift; sourceTree = "<group>"; };
 		550FFE8727977671002BF2C2 /* UpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePrompt.swift; sourceTree = "<group>"; };
+		552D6C1527A7887400279E8B /* GenericToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericToolbar.swift; sourceTree = "<group>"; };
 		5530BB992749895200DEA9DE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		55338100272E1899005496A7 /* Later.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Later.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55338103272E1899005496A7 /* Later_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Later_App.swift; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		55E8FC1E274084C40012F5F3 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		55EC67FD27408C8400CD9A99 /* FaviconDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDisplay.swift; sourceTree = "<group>"; };
 		55EE8B72279B2EDC0039A506 /* FloatingBorderLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBorderLabelTextField.swift; sourceTree = "<group>"; };
-		55EE8B74279B30E10039A506 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
 		55EE8B78279B44120039A506 /* FloatingBorderLabelTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBorderLabelTextFieldStyle.swift; sourceTree = "<group>"; };
 		55FE7C98273AFB2400224070 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		55FE7C9A273B069500224070 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
@@ -210,6 +210,14 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		552D6C1727A78AD600279E8B /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+				552D6C1527A7887400279E8B /* GenericToolbar.swift */,
+			);
+			path = Toolbars;
+			sourceTree = "<group>";
+		};
 		553380F7272E1899005496A7 = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +239,6 @@
 		55338102272E1899005496A7 /* Later-Initial */ = {
 			isa = PBXGroup;
 			children = (
-				55EE8B74279B30E10039A506 /* TextFieldTests.swift */,
 				55338103272E1899005496A7 /* Later_App.swift */,
 				55EE8B76279B42090039A506 /* ViewModels */,
 				55CB5D8227862A490074A950 /* Constants */,
@@ -242,6 +249,7 @@
 				55C320392739ACAD00F3B118 /* Functions */,
 				558DE1CB274367E4009A6694 /* Extensions */,
 				55EC67F92740867600CD9A99 /* Styles */,
+				552D6C1727A78AD600279E8B /* Toolbars */,
 				55338109272E189C005496A7 /* Preview Content */,
 				5533810C272E189C005496A7 /* Later_Initial.entitlements */,
 				55606D572784310800B56511 /* GoogleService-Info.plist */,
@@ -693,6 +701,7 @@
 				550FFE85279764AC002BF2C2 /* VersionViewModel.swift in Sources */,
 				5542E82E278D32E000AF4079 /* SignUpPage.swift in Sources */,
 				5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */,
+				552D6C1627A7887400279E8B /* GenericToolbar.swift in Sources */,
 				55338104272E1899005496A7 /* Later_App.swift in Sources */,
 				553E3272276847310071A366 /* AdvancedSettings.swift in Sources */,
 				55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */,
@@ -723,7 +732,6 @@
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
 				55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */,
 				5533813A272E1D45005496A7 /* LinkDisplaySheet.swift in Sources */,
-				55EE8B75279B30E10039A506 /* TextFieldTests.swift in Sources */,
 				5554E5402779108D00285209 /* SortingMethods.swift in Sources */,
 				55CB5D7727850D580074A950 /* FolderRepository.swift in Sources */,
 				55CB5D7F278628A30074A950 /* FolderListViewModel.swift in Sources */,

@@ -11,9 +11,7 @@ import SwiftUI
 struct MoreSection: View {
 	@ObservedObject var folderListViewModel: FolderListViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
-	@Binding var selectedFolder: FolderItem?
 	
-	@Binding var timesOpened: Int
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var isShowingSheet: Bool
 	@Binding var query: String
@@ -24,10 +22,7 @@ struct MoreSection: View {
 			NavigationLink(destination: AboutView(
 				folderListViewModel: folderListViewModel,
 				linkListViewModel: linkListViewModel,
-				selectedFolder: $selectedFolder,
-				timesOpened: $timesOpened,
 				isShowingNewFolderSheet: $isShowingNewFolderSheet,
-				isShowingSheet: $isShowingSheet,
 				justDeletedFolder: $justDeletedFolder
 			)) {
 				SidebarExtraItemView(name: "About", imageName: Icons().info)

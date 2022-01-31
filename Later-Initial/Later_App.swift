@@ -11,7 +11,7 @@ import SwiftUI
 struct Later: App {
 	/// These states are declared here as they are used in keyboard shortcuts to open the folder and link sheets
 	@State var isShowingNewFolderSheet = false
-	@State var isShowingNewItemSheet = false
+	@AppStorage("isShowingNewItemSheet") var isShowingNewItemSheet = false
 
 	/// Used to ensure different parts of the UI are activated
 	@AppStorage("folderManagerActive") var folderManagerActive = false
@@ -24,7 +24,7 @@ struct Later: App {
 		folderManagerActive = false
 		homeViewSelected = true
 		FirebaseApp.configure()
-		VersionViewModel().getVersion()
+		isShowingNewItemSheet = false
 	}
 
 	var body: some Scene {

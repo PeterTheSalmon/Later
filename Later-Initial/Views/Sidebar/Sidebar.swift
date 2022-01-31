@@ -51,8 +51,6 @@ struct Sidebar: View {
 				// MARK: This section, containing only the about view, should be unaffected by the Firebase changes
 				MoreSection(folderListViewModel: folderListViewModel,
 				            linkListViewModel: linkListViewModel,
-				            selectedFolder: $selectedFolder,
-				            timesOpened: $timesOpened,
 				            isShowingNewFolderSheet: $isShowingNewFolderSheet,
 				            isShowingSheet: $isShowingSheet,
 				            query: $query,
