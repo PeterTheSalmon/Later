@@ -52,8 +52,17 @@ final class AuthViewModel: ObservableObject {
 				self?.signedIn = true
 			}
 		}
-		homeViewSelected = true
-		folderListIsEmpty = true
+		Task {
+			try await Task.sleep(nanoseconds: 2_000_000_000)
+			print("Executing...")
+			print(self.signedIn)
+			if self.signedIn {
+				DispatchQueue.main.async {
+					self.homeViewSelected = true
+					self.folderListIsEmpty = true
+				}
+			}
+		}
 	}
 
 	/// - Parameter email: user email
@@ -84,7 +93,7 @@ final class AuthViewModel: ObservableObject {
 
 		let credential = EmailAuthProvider.credential(withEmail: userEmail, password: userProvidedPassword)
 
-		user?.reauthenticate(with: credential) { (result, error)  in
+		user?.reauthenticate(with: credential) { _, error in
 			if let error = error {
 				self.reAuthMessage = error.localizedDescription
 				self.reAuthed = false
@@ -93,14 +102,14 @@ final class AuthViewModel: ObservableObject {
 			}
 		}
 	}
-	
+
 	@Published var deleteMessage: String?
 	func deleteAccount(linkListViewModel: LinkListViewModel, folderListViewModel: FolderListViewModel) {
 		let user = Auth.auth().currentUser
-		
+
 		let folderRepos = FolderRepository()
 		let linkRepos = LinkRepository()
-		
+
 		let filteredFolders = folderListViewModel.folderViewModels.filter { folderViewModel in
 			folderViewModel.folder.userId == user?.uid
 		}
@@ -108,11 +117,11 @@ final class AuthViewModel: ObservableObject {
 		let filteredLinks = linkListViewModel.linkViewModels.filter { linkViewModel in
 			linkViewModel.link.userId == user?.uid
 		}
-		
+
 		for folderViewModel in filteredFolders {
 			folderRepos.remove(folderViewModel.folder)
 		}
-		
+
 		for linkViewModel in filteredLinks {
 			linkRepos.remove(linkViewModel.link)
 		}

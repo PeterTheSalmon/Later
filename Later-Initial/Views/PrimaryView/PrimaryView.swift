@@ -52,12 +52,13 @@ struct PrimaryView: View {
 					selectedFolderViewModel: $selectedFolderViewModel,
 					query: $query
 				)
-					.environmentObject(linkListViewModel)
-					.environmentObject(folderListViewModel)
+				.environmentObject(linkListViewModel)
+				.environmentObject(folderListViewModel)
 
 				VStack {
 					ProgressView()
-					Text("If you are seeing this, something has probably gone wrong.\nTry quitting restarting Later")
+					Text("If you are seeing this, something has probably gone wrong. Select another item in the sidebar")
+						.padding()
 				}
 				.navigationTitle("Later")
 				.toolbar {
@@ -110,7 +111,12 @@ struct PrimaryView: View {
 			// Check if the user is signed in, and update the signedIn state based on what is returned
 			authViewModel.signedIn = authViewModel.isSignedIn
 			timesOpened += 1
-			homeViewSelected = true
+			Task {
+				try await Task.sleep(nanoseconds: 100_000_000)
+				DispatchQueue.main.async {
+					homeViewSelected = true
+				}
+			}
 		}
 	}
 

@@ -99,6 +99,8 @@ struct SignUpPage: View {
 				} else { EmptyView() }
 			}.frame(width: 300, height: 50)
 
+			Text("By Signing Up you confirm you have read and agree to the [Privacy Policy](https://github.com/PeterTheSalmon/Later/blob/main/Later%20Privacy%20Policy%20-%20January%2031%202022.pdf) and [Terms of Use](https://github.com/PeterTheSalmon/Later/blob/main/Later%20Terms%20of%20Use%20-%20January%2031%202022.pdf)")
+			
 			Button {
 				signUp()
 			} label: {

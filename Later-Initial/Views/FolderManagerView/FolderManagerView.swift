@@ -15,6 +15,8 @@ struct FolderManagerView: View {
 	@Binding var isShowingNewItemSheet: Bool
 
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
+	@AppStorage("homeViewSelected") var homeViewSelected = true
+
 
 	// MARK: Searching variables
 

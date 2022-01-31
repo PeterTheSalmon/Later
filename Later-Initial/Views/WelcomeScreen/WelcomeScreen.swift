@@ -18,31 +18,27 @@ struct WelcomeScreen: View {
 				.fontWeight(.semibold)
 			Text("\(AppInfo.version)")
 				.font(.title3)
-			HStack { /// Elements
-				VStack {
-					WelcomeScreenElement(title: "Save Links",
-					                     description: Text("Easily record and access links for later use"),
-					                     imageName: "link.badge.plus",
-					                     imageColour: .orange)
-					WelcomeScreenElement(title: "Categorize and Favourite",
-					                     description: Text("Use folders and favourites to organize your links"),
-					                     imageName: "folder",
-					                     imageColour: .green)
 
-				}
-				VStack {
-					WelcomeScreenElement(title: "Search and copy",
-															 description: Text("Search links and click \(Image(systemName: Icons().copy)) copy to grab the link"),
-					                     imageName: "magnifyingglass",
-					                     imageColour: .red)
+			WelcomeScreenElement(title: "Save Links",
+			                     description: Text("Easily record and access links for later use"),
+			                     imageName: "link.badge.plus",
+			                     imageColour: .orange)
+			WelcomeScreenElement(title: "Categorize and Favourite",
+			                     description: Text("Use folders and favourites to organize your links"),
+			                     imageName: "folder",
+			                     imageColour: .green)
 
-					WelcomeScreenElement(title: "More to Come",
-					                     description: Text("Later is still in beta, so you can expect more features on a regular basis"),
-					                     imageName: "square.and.arrow.down",
-					                     imageColour: .teal)
-				}
-			}
-			.frame(alignment: .leading)
+			WelcomeScreenElement(title: "Search and copy",
+			                     description: Text("Search links and click \(Image(systemName: Icons().copy)) copy to grab the link"),
+			                     imageName: "magnifyingglass",
+			                     imageColour: .red)
+
+			WelcomeScreenElement(title: "More to Come",
+			                     description: Text("Later is still in beta, so you can expect more features on a regular basis"),
+			                     imageName: "square.and.arrow.down",
+			                     imageColour: .teal)
+
+				.frame(alignment: .leading)
 			Button {
 				newUserValue = false
 			} label: {

@@ -29,13 +29,16 @@ struct AboutView: View {
 				SocialButtons()
 
 				StatisticsMessage()
+				
+				Spacer().frame(height: 10)
 			}
-			
+
 			Divider().padding(.vertical)
-			
+
 			VStack {
 				LicensesButton()
 				PrivacyPolicyButton()
+				TermsOfUseButton()
 			}.padding()
 		}
 
