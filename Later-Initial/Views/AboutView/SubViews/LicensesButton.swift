@@ -10,9 +10,12 @@ import SwiftUI
 
 struct LicensesButton: View {
 	var body: some View {
-		Button("Open Source Licenses") {
+		Button {
 			OpenSourceLicenses().openInWindow(title: "Open Source Licenses", sender: self)
+		} label: {
+			Text("Open Source Licenses")
+				.frame(width: 170)
 		}
-		.padding()
+
 	}
 }

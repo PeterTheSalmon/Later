@@ -12,9 +12,11 @@ struct PrivacyPolicyButton: View {
 	@Environment(\.openURL) var openURL
 	
     var body: some View {
-			Button("Privacy Policy") {
-				openURL(URL(string: "https://google.ca")!)
+			Button {
+				openURL(URL(string: "https://github.com/PeterTheSalmon/Later/blob/main/Later%20Privacy%20Policy%20-%20January%2031%202022.pdf")!)
+			} label: {
+				Text("Privacy Policy")
+					.frame(width: 170)
 			}
-			.padding()
     }
 }

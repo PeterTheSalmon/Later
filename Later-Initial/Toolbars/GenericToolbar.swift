@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+/// Toolbar for general use within Later
+///
+/// Contains two buttons:
+///  - 􀏚 Toggle sidebar
+///  - 􀅼 Bring up the new item sheet
 struct GenericToolbar: ToolbarContent {
 	@AppStorage("isShowingNewItemSheet") var isShowingNewItemSheet = false
 

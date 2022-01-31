@@ -18,8 +18,6 @@ struct Later: App {
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
 
-
-
 	init() {
 		folderManagerActive = false
 		homeViewSelected = true
@@ -40,22 +38,20 @@ struct Later: App {
 				.environmentObject(authViewModel)
 
 				/// This onReceive disables full screen mode, greying out the green button
-				/// To be perfectly honest, though, I don't have a single fucking clue what this does
 				.onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
-					for window in NSApplication.shared.windows { window.standardWindowButton(.zoomButton)?.isEnabled = false }
+					for window in NSApplication.shared.windows {
+						window.standardWindowButton(.zoomButton)?.isEnabled = false
+					}
 				})
 
 				/// Framing for the app as a whole.
-				/// Limits it pretty strongly as the app looks terrible when big
-				.frame(minWidth: 400, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
+				/// Limits it pretty strongly as the app - particularly the home page -  looks terrible when big
+				.frame(minWidth: 600, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
 		}
-		
-		.windowToolbarStyle(.unified)
-		
 		.commands {
 			SidebarCommands()
 			CommandGroup(replacing: CommandGroupPlacement.newItem) {
-				Button("New Item") {
+				Button("New Link") {
 					isShowingNewItemSheet = true
 				}
 				.keyboardShortcut("n")
@@ -68,7 +64,7 @@ struct Later: App {
 			}
 		}
 
-		/// Putting settings here allows for better-looking tabs and ⌘, by default
+		/// Putting settings here allows for better-looking tabs and ⌘ + , by default
 		Settings {
 			SettingsView()
 				.environmentObject(authViewModel)

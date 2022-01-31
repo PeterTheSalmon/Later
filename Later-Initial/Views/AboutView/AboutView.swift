@@ -31,11 +31,12 @@ struct AboutView: View {
 				StatisticsMessage()
 			}
 			
-			Divider().padding()
+			Divider().padding(.vertical)
 			
 			VStack {
 				LicensesButton()
-			}
+				PrivacyPolicyButton()
+			}.padding()
 		}
 
 		.sheet(isPresented: $isShowingNewItemSheet) {
