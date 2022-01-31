@@ -35,6 +35,7 @@
 		557248D3277B8ED20040CCB7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 557248D2277B8ED20040CCB7 /* CachedAsyncImage */; };
 		557356E7279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */; };
 		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
+		558490D527A843B3009EC9D2 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490D427A843B2009EC9D2 /* DeleteAccountView.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */; };
 		558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1C9274367CA009A6694 /* AboutTitle.swift */; };
 		558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1CC274367FF009A6694 /* OpenInWindow.swift */; };
@@ -56,7 +57,6 @@
 		55A152A2279B15A400A50058 /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A152A1279B15A400A50058 /* FloatingLabelTextField.swift */; };
 		55A2853327613A7800F17C5A /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2853227613A7800F17C5A /* InfoButton.swift */; };
 		55A4288A27A840F300FE69CB /* PrivacyPolicyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4288927A840F300FE69CB /* PrivacyPolicyButton.swift */; };
-		55BFFEB027A61ECF00EEA796 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */; };
 		55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A03E276687CC00A8E54D /* SettingsView.swift */; };
 		55C6A04127668A7F00A8E54D /* AppStorageValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A04027668A7F00A8E54D /* AppStorageValues.swift */; };
 		55C6A04527668CC200A8E54D /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6A04427668CC200A8E54D /* GeneralSettings.swift */; };
@@ -124,6 +124,7 @@
 		55606D572784310800B56511 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextFieldStyle.swift; sourceTree = "<group>"; };
 		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
+		558490D427A843B2009EC9D2 /* DeleteAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLConventions.swift; sourceTree = "<group>"; };
 		558DE1C9274367CA009A6694 /* AboutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTitle.swift; sourceTree = "<group>"; };
 		558DE1CC274367FF009A6694 /* OpenInWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInWindow.swift; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		55A2853227613A7800F17C5A /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		55A4288927A840F300FE69CB /* PrivacyPolicyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyButton.swift; sourceTree = "<group>"; };
 		55ADE8CC2799291500B3D55A /* Known Issues.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Known Issues.md"; sourceTree = "<group>"; };
-		55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = SOURCE_ROOT; };
 		55C6A03E276687CC00A8E54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		55C6A04027668A7F00A8E54D /* AppStorageValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageValues.swift; sourceTree = "<group>"; };
 		55C6A04427668CC200A8E54D /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 		5542E82C278D32B600AF4079 /* AccountViews */ = {
 			isa = PBXGroup;
 			children = (
-				55BFFEAF27A61ECF00EEA796 /* DeleteAccountView.swift */,
+				558490D427A843B2009EC9D2 /* DeleteAccountView.swift */,
 				5542E826278CED5600AF4079 /* LogInPage.swift */,
 				5542E82D278D32E000AF4079 /* SignUpPage.swift */,
 			);
@@ -706,6 +706,7 @@
 				5542E82E278D32E000AF4079 /* SignUpPage.swift in Sources */,
 				5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */,
 				552D6C1627A7887400279E8B /* GenericToolbar.swift in Sources */,
+				558490D527A843B3009EC9D2 /* DeleteAccountView.swift in Sources */,
 				55338104272E1899005496A7 /* Later_App.swift in Sources */,
 				553E3272276847310071A366 /* AdvancedSettings.swift in Sources */,
 				55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */,
@@ -731,7 +732,6 @@
 				55CB5D6A278504910074A950 /* LinkRepository.swift in Sources */,
 				55C78AE12739F18700E711CF /* FavouriteButton.swift in Sources */,
 				558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */,
-				55BFFEB027A61ECF00EEA796 /* DeleteAccountView.swift in Sources */,
 				55CB5D7B278627F20074A950 /* LinkListViewModel.swift in Sources */,
 				5539ACB82741A48100B0F22C /* CopyButton.swift in Sources */,
 				55E18DE32797325B0052DBAC /* UpdatesSettings.swift in Sources */,
