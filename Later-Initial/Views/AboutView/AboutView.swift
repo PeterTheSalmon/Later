@@ -13,7 +13,6 @@ struct AboutView: View {
 	@ObservedObject var folderListViewModel: FolderListViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
 
-	@AppStorage("timesOpened") var timesOpened = 0
 	@Binding var isShowingNewFolderSheet: Bool
 	@Binding var justDeletedFolder: Bool
 	@AppStorage("isShowingNewItemSheet") var isShowingNewItemSheet = false
@@ -29,12 +28,12 @@ struct AboutView: View {
 
 				SocialButtons()
 
-				StatisticsMessage(timesOpened: timesOpened)
+				StatisticsMessage()
 			}
 			
 			Divider().padding()
 			
-			VStack { // Buttons
+			VStack {
 				LicensesButton()
 			}
 		}

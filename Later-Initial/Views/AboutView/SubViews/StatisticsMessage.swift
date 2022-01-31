@@ -8,8 +8,10 @@
 import Foundation
 import SwiftUI
 
+
+/// Small text view to show the times the user has opened Later as well as the number of saved links and folders
 struct StatisticsMessage: View {
-	var timesOpened: Int
+	@AppStorage("timesOpened") var timesOpened = 0
 	@AppStorage("notesCreated") var notesCreated = 0
 	@AppStorage("folderCreated") var foldersCreated = 0
 
