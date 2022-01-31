@@ -49,6 +49,9 @@ struct Later: App {
 				/// Limits it pretty strongly as the app looks terrible when big
 				.frame(minWidth: 400, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
 		}
+		
+		.windowToolbarStyle(.unified)
+		
 		.commands {
 			SidebarCommands()
 			CommandGroup(replacing: CommandGroupPlacement.newItem) {

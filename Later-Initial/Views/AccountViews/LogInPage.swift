@@ -144,17 +144,21 @@ struct LogInPage: View {
 				.shadow(color: .gray.opacity(0.7), radius: 2)
 				.padding()
 		}
+		.navigationTitle("Later")
+		.toolbar {
+			ToolbarItem(placement: .navigation) {
+				Button {
+					toggleSidebar()
+				} label: {
+					Image(systemName: "sidebar.left")
+				}
+			}
+		}
 	}
-}
 
-struct LogInPage_Previews: PreviewProvider {
-	static var previews: some View {
-		LogInPage()
+	private func toggleSidebar() {
+		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
-}
-
-extension Color {
-	static let darkPink = Color(red: 208 / 255, green: 45 / 255, blue: 208 / 255)
 }
 
 extension View {

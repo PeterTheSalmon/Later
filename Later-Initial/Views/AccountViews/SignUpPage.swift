@@ -127,5 +127,19 @@ struct SignUpPage: View {
 				badSignUp = false
 			}
 		}
+		.navigationTitle("Later")
+		.toolbar {
+			ToolbarItem(placement: .navigation) {
+				Button {
+					toggleSidebar()
+				} label: {
+					Image(systemName: "sidebar.left")
+				}
+			}
+		}
+	}
+	
+	private func toggleSidebar() {
+		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 	}
 }
