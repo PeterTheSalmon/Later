@@ -20,144 +20,72 @@ struct HomeView: View {
 	@State private var randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
 	@State private var opacity = 1.0
 
-	func updateProgressValue() {
-		Task {
-			while true {
-				try await Task.sleep(nanoseconds: 550_000_000) // 0.15 seconds
+	@State private var updatePromptShown = false
 
-				opacity -= 0.02
-				if opacity <= 0.0 {
-					opacity = 1.0
-					let previousInt = randomInt
-					repeat {
-						randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
-					} while previousInt == randomInt
-				}
-			}
-		}
-	}
+	@ObservedObject var versionViewModel = VersionViewModel()
 
 	var body: some View {
-		if isSearching && !query.isEmpty {
-			Text("Ah yes, searching a static view.\nMay I recommend selecting a folder?")
-				.multilineTextAlignment(.center)
-				.navigationTitle("Later")
-				.toolbar {
-					ToolbarItem(placement: .navigation) {
-						Button {
-							toggleSidebar()
-						} label: {
-							Image(systemName: "sidebar.left")
-						}
-					}
+		VStack {
+			Spacer()
 
-					ToolbarItem(placement: .navigation) {
-						Button {
-							isShowingSheet = true
-						} label: {
-							Image(systemName: Icons().newItem)
-						}
-						.help("New Item")
-					}
-				}
-				.onAppear {
-					updateProgressValue()
-				}
-
-				.sheet(isPresented: $isShowingSheet) {
-					NewItemSheet(folderListViewModel: folderListViewModel,
-					             parentFolderViewModel: folderListViewModel.folderViewModels[0],
-					             linkListViewModel: linkListViewModel)
-				}
-				.sheet(isPresented: $isShowingNewFolderSheet) {
-					NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
-				}
+			Text("Welcome Back!")
+				.font(.largeTitle)
+				.fontWeight(.bold)
 				.padding()
 
-		} else {
-			VStack {
-				Spacer()
+			Text("Select a folder, or press ⌘ ⇧ n create a new one")
 
-				Text("Welcome Back!")
-					.font(.largeTitle)
-					.fontWeight(.bold)
-					.padding()
+			Spacer()
 
-				Text("Select a folder, or presss ⌘ ⇧ n create a new one")
-
-				Spacer()
-
-				if AppInfo.latestVersion != nil && AppInfo.version != AppInfo.latestVersion {
-					UpdatePrompt()
-				} else {
-					ZStack {
-						RoundedRectangle(cornerRadius: 5)
-							.foregroundColor(Color("Tip Rectangle"))
-							.frame(width: 300, height: 100)
-						Text(AppInfo.tips[randomInt])
-							.frame(width: 280, height: 80)
-						VStack {
-							HStack {
-								Spacer()
-								VStack {
-									Spacer()
-									Image(systemName: Icons().arrow)
-										.resizable()
-										.aspectRatio(contentMode: .fit)
-										.frame(width: 20, height: 20)
-										.opacity(opacity)
-										.animation(.linear(duration: Constants().animationDuration), value: opacity)
-										.padding(3)
-								}
-							}
-						}
-					}
-					.frame(width: 300, height: 100)
-					.animation(.easeInOut, value: randomInt)
-					.onTapGesture {
-						opacity = 1.0
-						let previousInt = randomInt
-						repeat {
-							randomInt = Int.random(in: 0 ..< AppInfo.tips.count)
-						} while previousInt == randomInt
-					}
-				}	
-
-				Spacer()
-			}
-			.navigationTitle("Later")
-			.toolbar {
-				ToolbarItem(placement: .navigation) {
-					Button {
-						toggleSidebar()
-					} label: {
-						Image(systemName: "sidebar.left")
-					}
-				}
-
-				ToolbarItem(placement: .navigation) {
-					Button {
-						isShowingSheet = true
-					} label: {
-						Image(systemName: Icons().newItem)
-					}
-					.help("New Item")
-				}
-			}
-			.onAppear {
-				updateProgressValue()
+			if updatePromptShown {
+				UpdatePrompt()
+			} else {
+				TipRectangle()
 			}
 
-			.sheet(isPresented: $isShowingSheet) {
-				NewItemSheet(folderListViewModel: folderListViewModel,
-				             parentFolderViewModel: folderListViewModel.folderViewModels[0],
-				             linkListViewModel: linkListViewModel)
-			}
-			.sheet(isPresented: $isShowingNewFolderSheet) {
-				NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
-			}
-			.padding()
+			Spacer()
 		}
+		.navigationTitle("Later")
+		.toolbar {
+			ToolbarItem(placement: .navigation) {
+				Button {
+					toggleSidebar()
+				} label: {
+					Image(systemName: "sidebar.left")
+				}
+			}
+
+			ToolbarItem(placement: .navigation) {
+				Button {
+					isShowingSheet = true
+				} label: {
+					Image(systemName: Icons().newItem)
+				}
+				.help("New Item")
+			}
+		}
+		.onAppear {
+			versionViewModel.getVersion()
+			Task {
+				try await Task.sleep(nanoseconds: 1_000_000_000)
+				if versionViewModel.latestVersion != nil {
+					if AppInfo.version != versionViewModel.latestVersion {
+						AppInfo.latestVersion = versionViewModel.latestVersion
+						withAnimation(.linear(duration: Constants().animationTime)) { updatePromptShown = true }
+					}
+				}
+			}
+		}
+
+		.sheet(isPresented: $isShowingSheet) {
+			NewItemSheet(folderListViewModel: folderListViewModel,
+			             parentFolderViewModel: folderListViewModel.folderViewModels[0],
+			             linkListViewModel: linkListViewModel)
+		}
+		.sheet(isPresented: $isShowingNewFolderSheet) {
+			NewFolderSheet(folderViewModel: FolderListViewModel(), allowExitCommand: true)
+		}
+		.padding()
 	}
 
 	private func toggleSidebar() {

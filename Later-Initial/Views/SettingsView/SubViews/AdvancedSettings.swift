@@ -17,12 +17,14 @@ struct AdvancedSettings: View {
 	var body: some View {
 		Form {
 			Section("General") {
+				Divider()
 				Button("Replay Intro") {
 					introSheetPresented = true
 				}
 			}
 
 			Section("Danger Zone") {
+				Divider()
 				Button("Clear Statistics") { alertPresented = true }
 			}
 		}
@@ -36,11 +38,5 @@ struct AdvancedSettings: View {
 				timesOpened = 0
 			}
 		}
-	}
-}
-
-struct AdvancedSettings_Previews: PreviewProvider {
-	static var previews: some View {
-		AdvancedSettings()
 	}
 }

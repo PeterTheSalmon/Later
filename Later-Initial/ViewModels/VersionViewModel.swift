@@ -15,6 +15,9 @@ struct Version: Codable {
 }
 
 final class VersionViewModel: ObservableObject {
+	
+	@Published var latestVersion: String?
+	
 	func getVersion() {
 		/// set up the store
 		let store = Firestore.firestore()
@@ -35,6 +38,7 @@ final class VersionViewModel: ObservableObject {
 					/// Mark the latest version in app info
 					withAnimation(.linear(duration: Constants().animationDuration)) {
 						AppInfo.latestVersion = version.appVersion
+						self.latestVersion = version.appVersion
 					}
 				} else {
 					print("Unable to fetch latest version")
@@ -43,5 +47,6 @@ final class VersionViewModel: ObservableObject {
 				print("Error while fetching latest app version: \(error)")
 			}
 		}
+		
 	}
 }

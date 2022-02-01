@@ -30,9 +30,14 @@ struct SettingsView: View {
 				.tabItem {
 					Label("Account", systemImage: "person")
 				}
+			
+			UpdatesSettings()
+				.tabItem {
+					Label("Updates", systemImage: "arrow.down.circle")
+				}
 		}
 		.padding(20)
-		.frame(width: 375, height: 150)
+		.frame(width: 375, height: 250)
 	}
 }
 

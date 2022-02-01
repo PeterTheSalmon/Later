@@ -24,6 +24,7 @@
 		5539CB192782884C008F13CD /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539CB182782884C008F13CD /* ShareButton.swift */; };
 		553BB317273CD05900612C66 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553BB316273CD05900612C66 /* AboutView.swift */; };
 		553E3272276847310071A366 /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3271276847310071A366 /* AdvancedSettings.swift */; };
+		5542502227A99FDF00772BEE /* TipRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542502127A99FDF00772BEE /* TipRectangle.swift */; };
 		5542E827278CED5600AF4079 /* LogInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542E826278CED5600AF4079 /* LogInPage.swift */; };
 		5542E829278CF3E000AF4079 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542E828278CF3E000AF4079 /* AuthViewModel.swift */; };
 		5542E82B278D073D00AF4079 /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542E82A278D073D00AF4079 /* AccountSettings.swift */; };
@@ -121,6 +122,7 @@
 		5539CB182782884C008F13CD /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		553BB316273CD05900612C66 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		553E3271276847310071A366 /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
+		5542502127A99FDF00772BEE /* TipRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRectangle.swift; sourceTree = "<group>"; };
 		5542E826278CED5600AF4079 /* LogInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPage.swift; sourceTree = "<group>"; };
 		5542E828278CF3E000AF4079 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5542E82A278D073D00AF4079 /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		550FFE8627977665002BF2C2 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				5542502127A99FDF00772BEE /* TipRectangle.swift */,
 				550FFE8727977671002BF2C2 /* UpdatePrompt.swift */,
 			);
 			path = SubViews;
@@ -749,6 +752,7 @@
 				5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */,
 				552D6C1627A7887400279E8B /* GenericToolbar.swift in Sources */,
 				558490D527A843B3009EC9D2 /* DeleteAccountView.swift in Sources */,
+				5542502227A99FDF00772BEE /* TipRectangle.swift in Sources */,
 				55338104272E1899005496A7 /* Later_App.swift in Sources */,
 				553E3272276847310071A366 /* AdvancedSettings.swift in Sources */,
 				55C6A03F276687CC00A8E54D /* SettingsView.swift in Sources */,
