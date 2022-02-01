@@ -9,7 +9,7 @@ import Foundation
 
 struct AppInfo {
 	static let name = "Later"
-	static let version = "v0.4.1-beta"
+	static let version = "v0.5.0-beta"
 	static var latestVersion: String?
 	static let creator = "Peter Salmon"
 	static let description = "\(AppInfo.name) started as a solution to Reddit's atrocious post saving, and evolved into a larger-scoped link manager. I hope you enjoy!"
