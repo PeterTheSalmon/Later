@@ -27,6 +27,10 @@ struct MoreSection: View {
 			)) {
 				SidebarExtraItemView(name: "About", imageName: Icons().info)
 			}
+			NavigationLink(destination: FeedbackView()) {
+				SidebarExtraItemView(name: "Feedback", imageName: Icons().message)
+			}
+			
 		}
 	}
 }

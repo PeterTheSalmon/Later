@@ -161,10 +161,4 @@ struct LogInPage: View {
 	}
 }
 
-extension View {
-	func underlineTextField(colour: Color) -> some View {
-		padding(.vertical, 10)
-			.overlay(Rectangle().fill(Color.secondary).frame(height: 2).padding(.top, 35))
-			.foregroundColor(colour)
-	}
-}
+

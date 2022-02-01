@@ -39,6 +39,8 @@ struct AboutView: View {
 				LicensesButton()
 				PrivacyPolicyButton()
 				TermsOfUseButton()
+				WebsiteButton()
+				AcknowledgementsButton()
 			}.padding()
 		}
 

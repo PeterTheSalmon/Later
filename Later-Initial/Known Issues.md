@@ -7,5 +7,5 @@ Fake Favourites will show when filtering by favourites only, but they will not u
 
 todo
 
-privacy policy with content deletion
-add more buttons in about section
+
+few window settings bugs

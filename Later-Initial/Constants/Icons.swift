@@ -52,4 +52,6 @@ struct Icons {
 		"externaldrive",
 		"wrench.and.screwdriver",
 	] }
+	
+	var message: String { return roundIcons ? "bubble.right.circle" : "bubble.right" }
 }

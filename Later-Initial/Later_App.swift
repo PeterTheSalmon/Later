@@ -46,7 +46,7 @@ struct Later: App {
 
 				/// Framing for the app as a whole.
 				/// Limits it pretty strongly as the app - particularly the home page -  looks terrible when big
-				.frame(minWidth: 600, idealWidth: 600, maxWidth: 900, minHeight: 300, idealHeight: 300, maxHeight: 500)
+				.frame(minWidth: 600, idealWidth: 600, maxWidth: 1200, minHeight: 400, idealHeight: 300, maxHeight: 500)
 		}
 		.commands {
 			SidebarCommands()

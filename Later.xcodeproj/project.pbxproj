@@ -37,6 +37,12 @@
 		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
 		558490D527A843B3009EC9D2 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490D427A843B2009EC9D2 /* DeleteAccountView.swift */; };
 		558490D727A86418009EC9D2 /* TermsOfUseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490D627A86418009EC9D2 /* TermsOfUseButton.swift */; };
+		558490D927A89C26009EC9D2 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490D827A89C26009EC9D2 /* UnderlineTextField.swift */; };
+		558490DB27A8B5B2009EC9D2 /* WebsiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490DA27A8B5B2009EC9D2 /* WebsiteButton.swift */; };
+		558490DD27A8B5EA009EC9D2 /* AcknowledgementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490DC27A8B5EA009EC9D2 /* AcknowledgementsButton.swift */; };
+		558490DF27A8B62A009EC9D2 /* SpecialThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490DE27A8B62A009EC9D2 /* SpecialThanksView.swift */; };
+		558490FD27A8BC24009EC9D2 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490FC27A8BC24009EC9D2 /* FeedbackViewModel.swift */; };
+		5584910027A8BEFA009EC9D2 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558490FF27A8BEFA009EC9D2 /* FeedbackView.swift */; };
 		558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */; };
 		558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1C9274367CA009A6694 /* AboutTitle.swift */; };
 		558DE1CD274367FF009A6694 /* OpenInWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558DE1CC274367FF009A6694 /* OpenInWindow.swift */; };
@@ -127,6 +133,12 @@
 		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
 		558490D427A843B2009EC9D2 /* DeleteAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		558490D627A86418009EC9D2 /* TermsOfUseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseButton.swift; sourceTree = "<group>"; };
+		558490D827A89C26009EC9D2 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
+		558490DA27A8B5B2009EC9D2 /* WebsiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteButton.swift; sourceTree = "<group>"; };
+		558490DC27A8B5EA009EC9D2 /* AcknowledgementsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsButton.swift; sourceTree = "<group>"; };
+		558490DE27A8B62A009EC9D2 /* SpecialThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialThanksView.swift; sourceTree = "<group>"; };
+		558490FC27A8BC24009EC9D2 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		558490FF27A8BEFA009EC9D2 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		558B6A2D2735E2B90068A73E /* CheckURLConventions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLConventions.swift; sourceTree = "<group>"; };
 		558DE1C9274367CA009A6694 /* AboutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTitle.swift; sourceTree = "<group>"; };
 		558DE1CC274367FF009A6694 /* OpenInWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInWindow.swift; sourceTree = "<group>"; };
@@ -289,6 +301,22 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		558490E027A8B667009EC9D2 /* SpecialThanksView */ = {
+			isa = PBXGroup;
+			children = (
+				558490DE27A8B62A009EC9D2 /* SpecialThanksView.swift */,
+			);
+			path = SpecialThanksView;
+			sourceTree = "<group>";
+		};
+		558490FE27A8BEE4009EC9D2 /* FeedbackViews */ = {
+			isa = PBXGroup;
+			children = (
+				558490FF27A8BEFA009EC9D2 /* FeedbackView.swift */,
+			);
+			path = FeedbackViews;
+			sourceTree = "<group>";
+		};
 		558DE1C72743677B009A6694 /* AboutView */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +336,9 @@
 				558DE1D427436972009A6694 /* StatisticsMessage.swift */,
 				558DE1D6274369AC009A6694 /* LicensesButton.swift */,
 				558490D627A86418009EC9D2 /* TermsOfUseButton.swift */,
+				558490DA27A8B5B2009EC9D2 /* WebsiteButton.swift */,
+				558490DC27A8B5EA009EC9D2 /* AcknowledgementsButton.swift */,
+				558490E027A8B667009EC9D2 /* SpecialThanksView */,
 				55A4288927A840F300FE69CB /* PrivacyPolicyButton.swift */,
 			);
 			path = SubViews;
@@ -318,6 +349,7 @@
 			children = (
 				558DE1CC274367FF009A6694 /* OpenInWindow.swift */,
 				559208CA2773BBCC001F92F0 /* CodableColour.swift */,
+				558490D827A89C26009EC9D2 /* UnderlineTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,13 +377,14 @@
 		5592736E273AF7F200CBC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5542E82C278D32B600AF4079 /* AccountViews */,
 				55D0FD7D278B551100806EEA /* PrimaryView */,
+				5542E82C278D32B600AF4079 /* AccountViews */,
 				55D0FD7C278B54FF00806EEA /* FolderManagerView */,
 				55E8FC21274085470012F5F3 /* HomeView */,
 				55D0FD73278B540500806EEA /* FolderView */,
 				558DE1D827436BBB009A6694 /* Sidebar */,
 				558DE1C72743677B009A6694 /* AboutView */,
+				558490FE27A8BEE4009EC9D2 /* FeedbackViews */,
 				5593E623274365C4009C9CE9 /* OpenSourceLicenses */,
 				55C78ADB2739ED4C00E711CF /* LinkDisplayer */,
 				55C6A04227668CA600A8E54D /* SettingsView */,
@@ -578,6 +611,7 @@
 			children = (
 				5542E828278CF3E000AF4079 /* AuthViewModel.swift */,
 				550FFE84279764AC002BF2C2 /* VersionViewModel.swift */,
+				558490FC27A8BC24009EC9D2 /* FeedbackViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -685,10 +719,12 @@
 				55338138272E1B55005496A7 /* LinkItemModel.swift in Sources */,
 				550F7D76278CB91100333A63 /* AuthenticationService.swift in Sources */,
 				5542E830278D410700AF4079 /* LoggedOutView.swift in Sources */,
+				5584910027A8BEFA009EC9D2 /* FeedbackView.swift in Sources */,
 				55FE7CA3273B544300224070 /* NewFolderSheet.swift in Sources */,
 				5592736B273A017E00CBC001 /* DeleteButton.swift in Sources */,
 				558DE1DF27436E8B009A6694 /* MoreSection.swift in Sources */,
 				558DE1CA274367CA009A6694 /* AboutTitle.swift in Sources */,
+				558490DD27A8B5EA009EC9D2 /* AcknowledgementsButton.swift in Sources */,
 				55CB5D7D278627FD0074A950 /* LinkViewModel.swift in Sources */,
 				55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */,
 				55E8FC1F274084C40012F5F3 /* NewItemSheet.swift in Sources */,
@@ -700,8 +736,10 @@
 				55338136272E1AD6005496A7 /* Sidebar.swift in Sources */,
 				55A4288A27A840F300FE69CB /* PrivacyPolicyButton.swift in Sources */,
 				558DE1CF27436884009A6694 /* CreatorVersion.swift in Sources */,
+				558490FD27A8BC24009EC9D2 /* FeedbackViewModel.swift in Sources */,
 				55EC67FE27408C8400CD9A99 /* FaviconDisplay.swift in Sources */,
 				55D0FD7A278B547700806EEA /* WelcomeScreenElement.swift in Sources */,
+				558490D927A89C26009EC9D2 /* UnderlineTextField.swift in Sources */,
 				55D0FD85278B7A0C00806EEA /* PreciseRound.swift in Sources */,
 				55D0FD7F278B56DC00806EEA /* Constants.swift in Sources */,
 				5592736D273AF1F000CBC001 /* EmptyFolderView.swift in Sources */,
@@ -729,6 +767,7 @@
 				55FE7C9B273B069500224070 /* FolderModel.swift in Sources */,
 				55FE7C99273AFB2400224070 /* ButtonStyles.swift in Sources */,
 				55CB5D81278628AD0074A950 /* FolderViewModel.swift in Sources */,
+				558490DB27A8B5B2009EC9D2 /* WebsiteButton.swift in Sources */,
 				55EE8B73279B2EDC0039A506 /* FloatingBorderLabelTextField.swift in Sources */,
 				558B6A2E2735E2B90068A73E /* CheckURLConventions.swift in Sources */,
 				5505A69A274D60650083EC3E /* EditLinkButton.swift in Sources */,
@@ -746,6 +785,7 @@
 				55C6A04527668CC200A8E54D /* GeneralSettings.swift in Sources */,
 				5539CB192782884C008F13CD /* ShareButton.swift in Sources */,
 				55C6A04127668A7F00A8E54D /* AppStorageValues.swift in Sources */,
+				558490DF27A8B62A009EC9D2 /* SpecialThanksView.swift in Sources */,
 				55A2853327613A7800F17C5A /* InfoButton.swift in Sources */,
 				55D3B29D2788C79600A9BBD5 /* FolderManagerView.swift in Sources */,
 				5593E620274356F2009C9CE9 /* OpenSourceLicenses.swift in Sources */,
