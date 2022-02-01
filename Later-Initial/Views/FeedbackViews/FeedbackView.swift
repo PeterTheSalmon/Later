@@ -39,7 +39,9 @@ struct FeedbackView: View {
 			} else {
 				VStack(alignment: .leading, spacing: 10) {
 					Text("Feedback")
-						.font(.largeTitle)
+						.font(.title)
+						.fontWeight(.semibold)
+						.foregroundColor(.accentColor)
 					Text("Ideas to improve Later? Bugs? Feature requests? Send me some feedback and I'll get back to you!")
 					Divider()
 
@@ -74,7 +76,7 @@ struct FeedbackView: View {
 					.padding()
 			}
 		}
-		.frame(minWidth: 700, minHeight: 400)
+		.frame(minWidth: 650, minHeight: 350)
 		.toolbar { GenericToolbar() }
 		.navigationTitle("Feedback")
 	}

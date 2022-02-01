@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct WebsiteButton: View {
-	
 	@Environment(\.openURL) var openURL
-	
-    var body: some View {
-			Button {
-				openURL(URL(string: "https://www.petersalmon.dev/")!)
-			} label: {
-				Text("Visit my Website")
-					.frame(width: 170)
-			}
-    }
+
+	var body: some View {
+		Button {
+			openURL(URL(string: "https://www.petersalmon.dev/")!)
+		} label: {
+			Text("Visit my Website")
+				.frame(width: 170)
+		}
+	}
 }
