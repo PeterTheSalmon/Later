@@ -10,10 +10,10 @@ import SwiftUI
 
 struct CreatorVersion: View {
 	var body: some View {
-		Text("""
-		Created by \(AppInfo.creator)
-		\(AppInfo.version)
-		""")
+		VStack(alignment: .leading) {
+			Text("Created by \(AppInfo.creator)")
+			Text(AppInfo.version)
+		}
 		.padding()
 	}
 }

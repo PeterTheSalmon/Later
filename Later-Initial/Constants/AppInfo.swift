@@ -23,6 +23,9 @@ struct AppInfo {
 		"There are no bugs. I hope.",
 		"Later receives periodic updates to add and improve functionality",
 		"What's this? A tips box? Strange",
-		"You can click the link or the website favicon to open a link"
+		"You can click the link or the website favicon to open a link",
+		"Have you noticed anything weird about the about page?",
+		"T⍑ᒷ ↸𝙹⊣ ⍑ᔑᓭ ᔑ ᓭᒷᓵ∷ᒷℸ ̣",
+		""
 	]
 }

@@ -58,10 +58,9 @@ struct NewFolderSheet: View {
 			.onChange(of: folderColour) { _ in
 				finalFolderColour = folderColour
 			}
-			.padding(.bottom, -10) // lower it down a bit
 
 			TextField("", text: $name)
-				.textFieldStyle(FloatingLabelTextFieldStyle(placeholder: "Name", isEmpty: name.isEmpty, colour: .primary))
+				.textFieldStyle(.roundedBorder)
 				.padding(.horizontal)
 				.onSubmit {
 					addFolder()

@@ -11,7 +11,7 @@ import SwiftUI
 ///
 /// `The SortList()` function is stored in a separate file, SortingMethods.swift
 struct SortStylePicker: View {
-	var sortStyles = ["Name", "Date", "Url"]
+	var sortStyles = ["Name", "Date", "URL"]
 	@AppStorage("selectedSortStyle") private var selectedStyle = 0
 	@ObservedObject var linkListViewModel: LinkListViewModel
 

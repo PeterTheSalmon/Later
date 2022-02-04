@@ -9,6 +9,12 @@
 
 import SwiftUI
 
+extension Color {
+	static var random: Color {
+		return Color(red: .random(in: 0 ... 1), green: .random(in: 0 ... 1), blue: .random(in: 0 ... 1), opacity: 1)
+	}
+}
+
 struct AboutView: View {
 	@ObservedObject var folderListViewModel: FolderListViewModel
 	@ObservedObject var linkListViewModel: LinkListViewModel
@@ -17,19 +23,45 @@ struct AboutView: View {
 	@Binding var justDeletedFolder: Bool
 	@AppStorage("isShowingNewItemSheet") var isShowingNewItemSheet = false
 
+	@State private var stellaBorderColour = Color.white
+
 	var body: some View {
 		HStack {
 			VStack(alignment: .leading) {
-				AboutTitle()
+				HStack {
+					VStack(alignment: .leading) {
+						AboutTitle()
 
-				CreatorVersion()
-
+						CreatorVersion()
+					}
+					.padding(.trailing)
+					VStack {
+						Image("Stella")
+							.resizable()
+							.frame(width: 120, height: 120)
+							.clipShape(Circle())
+							.overlay {
+								Circle().stroke(stellaBorderColour, lineWidth: 4)
+							}
+							.shadow(radius: 4)
+							.onTapGesture {
+								withAnimation(.spring()) {
+									stellaBorderColour = Color.random
+								}
+							}
+							.onLongPressGesture {
+								GameView().openInWindow(title: "???", sender: self)
+							}
+						Text("Stella the Dog")
+					}
+				}
+				.padding(.bottom)
 				AppDescription()
 
 				SocialButtons()
 
 				StatisticsMessage()
-				
+
 				Spacer().frame(height: 10)
 			}
 
