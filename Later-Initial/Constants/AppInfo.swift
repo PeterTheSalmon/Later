@@ -26,6 +26,6 @@ struct AppInfo {
 		"You can click the link or the website favicon to open a link",
 		"Have you noticed anything weird about the about page?",
 		"T⍑ᒷ ↸𝙹⊣ ⍑ᔑᓭ ᔑ ᓭᒷᓵ∷ᒷℸ ̣",
-		""
+		"You don't know about the secret - right?",
 	]
 }
