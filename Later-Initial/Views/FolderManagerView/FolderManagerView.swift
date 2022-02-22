@@ -17,7 +17,6 @@ struct FolderManagerView: View {
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 
-
 	// MARK: Searching variables
 
 	@Environment(\.isSearching) var isSearching
@@ -239,7 +238,7 @@ struct FolderListedView: View {
 							folderColour = .black
 						}
 						Task {
-							try await Task.sleep(nanoseconds: 500000000)
+							try await Task.sleep(nanoseconds: 500_000_000)
 							makeFolderColourNil()
 						}
 					} label: {
@@ -254,13 +253,13 @@ struct FolderListedView: View {
 					}
 				}
 				.pickerStyle(.segmented)
-
-			}.padding()
+			}
+			.padding()
+			.onDisappear {
+				print("disappeared")
+				editFolder()
+			}
 		} // popover
-
-		.onChange(of: folderColour) { _ in
-			editFolder()
-		}
 
 		.onChange(of: symbolName) { _ in
 			editFolder()
