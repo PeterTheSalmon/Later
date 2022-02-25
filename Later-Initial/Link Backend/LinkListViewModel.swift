@@ -11,8 +11,7 @@ import FirebaseFirestoreSwift
 import Foundation
 import SwiftUI
 
-// MARK: This is the **LIST** ViewModel that handles the local logic
-
+/// This is the **LIST** ViewModel that handles the local logic
 final class LinkListViewModel: ObservableObject {
 	@Published var linkRepository = LinkRepository()
 
@@ -21,6 +20,11 @@ final class LinkListViewModel: ObservableObject {
 
 	// Array of cancellables so we can cancel them later on
 	private var cancellables: Set<AnyCancellable> = []
+	
+	func setDraggedLinkViewModel(linkViewModel: LinkViewModel) {
+		draggedLinkViewModel = linkViewModel
+	}
+	@Published var draggedLinkViewModel: LinkViewModel?
 
 	func add(_ item: LinkItem) {
 		linkRepository.add(item)

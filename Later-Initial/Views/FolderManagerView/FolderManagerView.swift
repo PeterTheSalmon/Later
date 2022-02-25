@@ -256,7 +256,7 @@ struct FolderListedView: View {
 			}
 			.padding()
 			.onDisappear {
-				print("disappeared")
+				// Instead of an onChange of colour, we do an onDis() to prevent writing to firebase to many times
 				editFolder()
 			}
 		} // popover

@@ -60,6 +60,11 @@ struct LinkDisplaySheet: View {
 			}
 		}
 		
+		.onDrag {
+			linkListViewModel.setDraggedLinkViewModel(linkViewModel: linkViewModel)
+			return NSItemProvider(object: NSString())
+		}
+		
 		/// If the app is quit from this page, the favourite will still be toggled
 		.onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification), perform: { _ in
 			if needToToggleFavouriteOnDisappear {

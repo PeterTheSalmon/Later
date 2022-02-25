@@ -33,6 +33,7 @@
 		5544582D2731974E009A4DF0 /* ExtractDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544582C2731974E009A4DF0 /* ExtractDomain.swift */; };
 		5554E5402779108D00285209 /* SortingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554E53F2779108D00285209 /* SortingMethods.swift */; };
 		55606D582784310800B56511 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55606D572784310800B56511 /* GoogleService-Info.plist */; };
+		556D35D227C891BD0053E4A7 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D35D127C891BD0053E4A7 /* DropDelegate.swift */; };
 		557248D3277B8ED20040CCB7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 557248D2277B8ED20040CCB7 /* CachedAsyncImage */; };
 		557356E7279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */; };
 		55750F8C27695C38006B24E3 /* SortStylePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55750F8B27695C38006B24E3 /* SortStylePicker.swift */; };
@@ -132,6 +133,8 @@
 		5544582C2731974E009A4DF0 /* ExtractDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractDomain.swift; sourceTree = "<group>"; };
 		5554E53F2779108D00285209 /* SortingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMethods.swift; sourceTree = "<group>"; };
 		55606D572784310800B56511 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		556D35D127C891BD0053E4A7 /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
+		556D35D327C8953E0053E4A7 /* Later-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Later-Info.plist"; sourceTree = "<group>"; };
 		557356E6279DFCFF002812C6 /* FloatingLabelTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextFieldStyle.swift; sourceTree = "<group>"; };
 		55750F8B27695C38006B24E3 /* SortStylePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStylePicker.swift; sourceTree = "<group>"; };
 		558490D427A843B2009EC9D2 /* DeleteAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
@@ -218,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				550F7D75278CB91100333A63 /* AuthenticationService.swift */,
+				556D35D127C891BD0053E4A7 /* DropDelegate.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -242,6 +246,7 @@
 		553380F7272E1899005496A7 = {
 			isa = PBXGroup;
 			children = (
+				556D35D327C8953E0053E4A7 /* Later-Info.plist */,
 				55338102272E1899005496A7 /* Later-Initial */,
 				55338101272E1899005496A7 /* Products */,
 			);
@@ -709,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55FE7C9D273B097700224070 /* FolderView.swift in Sources */,
+				556D35D227C891BD0053E4A7 /* DropDelegate.swift in Sources */,
 				553BB317273CD05900612C66 /* AboutView.swift in Sources */,
 				5542E829278CF3E000AF4079 /* AuthViewModel.swift in Sources */,
 				55E84D9927594D5A0017A735 /* WelcomeScreen.swift in Sources */,
@@ -929,6 +935,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Later-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -958,6 +965,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Later-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

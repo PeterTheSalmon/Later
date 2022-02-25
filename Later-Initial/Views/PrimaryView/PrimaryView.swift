@@ -91,7 +91,6 @@ struct PrimaryView: View {
 			} else {
 				LoggedOutView()
 					.onAppear {
-						print("logged out sidebar appeared")
 						logInPageActive = true
 						folderListIsEmpty = false
 					}

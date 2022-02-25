@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UniformTypeIdentifiers
 
 // MARK: STATUS: Does not work as intended
 
@@ -45,13 +46,20 @@ struct FolderSection: View {
 						query: $query
 					).searchable(text: $query)
 				) {
-						// This is what is displayed in the sidebar
-						SidebarFolderItemView(name: folder.folder.name,
-						                      justDeletedFolder: $justDeletedFolder,
-						                      folderViewModel: folder,
-						                      folderListViewModel: folderListViewModel,
-						                      selectedFolder: $selectedFolder)
-					}
+					// This is what is displayed in the sidebar
+					SidebarFolderItemView(name: folder.folder.name,
+					                      justDeletedFolder: $justDeletedFolder,
+					                      folderViewModel: folder,
+					                      folderListViewModel: folderListViewModel,
+					                      selectedFolder: $selectedFolder)
+						.onDrop(
+							of: [UTType.text],
+							delegate: ProjectDropDelegate(
+								linkViewModel: linkListViewModel.draggedLinkViewModel,
+								folder: folder
+							)
+						)
+				}
 			}
 		}
 
