@@ -56,6 +56,7 @@ struct FolderSection: View {
 							of: [UTType.text],
 							delegate: ProjectDropDelegate(
 								linkViewModel: linkListViewModel.draggedLinkViewModel,
+								folderListViewModel: folderListViewModel,
 								folder: folder
 							)
 						)

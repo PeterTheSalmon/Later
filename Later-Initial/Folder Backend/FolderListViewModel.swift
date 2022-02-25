@@ -19,6 +19,8 @@ final class FolderListViewModel: ObservableObject, Hashable {
 		hasher.combine(folderViewModels)
 	}
 	
+	@Published var needsToReload = false
+	
 	@Published var folderRepository = FolderRepository()
 
 	// Can be subscribed to

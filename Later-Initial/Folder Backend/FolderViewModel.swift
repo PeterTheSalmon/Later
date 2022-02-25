@@ -20,8 +20,7 @@ final class FolderViewModel: ObservableObject, Identifiable, Hashable {
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(folder)
 	}
-	
-	
+		
 	private let folderRepository = FolderRepository()
 
 	@Published var folder: FolderItem

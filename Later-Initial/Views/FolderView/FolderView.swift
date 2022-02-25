@@ -78,6 +78,14 @@ struct FolderView: View {
 						}
 					}
 				}
+				
+				.onChange(of: folderListViewModel.needsToReload, perform: { _ in
+					/// At this point I freely admit that this method of state management is absolute, pure garbage
+					/// Let me explain what is happening:
+					/// - When a link is dropped into a folder, the `folderListViewModel.needsToReload` property is toggled, which in turns triggers this `.onChange(_:)` and jankily reloads this view
+					return;
+				})
+				
 				.navigationTitle(parentFolderViewModel.folder.name)
 
 				// sets the selected folder to the current parent folder, sorts the list, and fixes the favicons
