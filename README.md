@@ -38,7 +38,6 @@ Let me know in the [issues](https://github.com/PeterTheSalmon/Later/issues) tab.
 
 ## Planned Features
 
-- An actual app icon
 - Auto-update system
 
 ## Tech Stack
