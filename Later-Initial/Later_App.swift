@@ -17,7 +17,7 @@ struct Later: App {
 	@AppStorage("folderManagerActive") var folderManagerActive = false
 	@AppStorage("homeViewSelected") var homeViewSelected = true
 	@AppStorage("folderSheetPresented") var folderSheetPresented = false
-
+	
 	init() {
 		folderManagerActive = false
 		homeViewSelected = true

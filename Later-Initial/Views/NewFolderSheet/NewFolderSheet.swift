@@ -67,7 +67,7 @@ struct NewFolderSheet: View {
 				}
 
 			Picker("", selection: $symbolName) {
-				ForEach(0 ..< Icons().symbolNames.count) {
+				ForEach(0 ..< Icons().symbolNames.count, id: \.self) {
 					Image(systemName: Icons().symbolNames[$0])
 				}
 			}

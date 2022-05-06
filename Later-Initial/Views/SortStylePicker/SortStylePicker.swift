@@ -18,7 +18,7 @@ struct SortStylePicker: View {
 	var body: some View {
 		VStack {
 			Picker(selection: $selectedStyle, label: Text("Sort by:")) {
-				ForEach(0 ..< sortStyles.count) {
+				ForEach(0 ..< sortStyles.count, id: \.self) {
 					Text(self.sortStyles[$0])
 				}
 			}
